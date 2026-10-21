@@ -1,29 +1,7 @@
 {
-  "updated": "2026-10-21T02:59:44Z",
+  "updated": "2026-10-21T03:29:01Z",
   "data": {
     "games": [
-      {
-        "id": "401871092",
-        "date": "2026-10-20T23:30Z",
-        "state": "in",
-        "detail": "0:39 - 4th",
-        "away": {
-          "name": "South Alabama Jaguars",
-          "abbr": "USA",
-          "score": "13",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Marshall Thundering Herd",
-          "abbr": "MRSH",
-          "score": "20",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401871055",
         "date": "2026-10-20T23:00Z",
@@ -64,6 +42,28 @@
           "abbr": "DEL",
           "score": "61",
           "record": "3-4",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401871092",
+        "date": "2026-10-20T23:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "South Alabama Jaguars",
+          "abbr": "USA",
+          "score": "13",
+          "record": "4-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Marshall Thundering Herd",
+          "abbr": "MRSH",
+          "score": "20",
+          "record": "4-3",
           "rank": 0,
           "winner": true
         }
