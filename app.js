@@ -113,7 +113,7 @@ function renderF1(payload) {
   }
   html += "</section>";
 
-  html += '<section class="card"><h2>Driver standings</h2>';
+  html += '<section class="card"><details><summary>Driver standings</summary>';
   if (drivers.length) {
     html += table(
       [{ label: "#" }, { label: "Driver" }, { label: "Wins", num: true }, { label: "Pts", num: true }],
@@ -126,9 +126,9 @@ function renderF1(payload) {
   } else {
     html += '<div class="muted">No standings yet.</div>';
   }
-  html += "</section>";
+  html += "</details></section>";
 
-  html += '<section class="card"><h2>Constructor standings</h2>';
+  html += '<section class="card"><details><summary>Constructor standings</summary>';
   if (constructors.length) {
     html += table(
       [{ label: "#" }, { label: "Team" }, { label: "Wins", num: true }, { label: "Pts", num: true }],
@@ -140,7 +140,7 @@ function renderF1(payload) {
   } else {
     html += '<div class="muted">No standings yet.</div>';
   }
-  html += "</section>";
+  html += "</details></section>";
 
   html += '<section class="card"><h2' + (last.round > 0 ? ' class="tap" data-round="' + esc(last.round) + '"' : "") + ">Last race" +
     (last.name ? "<small>" + esc(last.name) + "</small>" : "") +
