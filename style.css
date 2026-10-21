@@ -219,5 +219,23 @@ a { color: var(--accent); }
   font: inherit;
 }
 
+/* men's / women's switch and the live tournament tag */
+.switch { display: flex; gap: 6px; margin: 8px 0 0; }
+
+.switch button {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.switch button.active { color: var(--text); border-color: var(--accent); background: var(--card); }
+
+.livetag { color: var(--live); font-weight: 700; }
+
 tr.best td { color: var(--accent); font-weight: 600; }
 tr.fastest td { color: #c77dff; }

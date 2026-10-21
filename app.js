@@ -8,6 +8,10 @@ const SPORTS = [
   { id: "nba", label: "NBA", kind: "league", espn: "basketball/nba", scores: "data/nba.json", extra: "data/nba_standings.json", extraType: "standings" },
   { id: "mlb", label: "MLB", kind: "league", espn: "baseball/mlb", scores: "data/mlb.json", extra: "data/mlb_standings.json", extraType: "standings" },
   { id: "cfb", label: "CFB", kind: "league", espn: "football/college-football", scores: "data/cfb.json", extra: "data/cfb_rankings.json", extraType: "rankings" },
+  // Men's and women's college basketball share one tab with a switch at the top.
+  { id: "cbb", label: "CBB", kind: "league", espn: "basketball/mens-college-basketball", scores: "data/cbb.json", extra: "data/cbb_rankings.json", extraType: "rankings", group: "cbb", side: "Men's" },
+  { id: "wcbb", label: "CBB", kind: "league", espn: "basketball/womens-college-basketball", scores: "data/wcbb.json", extra: "data/wcbb_rankings.json", extraType: "rankings", group: "cbb", side: "Women's", hidden: true },
+  { id: "golf", label: "Golf", kind: "golf", file: "data/golf.json" },
   { id: "f1", label: "F1", kind: "f1", file: "data/f1.json" }
 ];
 
@@ -515,8 +519,80 @@ function renderRankings(data) {
     "</details></section>";
 }
 
-function renderLeague(sport, scores, extra) {
+function sideSwitch(sport) {
+  if (!sport.group) return "";
+  return '<div class="switch">' + SPORTS.filter((s) => s.group === sport.group).map((s) =>
+    '<button type="button" data-switch="' + esc(s.id) + '" class="' + (s.id === sport.id ? "active" : "") + '">' +
+    esc(s.side) + "</button>"
+  ).join("") + "</div>";
+}
+
+// ---- Golf ---------------------------------------------------------------------
+
+function fmtRange(startIso, endIso) {
+  const a = Date.parse(startIso);
+  const b = Date.parse(endIso);
+  if (isNaN(a)) return "";
+  const opts = { month: "short", day: "numeric" };
+  const s = new Date(a).toLocaleDateString([], opts);
+  // ESPN's end time is early on the day after the last round, so back it up an hour.
+  const e = isNaN(b) ? "" : new Date(b - 3600 * 1000).toLocaleDateString([], opts);
+  return e && e !== s ? s + " – " + e : s;
+}
+
+function renderGolf(payload) {
+  const d = payload.data || {};
+  const ev = d.event;
+  const players = d.players || [];
+  const schedule = d.schedule || [];
   let html = "";
+
+  if (ev) {
+    const live = ev.state === "in";
+    html += '<section class="card next-race"><div class="name">' + esc(ev.name) + "</div>" +
+      '<div class="when">' + esc(fmtRange(ev.start, ev.end)) + "</div>" +
+      '<div class="where"><span class="' + (live ? "livetag" : "") + '">' + esc(ev.detail || "") + "</span></div></section>";
+
+    if (players.length) {
+      const maxRounds = Math.min(4, Math.max.apply(null, players.map((p) => (p.rounds || []).length).concat([0])));
+      const heads = [{ label: "Pos" }, { label: "Player" }, { label: "Score", num: true }, { label: "Thru", num: true }];
+      for (let i = 1; i <= maxRounds; i++) heads.push({ label: "R" + i, num: true });
+
+      const rows = players.map((p) => {
+        let cells = '<td class="pos">' + esc(p.pos) + "</td><td>" + esc(p.name) +
+          (p.country ? '<span class="sub">' + esc(p.country) + "</span>" : "") + "</td>" +
+          '<td class="num"><b>' + esc(p.toPar) + "</b></td>" +
+          '<td class="num">' + esc(p.thru) + "</td>";
+        for (let i = 0; i < maxRounds; i++) cells += '<td class="num">' + esc((p.rounds || [])[i] || "") + "</td>";
+        return "<tr>" + cells + "</tr>";
+      });
+      html += '<section class="card"><h2>Leaderboard<small>' + players.length + ' players</small></h2>' +
+        '<div class="scroll"><table class="box">' +
+        "<thead><tr>" + heads.map((h) => '<th class="' + (h.num ? "num" : "") + '">' + esc(h.label) + "</th>").join("") + "</tr></thead>" +
+        "<tbody>" + rows.join("") + "</tbody></table></div></section>";
+    } else {
+      html += '<section class="card"><div class="muted">The leaderboard shows up here once the field is posted ' +
+        "and play starts. It refreshes every few minutes.</div></section>";
+    }
+  } else {
+    html += '<section class="card"><div class="muted">No tournament on the schedule right now.</div></section>';
+  }
+
+  if (schedule.length) {
+    const now = Date.now();
+    const rows = schedule.map((t) => {
+      const past = Date.parse(t.end) < now;
+      return '<tr class="' + (past ? "past" : "") + '"><td>' + esc(t.name) + '</td><td class="num">' +
+        esc(fmtRange(t.start, t.end)) + "</td></tr>";
+    });
+    html += '<section class="card"><details><summary>Season schedule</summary>' +
+      table([{ label: "Tournament" }, { label: "Dates", num: true }], rows) + "</details></section>";
+  }
+  return html;
+}
+
+function renderLeague(sport, scores, extra) {
+  let html = sideSwitch(sport);
   if (scores) {
     html += renderGames((scores.data && scores.data.games) || []);
   } else {
@@ -726,6 +802,8 @@ window.addEventListener("popstate", () => { if (detail) leaveDetail(); });
 
 view.addEventListener("click", (event) => {
   if (event.target.closest("#back")) { goBack(); return; }
+  const sw = event.target.closest("button[data-switch]");
+  if (sw) { selectSport(sw.getAttribute("data-switch")); return; }
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const el = event.target.closest(".game[data-id]");
@@ -748,22 +826,28 @@ view.addEventListener("keydown", (event) => {
 // ---- tabs and loading -------------------------------------------------------
 
 function renderTabs() {
-  tabs.innerHTML = SPORTS.map((s) =>
-    '<button type="button" data-id="' + esc(s.id) + '" class="' +
-    (s.id === current ? "active" : "") + '">' + esc(s.label) + "</button>"
-  ).join("");
+  const cur = SPORTS.find((s) => s.id === current);
+  tabs.innerHTML = SPORTS.filter((s) => !s.hidden).map((s) => {
+    const active = s.id === current || (cur && cur.group && cur.group === s.group);
+    return '<button type="button" data-id="' + esc(s.id) + '" class="' + (active ? "active" : "") + '">' +
+      esc(s.label) + "</button>";
+  }).join("");
 }
 
-tabs.addEventListener("click", (event) => {
-  const btn = event.target.closest("button[data-id]");
-  if (!btn) return;
-  current = btn.getAttribute("data-id");
+function selectSport(id) {
+  current = id;
   detail = null;
   view.removeAttribute("data-detail");
   saveTab(current);
   history.replaceState(null, "", "#" + current);
   renderTabs();
   show();
+}
+
+tabs.addEventListener("click", (event) => {
+  const btn = event.target.closest("button[data-id]");
+  if (!btn) return;
+  selectSport(btn.getAttribute("data-id"));
 });
 
 const NO_DATA =
@@ -780,10 +864,10 @@ async function show() {
   }
 
   try {
-    if (sport.kind === "f1") {
+    if (sport.kind === "f1" || sport.kind === "golf") {
       const payload = await getJson(sport.file);
       if (current !== sport.id) return; // user switched tabs while loading
-      view.innerHTML = renderF1(payload);
+      view.innerHTML = sport.kind === "golf" ? renderGolf(payload) : renderF1(payload);
       updatedEl.textContent = payload.updated ? "Data changed " + timeAgo(payload.updated) : "";
       return;
     }

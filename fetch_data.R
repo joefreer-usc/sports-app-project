@@ -328,7 +328,7 @@ parse_event <- function(e) {
   )
 }
 
-fetch_scores <- function(sport_path, query = "", offsets = NULL) {
+fetch_scores <- function(sport_path, query = "", offsets = NULL, extra = "") {
   get_games <- function(q) {
     d <- get_json(paste0(espn_site, sport_path, "/scoreboard", q))
     events <- d$events
@@ -345,7 +345,7 @@ fetch_scores <- function(sport_path, query = "", offsets = NULL) {
     all_games <- list()
     ok <- 0
     for (off in offsets) {
-      q <- paste0("?dates=", format(Sys.Date() + off, "%Y%m%d"))
+      q <- paste0("?dates=", format(Sys.Date() + off, "%Y%m%d"), extra)
       g <- tryCatch({
         r <- get_games(q)
         ok <- ok + 1
@@ -357,6 +357,14 @@ fetch_scores <- function(sport_path, query = "", offsets = NULL) {
       all_games <- c(all_games, g)
     }
     if (ok == 0) stop("every day request failed")
+    # Offseason or no games in this window: ask for ESPN's default day, which is
+    # the next day with games, so the tab shows what's coming up.
+    if (length(all_games) == 0) {
+      all_games <- tryCatch(
+        get_games(if (nzchar(extra)) paste0("?", sub("^&", "", extra)) else ""),
+        error = function(e) list()
+      )
+    }
     ids <- vapply(all_games, function(x) x$id, character(1))
     return(list(games = all_games[!duplicated(ids)]))
   }
@@ -423,9 +431,9 @@ fetch_standings <- function(sport_path) {
   list(season = season %||% "", groups = collect_groups(d))
 }
 
-# College football: the AP Top 25 poll.
-fetch_cfb_rankings <- function() {
-  d <- get_json(paste0(espn_site, "football/college-football/rankings"))
+# College football and basketball: the AP Top 25 poll.
+fetch_rankings <- function(sport_path) {
+  d <- get_json(paste0(espn_site, sport_path, "/rankings"))
   polls <- d$rankings
   if (length(polls) == 0) return(list(name = "", teams = list()))
   p <- polls[[1]]
@@ -455,4 +463,77 @@ run_section("mlb",           function() fetch_scores("baseball/mlb", offsets = d
 run_section("mlb_standings", function() fetch_standings("baseball/mlb"))
 
 run_section("cfb",           function() fetch_scores("football/college-football", "?groups=80&limit=200"))
-run_section("cfb_rankings",  fetch_cfb_rankings)
+run_section("cfb_rankings",  function() fetch_rankings("football/college-football"))
+
+# College basketball (men's and women's): Division I games only, one day at a time.
+# Before the season starts this falls back to the first day with games.
+cbb_extra <- "&groups=50&limit=400"
+
+run_section("cbb",           function() fetch_scores("basketball/mens-college-basketball", offsets = day_offsets, extra = cbb_extra))
+run_section("cbb_rankings",  function() fetch_rankings("basketball/mens-college-basketball"))
+
+run_section("wcbb",          function() fetch_scores("basketball/womens-college-basketball", offsets = day_offsets, extra = cbb_extra))
+run_section("wcbb_rankings", function() fetch_rankings("basketball/womens-college-basketball"))
+
+# ---- PGA Tour golf (ESPN, no key) --------------------------------------------
+# Shows the current (or next) tournament's leaderboard plus the season schedule.
+
+fetch_golf <- function() {
+  sb <- get_json(paste0(espn_site, "golf/pga/scoreboard"))
+
+  cal <- sb$leagues[[1]]$calendar %||% list()
+  schedule <- lapply(cal, function(c) list(
+    id    = as.character(c$id %||% ""),
+    name  = c$label %||% "",
+    start = c$startDate %||% "",
+    end   = c$endDate %||% ""
+  ))
+
+  if (length(sb$events) == 0) return(list(event = NULL, players = list(), schedule = schedule))
+
+  ev <- sb$events[[1]]
+  comp <- ev$competitions[[1]]
+  event <- list(
+    id     = as.character(ev$id %||% ""),
+    name   = ev$name %||% ev$shortName %||% "",
+    start  = ev$date %||% "",
+    end    = ev$endDate %||% "",
+    state  = ev$status$type$state %||% "",
+    detail = comp$status$type$detail %||% ev$status$type$description %||% "",
+    round  = as.integer(comp$status$period %||% 0)
+  )
+
+  # The scoreboard has no players until a tournament is close to starting, and the
+  # leaderboard address below has them, so try that first and keep the other as a backup.
+  lb <- tryCatch(
+    get_json(paste0("https://site.web.api.espn.com/apis/site/v2/sports/golf/leaderboard?league=pga&event=", event$id)),
+    error = function(e) { message("  golf leaderboard: ", conditionMessage(e)); NULL }
+  )
+  comps <- lb$events[[1]]$competitions[[1]]$competitors %||% comp$competitors %||% list()
+
+  to_par <- function(x) {
+    for (s in x$statistics %||% list()) {
+      if (identical(s$name, "scoreToPar")) return(as.character(s$displayValue %||% ""))
+    }
+    sc <- x$score
+    if (is.list(sc)) as.character(sc$displayValue %||% "") else as.character(sc %||% "")
+  }
+
+  players <- lapply(comps, function(x) list(
+    pos     = x$status$position$displayName %||% "",
+    name    = x$athlete$displayName %||% x$athlete$shortName %||% "",
+    country = x$athlete$flag$alt %||% "",
+    toPar   = to_par(x),
+    thru    = x$status$displayValue %||% "",
+    rounds  = lapply(x$linescores %||% list(), function(l) as.character(l$displayValue %||% "")),
+    order   = as.integer(x$sortOrder %||% 9999)
+  ))
+  if (length(players) > 1) {
+    players <- players[order(vapply(players, function(p) p$order, integer(1)))]
+  }
+  players <- lapply(players, function(p) { p$order <- NULL; p })
+
+  list(event = event, players = players, schedule = schedule)
+}
+
+run_section("golf", fetch_golf)
