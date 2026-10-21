@@ -5,6 +5,9 @@
   --text: #e8eef4;
   --muted: #8fa1b3;
   --accent: #4cc2ff;
+  --live: #ff5d5d;
+  --up: #4cd68a;
+  --down: #ff7a7a;
 }
 
 * { box-sizing: border-box; }
@@ -77,6 +80,7 @@ main {
 
 .card h2 { margin: 0 0 8px; font-size: 16px; }
 .card h2 small { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.card h3 { margin: 14px 0 2px; font-size: 13px; color: var(--muted); font-weight: 600; }
 
 .muted { color: var(--muted); }
 .message { padding: 24px 4px; color: var(--muted); }
@@ -99,3 +103,51 @@ details summary {
 }
 
 tr.past td { color: var(--muted); }
+
+/* games */
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.game:first-of-type { border-top: 0; }
+
+.teams { flex: 1 1 auto; min-width: 0; }
+
+.team {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+  color: var(--muted);
+}
+
+.team.win { color: var(--text); font-weight: 700; }
+
+.team .tname {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team small { color: var(--muted); font-weight: 400; font-size: 12px; }
+.team .rank { color: var(--accent); font-size: 12px; }
+.team .score { font-variant-numeric: tabular-nums; }
+
+.status {
+  flex: 0 0 auto;
+  min-width: 70px;
+  text-align: right;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.status.in { color: var(--live); font-weight: 700; }
+.status.pre { color: var(--accent); }
+
+.up { color: var(--up); font-size: 12px; }
+.down { color: var(--down); font-size: 12px; }

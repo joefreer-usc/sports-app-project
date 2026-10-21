@@ -126,4 +126,148 @@ fetch_f1 <- function() {
 
 run_section("f1", fetch_f1)
 
-# NFL, NBA, MLB and college football (ESPN) will be added in the next round.
+# ---- ESPN (NFL, NBA, MLB, college football; unofficial API, no key) --------
+
+espn_site <- "https://site.api.espn.com/apis/site/v2/sports/"
+espn_v2   <- "https://site.api.espn.com/apis/v2/sports/"
+
+# One game -> a small, flat record the website can display.
+parse_event <- function(e) {
+  comp <- e$competitions[[1]]
+
+  side <- function(which) {
+    cs <- Filter(function(x) identical(x$homeAway, which), comp$competitors)
+    if (length(cs) == 0) {
+      return(list(name = "", abbr = "", score = "", record = "", rank = 0L, winner = FALSE))
+    }
+    x <- cs[[1]]
+    rec <- if (length(x$records) > 0) x$records[[1]]$summary %||% "" else ""
+    rank <- suppressWarnings(as.integer(x$curatedRank$current %||% 0))
+    if (is.na(rank) || rank < 1 || rank > 25) rank <- 0L
+    list(
+      name   = x$team$displayName %||% x$team$name %||% "",
+      abbr   = x$team$abbreviation %||% "",
+      score  = as.character(x$score %||% ""),
+      record = rec,
+      rank   = rank,
+      winner = isTRUE(x$winner)
+    )
+  }
+
+  list(
+    id     = as.character(e$id %||% ""),
+    date   = e$date %||% "",
+    state  = e$status$type$state %||% "",
+    detail = e$status$type$shortDetail %||% e$status$type$detail %||% "",
+    away   = side("away"),
+    home   = side("home")
+  )
+}
+
+fetch_scores <- function(sport_path, query = "") {
+  get_games <- function(q) {
+    d <- get_json(paste0(espn_site, sport_path, "/scoreboard", q))
+    events <- d$events
+    if (is.null(events) && length(d$leagues) > 0) events <- d$leagues[[1]]$events
+    games <- lapply(events %||% list(), function(e) {
+      tryCatch(parse_event(e), error = function(err) NULL)
+    })
+    Filter(Negate(is.null), games)
+  }
+
+  games <- get_games(query)
+  # If a filtered request comes back empty, fall back to the plain scoreboard.
+  if (length(games) == 0 && nzchar(query) && !grepl("dates=", query, fixed = TRUE)) {
+    games <- get_games("")
+  }
+  list(games = games)
+}
+
+# Standings: ESPN nests teams under conferences / divisions, so walk the tree.
+stat_of <- function(stats, nm) {
+  for (s in stats) if (identical(s$name, nm)) return(s)
+  NULL
+}
+
+parse_entry <- function(en) {
+  st <- en$stats %||% list()
+  w <- stat_of(st, "wins")
+  l <- stat_of(st, "losses")
+  t <- stat_of(st, "ties")
+  overall <- stat_of(st, "overall")
+  pct <- stat_of(st, "winPercent")
+  gb <- stat_of(st, "gamesBehind")
+  strk <- stat_of(st, "streak")
+
+  record <- if (!is.null(overall)) {
+    overall$displayValue %||% overall$summary %||% ""
+  } else if (!is.null(w) && !is.null(l)) {
+    r <- paste(w$displayValue, l$displayValue, sep = "-")
+    if (!is.null(t) && !identical(t$displayValue, "0")) r <- paste(r, t$displayValue, sep = "-")
+    r
+  } else ""
+
+  list(
+    name   = en$team$displayName %||% en$team$name %||% "",
+    abbr   = en$team$abbreviation %||% "",
+    record = record,
+    pct    = pct$displayValue %||% "",
+    gb     = gb$displayValue %||% "",
+    streak = strk$displayValue %||% "",
+    sort   = as.numeric(pct$value %||% 0)
+  )
+}
+
+collect_groups <- function(node) {
+  groups <- list()
+  entries <- node$standings$entries
+  if (length(entries) > 0) {
+    teams <- lapply(entries, parse_entry)
+    teams <- teams[order(-vapply(teams, function(x) x$sort, numeric(1)))]
+    teams <- lapply(teams, function(x) { x$sort <- NULL; x })
+    groups[[length(groups) + 1]] <- list(name = node$name %||% "", teams = teams)
+  }
+  for (ch in node$children %||% list()) groups <- c(groups, collect_groups(ch))
+  groups
+}
+
+fetch_standings <- function(sport_path) {
+  d <- get_json(paste0(espn_v2, sport_path, "/standings"))
+  season <- tryCatch(d$children[[1]]$standings$seasonDisplayName, error = function(e) NULL)
+  list(season = season %||% "", groups = collect_groups(d))
+}
+
+# College football: the AP Top 25 poll.
+fetch_cfb_rankings <- function() {
+  d <- get_json(paste0(espn_site, "football/college-football/rankings"))
+  polls <- d$rankings
+  if (length(polls) == 0) return(list(name = "", teams = list()))
+  p <- polls[[1]]
+  list(
+    name = p$name %||% "Top 25",
+    teams = lapply(p$ranks, function(r) list(
+      rank     = as.integer(r$current %||% 0),
+      previous = as.integer(r$previous %||% 0),
+      name     = r$team$location %||% r$team$nickname %||% "",
+      abbr     = r$team$abbreviation %||% "",
+      record   = r$recordSummary %||% ""
+    ))
+  )
+}
+
+# NBA and MLB play almost every day, so ask for yesterday through two days ahead.
+# NFL and college football default to the current week.
+today <- Sys.Date()
+day_range <- paste0("?dates=", format(today - 1, "%Y%m%d"), "-", format(today + 2, "%Y%m%d"))
+
+run_section("nfl",           function() fetch_scores("football/nfl"))
+run_section("nfl_standings", function() fetch_standings("football/nfl"))
+
+run_section("nba",           function() fetch_scores("basketball/nba", day_range))
+run_section("nba_standings", function() fetch_standings("basketball/nba"))
+
+run_section("mlb",           function() fetch_scores("baseball/mlb", day_range))
+run_section("mlb_standings", function() fetch_standings("baseball/mlb"))
+
+run_section("cfb",           function() fetch_scores("football/college-football", "?groups=80&limit=200"))
+run_section("cfb_rankings",  fetch_cfb_rankings)
