@@ -103,10 +103,11 @@ function renderF1(payload) {
   html += '<section class="card next-race"><h2>Next race</h2>';
   if (next) {
     html +=
-      '<div class="name">' + esc(next.name) + "</div>" +
+      '<div class="tap" data-round="' + esc(next.round) + '">' +
+      '<div class="name">' + esc(next.name) + ' <span class="chev">&rsaquo;</span></div>' +
       '<div class="when">' + esc(fmtRaceWhen(next)) + "</div>" +
       '<div class="where">' + esc(next.circuit) + " &middot; " + esc(next.location) +
-      " &middot; Round " + esc(next.round) + "</div>";
+      " &middot; Round " + esc(next.round) + "</div></div>";
   } else {
     html += '<div class="muted">No upcoming races on the schedule.</div>';
   }
@@ -141,8 +142,9 @@ function renderF1(payload) {
   }
   html += "</section>";
 
-  html += '<section class="card"><h2>Last race' +
-    (last.name ? "<small>" + esc(last.name) + "</small>" : "") + "</h2>";
+  html += '<section class="card"><h2' + (last.round > 0 ? ' class="tap" data-round="' + esc(last.round) + '"' : "") + ">Last race" +
+    (last.name ? "<small>" + esc(last.name) + "</small>" : "") +
+    (last.round > 0 ? ' <span class="chev">&rsaquo;</span>' : "") + "</h2>";
   if (last.results && last.results.length) {
     html += table(
       [{ label: "#" }, { label: "Driver" }, { label: "Result", num: true }, { label: "Pts", num: true }],
@@ -157,12 +159,12 @@ function renderF1(payload) {
   }
   html += "</section>";
 
-  html += '<section class="card"><details><summary>Season schedule</summary>';
+  html += '<section class="card"><details open><summary>Season schedule <small class="muted">tap a race for details</small></summary>';
   if (schedule.length) {
     html += table(
       [{ label: "Rd" }, { label: "Race" }, { label: "Date", num: true }],
       schedule.map((r) =>
-        '<tr class="' + (raceStartMs(r) < now ? "past" : "") + '"><td class="pos">' + esc(r.round) +
+        '<tr class="tap ' + (raceStartMs(r) < now ? "past" : "") + '" data-round="' + esc(r.round) + '"><td class="pos">' + esc(r.round) +
         "</td><td>" + esc(r.name) + '<span class="sub">' + esc(r.location) + "</span></td>" +
         '<td class="num">' + esc(fmtShortDate(r)) + "</td></tr>"
       )
@@ -173,6 +175,211 @@ function renderF1(payload) {
   html += "</details></section>";
 
   return html;
+}
+
+// ---- F1 race detail (tap a race) --------------------------------------------
+
+let raceData = null; // results and lap times for the race being viewed
+
+function sessionStartMs(s) {
+  return Date.parse(s.date + "T" + (s.time || "00:00:00Z"));
+}
+
+function fmtSession(s) {
+  const ms = sessionStartMs(s);
+  if (isNaN(ms)) return s.date || "";
+  const opts = s.time
+    ? { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }
+    : { weekday: "short", month: "short", day: "numeric" };
+  return new Date(ms).toLocaleString([], opts);
+}
+
+function renderSessions(race) {
+  const list = (race.sessions || [])
+    .concat([{ name: "Race", date: race.date, time: race.time }])
+    .filter((s) => s.date)
+    .sort((a, b) => sessionStartMs(a) - sessionStartMs(b));
+  const now = Date.now();
+  let tz = "";
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) { /* ignore */ }
+
+  const rows = list.map((s) =>
+    '<tr class="' + (sessionStartMs(s) + 2 * 3600 * 1000 < now ? "past" : "") + '"><td>' + esc(s.name) +
+    '</td><td class="num">' + esc(fmtSession(s)) + "</td></tr>"
+  );
+  return '<section class="card"><h2>Session times</h2>' +
+    table([{ label: "Session" }, { label: "When", num: true }], rows) +
+    '<p class="muted small">Shown in your local time' + (tz ? " (" + esc(tz) + ")" : "") + ".</p></section>";
+}
+
+function renderTrack(race) {
+  if (!race.image && !race.circuitUrl) return "";
+  let html = '<section class="card"><h2>Track layout</h2>';
+  if (race.image) {
+    html += '<div class="track"><img class="trackimg" src="' + esc(race.image) + '" alt="' +
+      esc(race.circuit) + ' layout" loading="lazy"></div>';
+  }
+  html += '<p class="muted small">' + esc(race.circuit);
+  if (race.circuitUrl) {
+    html += ' &middot; <a href="' + esc(race.circuitUrl) + '" target="_blank" rel="noopener">Circuit on Wikipedia</a>';
+  }
+  return html + "</p></section>";
+}
+
+function lapMs(t) {
+  if (!t) return NaN;
+  const parts = String(t).split(":");
+  if (parts.length === 2) return parseInt(parts[0], 10) * 60000 + parseFloat(parts[1]) * 1000;
+  return parseFloat(parts[0]) * 1000;
+}
+
+function bestLap(driver) {
+  let best = { ms: Infinity, lap: 0 };
+  (driver.times || []).forEach((t, i) => {
+    const ms = lapMs(t);
+    if (!isNaN(ms) && ms < best.ms) best = { ms: ms, lap: i + 1 };
+  });
+  return best.ms === Infinity ? null : best;
+}
+
+function renderRaceResults(rd) {
+  const results = rd.results || [];
+  if (!results.length) return "";
+  return '<section class="card"><h2>Results</h2>' + table(
+    [{ label: "#" }, { label: "Driver" }, { label: "Grid", num: true }, { label: "Result", num: true }, { label: "Pts", num: true }],
+    results.map((r) =>
+      '<tr><td class="pos">' + esc(r.position) + "</td><td>" + esc(r.name) +
+      '<span class="sub">' + esc(r.team) + "</span></td>" +
+      '<td class="num">' + esc(r.grid) + '</td><td class="num">' + esc(r.result) +
+      '</td><td class="num">' + esc(r.points) + "</td></tr>"
+    )
+  ) + "</section>";
+}
+
+function renderLapTable(rd, driverId) {
+  const drivers = rd.laps || [];
+  const drv = drivers.find((x) => x.driverId === driverId) || drivers[0];
+  if (!drv) return "";
+  const best = bestLap(drv);
+
+  let overall = Infinity;
+  drivers.forEach((x) => { const b = bestLap(x); if (b && b.ms < overall) overall = b.ms; });
+
+  const rows = (drv.times || []).map((t, i) => {
+    const ms = lapMs(t);
+    const isBest = best && best.lap === i + 1;
+    const delta = best && !isNaN(ms) ? (ms === best.ms ? "best" : "+" + ((ms - best.ms) / 1000).toFixed(3)) : "";
+    const pos = drv.positions && drv.positions[i] ? drv.positions[i] : "";
+    const cls = (isBest ? "best" : "") + (isBest && best.ms === overall ? " fastest" : "");
+    return '<tr class="' + cls + '"><td class="pos">' + (i + 1) + '</td><td class="num">' + esc(t) +
+      '</td><td class="num">' + esc(pos) + '</td><td class="num">' + esc(delta) + "</td></tr>";
+  });
+
+  return table(
+    [{ label: "Lap" }, { label: "Time", num: true }, { label: "Pos", num: true }, { label: "vs best", num: true }],
+    rows
+  );
+}
+
+function renderLapSection(rd) {
+  const drivers = rd.laps || [];
+  if (!drivers.length) {
+    return '<section class="card"><h2>Lap times</h2><div class="muted">Lap times aren\'t available for this race.</div></section>';
+  }
+
+  // Fastest lap per driver, quickest first.
+  const ranked = drivers
+    .map((x) => ({ x: x, b: bestLap(x) }))
+    .filter((e) => e.b)
+    .sort((a, b) => a.b.ms - b.b.ms);
+  const fastest = ranked.length ? ranked[0].b.ms : 0;
+
+  const bestRows = ranked.map((e, i) =>
+    '<tr><td class="pos">' + (i + 1) + "</td><td>" + esc(e.x.name) + '</td><td class="num">' +
+    esc(e.x.times[e.b.lap - 1]) + '</td><td class="num">' + e.b.lap + '</td><td class="num">' +
+    (i === 0 ? "" : "+" + ((e.b.ms - fastest) / 1000).toFixed(3)) + "</td></tr>"
+  );
+
+  const options = drivers.map((x) =>
+    '<option value="' + esc(x.driverId) + '">' + esc(x.name) + "</option>"
+  ).join("");
+
+  return '<section class="card"><details open><summary>Fastest laps</summary>' +
+    table([{ label: "#" }, { label: "Driver" }, { label: "Best", num: true }, { label: "Lap", num: true }, { label: "Gap", num: true }], bestRows) +
+    "</details></section>" +
+    '<section class="card"><h2>Lap by lap</h2>' +
+    '<label class="sel">Driver <select id="lapDriver">' + options + "</select></label>" +
+    '<div id="lapTable">' + renderLapTable(rd, drivers[0].driverId) + "</div></section>";
+}
+
+function wireTrackImage() {
+  if (!view.querySelectorAll) return;
+  view.querySelectorAll("img.trackimg").forEach((img) => {
+    img.addEventListener("error", () => { img.parentNode.style.display = "none"; });
+  });
+}
+
+async function showRace() {
+  const d = detail;
+  const key = "f1:" + d.round;
+  // Already showing this race: leave it alone so your scroll and driver choice stay put.
+  if (view.getAttribute("data-detail") === key) return;
+
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading&hellip;</div>';
+  view.setAttribute("data-detail", key);
+
+  let f1;
+  try {
+    f1 = await getJson("data/f1.json");
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + NO_DATA;
+    return;
+  }
+  if (detail !== d) return;
+
+  const data = f1.data || {};
+  const race = (data.schedule || []).find((r) => r.round === d.round);
+  if (!race) {
+    view.innerHTML = backButton() + '<div class="message">Couldn\'t find that race.</div>';
+    return;
+  }
+
+  let html = backButton() +
+    '<section class="card next-race"><div class="name">' + esc(race.name) + "</div>" +
+    '<div class="when">' + esc(fmtRaceWhen(race)) + "</div>" +
+    '<div class="where">' + esc(race.circuit) + " &middot; " + esc(race.location) +
+    " &middot; Round " + esc(race.round) + "</div></section>";
+  html += renderSessions(race) + renderTrack(race);
+
+  const finished = raceStartMs(race) + 3 * 3600 * 1000 < Date.now();
+  if (finished) {
+    const file = "data/f1_race_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json";
+    try {
+      const rd = (await getJson(file)).data || {};
+      if (detail !== d) return;
+      raceData = rd;
+      html += renderRaceResults(rd) + renderLapSection(rd);
+    } catch (err) {
+      if (detail !== d) return;
+      html += '<section class="card"><h2>Results and lap times</h2><div class="muted">' +
+        "Not saved yet. The data updater adds finished races a few at a time, so check back after the next update.</div></section>";
+    }
+  } else {
+    html += '<section class="card"><div class="muted">Results and lap times show up here after the race.</div></section>';
+  }
+
+  if (detail !== d) return;
+  view.innerHTML = html;
+  wireTrackImage();
+}
+
+function openRace(round) {
+  detail = { sportId: "f1", kind: "race", round: round };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
 }
 
 // ---- NFL / NBA / MLB / CFB --------------------------------------------------
@@ -519,8 +726,17 @@ window.addEventListener("popstate", () => { if (detail) leaveDetail(); });
 
 view.addEventListener("click", (event) => {
   if (event.target.closest("#back")) { goBack(); return; }
+  const raceEl = event.target.closest("[data-round]");
+  if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const el = event.target.closest(".game[data-id]");
   if (el) openGame(el.getAttribute("data-id"));
+});
+
+// Picking a different driver in the lap-by-lap table.
+view.addEventListener("change", (event) => {
+  if (event.target && event.target.id === "lapDriver" && raceData) {
+    document.getElementById("lapTable").innerHTML = renderLapTable(raceData, event.target.value);
+  }
 });
 
 view.addEventListener("keydown", (event) => {
@@ -558,7 +774,8 @@ async function show() {
   const sport = SPORTS.find((s) => s.id === current);
 
   if (detail && detail.sportId === current) {
-    await showDetail();
+    if (detail.kind === "race") await showRace();
+    else await showDetail();
     return;
   }
 

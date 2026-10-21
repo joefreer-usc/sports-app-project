@@ -87,15 +87,61 @@ fetch_f1 <- function() {
     ))
   } else list()
 
-  # Season schedule
+  # Season schedule (includes practice, qualifying and sprint session times)
   s <- get_json(paste0(base, "/"))
+  season <- s$MRData$RaceTable$season %||% ""
+
+  session_names <- list(
+    FirstPractice    = "Practice 1",
+    SecondPractice   = "Practice 2",
+    ThirdPractice    = "Practice 3",
+    SprintQualifying = "Sprint Qualifying",
+    Sprint           = "Sprint",
+    Qualifying       = "Qualifying"
+  )
+  sessions_of <- function(r) {
+    out <- list()
+    for (key in names(session_names)) {
+      x <- r[[key]]
+      if (!is.null(x)) {
+        out[[length(out) + 1]] <- list(
+          name = session_names[[key]],
+          date = x$date %||% "",
+          time = x$time %||% ""
+        )
+      }
+    }
+    out
+  }
+
+  # Track layout pictures come from OpenF1's list of race weekends.
+  # If that request fails, the pictures are simply left out.
+  meetings <- tryCatch(
+    get_json(paste0("https://api.openf1.org/v1/meetings?year=", season)),
+    error = function(e) { message("  openf1 meetings: ", conditionMessage(e)); list() }
+  )
+  image_for <- function(race_date) {
+    day <- as.Date(race_date)
+    for (m in meetings) {
+      from <- as.Date(substr(m$date_start %||% "", 1, 10))
+      to   <- as.Date(substr(m$date_end %||% "", 1, 10))
+      if (!is.na(day) && !is.na(from) && !is.na(to) && day >= from && day <= to) {
+        return(m$circuit_image %||% "")
+      }
+    }
+    ""
+  }
+
   schedule <- lapply(s$MRData$RaceTable$Races, function(r) list(
-    round    = as.integer(r$round),
-    name     = r$raceName,
-    circuit  = r$Circuit$circuitName,
-    location = paste(r$Circuit$Location$locality, r$Circuit$Location$country, sep = ", "),
-    date     = r$date,
-    time     = r$time %||% ""
+    round      = as.integer(r$round),
+    name       = r$raceName,
+    circuit    = r$Circuit$circuitName,
+    circuitUrl = r$Circuit$url %||% "",
+    location   = paste(r$Circuit$Location$locality, r$Circuit$Location$country, sep = ", "),
+    date       = r$date,
+    time       = r$time %||% "",
+    sessions   = sessions_of(r),
+    image      = image_for(r$date)
   ))
 
   # Most recent race result
@@ -104,6 +150,7 @@ fetch_f1 <- function() {
   last_race <- if (length(races) > 0) {
     race <- races[[1]]
     list(
+      round = as.integer(race$round %||% 0),
       name = race$raceName,
       date = race$date,
       results = lapply(race$Results, function(r) list(
@@ -114,9 +161,10 @@ fetch_f1 <- function() {
         result   = r$Time$time %||% r$status %||% ""
       ))
     )
-  } else list(name = "", date = "", results = list())
+  } else list(round = 0L, name = "", date = "", results = list())
 
   list(
+    season = season,
     drivers = drivers,
     constructors = constructors,
     schedule = schedule,
@@ -125,6 +173,122 @@ fetch_f1 <- function() {
 }
 
 run_section("f1", fetch_f1)
+
+# ---- F1 per-race results and lap times --------------------------------------
+# Finished races never change, so each one is saved once to its own file
+# (data/f1_race_<season>_<round>.json). To stay polite to the free API, at most
+# 3 new races are fetched per run, newest first, so older races fill in over time.
+
+fetch_race_detail <- function(season, round, race_name, race_date) {
+  base <- paste0("https://api.jolpi.ca/ergast/f1/", season, "/", round)
+
+  res <- get_json(paste0(base, "/results/?limit=100"))
+  rr <- res$MRData$RaceTable$Races
+  if (length(rr) == 0) return(NULL)
+
+  results <- lapply(rr[[1]]$Results, function(r) list(
+    position = as.integer(r$position %||% 0),
+    driverId = r$Driver$driverId %||% "",
+    code     = r$Driver$code %||% "",
+    name     = paste(r$Driver$givenName, r$Driver$familyName),
+    team     = r$Constructor$name %||% "",
+    grid     = as.integer(r$grid %||% 0),
+    laps     = as.integer(r$laps %||% 0),
+    result   = r$Time$time %||% r$status %||% "",
+    points   = as.numeric(r$points %||% 0)
+  ))
+
+  # Lap timings come 100 at a time.
+  pages <- list()
+  offset <- 0
+  total <- 1
+  while (offset < total && length(pages) < 30) {
+    Sys.sleep(0.3)
+    d <- get_json(paste0(base, "/laps/?limit=100&offset=", offset))
+    total <- as.integer(d$MRData$total %||% 0)
+    pages[[length(pages) + 1]] <- d
+    offset <- offset + 100
+  }
+
+  lap_no <- integer(0)
+  drv <- character(0)
+  tm <- character(0)
+  ps <- integer(0)
+  for (d in pages) {
+    races <- d$MRData$RaceTable$Races
+    if (length(races) == 0) next
+    for (lp in races[[1]]$Laps) {
+      n <- as.integer(lp$number)
+      for (t in lp$Timings) {
+        lap_no <- c(lap_no, n)
+        drv <- c(drv, t$driverId %||% "")
+        tm <- c(tm, t$time %||% "")
+        ps <- c(ps, as.integer(t$position %||% 0))
+      }
+    }
+  }
+
+  # One entry per driver, in finishing order, with a time for each lap they completed.
+  laps <- list()
+  for (r in results) {
+    idx <- which(drv == r$driverId)
+    if (length(idx) == 0) next
+    last_lap <- max(lap_no[idx])
+    times <- rep("", last_lap)
+    pos <- rep(0L, last_lap)
+    times[lap_no[idx]] <- tm[idx]
+    pos[lap_no[idx]] <- ps[idx]
+    laps[[length(laps) + 1]] <- list(
+      driverId  = r$driverId,
+      code      = r$code,
+      name      = r$name,
+      times     = as.list(times),
+      positions = as.list(pos)
+    )
+  }
+
+  list(
+    season = season,
+    round = as.integer(round),
+    name = race_name,
+    date = race_date,
+    results = results,
+    laps = laps
+  )
+}
+
+fetch_race_files <- function(max_new = 3) {
+  f1 <- fromJSON("data/f1.json", simplifyVector = FALSE)$data
+  season <- f1$season
+  if (is.null(season) || !nzchar(season)) return(invisible())
+
+  tried <- 0
+  for (race in rev(f1$schedule)) {
+    if (tried >= max_new) break
+
+    clock <- if (nzchar(race$time %||% "")) sub("Z$", "", race$time) else "00:00:00"
+    start <- as.POSIXct(paste(race$date, clock), tz = "UTC", format = "%Y-%m-%d %H:%M:%S")
+    if (is.na(start) || Sys.time() < start + 3 * 3600) next   # not finished yet
+
+    name <- sprintf("f1_race_%s_%02d", season, race$round)
+    if (file.exists(file.path("data", paste0(name, ".json")))) next
+
+    tried <- tried + 1
+    tryCatch({
+      payload <- fetch_race_detail(season, race$round, race$name, race$date)
+      if (is.null(payload)) {
+        message(name, ": no results yet")
+      } else if (length(payload$laps) == 0 && Sys.time() < start + 48 * 3600) {
+        # Lap data can arrive a little after the race, so try again next time.
+        message(name, ": lap times not available yet")
+      } else {
+        save_if_changed(name, payload)
+      }
+    }, error = function(e) message(name, ": FAILED - ", conditionMessage(e)))
+  }
+}
+
+tryCatch(fetch_race_files(), error = function(e) message("f1 race files: FAILED - ", conditionMessage(e)))
 
 # ---- ESPN (NFL, NBA, MLB, college football; unofficial API, no key) --------
 

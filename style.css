@@ -181,3 +181,43 @@ table.box td:first-child {
   text-align: left;
 }
 table.box tr.tot td { font-weight: 700; }
+
+/* tappable F1 items and the race detail page */
+.tap { cursor: pointer; }
+tr.tap:active, .next-race .tap:active { background: rgba(255, 255, 255, 0.04); }
+h2.tap .chev { font-weight: 400; }
+
+.small { font-size: 12px; }
+.card p { margin: 8px 0 4px; }
+
+a { color: var(--accent); }
+
+/* the track picture is dark artwork, so it sits on a light panel */
+.track {
+  background: #f2f4f7;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.track img {
+  display: block;
+  max-width: 100%;
+  max-height: 260px;
+  margin: 0 auto;
+}
+
+.sel { display: block; margin: 4px 0 8px; color: var(--muted); font-size: 13px; }
+
+.sel select {
+  margin-left: 8px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font: inherit;
+}
+
+tr.best td { color: var(--accent); font-weight: 600; }
+tr.fastest td { color: #c77dff; }
