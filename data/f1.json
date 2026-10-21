@@ -1,6 +1,7 @@
 {
-  "updated": "2026-10-21T01:54:22Z",
+  "updated": "2026-10-21T06:45:32Z",
   "data": {
+    "season": "2026",
     "drivers": [
       {
         "position": 1,
@@ -260,188 +261,741 @@
         "round": 1,
         "name": "Australian Grand Prix",
         "circuit": "Albert Park Grand Prix Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Albert_Park_Circuit",
         "location": "Melbourne, Australia",
         "date": "2026-03-08",
-        "time": "04:00:00Z"
+        "time": "04:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-03-06",
+            "time": "01:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-03-06",
+            "time": "05:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-03-07",
+            "time": "01:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-03-07",
+            "time": "05:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Australia%20carbon.png"
       },
       {
         "round": 2,
         "name": "Chinese Grand Prix",
         "circuit": "Shanghai International Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Shanghai_International_Circuit",
         "location": "Shanghai, China",
         "date": "2026-03-15",
-        "time": "07:00:00Z"
+        "time": "07:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-03-13",
+            "time": "03:30:00Z"
+          },
+          {
+            "name": "Sprint Qualifying",
+            "date": "2026-03-13",
+            "time": "07:30:00Z"
+          },
+          {
+            "name": "Sprint",
+            "date": "2026-03-14",
+            "time": "03:00:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-03-14",
+            "time": "07:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/China%20carbon.png"
       },
       {
         "round": 3,
         "name": "Japanese Grand Prix",
         "circuit": "Suzuka Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Suzuka_International_Racing_Course",
         "location": "Suzuka, Japan",
         "date": "2026-03-29",
-        "time": "05:00:00Z"
+        "time": "05:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-03-27",
+            "time": "02:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-03-27",
+            "time": "06:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-03-28",
+            "time": "02:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-03-28",
+            "time": "06:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Japan%20carbon.png"
       },
       {
         "round": 4,
         "name": "Miami Grand Prix",
         "circuit": "Miami International Autodrome",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Miami_International_Autodrome",
         "location": "Miami, USA",
         "date": "2026-05-03",
-        "time": "20:00:00Z"
+        "time": "20:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-05-01",
+            "time": "16:00:00Z"
+          },
+          {
+            "name": "Sprint Qualifying",
+            "date": "2026-05-01",
+            "time": "20:30:00Z"
+          },
+          {
+            "name": "Sprint",
+            "date": "2026-05-02",
+            "time": "16:00:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-05-02",
+            "time": "20:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Miami%20carbon.png"
       },
       {
         "round": 5,
         "name": "Canadian Grand Prix",
         "circuit": "Circuit Gilles Villeneuve",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Circuit_Gilles_Villeneuve",
         "location": "Montreal, Canada",
         "date": "2026-05-24",
-        "time": "20:00:00Z"
+        "time": "20:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-05-22",
+            "time": "16:30:00Z"
+          },
+          {
+            "name": "Sprint Qualifying",
+            "date": "2026-05-22",
+            "time": "20:30:00Z"
+          },
+          {
+            "name": "Sprint",
+            "date": "2026-05-23",
+            "time": "16:00:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-05-23",
+            "time": "20:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Canada%20carbon.png"
       },
       {
         "round": 6,
         "name": "Monaco Grand Prix",
         "circuit": "Circuit de Monaco",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Circuit_de_Monaco",
         "location": "Monte Carlo, Monaco",
         "date": "2026-06-07",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-06-05",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-06-05",
+            "time": "15:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-06-06",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-06-06",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Monaco%20carbon.png"
       },
       {
         "round": 7,
         "name": "Barcelona Grand Prix",
         "circuit": "Circuit de Barcelona-Catalunya",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Circuit_de_Barcelona-Catalunya",
         "location": "Barcelona, Spain",
         "date": "2026-06-14",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-06-12",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-06-12",
+            "time": "15:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-06-13",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-06-13",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Barcelona-Catalunya%20carbon.png"
       },
       {
         "round": 8,
         "name": "Austrian Grand Prix",
         "circuit": "Red Bull Ring",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Red_Bull_Ring",
         "location": "Spielberg, Austria",
         "date": "2026-06-28",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-06-26",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-06-26",
+            "time": "15:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-06-27",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-06-27",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Austria%20carbon.png"
       },
       {
         "round": 9,
         "name": "British Grand Prix",
         "circuit": "Silverstone Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Silverstone_Circuit",
         "location": "Silverstone, UK",
         "date": "2026-07-05",
-        "time": "14:00:00Z"
+        "time": "14:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-07-03",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Sprint Qualifying",
+            "date": "2026-07-03",
+            "time": "15:30:00Z"
+          },
+          {
+            "name": "Sprint",
+            "date": "2026-07-04",
+            "time": "11:00:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-07-04",
+            "time": "15:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Great Britain%20carbon.png"
       },
       {
         "round": 10,
         "name": "Belgian Grand Prix",
         "circuit": "Circuit de Spa-Francorchamps",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps",
         "location": "Spa, Belgium",
         "date": "2026-07-19",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-07-17",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-07-17",
+            "time": "15:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-07-18",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-07-18",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Belgium%20carbon.png"
       },
       {
         "round": 11,
         "name": "Hungarian Grand Prix",
         "circuit": "Hungaroring",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Hungaroring",
         "location": "Budapest, Hungary",
         "date": "2026-07-26",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-07-24",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-07-24",
+            "time": "15:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-07-25",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-07-25",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Hungary%20carbon.png"
       },
       {
         "round": 12,
         "name": "Dutch Grand Prix",
         "circuit": "Circuit Park Zandvoort",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Circuit_Zandvoort",
         "location": "Zandvoort, Netherlands",
         "date": "2026-08-23",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-08-21",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Sprint Qualifying",
+            "date": "2026-08-21",
+            "time": "14:30:00Z"
+          },
+          {
+            "name": "Sprint",
+            "date": "2026-08-22",
+            "time": "10:00:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-08-22",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Netherlands%20carbon.png"
       },
       {
         "round": 13,
         "name": "Italian Grand Prix",
         "circuit": "Autodromo Nazionale di Monza",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Monza_Circuit",
         "location": "Monza, Italy",
         "date": "2026-09-06",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-09-04",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-09-04",
+            "time": "14:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-09-05",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-09-05",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Italy%20carbon.png"
       },
       {
         "round": 14,
         "name": "Spanish Grand Prix",
         "circuit": "Madring",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Madring",
         "location": "Madrid, Spain",
         "date": "2026-09-13",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-09-11",
+            "time": "11:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-09-11",
+            "time": "15:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-09-12",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-09-12",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Spain%20carbon.png"
       },
       {
         "round": 15,
         "name": "Azerbaijan Grand Prix",
         "circuit": "Baku City Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Baku_City_Circuit",
         "location": "Baku, Azerbaijan",
         "date": "2026-09-26",
-        "time": "11:00:00Z"
+        "time": "11:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-09-24",
+            "time": "08:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-09-24",
+            "time": "12:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-09-25",
+            "time": "08:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-09-25",
+            "time": "12:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Azerbaijan%20carbon.png"
       },
       {
         "round": 16,
         "name": "Bahrain Grand Prix in Malaysia",
         "circuit": "Sepang International Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Sepang_International_Circuit",
         "location": "Kuala Lumpur, Malaysia",
         "date": "2026-10-04",
-        "time": "07:00:00Z"
+        "time": "07:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-10-02",
+            "time": "04:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-10-02",
+            "time": "08:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-10-03",
+            "time": "04:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-10-03",
+            "time": "08:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackkualalumpurdetailed.webp"
       },
       {
         "round": 17,
         "name": "Singapore Grand Prix",
         "circuit": "Marina Bay Street Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Marina_Bay_Street_Circuit",
         "location": "Marina Bay, Singapore",
         "date": "2026-10-11",
-        "time": "12:00:00Z"
+        "time": "12:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-10-09",
+            "time": "08:30:00Z"
+          },
+          {
+            "name": "Sprint Qualifying",
+            "date": "2026-10-09",
+            "time": "12:30:00Z"
+          },
+          {
+            "name": "Sprint",
+            "date": "2026-10-10",
+            "time": "09:00:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-10-10",
+            "time": "13:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Singapore%20carbon.png"
       },
       {
         "round": 18,
         "name": "United States Grand Prix",
         "circuit": "Circuit of the Americas",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Circuit_of_the_Americas",
         "location": "Austin, USA",
         "date": "2026-10-25",
-        "time": "20:00:00Z"
+        "time": "20:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-10-23",
+            "time": "17:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-10-23",
+            "time": "21:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-10-24",
+            "time": "17:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-10-24",
+            "time": "21:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/United States%20carbon.png"
       },
       {
         "round": 19,
         "name": "Mexico City Grand Prix",
         "circuit": "Autódromo Hermanos Rodríguez",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Aut%C3%B3dromo_Hermanos_Rodr%C3%ADguez",
         "location": "Mexico City, Mexico",
         "date": "2026-11-01",
-        "time": "20:00:00Z"
+        "time": "20:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-10-30",
+            "time": "18:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-10-30",
+            "time": "22:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-10-31",
+            "time": "17:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-10-31",
+            "time": "21:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Mexico%20carbon.png"
       },
       {
         "round": 20,
         "name": "Brazilian Grand Prix",
         "circuit": "Autódromo José Carlos Pace",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Interlagos_Circuit",
         "location": "São Paulo, Brazil",
         "date": "2026-11-08",
-        "time": "17:00:00Z"
+        "time": "17:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-11-06",
+            "time": "15:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-11-06",
+            "time": "19:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-11-07",
+            "time": "14:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-11-07",
+            "time": "18:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Brazil%20carbon.png"
       },
       {
         "round": 21,
         "name": "Las Vegas Grand Prix",
         "circuit": "Las Vegas Strip Street Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Las_Vegas_Grand_Prix#Circuit",
         "location": "Las Vegas, USA",
         "date": "2026-11-22",
-        "time": "04:00:00Z"
+        "time": "04:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-11-20",
+            "time": "00:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-11-20",
+            "time": "04:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-11-21",
+            "time": "00:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-11-21",
+            "time": "04:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Las Vegas%20carbon.png"
       },
       {
         "round": 22,
         "name": "Qatar Grand Prix",
         "circuit": "Lusail International Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Lusail_International_Circuit",
         "location": "Lusail, Qatar",
         "date": "2026-11-29",
-        "time": "16:00:00Z"
+        "time": "16:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-11-27",
+            "time": "13:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-11-27",
+            "time": "17:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-11-28",
+            "time": "14:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-11-28",
+            "time": "18:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Qatar%20carbon.png"
       },
       {
         "round": 23,
         "name": "Abu Dhabi Grand Prix",
         "circuit": "Yas Marina Circuit",
+        "circuitUrl": "https://en.wikipedia.org/wiki/Yas_Marina_Circuit",
         "location": "Abu Dhabi, UAE",
         "date": "2026-12-06",
-        "time": "13:00:00Z"
+        "time": "13:00:00Z",
+        "sessions": [
+          {
+            "name": "Practice 1",
+            "date": "2026-12-04",
+            "time": "09:30:00Z"
+          },
+          {
+            "name": "Practice 2",
+            "date": "2026-12-04",
+            "time": "13:00:00Z"
+          },
+          {
+            "name": "Practice 3",
+            "date": "2026-12-05",
+            "time": "10:30:00Z"
+          },
+          {
+            "name": "Qualifying",
+            "date": "2026-12-05",
+            "time": "14:00:00Z"
+          }
+        ],
+        "image": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Abu Dhabi%20carbon.png"
       }
     ],
     "lastRace": {
+      "round": 17,
       "name": "Singapore Grand Prix",
       "date": "2026-10-11",
       "results": [
