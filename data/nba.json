@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T04:04:06Z",
+  "updated": "2026-10-21T04:41:06Z",
   "data": {
     "games": [
       {
@@ -49,21 +49,21 @@
       {
         "id": "401909090",
         "date": "2026-10-21T01:50Z",
-        "state": "in",
-        "detail": "6:57 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Oklahoma City Thunder",
           "abbr": "OKC",
-          "score": "102",
-          "record": "0-0",
+          "score": "116",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "San Antonio Spurs",
           "abbr": "SA",
-          "score": "90",
-          "record": "0-0",
+          "score": "104",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
@@ -349,7 +349,7 @@
           "name": "Oklahoma City Thunder",
           "abbr": "OKC",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         }
@@ -525,7 +525,7 @@
           "name": "San Antonio Spurs",
           "abbr": "SA",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }

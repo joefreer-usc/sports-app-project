@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T02:09:47Z",
+  "updated": "2026-10-21T04:41:06Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -132,11 +132,27 @@
         "name": "Western Conference",
         "teams": [
           {
+            "name": "Oklahoma City Thunder",
+            "abbr": "OKC",
+            "record": "1-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W1"
+          },
+          {
+            "name": "San Antonio Spurs",
+            "abbr": "SA",
+            "record": "0-1",
+            "pct": ".000",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
             "name": "New Orleans Pelicans",
             "abbr": "NO",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -144,7 +160,7 @@
             "abbr": "DAL",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -152,7 +168,7 @@
             "abbr": "DEN",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -160,7 +176,7 @@
             "abbr": "GS",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -168,7 +184,7 @@
             "abbr": "HOU",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -176,7 +192,7 @@
             "abbr": "LAC",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -184,7 +200,7 @@
             "abbr": "LAL",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -192,7 +208,7 @@
             "abbr": "MIN",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -200,7 +216,7 @@
             "abbr": "PHX",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -208,7 +224,7 @@
             "abbr": "POR",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -216,23 +232,7 @@
             "abbr": "SAC",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
-            "streak": "-"
-          },
-          {
-            "name": "San Antonio Spurs",
-            "abbr": "SA",
-            "record": "0-0",
-            "pct": ".000",
-            "gb": "-",
-            "streak": "-"
-          },
-          {
-            "name": "Oklahoma City Thunder",
-            "abbr": "OKC",
-            "record": "0-0",
-            "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -240,7 +240,7 @@
             "abbr": "UTAH",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           },
           {
@@ -248,7 +248,7 @@
             "abbr": "MEM",
             "record": "0-0",
             "pct": ".000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "-"
           }
         ]
