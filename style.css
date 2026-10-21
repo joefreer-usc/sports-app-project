@@ -151,3 +151,33 @@ tr.past td { color: var(--muted); }
 
 .up { color: var(--up); font-size: 12px; }
 .down { color: var(--down); font-size: 12px; }
+
+/* tapping a game */
+.game.tap { cursor: pointer; }
+.game.tap:active { background: rgba(255, 255, 255, 0.04); }
+.chev { color: var(--muted); font-size: 18px; margin-left: 2px; }
+
+.back {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 0 2px;
+  cursor: pointer;
+}
+
+/* box score tables scroll sideways on a phone; the player column stays put */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table.box { font-size: 13px; }
+table.box th,
+table.box td { padding: 6px 8px; white-space: nowrap; }
+table.box th:first-child,
+table.box td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--card);
+  text-align: left;
+}
+table.box tr.tot td { font-weight: 700; }

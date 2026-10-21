@@ -4,10 +4,10 @@
 //  - "league" tabs show scores (scores file) plus standings or rankings (extra file).
 //  - the F1 tab has its own layout.
 const SPORTS = [
-  { id: "nfl", label: "NFL", kind: "league", scores: "data/nfl.json", extra: "data/nfl_standings.json", extraType: "standings" },
-  { id: "nba", label: "NBA", kind: "league", scores: "data/nba.json", extra: "data/nba_standings.json", extraType: "standings" },
-  { id: "mlb", label: "MLB", kind: "league", scores: "data/mlb.json", extra: "data/mlb_standings.json", extraType: "standings" },
-  { id: "cfb", label: "CFB", kind: "league", scores: "data/cfb.json", extra: "data/cfb_rankings.json", extraType: "rankings" },
+  { id: "nfl", label: "NFL", kind: "league", espn: "football/nfl", scores: "data/nfl.json", extra: "data/nfl_standings.json", extraType: "standings" },
+  { id: "nba", label: "NBA", kind: "league", espn: "basketball/nba", scores: "data/nba.json", extra: "data/nba_standings.json", extraType: "standings" },
+  { id: "mlb", label: "MLB", kind: "league", espn: "baseball/mlb", scores: "data/mlb.json", extra: "data/mlb_standings.json", extraType: "standings" },
+  { id: "cfb", label: "CFB", kind: "league", espn: "football/college-football", scores: "data/cfb.json", extra: "data/cfb_rankings.json", extraType: "rankings" },
   { id: "f1", label: "F1", kind: "f1", file: "data/f1.json" }
 ];
 
@@ -16,6 +16,11 @@ const tabs = document.getElementById("tabs");
 const updatedEl = document.getElementById("updated");
 
 let current = loadTab();
+
+// Games from the most recent scores render, so a tapped game can be looked up by id.
+let gamesById = {};
+// When set, the page shows one game's box score instead of the tab's usual content.
+let detail = null; // { sportId, id, game }
 
 // ---- helpers ----------------------------------------------------------------
 
@@ -196,7 +201,7 @@ function teamRow(t, state, isWinner) {
     '<span class="score">' + score + "</span></div>";
 }
 
-function gameCard(g) {
+function gameCard(g, tappable) {
   const away = g.away || {};
   const home = g.home || {};
   let awayWin = !!away.winner;
@@ -215,9 +220,13 @@ function gameCard(g) {
     }
   }
 
-  return '<div class="game">' +
+  const attrs = tappable
+    ? ' class="game tap" role="button" tabindex="0" data-id="' + esc(g.id) + '"'
+    : ' class="game"';
+
+  return "<div" + attrs + ">" +
     '<div class="teams">' + teamRow(away, g.state, awayWin) + teamRow(home, g.state, homeWin) + "</div>" +
-    '<div class="status ' + esc(g.state) + '">' + status + "</div></div>";
+    '<div class="status ' + esc(g.state) + '">' + status + (tappable ? ' <span class="chev">&rsaquo;</span>' : "") + "</div></div>";
 }
 
 function renderGames(games) {
@@ -225,6 +234,9 @@ function renderGames(games) {
     return '<section class="card"><h2>Scores</h2>' +
       '<div class="muted">No games to show right now.</div></section>';
   }
+
+  gamesById = {};
+  games.forEach((g) => { gamesById[g.id] = g; });
 
   const sorted = games.slice().sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
   const groups = [];
@@ -241,7 +253,7 @@ function renderGames(games) {
 
   return groups.map((grp) =>
     '<section class="card"><h2>' + esc(grp.label) + "</h2>" +
-    grp.games.map(gameCard).join("") + "</section>"
+    grp.games.map((g) => gameCard(g, g.state !== "pre" && !!g.id)).join("") + "</section>"
   ).join("");
 }
 
@@ -311,6 +323,212 @@ function renderLeague(sport, scores, extra) {
   return html;
 }
 
+// ---- box score (tap a game) -------------------------------------------------
+
+// The box score is requested straight from ESPN when you tap a game.
+async function getSummary(espnPath, id) {
+  const q = "/apis/site/v2/sports/" + espnPath + "/summary?event=" + encodeURIComponent(id);
+  const urls = ["https://site.api.espn.com" + q, "https://site.web.api.espn.com" + q];
+  let lastErr = new Error("no response");
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return await res.json();
+    } catch (err) {
+      lastErr = err;
+    }
+  }
+  throw lastErr;
+}
+
+function cap(s) {
+  const t = String(s || "");
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+// One group of players (e.g. NFL passing, MLB batting, NBA players) as a table.
+function playerTable(group) {
+  const labels = group.labels || [];
+  const rows = [];
+  (group.athletes || []).forEach((a) => {
+    const stats = a.stats || [];
+    if (!stats.length) return; // did not play
+    const ath = a.athlete || {};
+    const name = ath.shortName || ath.displayName || "";
+    const pos = ath.position && ath.position.abbreviation
+      ? '<span class="sub">' + esc(ath.position.abbreviation) + "</span>" : "";
+    rows.push(
+      "<tr><td>" + esc(name) + pos + "</td>" +
+      labels.map((_, i) => '<td class="num">' + esc(stats[i]) + "</td>").join("") + "</tr>"
+    );
+  });
+  if (!rows.length) return "";
+
+  if (group.totals && group.totals.length) {
+    rows.push(
+      '<tr class="tot"><td>Total</td>' +
+      labels.map((_, i) => '<td class="num">' + esc(group.totals[i]) + "</td>").join("") + "</tr>"
+    );
+  }
+
+  const head = "<th>Player</th>" + labels.map((l) => '<th class="num">' + esc(l) + "</th>").join("");
+  return '<div class="scroll"><table class="box"><thead><tr>' + head + "</tr></thead><tbody>" +
+    rows.join("") + "</tbody></table></div>";
+}
+
+function flatStats(team) {
+  const out = [];
+  ((team && team.statistics) || []).forEach((item) => {
+    if (item && Array.isArray(item.stats)) item.stats.forEach((s) => out.push(s));
+    else if (item) out.push(item);
+  });
+  return out;
+}
+
+function statLabel(s) { return s.label || s.displayName || s.shortDisplayName || s.name || ""; }
+function statValue(s) { return s.displayValue != null ? s.displayValue : (s.value != null ? s.value : ""); }
+
+function renderTeamStats(data) {
+  const teams = (data.boxscore && data.boxscore.teams) || [];
+  if (teams.length !== 2) return "";
+  const a = flatStats(teams[0]);
+  const b = flatStats(teams[1]);
+  if (!a.length || a.length !== b.length) return "";
+
+  const nameOf = (t) => (t.team && (t.team.abbreviation || t.team.displayName)) || "";
+  const rows = [];
+  a.forEach((s, i) => {
+    const label = statLabel(s);
+    if (!label) return;
+    rows.push("<tr><td>" + esc(label) + '</td><td class="num">' + esc(statValue(s)) +
+      '</td><td class="num">' + esc(statValue(b[i])) + "</td></tr>");
+  });
+  if (!rows.length) return "";
+
+  return '<section class="card"><details><summary>Team stats</summary>' +
+    table([{ label: "Stat" }, { label: nameOf(teams[0]), num: true }, { label: nameOf(teams[1]), num: true }], rows) +
+    "</details></section>";
+}
+
+function renderLinescore(data) {
+  const comp = data.header && data.header.competitions && data.header.competitions[0];
+  const comps = (comp && comp.competitors) || [];
+  if (comps.length !== 2 || !comps.every((c) => Array.isArray(c.linescores) && c.linescores.length)) return "";
+
+  const ordered = comps.slice().sort(
+    (x, y) => (x.homeAway === "away" ? 0 : 1) - (y.homeAway === "away" ? 0 : 1)
+  );
+  const n = Math.max(ordered[0].linescores.length, ordered[1].linescores.length);
+  const head = "<th></th>" +
+    Array.from({ length: n }, (_, i) => '<th class="num">' + (i + 1) + "</th>").join("") +
+    '<th class="num">T</th>';
+  const rows = ordered.map((c) => {
+    const nm = (c.team && (c.team.abbreviation || c.team.displayName)) || "";
+    const cells = Array.from({ length: n }, (_, i) => {
+      const ls = c.linescores[i];
+      return '<td class="num">' + esc(ls ? (ls.displayValue != null ? ls.displayValue : ls.value) : "") + "</td>";
+    }).join("");
+    return "<tr><td>" + esc(nm) + "</td>" + cells + '<td class="num"><b>' + esc(c.score) + "</b></td></tr>";
+  });
+
+  return '<section class="card"><h2>Line score</h2><div class="scroll"><table class="box"><thead><tr>' +
+    head + "</tr></thead><tbody>" + rows.join("") + "</tbody></table></div></section>";
+}
+
+function renderBoxscore(data) {
+  let html = renderLinescore(data);
+
+  ((data.boxscore && data.boxscore.players) || []).forEach((tp) => {
+    const teamName = tp.team ? (tp.team.displayName || tp.team.name || "") : "";
+    (tp.statistics || []).forEach((group) => {
+      const t = playerTable(group);
+      if (!t) return;
+      const title = cap(group.text || group.displayName || group.name || group.type || "Players");
+      html += '<section class="card"><h2>' + esc(teamName) + "<small>" + esc(title) + "</small></h2>" + t + "</section>";
+    });
+  });
+
+  html += renderTeamStats(data);
+
+  if (!html) html = '<div class="message">No box score is available for this game yet.</div>';
+  return html;
+}
+
+function backButton() {
+  return '<button type="button" class="back" id="back">&lsaquo; Back to scores</button>';
+}
+
+async function showDetail() {
+  const d = detail; // keep a reference so we can tell if you moved on while loading
+  const sport = SPORTS.find((s) => s.id === d.sportId);
+  const key = d.sportId + ":" + d.id;
+  updatedEl.textContent = "";
+
+  // Only show the loading note the first time, so a background refresh doesn't flicker.
+  if (view.getAttribute("data-detail") !== key) {
+    view.innerHTML = backButton() + '<section class="card">' + gameCard(d.game, false) + "</section>" +
+      '<div class="message">Loading box score&hellip;</div>';
+    view.setAttribute("data-detail", key);
+  }
+
+  const results = await Promise.allSettled([getJson(sport.scores), getSummary(sport.espn, d.id)]);
+  if (detail !== d) return;
+
+  // Use the freshest score and status we have for the header.
+  if (results[0].status === "fulfilled") {
+    const games = (results[0].value.data && results[0].value.data.games) || [];
+    const fresh = games.find((x) => x.id === d.id);
+    if (fresh) d.game = fresh;
+  }
+  const header = backButton() + '<section class="card">' + gameCard(d.game, false) + "</section>";
+
+  if (results[1].status === "fulfilled") {
+    view.innerHTML = header + renderBoxscore(results[1].value);
+  } else {
+    view.innerHTML = header +
+      '<div class="message">Couldn\'t load the box score. It may not be available yet, or ESPN may be ' +
+      "blocking requests from the browser. Try again in a minute.</div>";
+  }
+  view.setAttribute("data-detail", key);
+}
+
+function openGame(id) {
+  const sport = SPORTS.find((s) => s.id === current);
+  const game = gamesById[id];
+  if (!sport || !game) return;
+  detail = { sportId: sport.id, id: id, game: game };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
+}
+
+function leaveDetail() {
+  detail = null;
+  view.removeAttribute("data-detail");
+  show();
+}
+
+function goBack() {
+  // Going back through history keeps the phone's back gesture and the Back button in sync.
+  if (history.state && history.state.detail) history.back();
+  else leaveDetail();
+}
+
+window.addEventListener("popstate", () => { if (detail) leaveDetail(); });
+
+view.addEventListener("click", (event) => {
+  if (event.target.closest("#back")) { goBack(); return; }
+  const el = event.target.closest(".game[data-id]");
+  if (el) openGame(el.getAttribute("data-id"));
+});
+
+view.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const el = event.target.closest && event.target.closest(".game[data-id]");
+  if (el) { event.preventDefault(); openGame(el.getAttribute("data-id")); }
+});
+
 // ---- tabs and loading -------------------------------------------------------
 
 function renderTabs() {
@@ -324,6 +542,8 @@ tabs.addEventListener("click", (event) => {
   const btn = event.target.closest("button[data-id]");
   if (!btn) return;
   current = btn.getAttribute("data-id");
+  detail = null;
+  view.removeAttribute("data-detail");
   saveTab(current);
   history.replaceState(null, "", "#" + current);
   renderTabs();
@@ -336,6 +556,11 @@ const NO_DATA =
 
 async function show() {
   const sport = SPORTS.find((s) => s.id === current);
+
+  if (detail && detail.sportId === current) {
+    await showDetail();
+    return;
+  }
 
   try {
     if (sport.kind === "f1") {
