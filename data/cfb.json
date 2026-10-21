@@ -1,7 +1,29 @@
 {
-  "updated": "2026-10-21T03:29:01Z",
+  "updated": "2026-10-21T04:04:06Z",
   "data": {
     "games": [
+      {
+        "id": "401871070",
+        "date": "2026-10-22T00:00Z",
+        "state": "pre",
+        "detail": "10/21 - 8:00 PM EDT",
+        "away": {
+          "name": "New Mexico State Aggies",
+          "abbr": "NMSU",
+          "score": "0",
+          "record": "2-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Sam Houston Bearkats",
+          "abbr": "SHSU",
+          "score": "0",
+          "record": "1-5",
+          "rank": 0,
+          "winner": false
+        }
+      },
       {
         "id": "401871055",
         "date": "2026-10-20T23:00Z",
@@ -66,28 +88,6 @@
           "record": "4-3",
           "rank": 0,
           "winner": true
-        }
-      },
-      {
-        "id": "401871070",
-        "date": "2026-10-22T00:00Z",
-        "state": "pre",
-        "detail": "10/21 - 8:00 PM EDT",
-        "away": {
-          "name": "New Mexico State Aggies",
-          "abbr": "NMSU",
-          "score": "0",
-          "record": "2-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Sam Houston Bearkats",
-          "abbr": "SHSU",
-          "score": "0",
-          "record": "1-5",
-          "rank": 0,
-          "winner": false
         }
       },
       {
