@@ -164,7 +164,7 @@ parse_event <- function(e) {
   )
 }
 
-fetch_scores <- function(sport_path, query = "") {
+fetch_scores <- function(sport_path, query = "", offsets = NULL) {
   get_games <- function(q) {
     d <- get_json(paste0(espn_site, sport_path, "/scoreboard", q))
     events <- d$events
@@ -173,6 +173,28 @@ fetch_scores <- function(sport_path, query = "") {
       tryCatch(parse_event(e), error = function(err) NULL)
     })
     Filter(Negate(is.null), games)
+  }
+
+  # Daily sports (NBA, MLB): ask for one day at a time, e.g. offsets c(-1, 0, 1, 2)
+  # means yesterday through two days ahead. ESPN rejects a range in a single request.
+  if (!is.null(offsets)) {
+    all_games <- list()
+    ok <- 0
+    for (off in offsets) {
+      q <- paste0("?dates=", format(Sys.Date() + off, "%Y%m%d"))
+      g <- tryCatch({
+        r <- get_games(q)
+        ok <- ok + 1
+        r
+      }, error = function(e) {
+        message("  ", sport_path, " ", q, ": ", conditionMessage(e))
+        list()
+      })
+      all_games <- c(all_games, g)
+    }
+    if (ok == 0) stop("every day request failed")
+    ids <- vapply(all_games, function(x) x$id, character(1))
+    return(list(games = all_games[!duplicated(ids)]))
   }
 
   games <- get_games(query)
@@ -257,16 +279,15 @@ fetch_cfb_rankings <- function() {
 
 # NBA and MLB play almost every day, so ask for yesterday through two days ahead.
 # NFL and college football default to the current week.
-today <- Sys.Date()
-day_range <- paste0("?dates=", format(today - 1, "%Y%m%d"), "-", format(today + 2, "%Y%m%d"))
+day_offsets <- c(-1, 0, 1, 2)
 
 run_section("nfl",           function() fetch_scores("football/nfl"))
 run_section("nfl_standings", function() fetch_standings("football/nfl"))
 
-run_section("nba",           function() fetch_scores("basketball/nba", day_range))
+run_section("nba",           function() fetch_scores("basketball/nba", offsets = day_offsets))
 run_section("nba_standings", function() fetch_standings("basketball/nba"))
 
-run_section("mlb",           function() fetch_scores("baseball/mlb", day_range))
+run_section("mlb",           function() fetch_scores("baseball/mlb", offsets = day_offsets))
 run_section("mlb_standings", function() fetch_standings("baseball/mlb"))
 
 run_section("cfb",           function() fetch_scores("football/college-football", "?groups=80&limit=200"))
