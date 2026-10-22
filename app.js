@@ -493,14 +493,19 @@ function dayLabel(ms) {
   return new Date(ms).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
 }
 
-function teamRow(t, state, isWinner) {
+function teamRow(t, state, isWinner, sportId) {
   const rank = t.rank > 0 ? '<span class="rank">' + esc(t.rank) + "</span> " : "";
   const rec = t.record ? "<small>" + esc(t.record) + "</small>" : "";
   const score = state === "pre" ? "" : esc(t.score);
   const logo = t.logo ? '<img class="team-logo" src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
+  const name = '<span class="team-name">' + esc(t.name || t.abbr) + '</span>';
+  const linkedName = sportId === "nfl" && t.abbr
+    ? '<button type="button" class="team-link" data-team="' + esc(t.abbr) + '" aria-label="View ' +
+      esc(t.name || t.abbr) + '">' + name + '</button>'
+    : name;
   return '<div class="team' + (isWinner ? " win" : "") + '">' +
     '<span class="team-mark"><span class="team-fallback">' + esc(t.abbr || "—") + '</span>' + logo + '</span>' +
-    '<span class="tname">' + rank + '<span class="team-name">' + esc(t.name || t.abbr) + '</span>' + rec + "</span>" +
+    '<span class="tname">' + rank + linkedName + rec + "</span>" +
     '<span class="score">' + score + "</span></div>";
 }
 
@@ -530,7 +535,7 @@ function gameCard(g, tappable, sportId) {
 
   return "<div" + attrs + ">" +
     '<div class="game-status"><span class="status ' + esc(g.state) + '">' + status + '</span></div>' +
-    '<div class="teams">' + teamRow(away, g.state, awayWin) + teamRow(home, g.state, homeWin) + "</div>" +
+    '<div class="teams">' + teamRow(away, g.state, awayWin, sportId) + teamRow(home, g.state, homeWin, sportId) + "</div>" +
     (tappable ? '<div class="view-game">View game <span aria-hidden="true">&rarr;</span></div>' : '') + '</div>';
 }
 
@@ -1034,6 +1039,188 @@ async function showDetail() {
   view.setAttribute("data-detail", key);
 }
 
+// ---- NFL team page ---------------------------------------------------------
+
+async function coreGet(path) {
+  const res = await fetch("https://sports.core.api.espn.com" + path, { cache: "no-store" });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return res.json();
+}
+
+function nflSeasonYear() {
+  const now = new Date();
+  return now.getMonth() < 2 ? now.getFullYear() - 1 : now.getFullYear();
+}
+
+function teamLogo(team) {
+  if (team.logo) return team.logo;
+  const logos = team.logos || [];
+  const normal = logos.find((x) => (x.rel || []).includes("default"));
+  return (normal || logos[0] || {}).href || "";
+}
+
+function recordStat(team, name) {
+  const total = (((team.record || {}).items || []).find((x) => x.type === "total") || {}).stats || [];
+  const stat = total.find((x) => x.name === name);
+  return stat && stat.value != null ? stat.value : null;
+}
+
+function flattenTeamStats(node, path, out) {
+  if (!node || typeof node !== "object") return out;
+  if (node.name && (node.displayValue != null || node.value != null)) {
+    out.push({ name: node.name, label: node.displayName || node.label || node.name,
+      value: node.displayValue != null ? node.displayValue : String(node.value), path: path });
+  }
+  Object.keys(node).forEach((key) => {
+    const value = node[key];
+    if (value && typeof value === "object") flattenTeamStats(value, path + " " + key + " " + (node.name || ""), out);
+  });
+  return out;
+}
+
+function findTeamStat(stats, names, pathTest) {
+  const wanted = names.map((x) => x.toLowerCase());
+  let hit = stats.find((x) => wanted.includes(String(x.name).toLowerCase()) && (!pathTest || pathTest.test(x.path)));
+  if (!hit) hit = stats.find((x) => wanted.includes(String(x.name).toLowerCase()));
+  return hit ? hit.value : "Not available";
+}
+
+function statTile(label, value) {
+  return '<div class="team-stat"><span>' + esc(label) + '</span><strong>' + esc(value == null ? "Not available" : value) + '</strong></div>';
+}
+
+function renderNFLStats(team, data) {
+  const stats = flattenTeamStats(data || {}, "", []);
+  const avgFor = recordStat(team, "avgPointsFor");
+  const avgAgainst = recordStat(team, "avgPointsAgainst");
+  const fmt = (x) => x == null ? null : Number(x).toFixed(1);
+  const offense = [
+    ["Points/game", fmt(avgFor) || findTeamStat(stats, ["pointsPerGame", "totalPointsPerGame"])],
+    ["Pass yards/game", findTeamStat(stats, ["passingYardsPerGame", "netPassingYardsPerGame"])],
+    ["Rush yards/game", findTeamStat(stats, ["rushingYardsPerGame"])],
+    ["Touchdowns", findTeamStat(stats, ["totalTouchdowns", "offensiveTouchdowns"], /offen/i)],
+    ["Points/drive", findTeamStat(stats, ["pointsPerDrive", "offensivePointsPerDrive"])],
+    ["Sacks allowed", findTeamStat(stats, ["sacksAllowed", "timesSacked", "sacksTaken"], /pass|offen/i)]
+  ];
+  const defense = [
+    ["Points allowed/game", fmt(avgAgainst) || findTeamStat(stats, ["pointsAllowedPerGame", "opponentPointsPerGame"])],
+    ["Pass yards allowed/game", findTeamStat(stats, ["passingYardsAllowedPerGame", "opponentPassingYardsPerGame"])],
+    ["Rush yards allowed/game", findTeamStat(stats, ["rushingYardsAllowedPerGame", "opponentRushingYardsPerGame"])],
+    ["Touchdowns allowed", findTeamStat(stats, ["touchdownsAllowed", "totalTouchdownsAllowed"])],
+    ["Sacks", findTeamStat(stats, ["sacks", "totalSacks"], /defen/i)],
+    ["Takeaways", findTeamStat(stats, ["takeaways", "totalTakeaways"]) ]
+  ];
+  return '<section class="card team-section"><h2>Team stats</h2><div class="team-stats-columns">' +
+    '<div><h3>Offense</h3><div class="team-stat-grid">' + offense.map((x) => statTile(x[0], x[1])).join("") + '</div></div>' +
+    '<div><h3>Defense</h3><div class="team-stat-grid">' + defense.map((x) => statTile(x[0], x[1])).join("") + '</div></div></div>' +
+    '<p class="muted small">Season averages and totals. Some advanced statistics may not be published by ESPN.</p></section>';
+}
+
+function renderNFLSchedule(data, teamId) {
+  const events = data.events || [];
+  if (!events.length) return '<section class="card team-section"><h2>Season schedule</h2><div class="muted">Schedule unavailable.</div></section>';
+  return '<section class="card team-section"><details open><summary>Season schedule</summary><div class="schedule-list">' +
+    events.map((event) => {
+      const comp = (event.competitions || [])[0] || {};
+      const sides = comp.competitors || [];
+      const mine = sides.find((x) => String(x.id || (x.team && x.team.id)) === String(teamId));
+      const opp = sides.find((x) => x !== mine) || {};
+      const ot = opp.team || {};
+      const state = ((comp.status || event.status || {}).type || {}).state || "pre";
+      const date = Date.parse(event.date);
+      const when = isNaN(date) ? "TBD" : new Date(date).toLocaleDateString([], { month: "short", day: "numeric" });
+      let result = "";
+      if (state === "post" && mine) {
+        const a = Number(mine.score && (mine.score.displayValue || mine.score.value != null ? (mine.score.displayValue || mine.score.value) : mine.score));
+        const b = Number(opp.score && (opp.score.displayValue || opp.score.value != null ? (opp.score.displayValue || opp.score.value) : opp.score));
+        if (!isNaN(a) && !isNaN(b)) result = (mine.winner ? "W" : "L") + " " + a + "–" + b;
+      } else {
+        result = ((comp.status || event.status || {}).type || {}).shortDetail || "Scheduled";
+      }
+      return '<div class="schedule-row"><span><b>' + esc((event.week && event.week.text) || when) + '</b><small>' + esc(when) + '</small></span>' +
+        '<span class="schedule-opponent">' + esc(mine && mine.homeAway === "away" ? "at " : "vs ") + esc(ot.displayName || ot.shortDisplayName || "Opponent") +
+        '</span><strong>' + esc(result) + '</strong></div>';
+    }).join("") + '</div></details></section>';
+}
+
+function athleteId(ref) {
+  const match = String((ref && (ref.$ref || ref.href)) || "").match(/athletes\/(\d+)/);
+  return match ? match[1] : String((ref && ref.id) || "");
+}
+
+function rosterAthletes(team) {
+  const found = {};
+  (function walk(node) {
+    if (!node || typeof node !== "object") return;
+    if (node.id && node.displayName && node.position) found[String(node.id)] = node;
+    Object.keys(node).forEach((k) => { if (node[k] && typeof node[k] === "object") walk(node[k]); });
+  })(team);
+  return found;
+}
+
+function renderNFLDepth(depth, team) {
+  const roster = rosterAthletes(team);
+  const charts = depth.items || [];
+  if (!charts.length) return '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart unavailable.</div></section>';
+  const blocks = charts.map((chart) => {
+    const positions = chart.positions || {};
+    const rows = Object.keys(positions).map((key) => {
+      const pos = positions[key] || {};
+      const players = (pos.athletes || []).slice(0, 3).map((slot) => {
+        const id = athleteId(slot.athlete || slot);
+        const player = roster[id] || slot.athlete || {};
+        return player.displayName || player.fullName || player.shortName || "Player unavailable";
+      });
+      return '<div class="depth-row"><strong>' + esc((pos.position && pos.position.abbreviation) || key.toUpperCase()) + '</strong><span>' +
+        esc(players.join(" · ") || "Not listed") + '</span></div>';
+    }).join("");
+    return '<div class="depth-unit"><h3>' + esc(chart.displayName || chart.name || "Unit") + '</h3>' + rows + '</div>';
+  }).join("");
+  return '<section class="card team-section"><details open><summary>Depth chart</summary><div class="depth-grid">' + blocks + '</div></details></section>';
+}
+
+async function showNFLTeam() {
+  const d = detail;
+  const abbr = d.teamAbbr;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading team page&hellip;</div>';
+  try {
+    const info = await espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(abbr) + "?enable=roster");
+    if (detail !== d) return;
+    const team = info.team || {};
+    const id = team.id;
+    const year = (team.nextEvent && team.nextEvent[0] && team.nextEvent[0].season && team.nextEvent[0].season.year) || nflSeasonYear();
+    const results = await Promise.allSettled([
+      espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(id) + "/schedule?season=" + year),
+      coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/types/2/teams/" + id + "/statistics"),
+      coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/teams/" + id + "/depthcharts")
+    ]);
+    if (detail !== d) return;
+    const logo = teamLogo(team);
+    const record = team.record && team.record.items && team.record.items[0] ? team.record.items[0].summary : "";
+    const header = backButton() + '<section class="team-hero" style="--team-color:#' + esc(team.color || "263444") + '">' +
+      (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
+      '<div><div class="eyebrow">NFL TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
+      esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>';
+    view.innerHTML = header +
+      renderNFLStats(team, results[1].status === "fulfilled" ? results[1].value : null) +
+      renderNFLDepth(results[2].status === "fulfilled" ? results[2].value : {}, team) +
+      renderNFLSchedule(results[0].status === "fulfilled" ? results[0].value : {}, id);
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this team right now. Try again in a minute.</div>';
+  }
+}
+
+function openNFLTeam(abbr) {
+  const returnTo = current;
+  detail = { sportId: "nfl", kind: "team", teamAbbr: abbr, returnTo: returnTo };
+  if (current === "live") current = "nfl";
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
+}
+
 function openGame(id, sportId) {
   const selectedSport = sportId || current;
   const sport = SPORTS.find((s) => s.id === selectedSport);
@@ -1073,6 +1260,8 @@ view.addEventListener("click", (event) => {
   if (sw) { selectSport(sw.getAttribute("data-switch")); return; }
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
+  const teamEl = event.target.closest("button[data-team]");
+  if (teamEl) { event.stopPropagation(); openNFLTeam(teamEl.getAttribute("data-team")); return; }
   const el = event.target.closest(".game[data-id]");
   if (el) openGame(el.getAttribute("data-id"), el.getAttribute("data-sport"));
 });
@@ -1086,6 +1275,7 @@ view.addEventListener("change", (event) => {
 
 view.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" && event.key !== " ") return;
+  if (event.target.closest && event.target.closest("button[data-team]")) return;
   const el = event.target.closest && event.target.closest(".game[data-id]");
   if (el) { event.preventDefault(); openGame(el.getAttribute("data-id"), el.getAttribute("data-sport")); }
 });
@@ -1116,6 +1306,7 @@ async function show() {
 
   if (detail && detail.sportId === current) {
     if (detail.kind === "race") await showRace();
+    else if (detail.kind === "team") await showNFLTeam();
     else await showDetail();
     return;
   }

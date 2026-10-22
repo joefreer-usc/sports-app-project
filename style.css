@@ -167,6 +167,9 @@ tr.past td { color: var(--muted); }
 }
 
 .team-name { display: block; overflow: hidden; text-overflow: ellipsis; }
+.team-link { max-width: 100%; margin: 0; padding: 0; overflow: hidden; background: none; color: inherit; border: 0; font: inherit; font-weight: inherit; text-align: left; cursor: pointer; }
+.team-link:hover .team-name { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.team-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 .team small { display: block; color: var(--muted); font-weight: 400; font-size: 11px; }
 .team .rank { color: var(--accent); font-size: 12px; }
 .team .score { min-width: 32px; text-align: right; font-size: 20px; font-weight: 750; font-variant-numeric: tabular-nums; color: var(--text); }
@@ -191,6 +194,31 @@ tr.past td { color: var(--muted); }
 .live-league-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 12px 16px 10px; }
 .live-league-card .game { border-top: 0; padding-top: 7px; }
 .league-tag { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+
+/* NFL team pages */
+.team-hero { position: relative; display: flex; align-items: center; gap: 24px; overflow: hidden; margin: 12px 0; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, color-mix(in srgb, var(--team-color) 28%, var(--card)), var(--card)); }
+.team-hero::after { content: ""; position: absolute; right: -50px; top: -80px; width: 220px; height: 220px; border-radius: 50%; background: color-mix(in srgb, var(--team-color) 18%, transparent); }
+.team-hero img { position: relative; z-index: 1; width: 104px; height: 104px; object-fit: contain; background: transparent; }
+.team-hero > div { position: relative; z-index: 1; }
+.team-hero h2 { margin: 0; font-size: clamp(26px, 5vw, 40px); line-height: 1.05; letter-spacing: -.8px; }
+.team-hero p { margin: 7px 0 0; color: var(--muted); }
+.team-section { padding: 18px; }
+.team-section > h2 { font-size: 18px; }
+.team-stats-columns, .depth-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.team-stats-columns h3, .depth-unit h3 { margin: 0 0 8px; color: var(--text); font-size: 14px; }
+.team-stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.team-stat { min-height: 72px; padding: 11px; border: 1px solid var(--line); border-radius: 11px; background: rgba(15,23,32,.48); }
+.team-stat span, .team-stat strong { display: block; }
+.team-stat span { color: var(--muted); font-size: 11px; line-height: 1.25; }
+.team-stat strong { margin-top: 5px; font-size: 17px; }
+.depth-row { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 12px; }
+.depth-row strong { color: var(--accent); }
+.depth-row span { color: var(--muted); }
+.schedule-row { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 54px; padding: 8px 0; border-top: 1px solid var(--line); }
+.schedule-row:first-child { border-top: 0; }
+.schedule-row span:first-child b, .schedule-row span:first-child small { display: block; }
+.schedule-row small { color: var(--muted); font-weight: 400; }
+.schedule-row > strong { text-align: right; font-variant-numeric: tabular-nums; }
 
 .up { color: var(--up); font-size: 12px; }
 .down { color: var(--down); font-size: 12px; }
@@ -325,4 +353,8 @@ tr.fastest td { color: #c77dff; }
   .odds-grid { grid-template-columns: 1fr; }
   .comparison-grid, .injury-grid { grid-template-columns: 1fr; }
   .live-grid { grid-template-columns: 1fr; }
+  .team-hero { gap: 17px; padding: 19px; }
+  .team-hero img { width: 76px; height: 76px; }
+  .team-stats-columns, .depth-grid { grid-template-columns: 1fr; }
+  .schedule-row { grid-template-columns: 68px minmax(0, 1fr) auto; font-size: 12px; }
 }
