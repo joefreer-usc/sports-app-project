@@ -8,6 +8,7 @@ const SPORTS = [
   { id: "nba", label: "NBA", kind: "league", espn: "basketball/nba", scores: "data/nba.json", extra: "data/nba_standings.json", extraType: "standings" },
   { id: "mlb", label: "MLB", kind: "league", espn: "baseball/mlb", scores: "data/mlb.json", extra: "data/mlb_standings.json", extraType: "standings" },
   { id: "cfb", label: "CFB", kind: "league", espn: "football/college-football", scores: "data/cfb.json", extra: "data/cfb_rankings.json", extraType: "rankings" },
+  { id: "nhl", label: "NHL", kind: "league", espn: "hockey/nhl", scores: "data/nhl.json", extra: "data/nhl_standings.json", extraType: "standings" },
   // Men's and women's college basketball share one tab with a switch at the top.
   { id: "cbb", label: "CBB", kind: "league", espn: "basketball/mens-college-basketball", scores: "data/cbb.json", extra: "data/cbb_rankings.json", extraType: "rankings", group: "cbb", side: "Men's" },
   { id: "wcbb", label: "CBB", kind: "league", espn: "basketball/womens-college-basketball", scores: "data/wcbb.json", extra: "data/wcbb_rankings.json", extraType: "rankings", group: "cbb", side: "Women's", hidden: true },
@@ -27,7 +28,7 @@ const LEAGUE_TILES = [
   { id: "golf", name: "Golf", desc: "PGA leaderboard", logo: "https://www.liblogo.com/img-logo/pg7180p713-pga-tour-logo-pga-tour-scores-news-schedule-highlights-statistics-and-analysis.png", color: "rgba(42, 166, 74, .22)" },
   { id: "epl", name: "Football Club", desc: "Premier League & UCL", logo: "https://toppng.com/public/uploads/preview/premier-league-logo-vector-11573944614zjyyupnt6z.png", color: "rgba(0, 255, 133, .16)" },
   { id: "f1", name: "Formula 1", desc: "Races, drivers & laps", logo: "https://city-png.b-cdn.net/thumbnail/thumbnail_public/uploads/preview/hd-f1-the-official-formula-1-transparent-png-701751712229525ajvwddtfme.png?v=2025093023", color: "rgba(225, 6, 0, .22)" },
-  { id: "nhl", name: "NHL", desc: "Pro hockey", logo: "https://image.pngaaa.com/605/7041605-middle.png", color: "rgba(160, 174, 192, .16)", disabled: true }
+  { id: "nhl", name: "NHL", desc: "Pro hockey", logo: "https://image.pngaaa.com/605/7041605-middle.png", color: "rgba(160, 174, 192, .16)" }
 ];
 
 // How each league asks ESPN for live scores straight from the phone.
@@ -38,6 +39,7 @@ const LIVE = {
   cfb:  { query: "?groups=80&limit=200" },
   nba:  { days: [-1, 0] },
   mlb:  { days: [-1, 0] },
+  nhl:  { days: [-1, 0] },
   cbb:  { days: [-1, 0], extra: "&groups=50&limit=400" },
   wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" },
   epl:  { days: [-1, 0] },
