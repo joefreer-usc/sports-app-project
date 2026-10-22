@@ -1,11 +1,19 @@
 {
-  "updated": "2026-10-21T04:41:06Z",
+  "updated": "2026-10-22T01:46:44Z",
   "data": {
     "season": "2026-27",
     "groups": [
       {
         "name": "Eastern Conference",
         "teams": [
+          {
+            "name": "Washington Wizards",
+            "abbr": "WSH",
+            "record": "1-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W1"
+          },
           {
             "name": "Detroit Pistons",
             "abbr": "DET",
@@ -33,6 +41,14 @@
           {
             "name": "Boston Celtics",
             "abbr": "BOS",
+            "record": "0-1",
+            "pct": ".000",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
+            "name": "Milwaukee Bucks",
+            "abbr": "MIL",
             "record": "0-1",
             "pct": ".000",
             "gb": "1",
@@ -79,14 +95,6 @@
             "streak": "-"
           },
           {
-            "name": "Milwaukee Bucks",
-            "abbr": "MIL",
-            "record": "0-0",
-            "pct": ".000",
-            "gb": "0.5",
-            "streak": "-"
-          },
-          {
             "name": "Brooklyn Nets",
             "abbr": "BKN",
             "record": "0-0",
@@ -97,14 +105,6 @@
           {
             "name": "Orlando Magic",
             "abbr": "ORL",
-            "record": "0-0",
-            "pct": ".000",
-            "gb": "0.5",
-            "streak": "-"
-          },
-          {
-            "name": "Washington Wizards",
-            "abbr": "WSH",
             "record": "0-0",
             "pct": ".000",
             "gb": "0.5",

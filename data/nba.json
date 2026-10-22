@@ -1,16 +1,16 @@
 {
-  "updated": "2026-10-22T01:13:06Z",
+  "updated": "2026-10-22T01:46:44Z",
   "data": {
     "games": [
       {
         "id": "401909834",
         "date": "2026-10-21T23:00Z",
         "state": "in",
-        "detail": "50.3 - 3rd",
+        "detail": "32.7 - 4th",
         "away": {
           "name": "Atlanta Hawks",
           "abbr": "ATL",
-          "score": "97",
+          "score": "128",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -18,7 +18,7 @@
         "home": {
           "name": "Orlando Magic",
           "abbr": "ORL",
-          "score": "99",
+          "score": "123",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -27,34 +27,34 @@
       {
         "id": "401909835",
         "date": "2026-10-21T23:00Z",
-        "state": "in",
-        "detail": "10:25 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Milwaukee Bucks",
           "abbr": "MIL",
-          "score": "96",
-          "record": "0-0",
+          "score": "116",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
         "home": {
           "name": "Washington Wizards",
           "abbr": "WSH",
-          "score": "97",
-          "record": "0-0",
+          "score": "128",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909091",
         "date": "2026-10-21T23:30Z",
         "state": "in",
-        "detail": "7:46 - 3rd",
+        "detail": "9:12 - 4th",
         "away": {
           "name": "Minnesota Timberwolves",
           "abbr": "MIN",
-          "score": "78",
+          "score": "104",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -62,7 +62,7 @@
         "home": {
           "name": "Miami Heat",
           "abbr": "MIA",
-          "score": "70",
+          "score": "83",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -72,11 +72,11 @@
         "id": "401909836",
         "date": "2026-10-21T23:30Z",
         "state": "in",
-        "detail": "8:49 - 3rd",
+        "detail": "9:48 - 4th",
         "away": {
           "name": "Charlotte Hornets",
           "abbr": "CHA",
-          "score": "62",
+          "score": "92",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -84,7 +84,7 @@
         "home": {
           "name": "Brooklyn Nets",
           "abbr": "BKN",
-          "score": "60",
+          "score": "84",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -94,11 +94,11 @@
         "id": "401909837",
         "date": "2026-10-21T23:30Z",
         "state": "in",
-        "detail": "11:32 - 3rd",
+        "detail": "End of 3rd",
         "away": {
           "name": "Chicago Bulls",
           "abbr": "CHI",
-          "score": "44",
+          "score": "71",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -106,7 +106,7 @@
         "home": {
           "name": "Toronto Raptors",
           "abbr": "TOR",
-          "score": "71",
+          "score": "103",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -116,11 +116,11 @@
         "id": "401909838",
         "date": "2026-10-22T00:00Z",
         "state": "in",
-        "detail": "1:18 - 2nd",
+        "detail": "4:08 - 3rd",
         "away": {
           "name": "Utah Jazz",
           "abbr": "UTAH",
-          "score": "49",
+          "score": "63",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -128,7 +128,7 @@
         "home": {
           "name": "Memphis Grizzlies",
           "abbr": "MEM",
-          "score": "60",
+          "score": "89",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -138,11 +138,11 @@
         "id": "401909839",
         "date": "2026-10-22T00:00Z",
         "state": "in",
-        "detail": "0.0 - 2nd",
+        "detail": "3:16 - 3rd",
         "away": {
           "name": "Indiana Pacers",
           "abbr": "IND",
-          "score": "56",
+          "score": "76",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -150,7 +150,7 @@
         "home": {
           "name": "New Orleans Pelicans",
           "abbr": "NO",
-          "score": "66",
+          "score": "84",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -160,11 +160,11 @@
         "id": "401909840",
         "date": "2026-10-22T00:30Z",
         "state": "in",
-        "detail": "End of 1st",
+        "detail": "Halftime",
         "away": {
           "name": "Dallas Mavericks",
           "abbr": "DAL",
-          "score": "26",
+          "score": "38",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -172,7 +172,7 @@
         "home": {
           "name": "Houston Rockets",
           "abbr": "HOU",
-          "score": "32",
+          "score": "70",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -305,7 +305,7 @@
           "name": "Milwaukee Bucks",
           "abbr": "MIL",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
@@ -415,7 +415,7 @@
           "name": "Washington Wizards",
           "abbr": "WSH",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         }
@@ -605,7 +605,7 @@
           "name": "Milwaukee Bucks",
           "abbr": "MIL",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
@@ -627,7 +627,7 @@
           "name": "Washington Wizards",
           "abbr": "WSH",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
