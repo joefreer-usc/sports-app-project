@@ -85,9 +85,8 @@ main {
 .league-tile:focus-visible, #pageMenu:focus-visible { outline: 3px solid rgba(76, 194, 255, .45); outline-offset: 3px; }
 .league-tile::after { content: ""; position: absolute; width: 120px; height: 120px; right: -45px; top: -45px; border-radius: 50%; background: var(--tile-glow, rgba(76,194,255,.1)); }
 .league-mark { position: relative; z-index: 1; width: 64px; height: 64px; display: grid; place-items: center; }
-.league-logo, .league-symbol { grid-area: 1 / 1; }
+.league-logo { grid-area: 1 / 1; }
 .league-logo { width: 64px; height: 64px; object-fit: contain; }
-.league-symbol { font-size: 42px; line-height: 1; }
 .league-copy { position: relative; z-index: 1; }
 .league-name { display: block; font-size: 20px; font-weight: 800; letter-spacing: -.3px; }
 .league-desc { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
@@ -289,6 +288,5 @@ tr.fastest td { color: #c77dff; }
   .league-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .league-tile { min-height: 158px; padding: 16px; border-radius: 17px; }
   .league-mark, .league-logo { width: 52px; height: 52px; }
-  .league-symbol { font-size: 36px; }
   .league-name { font-size: 18px; }
 }

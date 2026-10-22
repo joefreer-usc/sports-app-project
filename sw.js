@@ -8,7 +8,9 @@ const SHELL = [
   "app.js",
   "manifest.webmanifest",
   "icon-192.png",
-  "icon-512.png"
+  "icon-512.png",
+  "assets/logos/cfp.png",
+  "assets/logos/ncaa.png"
 ];
 
 self.addEventListener("install", (event) => {

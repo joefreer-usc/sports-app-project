@@ -19,15 +19,15 @@ const SPORTS = [
 ];
 
 const LEAGUE_TILES = [
-  { id: "nfl", name: "NFL", desc: "Pro football", symbol: "🏈", logo: "https://cdn.simpleicons.org/nfl", color: "rgba(1, 51, 105, .28)" },
-  { id: "nba", name: "NBA", desc: "Pro basketball", symbol: "🏀", logo: "https://cdn.simpleicons.org/nba", color: "rgba(200, 16, 46, .22)" },
-  { id: "mlb", name: "MLB", desc: "Pro baseball", symbol: "⚾", logo: "https://cdn.simpleicons.org/mlb", color: "rgba(0, 45, 98, .3)" },
-  { id: "cfb", name: "College Football", desc: "Scores & rankings", symbol: "🏈", logo: "https://cdn.simpleicons.org/ncaa", color: "rgba(248, 88, 0, .2)" },
-  { id: "cbb", name: "College Basketball", desc: "Men's & women's", symbol: "🏀", logo: "https://cdn.simpleicons.org/ncaa", color: "rgba(76, 194, 255, .18)" },
-  { id: "golf", name: "Golf", desc: "PGA leaderboard", symbol: "⛳", logo: "https://cdn.simpleicons.org/pga", color: "rgba(42, 166, 74, .22)" },
-  { id: "epl", name: "Football Club", desc: "Premier League & UCL", symbol: "⚽", logo: "https://cdn.simpleicons.org/premierleague", color: "rgba(0, 255, 133, .16)" },
-  { id: "f1", name: "Formula 1", desc: "Races, drivers & laps", symbol: "🏎️", logo: "https://cdn.simpleicons.org/f1", color: "rgba(225, 6, 0, .22)" },
-  { id: "nhl", name: "NHL", desc: "Pro hockey", symbol: "🏒", logo: "https://cdn.simpleicons.org/nhl", color: "rgba(160, 174, 192, .16)", disabled: true }
+  { id: "nfl", name: "NFL", desc: "Pro football", logo: "https://toppng.com/uploads/preview/nfl-logo-vector-1157397131993ne6xvvwg.png", color: "rgba(1, 51, 105, .28)" },
+  { id: "nba", name: "NBA", desc: "Pro basketball", logo: "https://toppng.com/public/uploads/preview/nba-logo-png-download-11660557615o2yqljweyf.png", color: "rgba(200, 16, 46, .22)" },
+  { id: "mlb", name: "MLB", desc: "Pro baseball", logo: "https://flyclipart.com/thumb2/major-league-baseball-logo-png-transparent-vector-55018.png", color: "rgba(0, 45, 98, .3)" },
+  { id: "cfb", name: "College Football", desc: "Scores & rankings", logo: "assets/logos/cfp.png", color: "rgba(248, 88, 0, .2)" },
+  { id: "cbb", name: "College Basketball", desc: "Men's & women's", logo: "assets/logos/ncaa.png", color: "rgba(76, 194, 255, .18)" },
+  { id: "golf", name: "Golf", desc: "PGA leaderboard", logo: "https://www.liblogo.com/img-logo/pg7180p713-pga-tour-logo-pga-tour-scores-news-schedule-highlights-statistics-and-analysis.png", color: "rgba(42, 166, 74, .22)" },
+  { id: "epl", name: "Football Club", desc: "Premier League & UCL", logo: "https://toppng.com/public/uploads/preview/premier-league-logo-vector-11573944614zjyyupnt6z.png", color: "rgba(0, 255, 133, .16)" },
+  { id: "f1", name: "Formula 1", desc: "Races, drivers & laps", logo: "https://city-png.b-cdn.net/thumbnail/thumbnail_public/uploads/preview/hd-f1-the-official-formula-1-transparent-png-701751712229525ajvwddtfme.png?v=2025093023", color: "rgba(225, 6, 0, .22)" },
+  { id: "nhl", name: "NHL", desc: "Pro hockey", logo: "https://image.pngaaa.com/605/7041605-middle.png", color: "rgba(160, 174, 192, .16)", disabled: true }
 ];
 
 // How each league asks ESPN for live scores straight from the phone.
@@ -88,8 +88,7 @@ function renderHome() {
       '<button type="button" class="league-tile' + (l.disabled ? ' disabled' : '') + '"' +
       (l.disabled ? ' disabled' : ' data-league="' + esc(l.id) + '"') + ' style="--tile-glow:' + esc(l.color) + '">' +
       (l.disabled ? '<span class="coming">Coming soon</span>' : '') +
-      '<span class="league-mark"><span class="league-symbol" aria-hidden="true">' + esc(l.symbol) + '</span>' +
-      '<img class="league-logo" src="' + esc(l.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'"></span>' +
+      '<span class="league-mark"><img class="league-logo" src="' + esc(l.logo) + '" alt="' + esc(l.name) + ' logo" loading="lazy"></span>' +
       '<span class="league-copy"><span class="league-name">' + esc(l.name) + '</span>' +
       '<span class="league-desc">' + esc(l.desc) + '</span></span>' +
       (l.disabled ? '' : '<span class="league-arrow" aria-hidden="true">&rsaquo;</span>') + '</button>'
