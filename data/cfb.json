@@ -1,25 +1,69 @@
 {
-  "updated": "2026-10-22T00:22:34Z",
+  "updated": "2026-10-22T04:23:06Z",
   "data": {
     "games": [
       {
-        "id": "401871070",
-        "date": "2026-10-22T00:00Z",
-        "state": "in",
-        "detail": "8:56 - 1st",
+        "id": "401869845",
+        "date": "2026-10-22T23:00Z",
+        "state": "pre",
+        "detail": "10/22 - 7:00 PM EDT",
         "away": {
-          "name": "New Mexico State Aggies",
-          "abbr": "NMSU",
+          "name": "James Madison Dukes",
+          "abbr": "JMU",
           "score": "0",
-          "record": "2-4",
+          "record": "7-0",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Sam Houston Bearkats",
-          "abbr": "SHSU",
-          "score": "7",
+          "name": "App State Mountaineers",
+          "abbr": "APP",
+          "score": "0",
+          "record": "4-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401871056",
+        "date": "2026-10-22T23:00Z",
+        "state": "pre",
+        "detail": "10/22 - 7:00 PM EDT",
+        "away": {
+          "name": "Liberty Flames",
+          "abbr": "LIB",
+          "score": "0",
+          "record": "5-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Kennesaw State Owls",
+          "abbr": "KENN",
+          "score": "0",
           "record": "1-5",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401862807",
+        "date": "2026-10-22T23:30Z",
+        "state": "pre",
+        "detail": "10/22 - 7:30 PM EDT",
+        "away": {
+          "name": "East Carolina Pirates",
+          "abbr": "ECU",
+          "score": "0",
+          "record": "3-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Memphis Tigers",
+          "abbr": "MEM",
+          "score": "0",
+          "record": "5-2",
           "rank": 0,
           "winner": false
         }
@@ -91,67 +135,23 @@
         }
       },
       {
-        "id": "401869845",
-        "date": "2026-10-22T23:00Z",
-        "state": "pre",
-        "detail": "10/22 - 7:00 PM EDT",
+        "id": "401871070",
+        "date": "2026-10-22T00:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "James Madison Dukes",
-          "abbr": "JMU",
-          "score": "0",
-          "record": "7-0",
+          "name": "New Mexico State Aggies",
+          "abbr": "NMSU",
+          "score": "30",
+          "record": "3-4",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
-          "name": "App State Mountaineers",
-          "abbr": "APP",
-          "score": "0",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401871056",
-        "date": "2026-10-22T23:00Z",
-        "state": "pre",
-        "detail": "10/22 - 7:00 PM EDT",
-        "away": {
-          "name": "Liberty Flames",
-          "abbr": "LIB",
-          "score": "0",
-          "record": "5-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Kennesaw State Owls",
-          "abbr": "KENN",
-          "score": "0",
-          "record": "1-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401862807",
-        "date": "2026-10-22T23:30Z",
-        "state": "pre",
-        "detail": "10/22 - 7:30 PM EDT",
-        "away": {
-          "name": "East Carolina Pirates",
-          "abbr": "ECU",
-          "score": "0",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Memphis Tigers",
-          "abbr": "MEM",
-          "score": "0",
-          "record": "5-2",
+          "name": "Sam Houston Bearkats",
+          "abbr": "SHSU",
+          "score": "24",
+          "record": "1-6",
           "rank": 0,
           "winner": false
         }
