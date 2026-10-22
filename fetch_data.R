@@ -602,3 +602,73 @@ fetch_golf <- function() {
 }
 
 run_section("golf", fetch_golf)
+
+# ---- NFL team pages --------------------------------------------------------
+# Browsers can be blocked from reading some ESPN team endpoints directly.
+# Build one local cache for all 32 teams instead. It refreshes twice per day,
+# rather than on every five-minute score update, to keep requests reasonable.
+
+nfl_team_cache_is_fresh <- function(hours = 12) {
+  path <- file.path("data", "nfl_teams.json")
+  if (!file.exists(path)) return(FALSE)
+  stamp <- tryCatch(fromJSON(path, simplifyVector = FALSE)$updated, error = function(e) NULL)
+  if (is.null(stamp)) return(FALSE)
+  then <- as.POSIXct(stamp, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
+  !is.na(then) && as.numeric(difftime(Sys.time(), then, units = "hours")) < hours
+}
+
+fetch_nfl_team_cache <- function() {
+  if (nfl_team_cache_is_fresh()) {
+    message("nfl_teams: cache is still fresh")
+    return(invisible(FALSE))
+  }
+
+  safe_json <- function(url) {
+    tryCatch(get_json(url), error = function(e) {
+      message("  nfl team request failed: ", conditionMessage(e))
+      NULL
+    })
+  }
+
+  index <- get_json(paste0(espn_site, "football/nfl/teams?limit=50"))
+  wrappers <- index$sports[[1]]$leagues[[1]]$teams %||% list()
+  season <- as.integer(format(Sys.Date(), "%Y"))
+  if (as.integer(format(Sys.Date(), "%m")) < 3) season <- season - 1L
+  teams_out <- list()
+
+  for (wrapper in wrappers) {
+    team <- wrapper$team %||% wrapper
+    id <- as.character(team$id %||% "")
+    abbr <- toupper(team$abbreviation %||% "")
+    if (!nzchar(id) || !nzchar(abbr)) next
+    message("  nfl team page: ", abbr)
+
+    schedule <- safe_json(paste0(espn_site, "football/nfl/teams/", id,
+                                 "/schedule?season=", season))
+    stats <- safe_json(paste0("https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/",
+                              season, "/types/2/teams/", id, "/statistics"))
+    depth <- safe_json(paste0("https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/",
+                              season, "/teams/", id, "/depthcharts"))
+    roster <- safe_json(paste0(espn_site, "football/nfl/teams/", id, "/roster"))
+
+    if (!is.null(schedule$team)) {
+      team$recordSummary <- schedule$team$recordSummary %||% ""
+      team$standingSummary <- schedule$team$standingSummary %||% team$standingSummary %||% ""
+      team$logo <- schedule$team$logo %||% team$logo %||% ""
+    }
+    teams_out[[abbr]] <- list(team = team, schedule = schedule, stats = stats,
+                              depth = depth, roster = roster)
+  }
+
+  if (length(teams_out) == 0) stop("ESPN returned no NFL teams")
+  out <- list(
+    updated = format(Sys.time(), tz = "UTC", "%Y-%m-%dT%H:%M:%SZ"),
+    data = list(season = season, teams = teams_out)
+  )
+  write_json(out, file.path("data", "nfl_teams.json"), auto_unbox = TRUE,
+             pretty = FALSE, null = "null")
+  message("nfl_teams: saved ", length(teams_out), " teams")
+  invisible(TRUE)
+}
+
+tryCatch(fetch_nfl_team_cache(), error = function(e) message("nfl_teams: FAILED - ", conditionMessage(e)))

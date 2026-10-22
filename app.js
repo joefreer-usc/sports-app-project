@@ -1179,29 +1179,12 @@ function renderNFLDepth(depth, team) {
   return '<section class="card team-section"><details open><summary>Depth chart</summary><div class="depth-grid">' + blocks + '</div></details></section>';
 }
 
-async function showNFLTeam() {
-  const d = detail;
-  const abbr = d.teamAbbr;
-  updatedEl.textContent = "";
-  view.innerHTML = backButton() + '<div class="message">Loading team page&hellip;</div>';
-  try {
-    // Load the small profile first. Keeping roster data separate prevents one
-    // large or unavailable response from taking down the entire team page.
-    const info = await espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(abbr));
+function paintNFLTeam(d, abbr, team, schedule, stats, depth, roster) {
     if (detail !== d) return;
-    const team = info.team || {};
     const id = team.id;
-    if (!id) throw new Error("Team ID unavailable");
-    const year = (team.nextEvent && team.nextEvent[0] && team.nextEvent[0].season && team.nextEvent[0].season.year) || nflSeasonYear();
-    const results = await Promise.allSettled([
-      espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(id) + "/schedule?season=" + year),
-      coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/types/2/teams/" + id + "/statistics"),
-      coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/teams/" + id + "/depthcharts"),
-      espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(id) + "/roster")
-    ]);
-    if (detail !== d) return;
     const logo = teamLogo(team);
-    const record = team.record && team.record.items && team.record.items[0] ? team.record.items[0].summary : "";
+    const record = team.record && team.record.items && team.record.items[0]
+      ? team.record.items[0].summary : (team.recordSummary || "");
     const header = backButton() + '<section class="team-hero" style="--team-color:#' + esc(team.color || "263444") + '">' +
       (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
       '<div><div class="eyebrow">NFL TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
@@ -1209,18 +1192,31 @@ async function showNFLTeam() {
     const section = (render, fallback) => {
       try { return render(); } catch (err) { return fallback; }
     };
-    const roster = results[3].status === "fulfilled" ? results[3].value : {};
     view.innerHTML = header +
-      section(() => renderNFLStats(team, results[1].status === "fulfilled" ? results[1].value : null),
+      section(() => renderNFLStats(team, stats),
         '<section class="card team-section"><h2>Team stats</h2><div class="muted">Stats are temporarily unavailable.</div></section>') +
-      section(() => renderNFLDepth(results[2].status === "fulfilled" ? results[2].value : {}, roster),
+      section(() => renderNFLDepth(depth || {}, roster || {}),
         '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart is temporarily unavailable.</div></section>') +
-      section(() => renderNFLSchedule(results[0].status === "fulfilled" ? results[0].value : {}, id),
+      section(() => renderNFLSchedule(schedule || {}, id),
         '<section class="card team-section"><h2>Season schedule</h2><div class="muted">Schedule is temporarily unavailable.</div></section>');
+}
+
+async function showNFLTeam() {
+  const d = detail;
+  const abbr = d.teamAbbr;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading team page&hellip;</div>';
+  try {
+    // GitHub Actions stores this file locally so GitHub Pages never depends on
+    // cross-origin ESPN requests from the visitor's browser.
+    const cache = await getJson("data/nfl_teams.json");
+    const entry = cache && cache.data && cache.data.teams && cache.data.teams[String(abbr).toUpperCase()];
+    if (!entry || !entry.team || !entry.team.id) throw new Error("Team cache unavailable");
+    paintNFLTeam(d, abbr, entry.team, entry.schedule, entry.stats, entry.depth, entry.roster);
   } catch (err) {
     if (detail !== d) return;
-    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this team profile right now. ' +
-      '<button type="button" class="retry-team" data-team="' + esc(abbr) + '">Try again</button></div>';
+    view.innerHTML = backButton() + '<div class="message"><b>Team profiles have not been downloaded yet.</b><br>' +
+      'Run the Update sports data workflow once after installing this version, then refresh the page.</div>';
   }
 }
 
