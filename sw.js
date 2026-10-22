@@ -30,6 +30,9 @@ self.addEventListener("fetch", (event) => {
   // Only handle this site's own files. Requests to other sites (like ESPN's
   // box scores) go straight through the browser untouched.
   if (new URL(event.request.url).origin !== self.location.origin) return;
+  // Data requests use a timestamp to avoid stale scores. Do not save every
+  // timestamped URL as a separate cache entry.
+  if (new URL(event.request.url).searchParams.has("t")) return;
   event.respondWith(
     fetch(event.request)
       .then((res) => {

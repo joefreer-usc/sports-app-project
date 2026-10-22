@@ -15,10 +15,21 @@
 </head>
 <body>
   <header>
-    <h1>Sports Hub</h1>
-    <span id="updated" aria-live="polite"></span>
+    <div>
+      <p class="eyebrow">YOUR SPORTS. ONE PLACE.</p>
+      <h1>Sports Hub</h1>
+    </div>
+    <div class="header-actions">
+      <span id="updated" aria-live="polite"></span>
+      <label class="sr-only" for="pageMenu">Choose a page</label>
+      <select id="pageMenu" aria-label="Choose a page">
+        <option value="" disabled>Menu</option>
+        <option value="home">Home</option>
+        <option value="live">Live</option>
+        <option value="favorites">My Favorites</option>
+      </select>
+    </div>
   </header>
-  <nav id="tabs" aria-label="Sports"></nav>
   <main id="view"></main>
   <script src="app.js"></script>
 </body>

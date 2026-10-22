@@ -8,7 +8,6 @@ const SPORTS = [
   { id: "nba", label: "NBA", kind: "league", espn: "basketball/nba", scores: "data/nba.json", extra: "data/nba_standings.json", extraType: "standings" },
   { id: "mlb", label: "MLB", kind: "league", espn: "baseball/mlb", scores: "data/mlb.json", extra: "data/mlb_standings.json", extraType: "standings" },
   { id: "cfb", label: "CFB", kind: "league", espn: "football/college-football", scores: "data/cfb.json", extra: "data/cfb_rankings.json", extraType: "rankings" },
-  { id: "nhl", label: "NHL", kind: "league", espn: "hockey/nhl", scores: "data/nhl.json", extra: "data/nhl_standings.json", extraType: "standings" },
   // Men's and women's college basketball share one tab with a switch at the top.
   { id: "cbb", label: "CBB", kind: "league", espn: "basketball/mens-college-basketball", scores: "data/cbb.json", extra: "data/cbb_rankings.json", extraType: "rankings", group: "cbb", side: "Men's" },
   { id: "wcbb", label: "CBB", kind: "league", espn: "basketball/womens-college-basketball", scores: "data/wcbb.json", extra: "data/wcbb_rankings.json", extraType: "rankings", group: "cbb", side: "Women's", hidden: true },
@@ -19,6 +18,18 @@ const SPORTS = [
   { id: "f1", label: "F1", kind: "f1", file: "data/f1.json" }
 ];
 
+const LEAGUE_TILES = [
+  { id: "nfl", name: "NFL", desc: "Pro football", symbol: "🏈", logo: "https://cdn.simpleicons.org/nfl", color: "rgba(1, 51, 105, .28)" },
+  { id: "nba", name: "NBA", desc: "Pro basketball", symbol: "🏀", logo: "https://cdn.simpleicons.org/nba", color: "rgba(200, 16, 46, .22)" },
+  { id: "mlb", name: "MLB", desc: "Pro baseball", symbol: "⚾", logo: "https://cdn.simpleicons.org/mlb", color: "rgba(0, 45, 98, .3)" },
+  { id: "cfb", name: "College Football", desc: "Scores & rankings", symbol: "🏈", logo: "https://cdn.simpleicons.org/ncaa", color: "rgba(248, 88, 0, .2)" },
+  { id: "cbb", name: "College Basketball", desc: "Men's & women's", symbol: "🏀", logo: "https://cdn.simpleicons.org/ncaa", color: "rgba(76, 194, 255, .18)" },
+  { id: "golf", name: "Golf", desc: "PGA leaderboard", symbol: "⛳", logo: "https://cdn.simpleicons.org/pga", color: "rgba(42, 166, 74, .22)" },
+  { id: "epl", name: "Football Club", desc: "Premier League & UCL", symbol: "⚽", logo: "https://cdn.simpleicons.org/premierleague", color: "rgba(0, 255, 133, .16)" },
+  { id: "f1", name: "Formula 1", desc: "Races, drivers & laps", symbol: "🏎️", logo: "https://cdn.simpleicons.org/f1", color: "rgba(225, 6, 0, .22)" },
+  { id: "nhl", name: "NHL", desc: "Pro hockey", symbol: "🏒", logo: "https://cdn.simpleicons.org/nhl", color: "rgba(160, 174, 192, .16)", disabled: true }
+];
+
 // How each league asks ESPN for live scores straight from the phone.
 //  - query: one request with this query string
 //  - days:  one request per day (offsets from today), plus an optional extra query
@@ -27,7 +38,6 @@ const LIVE = {
   cfb:  { query: "?groups=80&limit=200" },
   nba:  { days: [-1, 0] },
   mlb:  { days: [-1, 0] },
-  nhl:  { days: [-1, 0] },
   cbb:  { days: [-1, 0], extra: "&groups=50&limit=400" },
   wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" },
   epl:  { days: [-1, 0] },
@@ -35,7 +45,7 @@ const LIVE = {
 };
 
 const view = document.getElementById("view");
-const tabs = document.getElementById("tabs");
+const pageMenu = document.getElementById("pageMenu");
 const updatedEl = document.getElementById("updated");
 
 let current = loadTab();
@@ -59,11 +69,60 @@ function loadTab() {
   let saved = null;
   try { saved = localStorage.getItem("sports-hub-tab"); } catch (e) { /* ignore */ }
   const wanted = (location.hash || "").replace("#", "") || saved;
-  return SPORTS.some((s) => s.id === wanted) ? wanted : SPORTS[0].id;
+  return SPORTS.some((s) => s.id === wanted) || ["home", "live", "favorites"].includes(wanted) ? wanted : "home";
 }
 
 function saveTab(id) {
   try { localStorage.setItem("sports-hub-tab", id); } catch (e) { /* ignore */ }
+}
+
+function syncPageMenu() {
+  pageMenu.value = ["home", "live", "favorites"].includes(current) ? current : "";
+}
+
+function renderHome() {
+  updatedEl.textContent = "";
+  view.innerHTML = '<section class="home-intro"><h2>Pick your league</h2>' +
+    '<p>Scores, standings and the games you care about—all in one place.</p></section>' +
+    '<section class="league-grid" aria-label="Sports leagues">' + LEAGUE_TILES.map((l) =>
+      '<button type="button" class="league-tile' + (l.disabled ? ' disabled' : '') + '"' +
+      (l.disabled ? ' disabled' : ' data-league="' + esc(l.id) + '"') + ' style="--tile-glow:' + esc(l.color) + '">' +
+      (l.disabled ? '<span class="coming">Coming soon</span>' : '') +
+      '<span class="league-mark"><span class="league-symbol" aria-hidden="true">' + esc(l.symbol) + '</span>' +
+      '<img class="league-logo" src="' + esc(l.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'"></span>' +
+      '<span class="league-copy"><span class="league-name">' + esc(l.name) + '</span>' +
+      '<span class="league-desc">' + esc(l.desc) + '</span></span>' +
+      (l.disabled ? '' : '<span class="league-arrow" aria-hidden="true">&rsaquo;</span>') + '</button>'
+    ).join("") + '</section>';
+}
+
+async function renderLive() {
+  updatedEl.textContent = "";
+  view.innerHTML = '<div class="message">Finding live games&hellip;</div>';
+  const leagues = SPORTS.filter((s) => s.kind === "league" && !s.hidden);
+  const results = await Promise.allSettled(leagues.map((s) => getJson(s.scores)));
+  if (current !== "live") return;
+  const live = [];
+  results.forEach((r, i) => {
+    if (r.status !== "fulfilled") return;
+    const games = (r.value.data && r.value.data.games) || [];
+    games.filter((g) => g.state === "in").forEach((g) => live.push({ sport: leagues[i], game: g }));
+  });
+  if (!live.length) {
+    view.innerHTML = '<section class="empty-state"><h2>No games are live right now</h2>' +
+      '<p>Check back when play begins, or choose a league from Home to see recent and upcoming games.</p>' +
+      '<button type="button" data-go-home>Browse leagues</button></section>';
+    return;
+  }
+  view.innerHTML = '<div class="section-title"><h2><span class="live-dot"></span>Live now</h2></div>' +
+    live.map((x) => '<section class="card"><h2>' + esc(x.sport.label) + '</h2>' + gameCard(x.game, false) + '</section>').join("");
+}
+
+function renderFavorites() {
+  updatedEl.textContent = "";
+  view.innerHTML = '<section class="empty-state"><h2>My Favorites is coming next</h2>' +
+    '<p>Soon you’ll be able to follow teams and bring their games to one personal feed.</p>' +
+    '<button type="button" data-go-home>Browse leagues</button></section>';
 }
 
 function timeAgo(iso) {
@@ -499,14 +558,12 @@ function renderStandings(data) {
     const hasStreak = teams.some((t) => t.streak);
 
     const headers = [{ label: "Team" }, { label: "Record", num: true }];
-    if (data.showPoints) headers.push({ label: "Pts", num: true });
     if (hasPct) headers.push({ label: "Pct", num: true });
     if (hasGb) headers.push({ label: "GB", num: true });
     if (hasStreak) headers.push({ label: "Strk", num: true });
 
     const rows = teams.map((t) => {
       let cells = "<td>" + esc(t.name || t.abbr) + "</td>" + '<td class="num">' + esc(t.record) + "</td>";
-      if (data.showPoints) cells += '<td class="num"><b>' + esc(t.pts) + "</b></td>";
       if (hasPct) cells += '<td class="num">' + esc(t.pct) + "</td>";
       if (hasGb) cells += '<td class="num">' + esc(t.gb) + "</td>";
       if (hasStreak) cells += '<td class="num">' + esc(t.streak) + "</td>";
@@ -854,6 +911,9 @@ function goBack() {
 window.addEventListener("popstate", () => { if (detail) leaveDetail(); });
 
 view.addEventListener("click", (event) => {
+  const league = event.target.closest("[data-league]");
+  if (league) { selectSport(league.getAttribute("data-league")); return; }
+  if (event.target.closest("[data-go-home]")) { selectSport("home"); return; }
   if (event.target.closest("#back")) { goBack(); return; }
   const sw = event.target.closest("button[data-switch]");
   if (sw) { selectSport(sw.getAttribute("data-switch")); return; }
@@ -878,36 +938,26 @@ view.addEventListener("keydown", (event) => {
 
 // ---- tabs and loading -------------------------------------------------------
 
-function renderTabs() {
-  const cur = SPORTS.find((s) => s.id === current);
-  tabs.innerHTML = SPORTS.filter((s) => !s.hidden).map((s) => {
-    const active = s.id === current || (cur && cur.group && cur.group === s.group);
-    return '<button type="button" data-id="' + esc(s.id) + '" class="' + (active ? "active" : "") + '">' +
-      esc(s.label) + "</button>";
-  }).join("");
-}
-
 function selectSport(id) {
   current = id;
   detail = null;
   view.removeAttribute("data-detail");
   saveTab(current);
   history.replaceState(null, "", "#" + current);
-  renderTabs();
+  syncPageMenu();
   show();
 }
 
-tabs.addEventListener("click", (event) => {
-  const btn = event.target.closest("button[data-id]");
-  if (!btn) return;
-  selectSport(btn.getAttribute("data-id"));
-});
+pageMenu.addEventListener("change", () => selectSport(pageMenu.value));
 
 const NO_DATA =
   '<div class="message">No data yet. In your GitHub repo, open the Actions tab, ' +
   'choose "Update sports data", and click "Run workflow". Refresh this page after it finishes.</div>';
 
 async function show() {
+  if (current === "home") { renderHome(); return; }
+  if (current === "live") { await renderLive(); return; }
+  if (current === "favorites") { renderFavorites(); return; }
   const sport = SPORTS.find((s) => s.id === current);
 
   if (detail && detail.sportId === current) {
@@ -1056,7 +1106,7 @@ setInterval(refreshLive, 30 * 1000);
 setInterval(() => { if (!document.hidden) show(); }, 5 * 60 * 1000);
 document.addEventListener("visibilitychange", () => { if (!document.hidden) show(); });
 
-renderTabs();
+syncPageMenu();
 show();
 
 if ("serviceWorker" in navigator) {
