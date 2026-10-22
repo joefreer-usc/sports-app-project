@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T02:49:11Z",
+  "updated": "2026-10-22T03:17:11Z",
   "data": {
     "games": [
       {
@@ -159,34 +159,34 @@
       {
         "id": "401909840",
         "date": "2026-10-22T00:30Z",
-        "state": "in",
-        "detail": "4:39 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Dallas Mavericks",
           "abbr": "DAL",
-          "score": "98",
-          "record": "0-0",
+          "score": "110",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
         "home": {
           "name": "Houston Rockets",
           "abbr": "HOU",
-          "score": "118",
-          "record": "0-0",
+          "score": "128",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909092",
         "date": "2026-10-22T02:00Z",
         "state": "in",
-        "detail": "10:57 - 2nd",
+        "detail": "Halftime",
         "away": {
           "name": "Golden State Warriors",
           "abbr": "GS",
-          "score": "33",
+          "score": "52",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -194,7 +194,7 @@
         "home": {
           "name": "Los Angeles Lakers",
           "abbr": "LAL",
-          "score": "36",
+          "score": "66",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -204,11 +204,11 @@
         "id": "401909841",
         "date": "2026-10-22T02:00Z",
         "state": "in",
-        "detail": "10:41 - 2nd",
+        "detail": "Halftime",
         "away": {
           "name": "Phoenix Suns",
           "abbr": "PHX",
-          "score": "14",
+          "score": "39",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -216,7 +216,7 @@
         "home": {
           "name": "Portland Trail Blazers",
           "abbr": "POR",
-          "score": "43",
+          "score": "72",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -226,11 +226,11 @@
         "id": "401909842",
         "date": "2026-10-22T02:30Z",
         "state": "in",
-        "detail": "8:51 - 1st",
+        "detail": "10:53 - 2nd",
         "away": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
-          "score": "8",
+          "score": "29",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -238,7 +238,7 @@
         "home": {
           "name": "LA Clippers",
           "abbr": "LAC",
-          "score": "14",
+          "score": "47",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -363,7 +363,7 @@
           "name": "Dallas Mavericks",
           "abbr": "DAL",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
@@ -451,7 +451,7 @@
           "name": "Houston Rockets",
           "abbr": "HOU",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
@@ -657,7 +657,7 @@
           "name": "Dallas Mavericks",
           "abbr": "DAL",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
@@ -671,7 +671,7 @@
           "name": "Houston Rockets",
           "abbr": "HOU",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
