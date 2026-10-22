@@ -20,15 +20,15 @@ const SPORTS = [
 ];
 
 const LEAGUE_TILES = [
-  { id: "nfl", name: "NFL", desc: "Pro football", logo: "https://toppng.com/uploads/preview/nfl-logo-vector-1157397131993ne6xvvwg.png", color: "rgba(1, 51, 105, .28)" },
-  { id: "nba", name: "NBA", desc: "Pro basketball", logo: "https://toppng.com/public/uploads/preview/nba-logo-png-download-11660557615o2yqljweyf.png", color: "rgba(200, 16, 46, .22)" },
-  { id: "mlb", name: "MLB", desc: "Pro baseball", logo: "https://flyclipart.com/thumb2/major-league-baseball-logo-png-transparent-vector-55018.png", color: "rgba(0, 45, 98, .3)" },
+  { id: "nfl", name: "NFL", desc: "Pro football", logo: "assets/logos/nfl.png", color: "rgba(1, 51, 105, .28)" },
+  { id: "nba", name: "NBA", desc: "Pro basketball", logo: "assets/logos/nba.png", color: "rgba(200, 16, 46, .22)" },
+  { id: "mlb", name: "MLB", desc: "Pro baseball", logo: "assets/logos/mlb.png", color: "rgba(0, 45, 98, .3)" },
   { id: "cfb", name: "College Football", desc: "Scores & rankings", logo: "assets/logos/cfp.png", color: "rgba(248, 88, 0, .2)" },
   { id: "cbb", name: "College Basketball", desc: "Men's & women's", logo: "assets/logos/ncaa.png", color: "rgba(76, 194, 255, .18)" },
-  { id: "golf", name: "Golf", desc: "PGA leaderboard", logo: "https://www.liblogo.com/img-logo/pg7180p713-pga-tour-logo-pga-tour-scores-news-schedule-highlights-statistics-and-analysis.png", color: "rgba(42, 166, 74, .22)" },
-  { id: "epl", name: "Football Club", desc: "Premier League & UCL", logo: "https://toppng.com/public/uploads/preview/premier-league-logo-vector-11573944614zjyyupnt6z.png", color: "rgba(0, 255, 133, .16)" },
-  { id: "f1", name: "Formula 1", desc: "Races, drivers & laps", logo: "https://city-png.b-cdn.net/thumbnail/thumbnail_public/uploads/preview/hd-f1-the-official-formula-1-transparent-png-701751712229525ajvwddtfme.png?v=2025093023", color: "rgba(225, 6, 0, .22)" },
-  { id: "nhl", name: "NHL", desc: "Pro hockey", logo: "https://image.pngaaa.com/605/7041605-middle.png", color: "rgba(160, 174, 192, .16)" }
+  { id: "golf", name: "Golf", desc: "PGA leaderboard", logo: "assets/logos/pga.png", color: "rgba(42, 166, 74, .22)" },
+  { id: "epl", name: "Football Club", desc: "Premier League & UCL", logo: "assets/logos/premier-league.png", color: "rgba(0, 255, 133, .16)" },
+  { id: "f1", name: "Formula 1", desc: "Races, drivers & laps", logo: "assets/logos/f1.png", color: "rgba(225, 6, 0, .22)" },
+  { id: "nhl", name: "NHL", desc: "Pro hockey", logo: "assets/logos/nhl.png", color: "rgba(160, 174, 192, .16)" }
 ];
 
 // How each league asks ESPN for live scores straight from the phone.
