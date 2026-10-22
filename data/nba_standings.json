@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T01:46:44Z",
+  "updated": "2026-10-22T02:15:13Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -7,16 +7,16 @@
         "name": "Eastern Conference",
         "teams": [
           {
-            "name": "Washington Wizards",
-            "abbr": "WSH",
+            "name": "Detroit Pistons",
+            "abbr": "DET",
             "record": "1-0",
             "pct": "1.000",
             "gb": "-",
             "streak": "W1"
           },
           {
-            "name": "Detroit Pistons",
-            "abbr": "DET",
+            "name": "Atlanta Hawks",
+            "abbr": "ATL",
             "record": "1-0",
             "pct": "1.000",
             "gb": "-",
@@ -31,8 +31,24 @@
             "streak": "W1"
           },
           {
+            "name": "Washington Wizards",
+            "abbr": "WSH",
+            "record": "1-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W1"
+          },
+          {
             "name": "New York Knicks",
             "abbr": "NY",
+            "record": "0-1",
+            "pct": ".000",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
+            "name": "Orlando Magic",
+            "abbr": "ORL",
             "record": "0-1",
             "pct": ".000",
             "gb": "1",
@@ -53,14 +69,6 @@
             "pct": ".000",
             "gb": "1",
             "streak": "L1"
-          },
-          {
-            "name": "Atlanta Hawks",
-            "abbr": "ATL",
-            "record": "0-0",
-            "pct": ".000",
-            "gb": "0.5",
-            "streak": "-"
           },
           {
             "name": "Chicago Bulls",
@@ -97,14 +105,6 @@
           {
             "name": "Brooklyn Nets",
             "abbr": "BKN",
-            "record": "0-0",
-            "pct": ".000",
-            "gb": "0.5",
-            "streak": "-"
-          },
-          {
-            "name": "Orlando Magic",
-            "abbr": "ORL",
             "record": "0-0",
             "pct": ".000",
             "gb": "0.5",
