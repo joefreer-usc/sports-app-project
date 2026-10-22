@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T04:59:07Z",
+  "updated": "2026-10-22T05:12:51Z",
   "data": {
     "games": [
       {
@@ -225,13 +225,13 @@
       {
         "id": "401909842",
         "date": "2026-10-22T02:30Z",
-        "state": "in",
-        "detail": "End of 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "score": "96",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
@@ -239,9 +239,9 @@
           "name": "LA Clippers",
           "abbr": "LAC",
           "score": "121",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -517,7 +517,7 @@
           "name": "LA Clippers",
           "abbr": "LAC",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
@@ -547,7 +547,7 @@
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
