@@ -15,6 +15,18 @@ const SPORTS = [
   { id: "f1", label: "F1", kind: "f1", file: "data/f1.json" }
 ];
 
+// How each league asks ESPN for live scores straight from the phone.
+//  - query: one request with this query string
+//  - days:  one request per day (offsets from today), plus an optional extra query
+const LIVE = {
+  nfl:  { query: "" },
+  cfb:  { query: "?groups=80&limit=200" },
+  nba:  { days: [-1, 0] },
+  mlb:  { days: [-1, 0] },
+  cbb:  { days: [-1, 0], extra: "&groups=50&limit=400" },
+  wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" }
+};
+
 const view = document.getElementById("view");
 const tabs = document.getElementById("tabs");
 const updatedEl = document.getElementById("updated");
@@ -594,7 +606,9 @@ function renderGolf(payload) {
 function renderLeague(sport, scores, extra) {
   let html = sideSwitch(sport);
   if (scores) {
-    html += renderGames((scores.data && scores.data.games) || []);
+    // The games sit in their own box so live updates can swap them without
+    // collapsing the standings dropdown below.
+    html += '<div id="games">' + renderGames((scores.data && scores.data.games) || []) + "</div>";
   } else {
     html += '<section class="card"><h2>Scores</h2><div class="muted">No scores yet.</div></section>';
   }
@@ -608,10 +622,9 @@ function renderLeague(sport, scores, extra) {
 
 // ---- box score (tap a game) -------------------------------------------------
 
-// The box score is requested straight from ESPN when you tap a game.
-async function getSummary(espnPath, id) {
-  const q = "/apis/site/v2/sports/" + espnPath + "/summary?event=" + encodeURIComponent(id);
-  const urls = ["https://site.api.espn.com" + q, "https://site.web.api.espn.com" + q];
+// Asks ESPN directly from the browser (box scores and live scores both use this).
+async function espnGet(path) {
+  const urls = ["https://site.api.espn.com" + path, "https://site.web.api.espn.com" + path];
   let lastErr = new Error("no response");
   for (const url of urls) {
     try {
@@ -623,6 +636,11 @@ async function getSummary(espnPath, id) {
     }
   }
   throw lastErr;
+}
+
+// The box score is requested straight from ESPN when you tap a game.
+function getSummary(espnPath, id) {
+  return espnGet("/apis/site/v2/sports/" + espnPath + "/summary?event=" + encodeURIComponent(id));
 }
 
 function cap(s) {
@@ -877,14 +895,127 @@ async function show() {
     const scores = results[0].status === "fulfilled" ? results[0].value : null;
     const extra = results[1].status === "fulfilled" ? results[1].value : null;
     if (!scores && !extra) throw new Error("no data");
-    view.innerHTML = renderLeague(sport, scores, extra);
+    loaded[sport.id] = { scores: scores, extra: extra };
+    const shown = scores ? { updated: scores.updated, data: { games: mergedGames(sport.id, scores) } } : null;
+    view.innerHTML = renderLeague(sport, shown, extra);
     updatedEl.textContent = scores && scores.updated ? "Scores changed " + timeAgo(scores.updated) : "";
+    refreshLive(); // if a game is on, grab fresher scores right away
   } catch (err) {
     if (current !== sport.id) return;
     updatedEl.textContent = "";
     view.innerHTML = NO_DATA;
   }
 }
+
+// ---- live scores straight from ESPN ------------------------------------------
+// While a game is on (or about to start), the page asks ESPN for fresh scores
+// every 30 seconds. It only swaps the games list, so nothing else on the page jumps.
+
+const loaded = {};   // sport id -> { scores, extra } as last read from the data files
+const overlay = {};  // sport id -> { at, games: { id: game } } fresher copies fetched from ESPN
+let liveBusy = false;
+
+function parseEspnEvent(e) {
+  const comp = (e.competitions && e.competitions[0]) || {};
+  const side = (which) => {
+    const x = (comp.competitors || []).find((c) => c.homeAway === which);
+    if (!x) return { name: "", abbr: "", score: "", record: "", rank: 0, winner: false };
+    const t = x.team || {};
+    let rank = parseInt(x.curatedRank && x.curatedRank.current, 10);
+    if (isNaN(rank) || rank < 1 || rank > 25) rank = 0;
+    return {
+      name: t.displayName || t.name || "",
+      abbr: t.abbreviation || "",
+      score: x.score == null ? "" : String(x.score),
+      record: x.records && x.records[0] ? (x.records[0].summary || "") : "",
+      rank: rank,
+      winner: x.winner === true
+    };
+  };
+  const st = (e.status && e.status.type) || {};
+  return {
+    id: String(e.id || ""),
+    date: e.date || "",
+    state: st.state || "",
+    detail: st.shortDetail || st.detail || "",
+    away: side("away"),
+    home: side("home")
+  };
+}
+
+function parseEspnScoreboard(d) {
+  let events = d && d.events;
+  if (!events && d && d.leagues && d.leagues[0]) events = d.leagues[0].events;
+  return (events || []).map(parseEspnEvent).filter((g) => g.id);
+}
+
+function ymd(offsetDays) {
+  const d = new Date(Date.now() + offsetDays * 86400000);
+  return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0");
+}
+
+function liveRequests(sport) {
+  const base = "/apis/site/v2/sports/" + sport.espn + "/scoreboard";
+  const cfg = LIVE[sport.id] || { query: "" };
+  if (cfg.days) return cfg.days.map((off) => base + "?dates=" + ymd(off) + (cfg.extra || ""));
+  return [base + (cfg.query || "")];
+}
+
+// Data-file games, with any fresher copies from ESPN laid over them.
+function mergedGames(sportId, scores) {
+  const base = (scores && scores.data && scores.data.games) || [];
+  const ov = overlay[sportId];
+  if (!ov) return base;
+  const fileMs = Date.parse(scores.updated);
+  if (!isNaN(fileMs) && ov.at <= fileMs) return base; // the data file is newer, use it
+  const seen = {};
+  const out = base.map((g) => { seen[g.id] = true; return ov.games[g.id] || g; });
+  if (ov.at > Date.now() - 10 * 60 * 1000) {
+    Object.keys(ov.games).forEach((id) => { if (!seen[id]) out.push(ov.games[id]); });
+  }
+  return out;
+}
+
+// Worth polling when a game is in progress or starts within 15 minutes.
+function anyActive(games) {
+  const now = Date.now();
+  return games.some((g) => {
+    if (g.state === "in") return true;
+    const start = Date.parse(g.date);
+    return g.state === "pre" && !isNaN(start) && start - now < 15 * 60 * 1000 && start - now > -3600 * 1000;
+  });
+}
+
+async function refreshLive() {
+  const sport = SPORTS.find((s) => s.id === current);
+  if (!sport || sport.kind !== "league" || detail || liveBusy || document.hidden) return;
+  const L = loaded[sport.id];
+  if (!L || !L.scores || !anyActive(mergedGames(sport.id, L.scores))) return;
+
+  liveBusy = true;
+  try {
+    const results = await Promise.allSettled(liveRequests(sport).map((p) => espnGet(p)));
+    const good = results.filter((r) => r.status === "fulfilled");
+    if (!good.length) return; // ESPN didn't answer; keep what's on screen
+
+    const fresh = {};
+    good.forEach((r) => parseEspnScoreboard(r.value).forEach((g) => { fresh[g.id] = g; }));
+    overlay[sport.id] = { at: Date.now(), games: Object.assign({}, (overlay[sport.id] || {}).games, fresh) };
+
+    if (current !== sport.id || detail) return; // you moved on while it loaded
+    const box = document.getElementById("games");
+    if (!box) return;
+    box.innerHTML = renderGames(mergedGames(sport.id, L.scores));
+    updatedEl.textContent = "Live · " +
+      new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit", second: "2-digit" });
+  } catch (err) {
+    /* ignore; the next try is 30 seconds away */
+  } finally {
+    liveBusy = false;
+  }
+}
+
+setInterval(refreshLive, 30 * 1000);
 
 // Refresh every 5 minutes while the app is open, and when you come back to it.
 setInterval(() => { if (!document.hidden) show(); }, 5 * 60 * 1000);
