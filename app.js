@@ -11,6 +11,9 @@ const SPORTS = [
   // Men's and women's college basketball share one tab with a switch at the top.
   { id: "cbb", label: "CBB", kind: "league", espn: "basketball/mens-college-basketball", scores: "data/cbb.json", extra: "data/cbb_rankings.json", extraType: "rankings", group: "cbb", side: "Men's" },
   { id: "wcbb", label: "CBB", kind: "league", espn: "basketball/womens-college-basketball", scores: "data/wcbb.json", extra: "data/wcbb_rankings.json", extraType: "rankings", group: "cbb", side: "Women's", hidden: true },
+  // Premier League and Champions League share one tab with a switch at the top.
+  { id: "epl", label: "FC", kind: "league", espn: "soccer/eng.1", scores: "data/epl.json", extra: "data/epl_table.json", extraType: "table", group: "fc", side: "Premier League" },
+  { id: "ucl", label: "FC", kind: "league", espn: "soccer/uefa.champions", scores: "data/ucl.json", extra: "data/ucl_table.json", extraType: "table", group: "fc", side: "Champions League", hidden: true },
   { id: "golf", label: "Golf", kind: "golf", file: "data/golf.json" },
   { id: "f1", label: "F1", kind: "f1", file: "data/f1.json" }
 ];
@@ -24,7 +27,9 @@ const LIVE = {
   nba:  { days: [-1, 0] },
   mlb:  { days: [-1, 0] },
   cbb:  { days: [-1, 0], extra: "&groups=50&limit=400" },
-  wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" }
+  wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" },
+  epl:  { days: [-1, 0] },
+  ucl:  { days: [-1, 0] }
 };
 
 const view = document.getElementById("view");
@@ -603,6 +608,32 @@ function renderGolf(payload) {
   return html;
 }
 
+// League table for soccer: position, team, played, won, drawn, lost, goal difference, points.
+function renderSoccerTable(data) {
+  const groups = (data && data.groups) || [];
+  if (!groups.length) return "";
+  const season = data.season ? ' <small class="muted">' + esc(data.season) + "</small>" : "";
+
+  const body = groups.map((grp) => {
+    const teams = grp.teams || [];
+    const heads = [
+      { label: "#" }, { label: "Team" }, { label: "P", num: true }, { label: "W", num: true },
+      { label: "D", num: true }, { label: "L", num: true }, { label: "GD", num: true }, { label: "Pts", num: true }
+    ];
+    const rows = teams.map((t) =>
+      '<tr><td class="pos">' + esc(t.rank || "") + "</td><td>" + esc(t.name || t.abbr) +
+      (t.note ? '<span class="sub">' + esc(t.note) + "</span>" : "") + "</td>" +
+      '<td class="num">' + esc(t.played) + '</td><td class="num">' + esc(t.won) +
+      '</td><td class="num">' + esc(t.drawn) + '</td><td class="num">' + esc(t.lost) +
+      '</td><td class="num">' + esc(t.gd) + '</td><td class="num"><b>' + esc(t.pts) + "</b></td></tr>"
+    );
+    return (groups.length > 1 && grp.name ? "<h3>" + esc(grp.name) + "</h3>" : "") +
+      '<div class="scroll">' + table(heads, rows) + "</div>";
+  }).join("");
+
+  return '<section class="card"><details open><summary>League table' + season + "</summary>" + body + "</details></section>";
+}
+
 function renderLeague(sport, scores, extra) {
   let html = sideSwitch(sport);
   if (scores) {
@@ -613,9 +644,9 @@ function renderLeague(sport, scores, extra) {
     html += '<section class="card"><h2>Scores</h2><div class="muted">No scores yet.</div></section>';
   }
   if (extra) {
-    html += sport.extraType === "rankings"
-      ? renderRankings(extra.data)
-      : renderStandings(extra.data);
+    if (sport.extraType === "rankings") html += renderRankings(extra.data);
+    else if (sport.extraType === "table") html += renderSoccerTable(extra.data);
+    else html += renderStandings(extra.data);
   }
   return html;
 }

@@ -467,7 +467,7 @@ run_section("nba",           function() fetch_scores("basketball/nba", offsets =
 run_section("nba_standings", function() fetch_standings("basketball/nba"))
 
 run_section("mlb",           function() fetch_scores("baseball/mlb", offsets = day_offsets))
-run_section("mlb_standings", function() fetch_standings("baseball/mlb"))
+run_section("mlb_standings", function() fetch_standings("baseball/mlb", level = 3))
 
 run_section("cfb",           function() fetch_scores("football/college-football", "?groups=80&limit=200"))
 run_section("cfb_rankings",  function() fetch_rankings("football/college-football"))
@@ -481,6 +481,61 @@ run_section("cbb_rankings",  function() fetch_rankings("basketball/mens-college-
 
 run_section("wcbb",          function() fetch_scores("basketball/womens-college-basketball", offsets = day_offsets, extra = cbb_extra))
 run_section("wcbb_rankings", function() fetch_rankings("basketball/womens-college-basketball"))
+
+# ---- Soccer: Premier League and Champions League (ESPN, no key) -------------
+# Matches are spread out (weekends plus a few midweek nights), so look at the
+# last 3 days and the next 4, one day at a time.
+
+soccer_stat <- function(stats, nm) {
+  s <- stat_of(stats, nm)
+  if (is.null(s)) return("")
+  as.character(s$displayValue %||% s$value %||% "")
+}
+
+parse_soccer_entry <- function(en) {
+  st <- en$stats %||% list()
+  rank <- suppressWarnings(as.integer(soccer_stat(st, "rank")))
+  if (length(rank) == 0 || is.na(rank)) rank <- 0L
+  list(
+    rank   = rank,
+    name   = en$team$displayName %||% en$team$name %||% "",
+    abbr   = en$team$abbreviation %||% "",
+    played = soccer_stat(st, "gamesPlayed"),
+    won    = soccer_stat(st, "wins"),
+    drawn  = soccer_stat(st, "ties"),
+    lost   = soccer_stat(st, "losses"),
+    gd     = soccer_stat(st, "pointDifferential"),
+    pts    = soccer_stat(st, "points"),
+    note   = en$note$description %||% ""
+  )
+}
+
+collect_soccer_groups <- function(node) {
+  groups <- list()
+  entries <- node$standings$entries
+  if (length(entries) > 0) {
+    teams <- lapply(entries, parse_soccer_entry)
+    ord <- order(vapply(teams, function(x) if (x$rank > 0) x$rank else 999L, integer(1)))
+    groups[[length(groups) + 1]] <- list(name = node$name %||% "", teams = teams[ord])
+  }
+  for (ch in node$children %||% list()) groups <- c(groups, collect_soccer_groups(ch))
+  groups
+}
+
+fetch_soccer_table <- function(sport_path) {
+  d <- get_json(paste0(espn_v2, sport_path, "/standings"))
+  season <- tryCatch(d$children[[1]]$standings$seasonDisplayName, error = function(e) NULL) %||%
+    tryCatch(d$children[[1]]$name, error = function(e) NULL)
+  list(season = season %||% "", groups = collect_soccer_groups(d))
+}
+
+soccer_offsets <- -3:4
+
+run_section("epl",       function() fetch_scores("soccer/eng.1", offsets = soccer_offsets))
+run_section("epl_table", function() fetch_soccer_table("soccer/eng.1"))
+
+run_section("ucl",       function() fetch_scores("soccer/uefa.champions", offsets = soccer_offsets))
+run_section("ucl_table", function() fetch_soccer_table("soccer/uefa.champions"))
 
 # ---- PGA Tour golf (ESPN, no key) --------------------------------------------
 # Shows the current (or next) tournament's leaderboard plus the season schedule.
