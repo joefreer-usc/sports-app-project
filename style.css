@@ -272,6 +272,27 @@ a { color: var(--accent); }
 tr.best td { color: var(--accent); font-weight: 600; }
 tr.fastest td { color: #c77dff; }
 
+/* NFL matchup preview */
+.pregame-label { margin: 20px 2px 8px; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+.pregame-card h2 { margin-bottom: 12px; }
+.pregame-list > div, .injury-row { display: flex; justify-content: space-between; gap: 18px; padding: 9px 0; border-top: 1px solid var(--line); }
+.pregame-list > div:first-child { border-top: 0; }
+.pregame-list span, .injury-row span { color: var(--muted); }
+.pregame-list strong { max-width: 70%; text-align: right; }
+.odds-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.odds-grid > div { padding: 12px; border-radius: 11px; background: var(--bg); }
+.odds-grid span, .odds-grid strong { display: block; }
+.odds-grid span { margin-bottom: 3px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .7px; }
+.comparison-grid, .injury-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.comparison-team h3, .injury-grid h3 { margin: 0 0 8px; color: var(--text); font-size: 14px; }
+.leader-row { display: flex; align-items: center; gap: 9px; padding: 8px 0; border-top: 1px solid var(--line); }
+.position-pill { width: 52px; flex: 0 0 52px; padding: 4px 5px; border-radius: 999px; background: rgba(76,194,255,.12); color: var(--accent); font-size: 10px; font-weight: 800; text-align: center; }
+.leader-row strong, .leader-row small { display: block; }
+.leader-row small { color: var(--muted); }
+.injury-row { display: block; }
+.injury-row strong, .injury-row span { display: block; }
+.injury-row span { margin-top: 2px; font-size: 12px; }
+
 @media (max-width: 820px) {
   .league-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   #updated { display: none; }
@@ -289,4 +310,6 @@ tr.fastest td { color: #c77dff; }
   .league-tile { min-height: 158px; padding: 16px; border-radius: 17px; }
   .league-mark, .league-logo { width: 52px; height: 52px; }
   .league-name { font-size: 18px; }
+  .odds-grid { grid-template-columns: 1fr; }
+  .comparison-grid, .injury-grid { grid-template-columns: 1fr; }
 }

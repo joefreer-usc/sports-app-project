@@ -519,7 +519,7 @@ function gameCard(g, tappable) {
     '<div class="status ' + esc(g.state) + '">' + status + (tappable ? ' <span class="chev">&rsaquo;</span>' : "") + "</div></div>";
 }
 
-function renderGames(games) {
+function renderGames(games, sport) {
   if (!games.length) {
     return '<section class="card"><h2>Scores</h2>' +
       '<div class="muted">No games to show right now.</div></section>';
@@ -543,7 +543,7 @@ function renderGames(games) {
 
   return groups.map((grp) =>
     '<section class="card"><h2>' + esc(grp.label) + "</h2>" +
-    grp.games.map((g) => gameCard(g, g.state !== "pre" && !!g.id)).join("") + "</section>"
+    grp.games.map((g) => gameCard(g, !!g.id && (g.state !== "pre" || (sport && sport.id === "nfl")))).join("") + "</section>"
   ).join("");
 }
 
@@ -701,7 +701,7 @@ function renderLeague(sport, scores, extra) {
   if (scores) {
     // The games sit in their own box so live updates can swap them without
     // collapsing the standings dropdown below.
-    html += '<div id="games">' + renderGames((scores.data && scores.data.games) || []) + "</div>";
+    html += '<div id="games">' + renderGames((scores.data && scores.data.games) || [], sport) + "</div>";
   } else {
     html += '<section class="card"><h2>Scores</h2><div class="muted">No scores yet.</div></section>';
   }
@@ -849,6 +849,123 @@ function renderBoxscore(data) {
   return html;
 }
 
+// ---- NFL pregame matchup ---------------------------------------------------
+
+function renderPregameInfo(data, game) {
+  const info = data.gameInfo || {};
+  const venue = info.venue || {};
+  const weather = info.weather || {};
+  const broadcasts = ((data.header && data.header.competitions && data.header.competitions[0] &&
+    data.header.competitions[0].broadcasts) || [])
+    .flatMap((b) => b.names || []).filter(Boolean);
+  const rows = [];
+  const start = Date.parse(game.date);
+  if (!isNaN(start)) rows.push(["Kickoff", new Date(start).toLocaleString([], {
+    weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit"
+  })]);
+  const place = [venue.fullName, venue.address && venue.address.city, venue.address && venue.address.state]
+    .filter(Boolean).join(" · ");
+  if (place) rows.push(["Venue", place]);
+  const forecast = [weather.displayValue, weather.temperature != null ? weather.temperature + "°" : ""]
+    .filter(Boolean).join(" · ");
+  if (forecast) rows.push(["Weather", forecast]);
+  if (broadcasts.length) rows.push(["Watch", broadcasts.join(", ")]);
+  if (!rows.length) return "";
+  return '<section class="card pregame-card"><h2>Game information</h2><div class="pregame-list">' +
+    rows.map((r) => '<div><span>' + esc(r[0]) + '</span><strong>' + esc(r[1]) + '</strong></div>').join("") +
+    "</div></section>";
+}
+
+function oddsValue(x, key) {
+  if (!x) return "";
+  const value = x[key];
+  return value == null ? "" : String(value);
+}
+
+function renderPregameOdds(data) {
+  const lines = data.pickcenter || [];
+  if (!lines.length) {
+    return '<section class="card pregame-card"><h2>Odds</h2><div class="muted">Odds are not available for this matchup yet.</div></section>';
+  }
+  const line = lines[0] || {};
+  const provider = line.provider && line.provider.name ? line.provider.name : "Consensus";
+  const home = line.homeTeamOdds || {};
+  const away = line.awayTeamOdds || {};
+  const items = [];
+  if (line.details) items.push(["Spread", line.details]);
+  if (line.overUnder != null) items.push(["Total", "O/U " + line.overUnder]);
+  const awayMl = oddsValue(away, "moneyLine") || oddsValue(away, "moneyline");
+  const homeMl = oddsValue(home, "moneyLine") || oddsValue(home, "moneyline");
+  if (awayMl || homeMl) items.push(["Moneyline", [awayMl, homeMl].filter(Boolean).join(" / ")]);
+  return '<section class="card pregame-card"><h2>Odds <small>' + esc(provider) + '</small></h2>' +
+    (items.length ? '<div class="odds-grid">' + items.map((x) => '<div><span>' + esc(x[0]) + '</span><strong>' +
+      esc(x[1]) + '</strong></div>').join("") + '</div>' : '<div class="muted">The line has not been posted yet.</div>') +
+    '<p class="muted small">Odds can move. For information only.</p></section>';
+}
+
+function leaderGroups(data) {
+  const wanted = [
+    { test: /pass/i, label: "QB" },
+    { test: /rush/i, label: "RB" },
+    { test: /receiv/i, label: "WR" },
+    { test: /sack|tackle|interception/i, label: "Defense" }
+  ];
+  return ((data.leaders || [])).map((teamBlock) => {
+    const team = teamBlock.team || {};
+    const groups = teamBlock.leaders || [];
+    const picked = wanted.map((w) => {
+      const group = groups.find((g) => w.test.test(g.name || g.displayName || ""));
+      const lead = group && group.leaders && group.leaders[0];
+      if (!lead) return null;
+      const athlete = lead.athlete || {};
+      return { label: w.label, name: athlete.shortName || athlete.displayName || "", value: lead.displayValue || "" };
+    }).filter(Boolean);
+    return { name: team.displayName || team.name || team.abbreviation || "Team", groups: picked };
+  }).filter((x) => x.groups.length);
+}
+
+function renderPregameLeaders(data) {
+  const teams = leaderGroups(data);
+  if (!teams.length) {
+    return '<section class="card pregame-card"><h2>Key-player comparison</h2>' +
+      '<div class="muted">Season leaders will appear when ESPN posts the matchup preview.</div></section>';
+  }
+  return '<section class="card pregame-card"><h2>Key-player comparison</h2><div class="comparison-grid">' +
+    teams.map((t) => '<div class="comparison-team"><h3>' + esc(t.name) + '</h3>' + t.groups.map((g) =>
+      '<div class="leader-row"><span class="position-pill">' + esc(g.label) + '</span><div><strong>' + esc(g.name) +
+      '</strong><small>' + esc(g.value) + '</small></div></div>').join("") + '</div>').join("") + '</div></section>';
+}
+
+function renderPregameInjuries(data) {
+  const teams = data.injuries || [];
+  if (!teams.length) {
+    return '<section class="card pregame-card"><h2>Injury report</h2><div class="muted">No injury report is available yet.</div></section>';
+  }
+  return '<section class="card pregame-card"><h2>Injury report</h2><div class="injury-grid">' + teams.map((t) => {
+    const team = t.team || {};
+    const list = (t.injuries || []).slice(0, 8);
+    return '<div><h3>' + esc(team.displayName || team.name || team.abbreviation || "Team") + '</h3>' +
+      (list.length ? list.map((inj) => {
+        const athlete = inj.athlete || {};
+        const detail = inj.details || {};
+        const note = detail.detail || detail.type || inj.status || "Listed";
+        return '<div class="injury-row"><strong>' + esc(athlete.shortName || athlete.displayName || "Player") +
+          '</strong><span>' + esc(note) + '</span></div>';
+      }).join("") : '<div class="muted small">No players listed.</div>') + '</div>';
+  }).join("") + '</div></section>';
+}
+
+function renderPregame(data, game) {
+  let html = '<div class="pregame-label">MATCHUP PREVIEW</div>';
+  html += renderPregameInfo(data, game);
+  html += renderPregameOdds(data);
+  html += renderPregameLeaders(data);
+  const teamStats = renderTeamStats(data);
+  if (teamStats) html += teamStats.replace("Team stats", "Team comparison");
+  html += renderPregameInjuries(data);
+  return html;
+}
+
 function backButton() {
   return '<button type="button" class="back" id="back">&lsaquo; Back to scores</button>';
 }
@@ -878,7 +995,9 @@ async function showDetail() {
   const header = backButton() + '<section class="card">' + gameCard(d.game, false) + "</section>";
 
   if (results[1].status === "fulfilled") {
-    view.innerHTML = header + renderBoxscore(results[1].value);
+    view.innerHTML = header + (d.game.state === "pre"
+      ? renderPregame(results[1].value, d.game)
+      : renderBoxscore(results[1].value));
   } else {
     view.innerHTML = header +
       '<div class="message">Couldn\'t load the box score. It may not be available yet, or ESPN may be ' +
@@ -1091,7 +1210,7 @@ async function refreshLive() {
     if (current !== sport.id || detail) return; // you moved on while it loaded
     const box = document.getElementById("games");
     if (!box) return;
-    box.innerHTML = renderGames(mergedGames(sport.id, L.scores));
+    box.innerHTML = renderGames(mergedGames(sport.id, L.scores), sport);
     updatedEl.textContent = "Live · " +
       new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit", second: "2-digit" });
   } catch (err) {
