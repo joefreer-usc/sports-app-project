@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-21T02:09:48Z",
+  "updated": "2026-10-22T05:59:17Z",
   "data": {
     "season": "2026",
     "groups": [
       {
-        "name": "American League",
+        "name": "American League East",
         "teams": [
           {
             "name": "Tampa Bay Rays",
@@ -31,38 +31,6 @@
             "streak": "L1"
           },
           {
-            "name": "Cleveland Guardians",
-            "abbr": "CLE",
-            "record": "85-77",
-            "pct": ".525",
-            "gb": "13",
-            "streak": "L1"
-          },
-          {
-            "name": "Chicago White Sox",
-            "abbr": "CHW",
-            "record": "84-78",
-            "pct": ".519",
-            "gb": "14",
-            "streak": "W1"
-          },
-          {
-            "name": "Houston Astros",
-            "abbr": "HOU",
-            "record": "81-81",
-            "pct": ".500",
-            "gb": "17",
-            "streak": "W2"
-          },
-          {
-            "name": "Texas Rangers",
-            "abbr": "TEX",
-            "record": "80-82",
-            "pct": ".494",
-            "gb": "18",
-            "streak": "L1"
-          },
-          {
             "name": "Baltimore Orioles",
             "abbr": "BAL",
             "record": "79-82",
@@ -77,13 +45,34 @@
             "pct": ".488",
             "gb": "19",
             "streak": "W1"
+          }
+        ]
+      },
+      {
+        "name": "American League Central",
+        "teams": [
+          {
+            "name": "Cleveland Guardians",
+            "abbr": "CLE",
+            "record": "85-77",
+            "pct": ".525",
+            "gb": "-",
+            "streak": "L1"
+          },
+          {
+            "name": "Chicago White Sox",
+            "abbr": "CHW",
+            "record": "84-78",
+            "pct": ".519",
+            "gb": "1",
+            "streak": "W1"
           },
           {
             "name": "Minnesota Twins",
             "abbr": "MIN",
             "record": "77-85",
             "pct": ".475",
-            "gb": "21",
+            "gb": "8",
             "streak": "W1"
           },
           {
@@ -91,7 +80,36 @@
             "abbr": "DET",
             "record": "76-86",
             "pct": ".469",
-            "gb": "22",
+            "gb": "9",
+            "streak": "L1"
+          },
+          {
+            "name": "Kansas City Royals",
+            "abbr": "KC",
+            "record": "69-93",
+            "pct": ".426",
+            "gb": "16",
+            "streak": "W1"
+          }
+        ]
+      },
+      {
+        "name": "American League West",
+        "teams": [
+          {
+            "name": "Houston Astros",
+            "abbr": "HOU",
+            "record": "81-81",
+            "pct": ".500",
+            "gb": "-",
+            "streak": "W2"
+          },
+          {
+            "name": "Texas Rangers",
+            "abbr": "TEX",
+            "record": "80-82",
+            "pct": ".494",
+            "gb": "1",
             "streak": "L1"
           },
           {
@@ -99,23 +117,15 @@
             "abbr": "SEA",
             "record": "76-86",
             "pct": ".469",
-            "gb": "22",
+            "gb": "5",
             "streak": "W2"
-          },
-          {
-            "name": "Kansas City Royals",
-            "abbr": "KC",
-            "record": "69-93",
-            "pct": ".426",
-            "gb": "29",
-            "streak": "W1"
           },
           {
             "name": "Athletics",
             "abbr": "ATH",
             "record": "64-98",
             "pct": ".395",
-            "gb": "34",
+            "gb": "17",
             "streak": "L2"
           },
           {
@@ -123,13 +133,58 @@
             "abbr": "LAA",
             "record": "62-100",
             "pct": ".383",
-            "gb": "36",
+            "gb": "19",
             "streak": "L2"
           }
         ]
       },
       {
-        "name": "National League",
+        "name": "National League East",
+        "teams": [
+          {
+            "name": "Atlanta Braves",
+            "abbr": "ATL",
+            "record": "94-68",
+            "pct": ".580",
+            "gb": "-",
+            "streak": "L1"
+          },
+          {
+            "name": "Philadelphia Phillies",
+            "abbr": "PHI",
+            "record": "88-74",
+            "pct": ".543",
+            "gb": "6",
+            "streak": "W1"
+          },
+          {
+            "name": "Miami Marlins",
+            "abbr": "MIA",
+            "record": "80-82",
+            "pct": ".494",
+            "gb": "14",
+            "streak": "W1"
+          },
+          {
+            "name": "Washington Nationals",
+            "abbr": "WSH",
+            "record": "77-85",
+            "pct": ".475",
+            "gb": "17",
+            "streak": "W1"
+          },
+          {
+            "name": "New York Mets",
+            "abbr": "NYM",
+            "record": "74-88",
+            "pct": ".457",
+            "gb": "20",
+            "streak": "L1"
+          }
+        ]
+      },
+      {
+        "name": "National League Central",
         "teams": [
           {
             "name": "Milwaukee Brewers",
@@ -140,30 +195,6 @@
             "streak": "W5"
           },
           {
-            "name": "Los Angeles Dodgers",
-            "abbr": "LAD",
-            "record": "100-62",
-            "pct": ".617",
-            "gb": "3",
-            "streak": "W3"
-          },
-          {
-            "name": "Atlanta Braves",
-            "abbr": "ATL",
-            "record": "94-68",
-            "pct": ".580",
-            "gb": "9",
-            "streak": "L1"
-          },
-          {
-            "name": "San Diego Padres",
-            "abbr": "SD",
-            "record": "91-71",
-            "pct": ".562",
-            "gb": "12",
-            "streak": "W2"
-          },
-          {
             "name": "Chicago Cubs",
             "abbr": "CHC",
             "record": "89-73",
@@ -172,35 +203,11 @@
             "streak": "W1"
           },
           {
-            "name": "Philadelphia Phillies",
-            "abbr": "PHI",
-            "record": "88-74",
-            "pct": ".543",
-            "gb": "15",
-            "streak": "W1"
-          },
-          {
-            "name": "Arizona Diamondbacks",
-            "abbr": "ARI",
-            "record": "86-76",
-            "pct": ".531",
-            "gb": "17",
-            "streak": "L2"
-          },
-          {
             "name": "Pittsburgh Pirates",
             "abbr": "PIT",
             "record": "82-80",
             "pct": ".506",
             "gb": "21",
-            "streak": "W1"
-          },
-          {
-            "name": "Miami Marlins",
-            "abbr": "MIA",
-            "record": "80-82",
-            "pct": ".494",
-            "gb": "23",
             "streak": "W1"
           },
           {
@@ -212,35 +219,48 @@
             "streak": "L4"
           },
           {
-            "name": "Washington Nationals",
-            "abbr": "WSH",
-            "record": "77-85",
-            "pct": ".475",
-            "gb": "26",
-            "streak": "W1"
-          },
-          {
             "name": "Cincinnati Reds",
             "abbr": "CIN",
             "record": "75-87",
             "pct": ".463",
             "gb": "28",
             "streak": "L1"
+          }
+        ]
+      },
+      {
+        "name": "National League West",
+        "teams": [
+          {
+            "name": "Los Angeles Dodgers",
+            "abbr": "LAD",
+            "record": "100-62",
+            "pct": ".617",
+            "gb": "-",
+            "streak": "W3"
           },
           {
-            "name": "New York Mets",
-            "abbr": "NYM",
-            "record": "74-88",
-            "pct": ".457",
-            "gb": "29",
-            "streak": "L1"
+            "name": "San Diego Padres",
+            "abbr": "SD",
+            "record": "91-71",
+            "pct": ".562",
+            "gb": "9",
+            "streak": "W2"
+          },
+          {
+            "name": "Arizona Diamondbacks",
+            "abbr": "ARI",
+            "record": "86-76",
+            "pct": ".531",
+            "gb": "14",
+            "streak": "L2"
           },
           {
             "name": "San Francisco Giants",
             "abbr": "SF",
             "record": "65-97",
             "pct": ".401",
-            "gb": "38",
+            "gb": "35",
             "streak": "L5"
           },
           {
@@ -248,7 +268,7 @@
             "abbr": "COL",
             "record": "58-104",
             "pct": ".358",
-            "gb": "45",
+            "gb": "42",
             "streak": "L1"
           }
         ]
