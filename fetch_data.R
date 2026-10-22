@@ -412,23 +412,30 @@ parse_entry <- function(en) {
   )
 }
 
-collect_groups <- function(node) {
+collect_groups <- function(node, skip_parents = FALSE) {
   groups <- list()
   entries <- node$standings$entries
+  # With division-level standings, a conference can also carry its own team list;
+  # skip it so each team only appears once, under its division.
+  if (skip_parents && length(node$children %||% list()) > 0) entries <- NULL
   if (length(entries) > 0) {
     teams <- lapply(entries, parse_entry)
     teams <- teams[order(-vapply(teams, function(x) x$sort, numeric(1)))]
     teams <- lapply(teams, function(x) { x$sort <- NULL; x })
     groups[[length(groups) + 1]] <- list(name = node$name %||% "", teams = teams)
   }
-  for (ch in node$children %||% list()) groups <- c(groups, collect_groups(ch))
+  for (ch in node$children %||% list()) groups <- c(groups, collect_groups(ch, skip_parents))
   groups
 }
 
-fetch_standings <- function(sport_path) {
-  d <- get_json(paste0(espn_v2, sport_path, "/standings"))
-  season <- tryCatch(d$children[[1]]$standings$seasonDisplayName, error = function(e) NULL)
-  list(season = season %||% "", groups = collect_groups(d))
+# level = 3 asks ESPN for divisions (AFC East, NFC North, ...) instead of whole conferences.
+fetch_standings <- function(sport_path, level = NULL) {
+  q <- if (is.null(level)) "" else paste0("?level=", level)
+  d <- get_json(paste0(espn_v2, sport_path, "/standings", q))
+  season <- tryCatch(d$children[[1]]$standings$seasonDisplayName, error = function(e) NULL) %||%
+    tryCatch(d$children[[1]]$children[[1]]$standings$seasonDisplayName, error = function(e) NULL) %||%
+    tryCatch(as.character(d$children[[1]]$children[[1]]$standings$season), error = function(e) NULL)
+  list(season = season %||% "", groups = collect_groups(d, skip_parents = !is.null(level)))
 }
 
 # College football and basketball: the AP Top 25 poll.
@@ -454,7 +461,7 @@ fetch_rankings <- function(sport_path) {
 day_offsets <- c(-1, 0, 1, 2)
 
 run_section("nfl",           function() fetch_scores("football/nfl"))
-run_section("nfl_standings", function() fetch_standings("football/nfl"))
+run_section("nfl_standings", function() fetch_standings("football/nfl", level = 3))
 
 run_section("nba",           function() fetch_scores("basketball/nba", offsets = day_offsets))
 run_section("nba_standings", function() fetch_standings("basketball/nba"))
