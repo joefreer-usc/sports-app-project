@@ -1,82 +1,16 @@
 {
-  "updated": "2026-10-21T23:58:58Z",
+  "updated": "2026-10-22T00:03:11Z",
   "data": {
     "games": [
-      {
-        "id": "401909088",
-        "date": "2026-10-20T19:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Boston Celtics",
-          "abbr": "BOS",
-          "score": "113",
-          "record": "0-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Detroit Pistons",
-          "abbr": "DET",
-          "score": "121",
-          "record": "1-0",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909089",
-        "date": "2026-10-20T23:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Philadelphia 76ers",
-          "abbr": "PHI",
-          "score": "106",
-          "record": "1-0",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "New York Knicks",
-          "abbr": "NY",
-          "score": "100",
-          "record": "0-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909090",
-        "date": "2026-10-21T01:50Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Oklahoma City Thunder",
-          "abbr": "OKC",
-          "score": "116",
-          "record": "1-0",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "San Antonio Spurs",
-          "abbr": "SA",
-          "score": "104",
-          "record": "0-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401909834",
         "date": "2026-10-21T23:00Z",
         "state": "in",
-        "detail": "8:05 - 2nd",
+        "detail": "6:24 - 2nd",
         "away": {
           "name": "Atlanta Hawks",
           "abbr": "ATL",
-          "score": "40",
+          "score": "48",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -84,7 +18,7 @@
         "home": {
           "name": "Orlando Magic",
           "abbr": "ORL",
-          "score": "38",
+          "score": "42",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -94,11 +28,11 @@
         "id": "401909835",
         "date": "2026-10-21T23:00Z",
         "state": "in",
-        "detail": "6:57 - 2nd",
+        "detail": "6:09 - 2nd",
         "away": {
           "name": "Milwaukee Bucks",
           "abbr": "MIL",
-          "score": "34",
+          "score": "39",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -116,11 +50,11 @@
         "id": "401909091",
         "date": "2026-10-21T23:30Z",
         "state": "in",
-        "detail": "5:04 - 1st",
+        "detail": "3:02 - 1st",
         "away": {
           "name": "Minnesota Timberwolves",
           "abbr": "MIN",
-          "score": "27",
+          "score": "32",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -128,7 +62,7 @@
         "home": {
           "name": "Miami Heat",
           "abbr": "MIA",
-          "score": "19",
+          "score": "24",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -138,11 +72,11 @@
         "id": "401909836",
         "date": "2026-10-21T23:30Z",
         "state": "in",
-        "detail": "6:18 - 1st",
+        "detail": "5:33 - 1st",
         "away": {
           "name": "Charlotte Hornets",
           "abbr": "CHA",
-          "score": "9",
+          "score": "11",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -150,7 +84,7 @@
         "home": {
           "name": "Brooklyn Nets",
           "abbr": "BKN",
-          "score": "11",
+          "score": "12",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -160,11 +94,11 @@
         "id": "401909837",
         "date": "2026-10-21T23:30Z",
         "state": "in",
-        "detail": "6:45 - 1st",
+        "detail": "4:38 - 1st",
         "away": {
           "name": "Chicago Bulls",
           "abbr": "CHI",
-          "score": "8",
+          "score": "10",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -172,7 +106,7 @@
         "home": {
           "name": "Toronto Raptors",
           "abbr": "TOR",
-          "score": "14",
+          "score": "18",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -612,6 +546,182 @@
         "home": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909853",
+        "date": "2026-10-24T22:00Z",
+        "state": "pre",
+        "detail": "10/24 - 6:00 PM EDT",
+        "away": {
+          "name": "Miami Heat",
+          "abbr": "MIA",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Charlotte Hornets",
+          "abbr": "CHA",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909854",
+        "date": "2026-10-24T23:30Z",
+        "state": "pre",
+        "detail": "10/24 - 7:30 PM EDT",
+        "away": {
+          "name": "Brooklyn Nets",
+          "abbr": "BKN",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Cleveland Cavaliers",
+          "abbr": "CLE",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909855",
+        "date": "2026-10-24T23:30Z",
+        "state": "pre",
+        "detail": "10/24 - 7:30 PM EDT",
+        "away": {
+          "name": "Milwaukee Bucks",
+          "abbr": "MIL",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Philadelphia 76ers",
+          "abbr": "PHI",
+          "score": "0",
+          "record": "1-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909857",
+        "date": "2026-10-25T00:00Z",
+        "state": "pre",
+        "detail": "10/24 - 8:00 PM EDT",
+        "away": {
+          "name": "Washington Wizards",
+          "abbr": "WSH",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Chicago Bulls",
+          "abbr": "CHI",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909858",
+        "date": "2026-10-25T00:00Z",
+        "state": "pre",
+        "detail": "10/24 - 8:00 PM EDT",
+        "away": {
+          "name": "San Antonio Spurs",
+          "abbr": "SA",
+          "score": "0",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Dallas Mavericks",
+          "abbr": "DAL",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909856",
+        "date": "2026-10-25T00:30Z",
+        "state": "pre",
+        "detail": "10/24 - 8:30 PM EDT",
+        "away": {
+          "name": "Houston Rockets",
+          "abbr": "HOU",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Atlanta Hawks",
+          "abbr": "ATL",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909859",
+        "date": "2026-10-25T01:00Z",
+        "state": "pre",
+        "detail": "10/24 - 9:00 PM EDT",
+        "away": {
+          "name": "New Orleans Pelicans",
+          "abbr": "NO",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Denver Nuggets",
+          "abbr": "DEN",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909860",
+        "date": "2026-10-25T02:00Z",
+        "state": "pre",
+        "detail": "10/24 - 10:00 PM EDT",
+        "away": {
+          "name": "Golden State Warriors",
+          "abbr": "GS",
+          "score": "0",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Phoenix Suns",
+          "abbr": "PHX",
           "score": "0",
           "record": "0-0",
           "rank": 0,
