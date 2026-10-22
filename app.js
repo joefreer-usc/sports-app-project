@@ -1185,15 +1185,19 @@ async function showNFLTeam() {
   updatedEl.textContent = "";
   view.innerHTML = backButton() + '<div class="message">Loading team page&hellip;</div>';
   try {
-    const info = await espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(abbr) + "?enable=roster");
+    // Load the small profile first. Keeping roster data separate prevents one
+    // large or unavailable response from taking down the entire team page.
+    const info = await espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(abbr));
     if (detail !== d) return;
     const team = info.team || {};
     const id = team.id;
+    if (!id) throw new Error("Team ID unavailable");
     const year = (team.nextEvent && team.nextEvent[0] && team.nextEvent[0].season && team.nextEvent[0].season.year) || nflSeasonYear();
     const results = await Promise.allSettled([
       espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(id) + "/schedule?season=" + year),
       coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/types/2/teams/" + id + "/statistics"),
-      coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/teams/" + id + "/depthcharts")
+      coreGet("/v2/sports/football/leagues/nfl/seasons/" + year + "/teams/" + id + "/depthcharts"),
+      espnGet("/apis/site/v2/sports/football/nfl/teams/" + encodeURIComponent(id) + "/roster")
     ]);
     if (detail !== d) return;
     const logo = teamLogo(team);
@@ -1202,13 +1206,21 @@ async function showNFLTeam() {
       (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
       '<div><div class="eyebrow">NFL TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
       esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>';
+    const section = (render, fallback) => {
+      try { return render(); } catch (err) { return fallback; }
+    };
+    const roster = results[3].status === "fulfilled" ? results[3].value : {};
     view.innerHTML = header +
-      renderNFLStats(team, results[1].status === "fulfilled" ? results[1].value : null) +
-      renderNFLDepth(results[2].status === "fulfilled" ? results[2].value : {}, team) +
-      renderNFLSchedule(results[0].status === "fulfilled" ? results[0].value : {}, id);
+      section(() => renderNFLStats(team, results[1].status === "fulfilled" ? results[1].value : null),
+        '<section class="card team-section"><h2>Team stats</h2><div class="muted">Stats are temporarily unavailable.</div></section>') +
+      section(() => renderNFLDepth(results[2].status === "fulfilled" ? results[2].value : {}, roster),
+        '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart is temporarily unavailable.</div></section>') +
+      section(() => renderNFLSchedule(results[0].status === "fulfilled" ? results[0].value : {}, id),
+        '<section class="card team-section"><h2>Season schedule</h2><div class="muted">Schedule is temporarily unavailable.</div></section>');
   } catch (err) {
     if (detail !== d) return;
-    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this team right now. Try again in a minute.</div>';
+    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this team profile right now. ' +
+      '<button type="button" class="retry-team" data-team="' + esc(abbr) + '">Try again</button></div>';
   }
 }
 
