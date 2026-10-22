@@ -100,7 +100,7 @@ function renderHome() {
 async function renderLive() {
   updatedEl.textContent = "";
   view.innerHTML = '<div class="message">Finding live games&hellip;</div>';
-  const leagues = SPORTS.filter((s) => s.kind === "league" && !s.hidden);
+  const leagues = SPORTS.filter((s) => s.kind === "league");
   const results = await Promise.allSettled(leagues.map((s) => getJson(s.scores)));
   if (current !== "live") return;
   const live = [];
@@ -113,10 +113,21 @@ async function renderLive() {
     view.innerHTML = '<section class="empty-state"><h2>No games are live right now</h2>' +
       '<p>Check back when play begins, or choose a league from Home to see recent and upcoming games.</p>' +
       '<button type="button" data-go-home>Browse leagues</button></section>';
+    refreshLiveScreen();
     return;
   }
-  view.innerHTML = '<div class="section-title"><h2><span class="live-dot"></span>Live now</h2></div>' +
-    live.map((x) => '<section class="card"><h2>' + esc(x.sport.label) + '</h2>' + gameCard(x.game, false) + '</section>').join("");
+  renderLiveCards(live);
+  refreshLiveScreen();
+}
+
+function renderLiveCards(live) {
+  gamesById = {};
+  live.forEach((x) => { gamesById[x.sport.id + ":" + x.game.id] = x.game; });
+  view.innerHTML = '<div class="section-title"><h2><span class="live-dot"></span>Live now</h2>' +
+    '<span class="live-count">' + live.length + (live.length === 1 ? ' game' : ' games') + '</span></div>' +
+    '<section class="live-grid">' + live.map((x) =>
+      '<article class="live-league-card"><div class="league-tag">' + esc(x.sport.side || x.sport.label) + '</div>' +
+      gameCard(x.game, true, x.sport.id) + '</article>').join("") + '</section>';
 }
 
 function renderFavorites() {
@@ -484,14 +495,16 @@ function dayLabel(ms) {
 
 function teamRow(t, state, isWinner) {
   const rank = t.rank > 0 ? '<span class="rank">' + esc(t.rank) + "</span> " : "";
-  const rec = t.record ? " <small>" + esc(t.record) + "</small>" : "";
+  const rec = t.record ? "<small>" + esc(t.record) + "</small>" : "";
   const score = state === "pre" ? "" : esc(t.score);
+  const logo = t.logo ? '<img class="team-logo" src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
   return '<div class="team' + (isWinner ? " win" : "") + '">' +
-    '<span class="tname">' + rank + esc(t.name || t.abbr) + rec + "</span>" +
+    '<span class="team-mark"><span class="team-fallback">' + esc(t.abbr || "—") + '</span>' + logo + '</span>' +
+    '<span class="tname">' + rank + '<span class="team-name">' + esc(t.name || t.abbr) + '</span>' + rec + "</span>" +
     '<span class="score">' + score + "</span></div>";
 }
 
-function gameCard(g, tappable) {
+function gameCard(g, tappable, sportId) {
   const away = g.away || {};
   const home = g.home || {};
   let awayWin = !!away.winner;
@@ -511,12 +524,14 @@ function gameCard(g, tappable) {
   }
 
   const attrs = tappable
-    ? ' class="game tap" role="button" tabindex="0" data-id="' + esc(g.id) + '"'
+    ? ' class="game tap" role="button" tabindex="0" data-id="' + esc(g.id) + '"' +
+      (sportId ? ' data-sport="' + esc(sportId) + '"' : '')
     : ' class="game"';
 
   return "<div" + attrs + ">" +
+    '<div class="game-status"><span class="status ' + esc(g.state) + '">' + status + '</span></div>' +
     '<div class="teams">' + teamRow(away, g.state, awayWin) + teamRow(home, g.state, homeWin) + "</div>" +
-    '<div class="status ' + esc(g.state) + '">' + status + (tappable ? ' <span class="chev">&rsaquo;</span>' : "") + "</div></div>";
+    (tappable ? '<div class="view-game">View game <span aria-hidden="true">&rarr;</span></div>' : '') + '</div>';
 }
 
 function renderGames(games, sport) {
@@ -543,7 +558,7 @@ function renderGames(games, sport) {
 
   return groups.map((grp) =>
     '<section class="card"><h2>' + esc(grp.label) + "</h2>" +
-    grp.games.map((g) => gameCard(g, !!g.id && (g.state !== "pre" || (sport && sport.id === "nfl")))).join("") + "</section>"
+    grp.games.map((g) => gameCard(g, !!g.id && (g.state !== "pre" || (sport && sport.id === "nfl")), sport && sport.id)).join("") + "</section>"
   ).join("");
 }
 
@@ -1019,19 +1034,25 @@ async function showDetail() {
   view.setAttribute("data-detail", key);
 }
 
-function openGame(id) {
-  const sport = SPORTS.find((s) => s.id === current);
-  const game = gamesById[id];
+function openGame(id, sportId) {
+  const selectedSport = sportId || current;
+  const sport = SPORTS.find((s) => s.id === selectedSport);
+  const game = gamesById[selectedSport + ":" + id] || gamesById[id];
   if (!sport || !game) return;
-  detail = { sportId: sport.id, id: id, game: game };
+  const returnTo = current;
+  detail = { sportId: sport.id, id: id, game: game, returnTo: returnTo };
+  if (current === "live") current = sport.id;
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
 }
 
 function leaveDetail() {
+  const returnTo = detail && detail.returnTo;
   detail = null;
+  if (returnTo) current = returnTo;
   view.removeAttribute("data-detail");
+  syncPageMenu();
   show();
 }
 
@@ -1053,7 +1074,7 @@ view.addEventListener("click", (event) => {
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const el = event.target.closest(".game[data-id]");
-  if (el) openGame(el.getAttribute("data-id"));
+  if (el) openGame(el.getAttribute("data-id"), el.getAttribute("data-sport"));
 });
 
 // Picking a different driver in the lap-by-lap table.
@@ -1066,7 +1087,7 @@ view.addEventListener("change", (event) => {
 view.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" && event.key !== " ") return;
   const el = event.target.closest && event.target.closest(".game[data-id]");
-  if (el) { event.preventDefault(); openGame(el.getAttribute("data-id")); }
+  if (el) { event.preventDefault(); openGame(el.getAttribute("data-id"), el.getAttribute("data-sport")); }
 });
 
 // ---- tabs and loading -------------------------------------------------------
@@ -1132,18 +1153,20 @@ async function show() {
 const loaded = {};   // sport id -> { scores, extra } as last read from the data files
 const overlay = {};  // sport id -> { at, games: { id: game } } fresher copies fetched from ESPN
 let liveBusy = false;
+let liveScreenBusy = false;
 
 function parseEspnEvent(e) {
   const comp = (e.competitions && e.competitions[0]) || {};
   const side = (which) => {
     const x = (comp.competitors || []).find((c) => c.homeAway === which);
-    if (!x) return { name: "", abbr: "", score: "", record: "", rank: 0, winner: false };
+    if (!x) return { name: "", abbr: "", logo: "", score: "", record: "", rank: 0, winner: false };
     const t = x.team || {};
     let rank = parseInt(x.curatedRank && x.curatedRank.current, 10);
     if (isNaN(rank) || rank < 1 || rank > 25) rank = 0;
     return {
       name: t.displayName || t.name || "",
       abbr: t.abbreviation || "",
+      logo: t.logo || (t.logos && t.logos[0] && t.logos[0].href) || "",
       score: x.score == null ? "" : String(x.score),
       record: x.records && x.records[0] ? (x.records[0].summary || "") : "",
       rank: rank,
@@ -1179,6 +1202,34 @@ function liveRequests(sport) {
   return [base + (cfg.query || "")];
 }
 
+function liveScreenRequest(sport) {
+  const base = "/apis/site/v2/sports/" + sport.espn + "/scoreboard";
+  const cfg = LIVE[sport.id] || { query: "" };
+  return base + (cfg.days ? "?dates=" + ymd(0) + (cfg.extra || "") : (cfg.query || ""));
+}
+
+async function refreshLiveScreen() {
+  if (current !== "live" || liveScreenBusy || document.hidden) return;
+  liveScreenBusy = true;
+  const leagues = SPORTS.filter((s) => s.kind === "league");
+  try {
+    const results = await Promise.allSettled(leagues.map((s) => espnGet(liveScreenRequest(s))));
+    if (current !== "live") return;
+    const live = [];
+    results.forEach((r, i) => {
+      if (r.status !== "fulfilled") return;
+      parseEspnScoreboard(r.value).filter((g) => g.state === "in")
+        .forEach((g) => live.push({ sport: leagues[i], game: g }));
+    });
+    if (live.length) {
+      renderLiveCards(live);
+      updatedEl.textContent = "Live · " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    }
+  } finally {
+    liveScreenBusy = false;
+  }
+}
+
 // Data-file games, with any fresher copies from ESPN laid over them.
 function mergedGames(sportId, scores) {
   const base = (scores && scores.data && scores.data.games) || [];
@@ -1205,6 +1256,7 @@ function anyActive(games) {
 }
 
 async function refreshLive() {
+  if (current === "live") { refreshLiveScreen(); return; }
   const sport = SPORTS.find((s) => s.id === current);
   if (!sport || sport.kind !== "league" || detail || liveBusy || document.hidden) return;
   const L = loaded[sport.id];

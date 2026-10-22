@@ -302,15 +302,18 @@ parse_event <- function(e) {
   side <- function(which) {
     cs <- Filter(function(x) identical(x$homeAway, which), comp$competitors)
     if (length(cs) == 0) {
-      return(list(name = "", abbr = "", score = "", record = "", rank = 0L, winner = FALSE))
+      return(list(name = "", abbr = "", logo = "", score = "", record = "", rank = 0L, winner = FALSE))
     }
     x <- cs[[1]]
     rec <- if (length(x$records) > 0) x$records[[1]]$summary %||% "" else ""
     rank <- suppressWarnings(as.integer(x$curatedRank$current %||% 0))
     if (is.na(rank) || rank < 1 || rank > 25) rank <- 0L
+    logos <- x$team$logos %||% list()
+    logo <- if (length(logos) > 0) logos[[1]]$href %||% "" else ""
     list(
       name   = x$team$displayName %||% x$team$name %||% "",
       abbr   = x$team$abbreviation %||% "",
+      logo   = logo,
       score  = as.character(x$score %||% ""),
       record = rec,
       rank   = rank,
