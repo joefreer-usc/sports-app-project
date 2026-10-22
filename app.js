@@ -8,6 +8,7 @@ const SPORTS = [
   { id: "nba", label: "NBA", kind: "league", espn: "basketball/nba", scores: "data/nba.json", extra: "data/nba_standings.json", extraType: "standings" },
   { id: "mlb", label: "MLB", kind: "league", espn: "baseball/mlb", scores: "data/mlb.json", extra: "data/mlb_standings.json", extraType: "standings" },
   { id: "cfb", label: "CFB", kind: "league", espn: "football/college-football", scores: "data/cfb.json", extra: "data/cfb_rankings.json", extraType: "rankings" },
+  { id: "nhl", label: "NHL", kind: "league", espn: "hockey/nhl", scores: "data/nhl.json", extra: "data/nhl_standings.json", extraType: "standings" },
   // Men's and women's college basketball share one tab with a switch at the top.
   { id: "cbb", label: "CBB", kind: "league", espn: "basketball/mens-college-basketball", scores: "data/cbb.json", extra: "data/cbb_rankings.json", extraType: "rankings", group: "cbb", side: "Men's" },
   { id: "wcbb", label: "CBB", kind: "league", espn: "basketball/womens-college-basketball", scores: "data/wcbb.json", extra: "data/wcbb_rankings.json", extraType: "rankings", group: "cbb", side: "Women's", hidden: true },
@@ -26,6 +27,7 @@ const LIVE = {
   cfb:  { query: "?groups=80&limit=200" },
   nba:  { days: [-1, 0] },
   mlb:  { days: [-1, 0] },
+  nhl:  { days: [-1, 0] },
   cbb:  { days: [-1, 0], extra: "&groups=50&limit=400" },
   wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" },
   epl:  { days: [-1, 0] },
@@ -497,12 +499,14 @@ function renderStandings(data) {
     const hasStreak = teams.some((t) => t.streak);
 
     const headers = [{ label: "Team" }, { label: "Record", num: true }];
+    if (data.showPoints) headers.push({ label: "Pts", num: true });
     if (hasPct) headers.push({ label: "Pct", num: true });
     if (hasGb) headers.push({ label: "GB", num: true });
     if (hasStreak) headers.push({ label: "Strk", num: true });
 
     const rows = teams.map((t) => {
       let cells = "<td>" + esc(t.name || t.abbr) + "</td>" + '<td class="num">' + esc(t.record) + "</td>";
+      if (data.showPoints) cells += '<td class="num"><b>' + esc(t.pts) + "</b></td>";
       if (hasPct) cells += '<td class="num">' + esc(t.pct) + "</td>";
       if (hasGb) cells += '<td class="num">' + esc(t.gb) + "</td>";
       if (hasStreak) cells += '<td class="num">' + esc(t.streak) + "</td>";

@@ -392,9 +392,11 @@ parse_entry <- function(en) {
   pct <- stat_of(st, "winPercent")
   gb <- stat_of(st, "gamesBehind")
   strk <- stat_of(st, "streak")
+  pts_stat <- stat_of(st, "points")
 
   record <- if (!is.null(overall)) {
-    overall$displayValue %||% overall$summary %||% ""
+    # Prefer the plain record ("50-23-9"); NHL's longer text adds ", 109 PTS".
+    overall$summary %||% overall$displayValue %||% ""
   } else if (!is.null(w) && !is.null(l)) {
     r <- paste(w$displayValue, l$displayValue, sep = "-")
     if (!is.null(t) && !identical(t$displayValue, "0")) r <- paste(r, t$displayValue, sep = "-")
@@ -408,7 +410,9 @@ parse_entry <- function(en) {
     pct    = pct$displayValue %||% "",
     gb     = gb$displayValue %||% "",
     streak = strk$displayValue %||% "",
-    sort   = as.numeric(pct$value %||% 0)
+    pts    = pts_stat$displayValue %||% "",
+    # Leagues without a win percentage (NHL) are ordered by points instead.
+    sort   = as.numeric(pct$value %||% pts_stat$value %||% 0)
   )
 }
 
@@ -429,13 +433,13 @@ collect_groups <- function(node, skip_parents = FALSE) {
 }
 
 # level = 3 asks ESPN for divisions (AFC East, NFC North, ...) instead of whole conferences.
-fetch_standings <- function(sport_path, level = NULL) {
+fetch_standings <- function(sport_path, level = NULL, points = FALSE) {
   q <- if (is.null(level)) "" else paste0("?level=", level)
   d <- get_json(paste0(espn_v2, sport_path, "/standings", q))
   season <- tryCatch(d$children[[1]]$standings$seasonDisplayName, error = function(e) NULL) %||%
     tryCatch(d$children[[1]]$children[[1]]$standings$seasonDisplayName, error = function(e) NULL) %||%
     tryCatch(as.character(d$children[[1]]$children[[1]]$standings$season), error = function(e) NULL)
-  list(season = season %||% "", groups = collect_groups(d, skip_parents = !is.null(level)))
+  list(season = season %||% "", showPoints = points, groups = collect_groups(d, skip_parents = !is.null(level)))
 }
 
 # College football and basketball: the AP Top 25 poll.
@@ -468,6 +472,9 @@ run_section("nba_standings", function() fetch_standings("basketball/nba"))
 
 run_section("mlb",           function() fetch_scores("baseball/mlb", offsets = day_offsets))
 run_section("mlb_standings", function() fetch_standings("baseball/mlb", level = 3))
+
+run_section("nhl",           function() fetch_scores("hockey/nhl", offsets = day_offsets))
+run_section("nhl_standings", function() fetch_standings("hockey/nhl", level = 3, points = TRUE))
 
 run_section("cfb",           function() fetch_scores("football/college-football", "?groups=80&limit=200"))
 run_section("cfb_rankings",  function() fetch_rankings("football/college-football"))
