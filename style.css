@@ -292,6 +292,7 @@ tr.fastest td { color: #c77dff; }
 .injury-row { display: block; }
 .injury-row strong, .injury-row span { display: block; }
 .injury-row span { margin-top: 2px; font-size: 12px; }
+.injury-row .injury-return { color: var(--text); font-weight: 600; margin-top: 5px; }
 
 @media (max-width: 820px) {
   .league-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }

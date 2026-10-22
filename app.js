@@ -936,6 +936,18 @@ function renderPregameLeaders(data) {
       '</strong><small>' + esc(g.value) + '</small></div></div>').join("") + '</div>').join("") + '</div></section>';
 }
 
+function injuryReturnText(injury) {
+  const details = injury.details || {};
+  const value = details.returnDate || details.estimatedReturnDate || details.expectedReturnDate ||
+    injury.returnDate || injury.estimatedReturnDate || injury.expectedReturnDate;
+  if (!value) return "Estimated return: Not announced";
+  const ms = Date.parse(value);
+  if (isNaN(ms)) return "Estimated return: " + String(value);
+  return "Estimated return: " + new Date(ms).toLocaleDateString([], {
+    month: "short", day: "numeric", year: "numeric"
+  });
+}
+
 function renderPregameInjuries(data) {
   const teams = data.injuries || [];
   if (!teams.length) {
@@ -950,7 +962,8 @@ function renderPregameInjuries(data) {
         const detail = inj.details || {};
         const note = detail.detail || detail.type || inj.status || "Listed";
         return '<div class="injury-row"><strong>' + esc(athlete.shortName || athlete.displayName || "Player") +
-          '</strong><span>' + esc(note) + '</span></div>';
+          '</strong><span>' + esc(note) + '</span><span class="injury-return">' +
+          esc(injuryReturnText(inj)) + '</span></div>';
       }).join("") : '<div class="muted small">No players listed.</div>') + '</div>';
   }).join("") + '</div></section>';
 }
