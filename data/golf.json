@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T21:28:31Z",
+  "updated": "2026-10-23T21:43:22Z",
   "data": {
     "event": {
       "id": "401850917",
@@ -7,7 +7,7 @@
       "start": "2026-10-22T04:00Z",
       "end": "2026-10-25T04:00Z",
       "state": "in",
-      "detail": "Round 2 - In Progress",
+      "detail": "Round 2 - Play Complete",
       "round": 2,
       "season": 2026,
       "cutLine": "-5",
@@ -1155,6 +1155,21 @@
         ]
       },
       {
+        "id": "7120",
+        "pos": "T73",
+        "name": "Marcelo Rozo",
+        "country": "Colombia",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/7120.png",
+        "status": "F",
+        "toPar": "-4",
+        "thru": "F",
+        "rounds": [
+          "-2",
+          "-2",
+          ""
+        ]
+      },
+      {
         "id": "9658",
         "pos": "T73",
         "name": "Taylor Pendrith",
@@ -1245,38 +1260,8 @@
         ]
       },
       {
-        "id": "7120",
-        "pos": "T73",
-        "name": "Marcelo Rozo",
-        "country": "Colombia",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/7120.png",
-        "status": "In Progress",
-        "toPar": "-4",
-        "thru": "Thru 17",
-        "rounds": [
-          "-2",
-          "-2",
-          ""
-        ]
-      },
-      {
-        "id": "4372851",
-        "pos": "T73",
-        "name": "Taylor Montgomery",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4372851.png",
-        "status": "In Progress",
-        "toPar": "-4",
-        "thru": "Thru 17",
-        "rounds": [
-          "-4",
-          "E",
-          ""
-        ]
-      },
-      {
         "id": "4565482",
-        "pos": "T85",
+        "pos": "T84",
         "name": "Will Gordon",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4565482.png",
@@ -1291,7 +1276,7 @@
       },
       {
         "id": "4361934",
-        "pos": "T85",
+        "pos": "T84",
         "name": "John VanDerLaan",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4361934.png",
@@ -1306,7 +1291,7 @@
       },
       {
         "id": "10577",
-        "pos": "T85",
+        "pos": "T84",
         "name": "Aaron Wise",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10577.png",
@@ -1321,7 +1306,7 @@
       },
       {
         "id": "5574",
-        "pos": "T85",
+        "pos": "T84",
         "name": "David Lingmerth",
         "country": "Sweden",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5574.png",
@@ -1336,7 +1321,7 @@
       },
       {
         "id": "4671",
-        "pos": "T85",
+        "pos": "T84",
         "name": "John Parry",
         "country": "England",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4671.png",
@@ -1351,7 +1336,7 @@
       },
       {
         "id": "774",
-        "pos": "T85",
+        "pos": "T84",
         "name": "Bill Haas",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/774.png",
@@ -1366,7 +1351,7 @@
       },
       {
         "id": "1264",
-        "pos": "T85",
+        "pos": "T84",
         "name": "Camilo Villegas",
         "country": "Colombia",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/1264.png",
@@ -1381,7 +1366,7 @@
       },
       {
         "id": "9221",
-        "pos": "T85",
+        "pos": "T84",
         "name": "Haotong Li",
         "country": "China",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9221.png",
@@ -1391,6 +1376,21 @@
         "rounds": [
           "-3",
           "E",
+          ""
+        ]
+      },
+      {
+        "id": "4372851",
+        "pos": "T84",
+        "name": "Taylor Montgomery",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4372851.png",
+        "status": "F",
+        "toPar": "-3",
+        "thru": "F",
+        "rounds": [
+          "-4",
+          "+1",
           ""
         ]
       },
@@ -1665,23 +1665,8 @@
         ]
       },
       {
-        "id": "5461861",
-        "pos": "T107",
-        "name": "Nixon Lauritzen",
-        "country": "USA",
-        "headshot": "",
-        "status": "In Progress",
-        "toPar": "+2",
-        "thru": "Thru 17",
-        "rounds": [
-          "E",
-          "+2",
-          ""
-        ]
-      },
-      {
         "id": "5461860",
-        "pos": "T112",
+        "pos": "T111",
         "name": "Jay Leng",
         "country": "USA",
         "headshot": "",
@@ -1696,10 +1681,25 @@
       },
       {
         "id": "3532",
-        "pos": "T112",
+        "pos": "T111",
         "name": "William McGirt",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/3532.png",
+        "status": "F",
+        "toPar": "+3",
+        "thru": "F",
+        "rounds": [
+          "E",
+          "+3",
+          ""
+        ]
+      },
+      {
+        "id": "5461861",
+        "pos": "T111",
+        "name": "Nixon Lauritzen",
+        "country": "USA",
+        "headshot": "",
         "status": "F",
         "toPar": "+3",
         "thru": "F",
