@@ -665,7 +665,8 @@ fetch_golf <- function() {
     end    = ev$endDate %||% "",
     state  = ev$status$type$state %||% "",
     detail = comp$status$type$detail %||% ev$status$type$description %||% "",
-    round  = as.integer(comp$status$period %||% 0)
+    round  = as.integer(comp$status$period %||% 0),
+    season = as.integer(ev$season$year %||% sb$season$year %||% as.integer(format(Sys.Date(), "%Y")))
   )
 
   # The scoreboard has no players until a tournament is close to starting, and the
@@ -684,10 +685,18 @@ fetch_golf <- function() {
     if (is.list(sc)) as.character(sc$displayValue %||% "") else as.character(sc %||% "")
   }
 
+  headshot_url <- function(athlete) {
+    image <- athlete$headshot %||% ""
+    if (is.list(image)) as.character(image$href %||% "") else as.character(image)
+  }
+
   players <- lapply(comps, function(x) list(
+    id      = as.character(x$athlete$id %||% x$id %||% ""),
     pos     = x$status$position$displayName %||% "",
     name    = x$athlete$displayName %||% x$athlete$shortName %||% "",
     country = x$athlete$flag$alt %||% "",
+    headshot = headshot_url(x$athlete),
+    status  = x$status$type$shortDetail %||% x$status$type$description %||% x$status$displayValue %||% "",
     toPar   = to_par(x),
     thru    = x$status$displayValue %||% "",
     rounds  = lapply(x$linescores %||% list(), function(l) as.character(l$displayValue %||% "")),
@@ -697,6 +706,29 @@ fetch_golf <- function() {
     players <- players[order(vapply(players, function(p) p$order, integer(1)))]
   }
   players <- lapply(players, function(p) { p$order <- NULL; p })
+
+  # Estimate the round-two cut from the 65th-place two-round score (ties stay
+  # together). Some events use different/no-cut rules, so this is explicitly
+  # labelled projected until ESPN marks players as CUT.
+  cut_line <- ""
+  cut_official <- any(vapply(players, function(p) grepl("cut", p$status, ignore.case = TRUE), logical(1)))
+  if (event$round >= 2L) {
+    score_number <- function(value) {
+      value <- trimws(as.character(value %||% ""))
+      if (!nzchar(value)) return(NA_real_)
+      if (toupper(value) %in% c("E", "EVEN")) return(0)
+      suppressWarnings(as.numeric(gsub("\\+", "", value)))
+    }
+    two_round <- vapply(players, function(p) length(p$rounds) >= 2L, logical(1))
+    scores <- vapply(players[two_round], function(p) score_number(p$toPar), numeric(1))
+    scores <- sort(scores[is.finite(scores)])
+    if (length(scores) >= 65L) {
+      value <- scores[[65L]]
+      cut_line <- if (value == 0) "E" else if (value > 0) paste0("+", value) else as.character(value)
+    }
+  }
+  event$cutLine <- cut_line
+  event$cutOfficial <- cut_official
 
   list(event = event, players = players, schedule = schedule)
 }

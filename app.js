@@ -735,6 +735,123 @@ function fmtRange(startIso, endIso) {
   return e && e !== s ? s + " – " + e : s;
 }
 
+function golfHeadshot(player, profile) {
+  const image = (profile && profile.headshot) || player.headshot || "";
+  if (typeof image === "string") return image;
+  return image.href || "";
+}
+
+function golfStatEntries(summary) {
+  const found = [];
+  const visit = (node, path) => {
+    if (!node || typeof node !== "object") return;
+    if (node.name && (node.displayValue != null || node.value != null)) {
+      found.push({ name: node.name, label: node.displayName || node.label || node.name,
+        value: node.displayValue != null ? node.displayValue : node.value, path: path });
+    }
+    Object.keys(node).forEach((key) => {
+      if (node[key] && typeof node[key] === "object") visit(node[key], path + " " + key);
+    });
+  };
+  visit({ stats: summary.stats || [], rounds: summary.rounds || [] }, "");
+  return found;
+}
+
+function golfStat(stats, names) {
+  const clean = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const wanted = names.map(clean);
+  const hit = stats.find((x) => wanted.includes(clean(x.name)) || wanted.includes(clean(x.label))) ||
+    stats.find((x) => wanted.some((name) => name.length > 6 && (clean(x.name).includes(name) || clean(x.label).includes(name))));
+  return hit ? hit.value : "Not available";
+}
+
+function renderGolfPerformance(summary) {
+  const stats = golfStatEntries(summary || {});
+  const requested = [
+    ["SG: Total", ["strokesGainedTotal", "strokesGained", "sgTotal"]],
+    ["Scoring average", ["scoringAverage", "scoreAverage", "avgScore"]],
+    ["SG: Off-the-Tee", ["strokesGainedOffTheTee", "strokesGainedTee", "sgOffTheTee"]],
+    ["SG: Approach", ["strokesGainedApproach", "strokesGainedApproachTheGreen", "sgApproach"]],
+    ["SG: Around-the-Green", ["strokesGainedAroundTheGreen", "strokesGainedAroundGreen", "sgAroundTheGreen"]],
+    ["SG: Putting", ["strokesGainedPutting", "sgPutting"]]
+  ];
+  return '<section class="card team-section"><h2>Performance</h2><div class="golf-stat-grid">' +
+    requested.map((item) => statTile(item[0], golfStat(stats, item[1]))).join("") + '</div>' +
+    '<p class="muted small">Tournament statistics from ESPN. Strokes-gained data is not published for every course or event.</p></section>';
+}
+
+function golfScoreTypeClass(hole) {
+  const name = String((hole.scoreType || {}).name || "").toLowerCase();
+  if (/eagle|albatross/.test(name)) return "eagle";
+  if (/birdie/.test(name)) return "birdie";
+  if (/double|triple|worse/.test(name)) return "double";
+  if (/bogey/.test(name)) return "bogey";
+  return "";
+}
+
+function renderGolfScorecards(summary, player) {
+  const rounds = (summary.rounds || []).slice().sort((a, b) => Number(a.period) - Number(b.period));
+  if (!rounds.length) {
+    const fallback = (player.rounds || []).map((score, index) =>
+      '<details class="golf-round"' + (index === 0 ? " open" : "") + '><summary>Round ' + (index + 1) + '<strong>' + esc(score) +
+      '</strong></summary><div class="muted golf-round-note">Hole-by-hole scores are not available yet.</div></details>').join("");
+    return '<section class="card team-section"><h2>Scorecard</h2>' + (fallback || '<div class="muted">No rounds posted yet.</div>') + '</section>';
+  }
+  const html = rounds.map((round, index) => {
+    const holes = round.linescores || [];
+    const rows = holes.map((hole) => '<tr><td class="pos">' + esc(hole.period) + '</td><td class="num">' + esc(hole.par) +
+      '</td><td class="num"><span class="golf-hole-score ' + golfScoreTypeClass(hole) + '">' + esc(hole.displayValue || hole.value) +
+      '</span></td><td>' + esc((hole.scoreType || {}).displayName || "") + '</td></tr>');
+    const total = round.displayValue || round.value || "";
+    const split = [round.outScore != null ? "Out " + round.outScore : "", round.inScore != null ? "In " + round.inScore : ""].filter(Boolean).join(" · ");
+    return '<details class="golf-round"' + (index === rounds.length - 1 ? " open" : "") + '><summary>Round ' +
+      esc(round.period || index + 1) + '<span>' + esc(split) + '</span><strong>' + esc(total) + '</strong></summary>' +
+      (rows.length ? '<div class="scroll">' + table([{ label: "Hole" }, { label: "Par", num: true }, { label: "Score", num: true }, { label: "Result" }], rows) + '</div>' :
+        '<div class="muted golf-round-note">Hole-by-hole scores are not available yet.</div>') + '</details>';
+  }).join("");
+  return '<section class="card team-section"><h2>Scorecard</h2>' + html + '</section>';
+}
+
+async function showGolfPlayer() {
+  const d = detail;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading golfer profile&hellip;</div>';
+  try {
+    const golf = await getJson("data/golf.json");
+    const data = golf.data || {};
+    const player = (data.players || []).find((x) => String(x.id) === String(d.playerId));
+    if (!player) throw new Error("Player not found");
+    let summary = {};
+    try {
+      const event = data.event || {};
+      const url = "https://site.web.api.espn.com/apis/site/v2/sports/golf/pga/leaderboard/" +
+        encodeURIComponent(event.id) + "/playersummary?season=" + encodeURIComponent(event.season || new Date().getFullYear()) +
+        "&player=" + encodeURIComponent(player.id);
+      const response = await fetch(url, { cache: "no-store" });
+      if (response.ok) summary = await response.json();
+    } catch (err) { /* leaderboard data still supplies a useful fallback profile */ }
+    if (detail !== d) return;
+    const profile = summary.profile || {};
+    const photo = golfHeadshot(player, profile) || (player.id ? "https://a.espncdn.com/i/headshots/golf/players/full/" + encodeURIComponent(player.id) + ".png" : "");
+    const bio = [profile.age ? "Age " + profile.age : "", profile.college || "", profile.hand ? profile.hand + "-handed" : "", player.country || ""].filter(Boolean);
+    view.innerHTML = backButton() + '<section class="golfer-hero">' +
+      (photo ? '<img src="' + esc(photo) + '" alt="' + esc(player.name) + '" onerror="this.style.display=\'none\'">' : '') +
+      '<div><div class="eyebrow">PGA TOUR PLAYER</div><h2>' + esc(profile.displayName || player.name) + '</h2><p>' + esc(bio.join(" · ")) +
+      '</p><div class="golfer-current"><b>' + esc(player.pos) + '</b><span>' + esc(player.toPar) + '</span><small>' + esc(player.thru) + '</small></div></div></section>' +
+      renderGolfPerformance(summary) + renderGolfScorecards(summary, player);
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this golfer right now. Try again after the next data update.</div>';
+  }
+}
+
+function openGolfPlayer(playerId) {
+  detail = { sportId: "golf", kind: "golfer", playerId: playerId, returnTo: current };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
+}
+
 function renderGolf(payload) {
   const d = payload.data || {};
   const ev = d.event;
@@ -749,12 +866,15 @@ function renderGolf(payload) {
       '<div class="where"><span class="' + (live ? "livetag" : "") + '">' + esc(ev.detail || "") + "</span></div></section>";
 
     if (players.length) {
+      if (ev.round >= 2 && ev.cutLine) {
+        html += '<div class="golf-cut-line"><span>' + (ev.cutOfficial ? "CUT LINE" : "PROJECTED CUT") + '</span><strong>' + esc(ev.cutLine) + '</strong></div>';
+      }
       const maxRounds = Math.min(4, Math.max.apply(null, players.map((p) => (p.rounds || []).length).concat([0])));
       const heads = [{ label: "Pos" }, { label: "Player" }, { label: "Score", num: true }, { label: "Thru", num: true }];
       for (let i = 1; i <= maxRounds; i++) heads.push({ label: "R" + i, num: true });
 
       const rows = players.map((p) => {
-        let cells = '<td class="pos">' + esc(p.pos) + "</td><td>" + esc(p.name) +
+        let cells = '<td class="pos">' + esc(p.pos) + '</td><td><button type="button" class="golfer-link" data-golfer="' + esc(p.id) + '">' + esc(p.name) + '</button>' +
           (p.country ? '<span class="sub">' + esc(p.country) + "</span>" : "") + "</td>" +
           '<td class="num"><b>' + esc(p.toPar) + "</b></td>" +
           '<td class="num">' + esc(p.thru) + "</td>";
@@ -1651,6 +1771,8 @@ view.addEventListener("click", (event) => {
   if (sw) { selectSport(sw.getAttribute("data-switch")); return; }
   const driverEl = event.target.closest("button[data-driver]");
   if (driverEl) { event.stopPropagation(); openF1Driver(driverEl.getAttribute("data-driver")); return; }
+  const golferEl = event.target.closest("button[data-golfer]");
+  if (golferEl) { event.stopPropagation(); openGolfPlayer(golferEl.getAttribute("data-golfer")); return; }
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const teamEl = event.target.closest("button[data-team]");
@@ -1705,6 +1827,7 @@ async function show() {
   if (detail && detail.sportId === current) {
     if (detail.kind === "race") await showRace();
     else if (detail.kind === "driver") await showF1Driver();
+    else if (detail.kind === "golfer") await showGolfPlayer();
     else if (detail.kind === "team") await showNFLTeam();
     else if (detail.kind === "nba-team") await showNBATeam();
     else await showDetail();

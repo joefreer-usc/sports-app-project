@@ -202,6 +202,33 @@ tr.past td { color: var(--muted); }
 .live-league-card .game { border-top: 0; padding-top: 7px; }
 .league-tag { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
 
+/* PGA leaderboard and player profiles */
+.golfer-link { padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; font-weight: 750; text-align: left; cursor: pointer; }
+.golfer-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.golf-cut-line { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 12px; padding: 10px 14px; border: 1px dashed color-mix(in srgb, var(--accent) 65%, var(--line)); border-radius: 11px; background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
+.golf-cut-line span { color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: 1px; }
+.golf-cut-line strong { color: var(--accent); font-size: 18px; }
+.golfer-hero { display: grid; grid-template-columns: 190px minmax(0, 1fr); align-items: end; min-height: 245px; overflow: hidden; margin: 12px 0; padding: 0 26px 0 12px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, rgba(28,120,69,.3), var(--card) 68%); }
+.golfer-hero > img { align-self: end; width: 100%; height: 235px; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 12px 18px rgba(0,0,0,.3)); }
+.golfer-hero > div { align-self: center; padding: 24px 0; }
+.golfer-hero h2 { margin: 2px 0 7px; font-size: clamp(28px, 5vw, 42px); line-height: 1.05; }
+.golfer-hero p { margin: 0; color: var(--muted); }
+.golfer-current { display: flex; align-items: baseline; gap: 12px; margin-top: 18px; }
+.golfer-current b { color: var(--muted); font-size: 13px; }
+.golfer-current span { color: var(--accent); font-size: 28px; font-weight: 900; }
+.golfer-current small { color: var(--muted); }
+.golf-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.golf-round { margin-top: 9px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+.golf-round > summary { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; padding: 13px 14px; background: rgba(15,23,32,.4); cursor: pointer; font-weight: 800; }
+.golf-round > summary span { color: var(--muted); font-size: 11px; font-weight: 600; }
+.golf-round > summary strong { color: var(--accent); font-variant-numeric: tabular-nums; }
+.golf-round-note { padding: 14px; }
+.golf-hole-score { display: inline-grid; place-items: center; min-width: 25px; height: 25px; padding: 0 4px; border-radius: 50%; font-weight: 850; }
+.golf-hole-score.birdie { border: 1px solid #df5d5d; color: #ff8b8b; }
+.golf-hole-score.eagle { border: 3px double #df5d5d; color: #ff8b8b; }
+.golf-hole-score.bogey { border: 1px solid #6aa1de; border-radius: 3px; color: #8abcf2; }
+.golf-hole-score.double { border: 3px double #6aa1de; border-radius: 3px; color: #8abcf2; }
+
 /* NFL and NBA team pages */
 .team-hero { position: relative; display: flex; align-items: center; gap: 24px; overflow: hidden; margin: 12px 0; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, color-mix(in srgb, var(--team-color) 28%, var(--card)), var(--card)); }
 .team-hero::after { content: ""; position: absolute; right: -50px; top: -80px; width: 220px; height: 220px; border-radius: 50%; background: color-mix(in srgb, var(--team-color) 18%, transparent); }
@@ -409,6 +436,14 @@ tr.fastest td { color: #c77dff; }
   .team-stats-columns, .depth-grid { grid-template-columns: 1fr; }
   .nba-depth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .schedule-row { grid-template-columns: 68px minmax(0, 1fr) auto; font-size: 12px; }
+  .golfer-hero { grid-template-columns: 105px minmax(0, 1fr); min-height: 180px; padding-right: 16px; }
+  .golfer-hero > img { height: 170px; }
+  .golfer-hero > div { padding: 17px 0; }
+  .golfer-hero h2 { font-size: 26px; }
+  .golfer-current { margin-top: 11px; }
+  .golf-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .golf-round > summary { grid-template-columns: 1fr auto; gap: 8px; }
+  .golf-round > summary span { display: none; }
   .driver-hero { grid-template-columns: 116px minmax(0, 1fr); gap: 15px; min-height: 190px; padding-right: 15px; }
   .driver-portrait { min-height: 190px; }
   .driver-photo { height: 185px; }
