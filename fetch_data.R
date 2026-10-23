@@ -57,6 +57,18 @@ run_section <- function(name, fn) {
 fetch_f1 <- function() {
   base <- "https://api.jolpi.ca/ergast/f1/current"
 
+  flag_code <- function(nationality) {
+    codes <- c(
+      British="gb", Dutch="nl", Monegasque="mc", Australian="au", Spanish="es",
+      Mexican="mx", Canadian="ca", German="de", French="fr", Italian="it",
+      Japanese="jp", Thai="th", Chinese="cn", `New Zealander`="nz", American="us",
+      Brazilian="br", Finnish="fi", Danish="dk", Belgian="be", Argentine="ar",
+      Polish="pl", Russian="ru", Austrian="at", Swiss="ch", Swedish="se"
+    )
+    code <- unname(codes[nationality])
+    if (length(code) == 0 || is.na(code)) "" else code
+  }
+
   team_of <- function(x) {
     if (length(x) > 0) x[[1]]$name %||% "" else ""
   }
@@ -67,8 +79,14 @@ fetch_f1 <- function() {
   drivers <- if (length(d_lists) > 0) {
     lapply(d_lists[[1]]$DriverStandings, function(r) list(
       position = as.integer(r$position %||% r$positionText),
+      driverId = r$Driver$driverId %||% "",
       name     = paste(r$Driver$givenName, r$Driver$familyName),
       code     = r$Driver$code %||% "",
+      number   = r$Driver$permanentNumber %||% "",
+      nationality = r$Driver$nationality %||% "",
+      flagCode = flag_code(r$Driver$nationality %||% ""),
+      dateOfBirth = r$Driver$dateOfBirth %||% "",
+      profileUrl = r$Driver$url %||% "",
       team     = team_of(r$Constructors),
       points   = as.numeric(r$points),
       wins     = as.integer(r$wins)
@@ -144,6 +162,31 @@ fetch_f1 <- function() {
     image      = image_for(r$date)
   ))
 
+  # All completed race results in one request, grouped by driver for profiles.
+  all_results_data <- tryCatch(
+    get_json(paste0(base, "/results/?limit=2000")),
+    error = function(e) { message("  f1 season results: ", conditionMessage(e)); NULL }
+  )
+  all_races <- if (is.null(all_results_data)) list() else all_results_data$MRData$RaceTable$Races %||% list()
+  driver_results <- list()
+  for (race in all_races) {
+    for (r in race$Results %||% list()) {
+      id <- r$Driver$driverId %||% ""
+      if (!nzchar(id)) next
+      entry <- list(
+        round = as.integer(race$round %||% 0),
+        race = race$raceName %||% "",
+        date = race$date %||% "",
+        position = as.integer(r$position %||% 0),
+        grid = as.integer(r$grid %||% 0),
+        team = r$Constructor$name %||% "",
+        result = r$Time$time %||% r$status %||% "",
+        points = as.numeric(r$points %||% 0)
+      )
+      driver_results[[id]] <- c(driver_results[[id]] %||% list(), list(entry))
+    }
+  }
+
   # Most recent race result
   l <- get_json(paste0(base, "/last/results/"))
   races <- l$MRData$RaceTable$Races
@@ -155,7 +198,10 @@ fetch_f1 <- function() {
       date = race$date,
       results = lapply(race$Results, function(r) list(
         position = as.integer(r$position),
+        driverId = r$Driver$driverId %||% "",
         name     = paste(r$Driver$givenName, r$Driver$familyName),
+        nationality = r$Driver$nationality %||% "",
+        flagCode = flag_code(r$Driver$nationality %||% ""),
         team     = r$Constructor$name %||% "",
         points   = as.numeric(r$points),
         result   = r$Time$time %||% r$status %||% ""
@@ -168,7 +214,8 @@ fetch_f1 <- function() {
     drivers = drivers,
     constructors = constructors,
     schedule = schedule,
-    lastRace = last_race
+    lastRace = last_race,
+    driverResults = driver_results
   )
 }
 
@@ -191,6 +238,7 @@ fetch_race_detail <- function(season, round, race_name, race_date) {
     driverId = r$Driver$driverId %||% "",
     code     = r$Driver$code %||% "",
     name     = paste(r$Driver$givenName, r$Driver$familyName),
+    nationality = r$Driver$nationality %||% "",
     team     = r$Constructor$name %||% "",
     grid     = as.integer(r$grid %||% 0),
     laps     = as.integer(r$laps %||% 0),

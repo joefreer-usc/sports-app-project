@@ -182,6 +182,19 @@ function fmtShortDate(race) {
   return new Date(ms).toLocaleDateString([], { month: "short", day: "numeric" });
 }
 
+function driverFlag(driver, large) {
+  if (!driver || !driver.flagCode) return "";
+  return '<img class="driver-flag' + (large ? ' large' : '') + '" src="https://flagcdn.com/w40/' +
+    esc(String(driver.flagCode).toLowerCase()) + '.png" alt="' + esc(driver.nationality || "Country") + ' flag" loading="lazy">';
+}
+
+function driverName(driver) {
+  const name = esc(driver.name || driver.code || "Driver");
+  if (!driver.driverId) return driverFlag(driver, false) + name;
+  return '<button type="button" class="driver-link" data-driver="' + esc(driver.driverId) + '">' +
+    driverFlag(driver, false) + '<span>' + name + '</span></button>';
+}
+
 function renderF1(payload) {
   const d = payload.data || {};
   const drivers = d.drivers || [];
@@ -212,7 +225,7 @@ function renderF1(payload) {
     html += table(
       [{ label: "#" }, { label: "Driver" }, { label: "Wins", num: true }, { label: "Pts", num: true }],
       drivers.map((r) =>
-        '<tr><td class="pos">' + esc(r.position) + "</td><td>" + esc(r.name) +
+        '<tr class="tap"><td class="pos">' + esc(r.position) + "</td><td>" + driverName(r) +
         '<span class="sub">' + esc(r.team) + "</span></td>" +
         '<td class="num">' + esc(r.wins) + '</td><td class="num">' + esc(r.points) + "</td></tr>"
       )
@@ -243,7 +256,7 @@ function renderF1(payload) {
     html += table(
       [{ label: "#" }, { label: "Driver" }, { label: "Result", num: true }, { label: "Pts", num: true }],
       last.results.map((r) =>
-        '<tr><td class="pos">' + esc(r.position) + "</td><td>" + esc(r.name) +
+        '<tr class="tap"><td class="pos">' + esc(r.position) + "</td><td>" + driverName(r) +
         '<span class="sub">' + esc(r.team) + "</span></td>" +
         '<td class="num">' + esc(r.result) + '</td><td class="num">' + esc(r.points) + "</td></tr>"
       )
@@ -269,6 +282,76 @@ function renderF1(payload) {
   html += "</details></section>";
 
   return html;
+}
+
+function driverAge(dateOfBirth) {
+  const born = new Date(dateOfBirth);
+  if (isNaN(born.getTime())) return "";
+  const now = new Date();
+  let age = now.getFullYear() - born.getFullYear();
+  if (now.getMonth() < born.getMonth() || (now.getMonth() === born.getMonth() && now.getDate() < born.getDate())) age--;
+  return age;
+}
+
+function renderDriverProfile(driver, results, season) {
+  const finishes = results.map((r) => Number(r.position)).filter((x) => x > 0);
+  const podiums = finishes.filter((x) => x <= 3).length;
+  const best = finishes.length ? Math.min.apply(null, finishes) : "—";
+  const average = finishes.length ? (finishes.reduce((a, b) => a + b, 0) / finishes.length).toFixed(1) : "—";
+  const age = driverAge(driver.dateOfBirth);
+  const born = driver.dateOfBirth ? new Date(driver.dateOfBirth).toLocaleDateString([], {
+    year: "numeric", month: "long", day: "numeric"
+  }) : "";
+  const facts = [
+    ["Championship", driver.position ? "P" + driver.position : "—"],
+    ["Points", driver.points != null ? driver.points : "—"],
+    ["Wins", driver.wins != null ? driver.wins : "—"],
+    ["Podiums", podiums],
+    ["Best finish", best === "—" ? best : "P" + best],
+    ["Average finish", average]
+  ];
+  let html = backButton() + '<section class="driver-hero">' + driverFlag(driver, true) + '<div>' +
+    '<div class="eyebrow">FORMULA 1 DRIVER</div><h2>' + esc(driver.name) + '</h2><p>' +
+    esc([driver.nationality, driver.team, driver.number ? "Car " + driver.number : ""].filter(Boolean).join(" · ")) +
+    '</p>' + (born ? '<small>Born ' + esc(born) + (age !== "" ? " · Age " + esc(age) : "") + '</small>' : '') + '</div></section>';
+  html += '<section class="card"><h2>' + esc(season) + ' season</h2><div class="driver-stat-grid">' +
+    facts.map((x) => '<div><span>' + esc(x[0]) + '</span><strong>' + esc(x[1]) + '</strong></div>').join("") + '</div></section>';
+  html += '<section class="card"><details open><summary>Season results</summary>' +
+    (results.length ? table(
+      [{ label: "Rd" }, { label: "Race" }, { label: "Grid", num: true }, { label: "Finish", num: true }, { label: "Pts", num: true }],
+      results.map((r) => '<tr><td class="pos">' + esc(r.round) + '</td><td>' + esc(r.race) +
+        '<span class="sub">' + esc(r.date || "") + '</span></td><td class="num">' + esc(r.grid) +
+        '</td><td class="num"><b>P' + esc(r.position) + '</b><span class="sub">' + esc(r.result) +
+        '</span></td><td class="num">' + esc(r.points) + '</td></tr>')
+    ) : '<div class="muted">No race results yet.</div>') + '</details></section>';
+  if (driver.profileUrl) html += '<p class="muted small driver-source"><a href="' + esc(driver.profileUrl) +
+    '" target="_blank" rel="noopener">Driver biography</a></p>';
+  return html;
+}
+
+async function showF1Driver() {
+  const d = detail;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading driver&hellip;</div>';
+  try {
+    const payload = await getJson("data/f1.json");
+    if (detail !== d) return;
+    const data = payload.data || {};
+    const driver = (data.drivers || []).find((x) => x.driverId === d.driverId);
+    if (!driver) throw new Error("Driver unavailable");
+    const results = (data.driverResults && data.driverResults[d.driverId]) || [];
+    view.innerHTML = renderDriverProfile(driver, results, data.season || "Current");
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message">Driver information is not available yet. Run the sports-data workflow once, then refresh.</div>';
+  }
+}
+
+function openF1Driver(driverId) {
+  detail = { sportId: "f1", kind: "driver", driverId: driverId, returnTo: current };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
 }
 
 // ---- F1 race detail (tap a race) --------------------------------------------
@@ -342,7 +425,7 @@ function renderRaceResults(rd) {
   return '<section class="card"><h2>Results</h2>' + table(
     [{ label: "#" }, { label: "Driver" }, { label: "Grid", num: true }, { label: "Result", num: true }, { label: "Pts", num: true }],
     results.map((r) =>
-      '<tr><td class="pos">' + esc(r.position) + "</td><td>" + esc(r.name) +
+      '<tr class="tap"><td class="pos">' + esc(r.position) + "</td><td>" + driverName(r) +
       '<span class="sub">' + esc(r.team) + "</span></td>" +
       '<td class="num">' + esc(r.grid) + '</td><td class="num">' + esc(r.result) +
       '</td><td class="num">' + esc(r.points) + "</td></tr>"
@@ -453,6 +536,9 @@ async function showRace() {
     try {
       const rd = (await getJson(file)).data || {};
       if (detail !== d) return;
+      const driverMeta = {};
+      (data.drivers || []).forEach((x) => { driverMeta[x.driverId] = x; });
+      rd.results = (rd.results || []).map((r) => Object.assign({}, driverMeta[r.driverId] || {}, r));
       raceData = rd;
       html += renderRaceResults(rd) + renderLapSection(rd);
     } catch (err) {
@@ -497,14 +583,16 @@ function teamRow(t, state, isWinner, sportId) {
   const rank = t.rank > 0 ? '<span class="rank">' + esc(t.rank) + "</span> " : "";
   const rec = t.record ? "<small>" + esc(t.record) + "</small>" : "";
   const score = state === "pre" ? "" : esc(t.score);
-  const logo = t.logo ? '<img class="team-logo" src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
+  const mark = t.logo
+    ? '<img class="team-logo" src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+    : '<span class="team-fallback">' + esc(t.abbr || "") + '</span>';
   const name = '<span class="team-name">' + esc(t.name || t.abbr) + '</span>';
   const linkedName = sportId === "nfl" && t.abbr
     ? '<button type="button" class="team-link" data-team="' + esc(t.abbr) + '" aria-label="View ' +
       esc(t.name || t.abbr) + '">' + name + '</button>'
     : name;
   return '<div class="team' + (isWinner ? " win" : "") + '">' +
-    '<span class="team-mark"><span class="team-fallback">' + esc(t.abbr || "—") + '</span>' + logo + '</span>' +
+    '<span class="team-mark">' + mark + '</span>' +
     '<span class="tname">' + rank + linkedName + rec + "</span>" +
     '<span class="score">' + score + "</span></div>";
 }
@@ -1266,6 +1354,8 @@ view.addEventListener("click", (event) => {
   if (event.target.closest("#back")) { goBack(); return; }
   const sw = event.target.closest("button[data-switch]");
   if (sw) { selectSport(sw.getAttribute("data-switch")); return; }
+  const driverEl = event.target.closest("button[data-driver]");
+  if (driverEl) { event.stopPropagation(); openF1Driver(driverEl.getAttribute("data-driver")); return; }
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const teamEl = event.target.closest("button[data-team]");
@@ -1314,6 +1404,7 @@ async function show() {
 
   if (detail && detail.sportId === current) {
     if (detail.kind === "race") await showRace();
+    else if (detail.kind === "driver") await showF1Driver();
     else if (detail.kind === "team") await showNFLTeam();
     else await showDetail();
     return;
