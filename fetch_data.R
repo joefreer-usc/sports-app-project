@@ -186,31 +186,25 @@ fetch_f1 <- function() {
     }
   }
 
-  # Jolpica caps this feed at 100 driver-results (roughly five races), so walk
-  # every page and merge races that happen to span a page boundary.
-  all_races_by_round <- list()
-  offset <- 0L
-  total <- 1L
-  while (offset < total && offset < 5000L) {
+  # Fetch each completed round separately. The combined /results feed reports
+  # inconsistent pagination totals and can silently stop after about five
+  # races; round-specific requests always return the complete classification.
+  completed_rounds <- Filter(function(r) {
+    date <- as.Date(r$date %||% NA_character_)
+    !is.na(date) && date <= Sys.Date()
+  }, schedule)
+  all_races <- list()
+  for (scheduled in completed_rounds) {
+    round <- as.integer(scheduled$round %||% 0)
+    if (round <= 0L) next
     page <- tryCatch(
-      get_json(paste0(base, "/results/?limit=100&offset=", offset)),
-      error = function(e) { message("  f1 season results: ", conditionMessage(e)); NULL }
+      get_json(paste0(base, "/", round, "/results/")),
+      error = function(e) { message("  f1 round ", round, " results: ", conditionMessage(e)); NULL }
     )
-    if (is.null(page)) break
-    total <- as.integer(page$MRData$total %||% 0)
-    for (race in page$MRData$RaceTable$Races %||% list()) {
-      key <- as.character(race$round %||% length(all_races_by_round) + 1L)
-      if (is.null(all_races_by_round[[key]])) {
-        all_races_by_round[[key]] <- race
-      } else {
-        all_races_by_round[[key]]$Results <- c(all_races_by_round[[key]]$Results %||% list(),
-                                               race$Results %||% list())
-      }
-    }
-    offset <- offset + 100L
-    if (offset < total) Sys.sleep(0.2)
+    races <- page$MRData$RaceTable$Races %||% list()
+    if (length(races) > 0) all_races[[length(all_races) + 1L]] <- races[[1]]
+    Sys.sleep(0.1)
   }
-  all_races <- unname(all_races_by_round)
   driver_results <- list()
   for (race in all_races) {
     for (r in race$Results %||% list()) {

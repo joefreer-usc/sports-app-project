@@ -347,7 +347,8 @@ async function showF1Driver() {
     const data = payload.data || {};
     const driver = (data.drivers || []).find((x) => x.driverId === d.driverId);
     if (!driver) throw new Error("Driver unavailable");
-    const results = (data.driverResults && data.driverResults[d.driverId]) || [];
+    const results = ((data.driverResults && data.driverResults[d.driverId]) || []).slice()
+      .sort((a, b) => Number(a.round) - Number(b.round));
     view.innerHTML = renderDriverProfile(driver, results, data.season || "Current");
   } catch (err) {
     if (detail !== d) return;
@@ -989,7 +990,7 @@ function cap(s) {
 }
 
 // One group of players (e.g. NFL passing, MLB batting, NBA players) as a table.
-function playerTable(group) {
+function playerTable(group, sportId, teamAbbr) {
   const labels = group.labels || [];
   const rows = [];
   (group.athletes || []).forEach((a) => {
@@ -999,8 +1000,11 @@ function playerTable(group) {
     const name = ath.shortName || ath.displayName || "";
     const pos = ath.position && ath.position.abbreviation
       ? '<span class="sub">' + esc(ath.position.abbreviation) + "</span>" : "";
+    const linkedName = sportId === "nfl" && ath.id
+      ? '<button type="button" class="nfl-player-link" data-nfl-player="' + esc(ath.id) + '" data-player-team="' + esc(teamAbbr || "") + '">' + esc(name) + '</button>'
+      : esc(name);
     rows.push(
-      "<tr><td>" + esc(name) + pos + "</td>" +
+      "<tr><td>" + linkedName + pos + "</td>" +
       labels.map((_, i) => '<td class="num">' + esc(stats[i]) + "</td>").join("") + "</tr>"
     );
   });
@@ -1135,7 +1139,7 @@ function renderBoxscore(data, sportId) {
   ((data.boxscore && data.boxscore.players) || []).forEach((tp) => {
     const teamName = tp.team ? (tp.team.displayName || tp.team.name || "") : "";
     (tp.statistics || []).forEach((group) => {
-      const t = playerTable(group);
+      const t = playerTable(group, sportId, tp.team && tp.team.abbreviation);
       if (!t) return;
       const title = cap(group.text || group.displayName || group.name || group.type || "Players");
       html += '<section class="card"><h2>' + esc(teamName) + "<small>" + esc(title) + "</small></h2>" + t + "</section>";
@@ -1217,9 +1221,9 @@ function leaderGroups(data) {
       const lead = group && group.leaders && group.leaders[0];
       if (!lead) return null;
       const athlete = lead.athlete || {};
-      return { label: w.label, name: athlete.shortName || athlete.displayName || "", value: lead.displayValue || "" };
+      return { label: w.label, id: athlete.id || "", name: athlete.shortName || athlete.displayName || "", value: lead.displayValue || "" };
     }).filter(Boolean);
-    return { name: team.displayName || team.name || team.abbreviation || "Team", groups: picked };
+    return { name: team.displayName || team.name || team.abbreviation || "Team", abbr: team.abbreviation || "", groups: picked };
   }).filter((x) => x.groups.length);
 }
 
@@ -1231,7 +1235,8 @@ function renderPregameLeaders(data) {
   }
   return '<section class="card pregame-card"><h2>Key-player comparison</h2><div class="comparison-grid">' +
     teams.map((t) => '<div class="comparison-team"><h3>' + esc(t.name) + '</h3>' + t.groups.map((g) =>
-      '<div class="leader-row"><span class="position-pill">' + esc(g.label) + '</span><div><strong>' + esc(g.name) +
+      '<div class="leader-row"><span class="position-pill">' + esc(g.label) + '</span><div><strong>' +
+      (g.id ? '<button type="button" class="nfl-player-link" data-nfl-player="' + esc(g.id) + '" data-player-team="' + esc(t.abbr) + '">' + esc(g.name) + '</button>' : esc(g.name)) +
       '</strong><small>' + esc(g.value) + '</small></div></div>').join("") + '</div>').join("") + '</div></section>';
 }
 
@@ -1260,7 +1265,10 @@ function renderPregameInjuries(data) {
         const athlete = inj.athlete || {};
         const detail = inj.details || {};
         const note = detail.detail || detail.type || inj.status || "Listed";
-        return '<div class="injury-row"><strong>' + esc(athlete.shortName || athlete.displayName || "Player") +
+        const playerName = athlete.shortName || athlete.displayName || "Player";
+        return '<div class="injury-row"><strong>' + (athlete.id
+          ? '<button type="button" class="nfl-player-link" data-nfl-player="' + esc(athlete.id) + '" data-player-team="' + esc(team.abbreviation || "") + '">' + esc(playerName) + '</button>'
+          : esc(playerName)) +
           '</strong><span>' + esc(note) + '</span><span class="injury-return">' +
           esc(injuryReturnText(inj)) + '</span></div>';
       }).join("") : '<div class="muted small">No players listed.</div>') + '</div>';
@@ -1671,7 +1679,7 @@ function rosterAthletes(team) {
   return found;
 }
 
-function renderNFLDepth(depth, team) {
+function renderNFLDepth(depth, team, teamAbbr) {
   const roster = rosterAthletes(team);
   const charts = depth.items || [];
   if (!charts.length) return '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart unavailable.</div></section>';
@@ -1682,14 +1690,129 @@ function renderNFLDepth(depth, team) {
       const players = (pos.athletes || []).slice(0, 3).map((slot) => {
         const id = athleteId(slot.athlete || slot);
         const player = roster[id] || slot.athlete || {};
-        return player.displayName || player.fullName || player.shortName || "Player unavailable";
+        const name = player.displayName || player.fullName || player.shortName || "Player unavailable";
+        return id ? '<button type="button" class="nfl-player-link" data-nfl-player="' + esc(id) + '" data-player-team="' +
+          esc(teamAbbr || "") + '">' + esc(name) + '</button>' : '<span>' + esc(name) + '</span>';
       });
-      return '<div class="depth-row"><strong>' + esc((pos.position && pos.position.abbreviation) || key.toUpperCase()) + '</strong><span>' +
-        esc(players.join(" · ") || "Not listed") + '</span></div>';
+      return '<div class="depth-row"><strong>' + esc((pos.position && pos.position.abbreviation) || key.toUpperCase()) + '</strong><span class="depth-players">' +
+        (players.join('<i aria-hidden="true">·</i>') || "Not listed") + '</span></div>';
     }).join("");
     return '<div class="depth-unit"><h3>' + esc(chart.displayName || chart.name || "Unit") + '</h3>' + rows + '</div>';
   }).join("");
   return '<section class="card team-section"><details open><summary>Depth chart</summary><div class="depth-grid">' + blocks + '</div></details></section>';
+}
+
+function nflPlayerImage(player) {
+  const image = player && (player.headshot || player.image);
+  if (typeof image === "string") return image;
+  return (image && (image.href || image.url)) || "";
+}
+
+function nflPlayerPosition(player) {
+  const position = player && player.position;
+  return typeof position === "string" ? position : ((position && (position.abbreviation || position.name)) || "");
+}
+
+function nflPlayerStatSet(profile, position) {
+  const stats = flattenTeamStats(profile || {}, "", []);
+  const pick = (label, names) => [label, findTeamStat(stats, names)];
+  const pos = String(position || "").toUpperCase();
+  let wanted;
+  if (pos === "QB") {
+    wanted = [pick("Games", ["gamesPlayed", "games"]), pick("Completions", ["completions"]),
+      pick("Passing yards", ["passingYards", "netPassingYards"]), pick("Pass TD", ["passingTouchdowns"]),
+      pick("Interceptions", ["interceptions"]), pick("Completion %", ["completionPct", "completionPercentage"]),
+      pick("Passer rating", ["quarterbackRating", "QBRating", "passerRating"]), pick("Rush yards", ["rushingYards"]),
+      pick("Rush TD", ["rushingTouchdowns"])];
+  } else if (["RB", "FB"].includes(pos)) {
+    wanted = [pick("Games", ["gamesPlayed", "games"]), pick("Carries", ["rushingAttempts", "carries"]),
+      pick("Rush yards", ["rushingYards"]), pick("Yards/carry", ["yardsPerRushAttempt", "yardsPerCarry"]),
+      pick("Rush TD", ["rushingTouchdowns"]), pick("Receptions", ["receptions"]),
+      pick("Receiving yards", ["receivingYards"]), pick("Receiving TD", ["receivingTouchdowns"]), pick("Fumbles", ["fumbles"])];
+  } else if (["WR", "TE"].includes(pos)) {
+    wanted = [pick("Games", ["gamesPlayed", "games"]), pick("Targets", ["receivingTargets", "targets"]),
+      pick("Receptions", ["receptions"]), pick("Receiving yards", ["receivingYards"]),
+      pick("Yards/reception", ["yardsPerReception"]), pick("Receiving TD", ["receivingTouchdowns"]),
+      pick("Longest catch", ["longReception", "longReceiving"]), pick("Catch %", ["receptionPct", "catchPercentage"])];
+  } else if (["K", "PK"].includes(pos)) {
+    wanted = [pick("Games", ["gamesPlayed", "games"]), pick("FG made", ["fieldGoalsMade"]),
+      pick("FG attempts", ["fieldGoalAttempts", "fieldGoalsAttempted"]), pick("FG %", ["fieldGoalPct", "fieldGoalPercentage"]),
+      pick("Long FG", ["longFieldGoalMade", "longFieldGoal"]), pick("XP made", ["extraPointsMade"]),
+      pick("XP attempts", ["extraPointAttempts", "extraPointsAttempted"])];
+  } else if (["P"].includes(pos)) {
+    wanted = [pick("Punts", ["punts"]), pick("Punt yards", ["puntYards"]), pick("Average", ["grossAvgPuntYards", "yardsPerPunt"]),
+      pick("Long", ["longPunt"]), pick("Inside 20", ["puntsInside20"]), pick("Touchbacks", ["puntTouchbacks"])];
+  } else {
+    wanted = [pick("Games", ["gamesPlayed", "games"]), pick("Total tackles", ["totalTackles", "tackles"]),
+      pick("Solo tackles", ["soloTackles"]), pick("Sacks", ["sacks"]), pick("Tackles for loss", ["tacklesForLoss"]),
+      pick("Interceptions", ["defensiveInterceptions", "interceptions"]), pick("Passes defended", ["passesDefended", "passesDefensed"]),
+      pick("Forced fumbles", ["forcedFumbles"]), pick("Fumble recoveries", ["fumbleRecoveries"])];
+  }
+  return wanted.filter((item) => item[1] !== "Not available");
+}
+
+function renderNFLPlayerProfile(player, profile, team) {
+  const source = (profile && (profile.athlete || profile.player)) || profile || {};
+  const merged = Object.assign({}, player || {}, source || {});
+  const name = merged.displayName || merged.fullName || merged.shortName || "NFL player";
+  const position = nflPlayerPosition(merged) || nflPlayerPosition(player);
+  const photo = nflPlayerImage(merged) || nflPlayerImage(player) ||
+    (merged.id ? "https://a.espncdn.com/i/headshots/nfl/players/full/" + encodeURIComponent(merged.id) + ".png" : "");
+  const teamName = team.displayName || team.name || "";
+  const number = merged.jersey || merged.number || "";
+  const height = merged.displayHeight || merged.heightDisplay || "";
+  const weight = merged.displayWeight || (merged.weight ? merged.weight + " lbs" : "");
+  const experience = merged.experience && (merged.experience.displayValue || (merged.experience.years != null ? merged.experience.years + " years" : ""));
+  const college = merged.college && (merged.college.name || merged.college.displayName || merged.college);
+  const bioDetails = [height, weight, experience, college].filter(Boolean);
+  const stats = nflPlayerStatSet(profile, position);
+  const logo = teamLogo(team);
+  const color = String(team.color || "263444").replace(/[^0-9a-f]/gi, "").slice(0, 6) || "263444";
+  return backButton() + '<section class="nfl-player-hero" style="--player-color:#' + esc(color) + '">' +
+    '<div class="nfl-player-photo">' + (photo ? '<img src="' + esc(photo) + '" alt="' + esc(name) + '" onerror="this.style.display=\'none\'">' : '') +
+    (number ? '<span>' + esc(number) + '</span>' : '') + '</div><div class="nfl-player-bio"><div class="eyebrow">NFL PLAYER</div><h2>' + esc(name) +
+    '</h2><p>' + esc([teamName, position, number ? "#" + number : ""].filter(Boolean).join(" · ")) + '</p><small>' + esc(bioDetails.join(" · ")) + '</small></div>' +
+    (logo ? '<img class="nfl-player-team-logo" src="' + esc(logo) + '" alt="">' : '') + '</section>' +
+    '<section class="card team-section"><h2>Season stats</h2>' + (stats.length
+      ? '<div class="nfl-player-stats">' + stats.map((item) => statTile(item[0], item[1])).join("") + '</div>'
+      : '<div class="muted">Season statistics are not available for this player yet.</div>') +
+    '<p class="muted small">Statistics shown are for the current NFL regular season.</p></section>';
+}
+
+async function showNFLPlayer() {
+  const d = detail;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading player profile&hellip;</div>';
+  try {
+    const cache = await getJson("data/nfl_teams.json");
+    const teams = cache && cache.data && cache.data.teams || {};
+    let entry = teams[String(d.teamAbbr || "").toUpperCase()];
+    if (!entry) {
+      entry = Object.keys(teams).map((key) => teams[key]).find((candidate) =>
+        !!rosterAthletes(candidate.roster || {})[String(d.playerId)]);
+    }
+    if (!entry || !entry.team) throw new Error("Team unavailable");
+    const players = rosterAthletes(entry.roster || {});
+    const player = players[String(d.playerId)] || { id: d.playerId };
+    let profile = {};
+    try {
+      const response = await fetch("https://site.web.api.espn.com/apis/common/v3/sports/football/nfl/athletes/" +
+        encodeURIComponent(d.playerId), { cache: "no-store" });
+      if (response.ok) profile = await response.json();
+    } catch (err) { /* cached roster still provides the profile shell */ }
+    if (detail !== d) return;
+    view.innerHTML = renderNFLPlayerProfile(player, profile, entry.team);
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this NFL player right now. Run the data workflow once, then refresh.</div>';
+  }
+}
+
+function openNFLPlayer(playerId, teamAbbr) {
+  detail = { sportId: "nfl", kind: "nfl-player", playerId: playerId, teamAbbr: teamAbbr, returnTo: current };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
 }
 
 function paintNFLTeam(d, abbr, team, schedule, stats, depth, roster) {
@@ -1708,7 +1831,7 @@ function paintNFLTeam(d, abbr, team, schedule, stats, depth, roster) {
     view.innerHTML = header +
       section(() => renderNFLStats(team, stats, schedule || {}),
         '<section class="card team-section"><h2>Team stats</h2><div class="muted">Stats are temporarily unavailable.</div></section>') +
-      section(() => renderNFLDepth(depth || {}, roster || {}),
+      section(() => renderNFLDepth(depth || {}, roster || {}, abbr),
         '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart is temporarily unavailable.</div></section>') +
       section(() => renderNFLSchedule(schedule || {}, id),
         '<section class="card team-section"><h2>Season schedule</h2><div class="muted">Schedule is temporarily unavailable.</div></section>');
@@ -1757,6 +1880,14 @@ function openGame(id, sportId) {
 
 function leaveDetail() {
   const returnTo = detail && detail.returnTo;
+  if (detail && detail.kind === "nfl-player" && detail.teamAbbr) {
+    detail = { sportId: "nfl", kind: "team", teamAbbr: detail.teamAbbr, returnTo: "nfl" };
+    current = "nfl";
+    view.removeAttribute("data-detail");
+    syncPageMenu();
+    show();
+    return;
+  }
   detail = null;
   if (returnTo) current = returnTo;
   view.removeAttribute("data-detail");
@@ -1783,6 +1914,12 @@ view.addEventListener("click", (event) => {
   if (driverEl) { event.stopPropagation(); openF1Driver(driverEl.getAttribute("data-driver")); return; }
   const golferEl = event.target.closest("button[data-golfer]");
   if (golferEl) { event.stopPropagation(); openGolfPlayer(golferEl.getAttribute("data-golfer")); return; }
+  const nflPlayerEl = event.target.closest("button[data-nfl-player]");
+  if (nflPlayerEl) {
+    event.stopPropagation();
+    openNFLPlayer(nflPlayerEl.getAttribute("data-nfl-player"), nflPlayerEl.getAttribute("data-player-team"));
+    return;
+  }
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const teamEl = event.target.closest("button[data-team]");
@@ -1838,6 +1975,7 @@ async function show() {
     if (detail.kind === "race") await showRace();
     else if (detail.kind === "driver") await showF1Driver();
     else if (detail.kind === "golfer") await showGolfPlayer();
+    else if (detail.kind === "nfl-player") await showNFLPlayer();
     else if (detail.kind === "team") await showNFLTeam();
     else if (detail.kind === "nba-team") await showNBATeam();
     else await showDetail();
