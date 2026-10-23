@@ -127,6 +127,8 @@ th { color: var(--muted); font-weight: 500; font-size: 12px; border-top: 0; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 td.pos { width: 28px; color: var(--muted); }
 td .sub { display: block; color: var(--muted); font-size: 12px; }
+.table-team { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.table-team img { width: 24px; height: 24px; flex: 0 0 24px; object-fit: contain; background: transparent; }
 
 details summary {
   cursor: pointer;
@@ -242,6 +244,19 @@ tr.past td { color: var(--muted); }
 .driver-stat-grid span { color: var(--muted); font-size: 11px; }
 .driver-stat-grid strong { margin-top: 4px; font-size: 18px; }
 .driver-source { text-align: right; }
+
+/* NFL / NBA play-by-play */
+.play-card summary small { margin-left: 6px; color: var(--muted); font-weight: 400; }
+.play-feed { margin-top: 4px; }
+.play-row { display: grid; grid-template-columns: 74px 32px minmax(0, 1fr); align-items: start; gap: 10px; padding: 12px 4px; border-top: 1px solid var(--line); }
+.play-row.scoring { margin: 0 -6px; padding-left: 10px; padding-right: 10px; border-radius: 10px; background: rgba(76,194,255,.075); }
+.play-time strong, .play-time span { display: block; }
+.play-time strong { font-size: 11px; }
+.play-time span { margin-top: 2px; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.play-mark { width: 30px; height: 30px; display: grid; place-items: center; }
+.play-mark img { width: 28px; height: 28px; object-fit: contain; background: transparent; }
+.play-copy strong { display: block; font-size: 13px; font-weight: 600; }
+.score-tag { display: inline-block; margin-top: 5px; padding: 2px 6px; border-radius: 999px; background: rgba(76,194,255,.12); color: var(--accent); font-size: 9px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; }
 
 .up { color: var(--up); font-size: 12px; }
 .down { color: var(--down); font-size: 12px; }
@@ -386,4 +401,6 @@ tr.fastest td { color: #c77dff; }
   .driver-number { left: 8px; top: 9px; font-size: 38px; }
   .driver-bio { padding: 18px 0; }
   .driver-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .play-row { grid-template-columns: 62px 28px minmax(0, 1fr); gap: 8px; }
+  .play-mark, .play-mark img { width: 26px; height: 26px; }
 }

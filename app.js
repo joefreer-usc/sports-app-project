@@ -15,6 +15,7 @@ const SPORTS = [
   // Premier League and Champions League share one tab with a switch at the top.
   { id: "epl", label: "FC", kind: "league", espn: "soccer/eng.1", scores: "data/epl.json", extra: "data/epl_table.json", extraType: "table", group: "fc", side: "Premier League" },
   { id: "ucl", label: "FC", kind: "league", espn: "soccer/uefa.champions", scores: "data/ucl.json", extra: "data/ucl_table.json", extraType: "table", group: "fc", side: "Champions League", hidden: true },
+  { id: "laliga", label: "FC", kind: "league", espn: "soccer/esp.1", scores: "data/laliga.json", extra: "data/laliga_table.json", extraType: "table", group: "fc", side: "LaLiga", hidden: true },
   { id: "golf", label: "Golf", kind: "golf", file: "data/golf.json" },
   { id: "f1", label: "F1", kind: "f1", file: "data/f1.json" }
 ];
@@ -43,7 +44,8 @@ const LIVE = {
   cbb:  { days: [-1, 0], extra: "&groups=50&limit=400" },
   wcbb: { days: [-1, 0], extra: "&groups=50&limit=400" },
   epl:  { days: [-1, 0] },
-  ucl:  { days: [-1, 0] }
+  ucl:  { days: [-1, 0] },
+  laliga: { days: [-1, 0] }
 };
 
 const view = document.getElementById("view");
@@ -797,7 +799,8 @@ function renderSoccerTable(data) {
       { label: "D", num: true }, { label: "L", num: true }, { label: "GD", num: true }, { label: "Pts", num: true }
     ];
     const rows = teams.map((t) =>
-      '<tr><td class="pos">' + esc(t.rank || "") + "</td><td>" + esc(t.name || t.abbr) +
+      '<tr><td class="pos">' + esc(t.rank || "") + '</td><td><span class="table-team">' +
+      (t.logo ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy">' : '') + '<span>' + esc(t.name || t.abbr) + '</span></span>' +
       (t.note ? '<span class="sub">' + esc(t.note) + "</span>" : "") + "</td>" +
       '<td class="num">' + esc(t.played) + '</td><td class="num">' + esc(t.won) +
       '</td><td class="num">' + esc(t.drawn) + '</td><td class="num">' + esc(t.lost) +
@@ -944,8 +947,60 @@ function renderLinescore(data) {
     head + "</tr></thead><tbody>" + rows.join("") + "</tbody></table></div></section>";
 }
 
-function renderBoxscore(data) {
+function playList(data) {
+  const out = [];
+  if (Array.isArray(data.plays)) out.push.apply(out, data.plays);
+  const drives = data.drives || {};
+  const previous = Array.isArray(drives.previous) ? drives.previous : (Array.isArray(drives) ? drives : []);
+  previous.forEach((drive) => { if (Array.isArray(drive.plays)) out.push.apply(out, drive.plays); });
+  if (drives.current && Array.isArray(drives.current.plays)) out.push.apply(out, drives.current.plays);
+  const seen = {};
+  return out.filter((p) => {
+    const key = p.id || [p.period && (p.period.number || p.period), p.clock && p.clock.displayValue, p.text].join("|");
+    if (seen[key]) return false;
+    seen[key] = true;
+    return !!(p.text || p.shortText);
+  });
+}
+
+function playTeam(play, data) {
+  const id = play.team && play.team.id;
+  const comp = data.header && data.header.competitions && data.header.competitions[0];
+  const teams = (comp && comp.competitors) || [];
+  const found = teams.find((x) => String((x.team && x.team.id) || x.id) === String(id));
+  return (found && found.team) || play.team || {};
+}
+
+function playLogo(team) {
+  const logos = team.logos || [];
+  const src = team.logo || (logos[0] && logos[0].href) || "";
+  return src ? '<img src="' + esc(src) + '" alt="" loading="lazy">' : '<span></span>';
+}
+
+function renderPlayByPlay(data, sportId) {
+  if (sportId !== "nfl" && sportId !== "nba") return "";
+  const plays = playList(data).slice(-50).reverse();
+  if (!plays.length) return '<section class="card play-card"><h2>Play-by-play</h2><div class="muted">Play-by-play is not available yet.</div></section>';
+  const rows = plays.map((play) => {
+    const team = playTeam(play, data);
+    const clock = play.clock && play.clock.displayValue ? play.clock.displayValue : "";
+    const period = play.period && (play.period.number || play.period);
+    const periodText = period ? (Number(period) > 4 ? "OT" : "Q" + period) : "";
+    const score = play.awayScore != null && play.homeScore != null ? play.awayScore + "–" + play.homeScore : "";
+    const scoring = play.scoringPlay || (play.shootingPlay && Number(play.scoreValue) > 0);
+    return '<div class="play-row' + (scoring ? ' scoring' : '') + '"><div class="play-time"><strong>' +
+      esc([periodText, clock].filter(Boolean).join(" ")) + '</strong><span>' + esc(score) + '</span></div>' +
+      '<div class="play-mark">' + playLogo(team) + '</div><div class="play-copy"><strong>' +
+      esc(play.text || play.shortText || "Play") + '</strong>' +
+      (scoring ? '<span class="score-tag">Scoring play</span>' : '') + '</div></div>';
+  }).join("");
+  return '<section class="card play-card"><details open><summary>Play-by-play <small>Latest first</small></summary>' +
+    '<div class="play-feed">' + rows + '</div></details></section>';
+}
+
+function renderBoxscore(data, sportId) {
   let html = renderLinescore(data);
+  html += renderPlayByPlay(data, sportId);
 
   ((data.boxscore && data.boxscore.players) || []).forEach((tp) => {
     const teamName = tp.team ? (tp.team.displayName || tp.team.name || "") : "";
@@ -1124,7 +1179,7 @@ async function showDetail() {
   if (results[1].status === "fulfilled") {
     view.innerHTML = header + (d.game.state === "pre"
       ? renderPregame(results[1].value, d.game)
-      : renderBoxscore(results[1].value));
+      : renderBoxscore(results[1].value, sport.id));
   } else {
     view.innerHTML = header +
       '<div class="message">Couldn\'t load the box score. It may not be available yet, or ESPN may be ' +
@@ -1450,6 +1505,7 @@ const loaded = {};   // sport id -> { scores, extra } as last read from the data
 const overlay = {};  // sport id -> { at, games: { id: game } } fresher copies fetched from ESPN
 let liveBusy = false;
 let liveScreenBusy = false;
+let detailRefreshBusy = false;
 
 function parseEspnEvent(e) {
   const comp = (e.competitions && e.competitions[0]) || {};
@@ -1552,6 +1608,13 @@ function anyActive(games) {
 }
 
 async function refreshLive() {
+  if (detail && !detail.kind && ["nfl", "nba"].includes(detail.sportId)) {
+    if (!detailRefreshBusy && !document.hidden && detail.game && detail.game.state === "in") {
+      detailRefreshBusy = true;
+      try { await showDetail(); } finally { detailRefreshBusy = false; }
+    }
+    return;
+  }
   if (current === "live") { refreshLiveScreen(); return; }
   const sport = SPORTS.find((s) => s.id === current);
   if (!sport || sport.kind !== "league" || detail || liveBusy || document.hidden) return;

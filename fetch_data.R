@@ -177,7 +177,7 @@ fetch_f1 <- function() {
       }, open_drivers)
       if (length(matches) > 0) {
         photo <- matches[[1]]
-        drivers[[i]]$headshot <- photo$headshot_url %||% ""
+        drivers[[i]]$headshot <- gsub("/1col/", "/6col/", photo$headshot_url %||% "", fixed = TRUE)
         drivers[[i]]$teamColor <- photo$team_colour %||% ""
       } else {
         drivers[[i]]$headshot <- ""
@@ -575,6 +575,7 @@ parse_soccer_entry <- function(en) {
     rank   = rank,
     name   = en$team$displayName %||% en$team$name %||% "",
     abbr   = en$team$abbreviation %||% "",
+    logo   = if (length(en$team$logos %||% list()) > 0) en$team$logos[[1]]$href %||% "" else "",
     played = soccer_stat(st, "gamesPlayed"),
     won    = soccer_stat(st, "wins"),
     drawn  = soccer_stat(st, "ties"),
@@ -611,6 +612,9 @@ run_section("epl_table", function() fetch_soccer_table("soccer/eng.1"))
 
 run_section("ucl",       function() fetch_scores("soccer/uefa.champions", offsets = soccer_offsets))
 run_section("ucl_table", function() fetch_soccer_table("soccer/uefa.champions"))
+
+run_section("laliga",       function() fetch_scores("soccer/esp.1", offsets = soccer_offsets))
+run_section("laliga_table", function() fetch_soccer_table("soccer/esp.1"))
 
 # ---- PGA Tour golf (ESPN, no key) --------------------------------------------
 # Shows the current (or next) tournament's leaderboard plus the season schedule.
