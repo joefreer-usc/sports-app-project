@@ -595,8 +595,8 @@ function teamRow(t, state, isWinner, sportId) {
     ? '<img class="team-logo" src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
     : '<span class="team-fallback">' + esc(t.abbr || "") + '</span>';
   const name = '<span class="team-name">' + esc(t.name || t.abbr) + '</span>';
-  const linkedName = sportId === "nfl" && t.abbr
-    ? '<button type="button" class="team-link" data-team="' + esc(t.abbr) + '" aria-label="View ' +
+  const linkedName = ["nfl", "nba"].includes(sportId) && t.abbr
+    ? '<button type="button" class="team-link" data-team="' + esc(t.abbr) + '" data-team-sport="' + esc(sportId) + '" aria-label="View ' +
       esc(t.name || t.abbr) + '">' + name + '</button>'
     : name;
   return '<div class="team' + (isWinner ? " win" : "") + '">' +
@@ -1292,6 +1292,126 @@ function renderNFLSchedule(data, teamId) {
     }).join("") + '</div></details></section>';
 }
 
+function scoreValue(side) {
+  const score = side && side.score;
+  if (score == null) return NaN;
+  if (typeof score === "object") return Number(score.displayValue != null ? score.displayValue : score.value);
+  return Number(score);
+}
+
+function renderNBAStats(team, data) {
+  const stats = flattenTeamStats(data || {}, "", []);
+  const avgFor = recordStat(team, "avgPointsFor");
+  const avgAgainst = recordStat(team, "avgPointsAgainst");
+  const fmt = (x) => x == null ? null : Number(x).toFixed(1);
+  const pick = (names, pathTest) => findTeamStat(stats, names, pathTest);
+  const offense = [
+    ["Points/game", fmt(avgFor) || pick(["avgPoints", "pointsPerGame", "averagePoints"])],
+    ["Field goal %", pick(["fieldGoalPct", "fieldGoalPercentage", "avgFieldGoalPct"], /offen|team|general/i)],
+    ["3-point %", pick(["threePointFieldGoalPct", "threePointPct", "threePointFieldGoalPercentage"], /offen|team|general/i)],
+    ["Turnovers/game", pick(["turnoversPerGame", "avgTurnovers", "turnovers"], /offen|team|general/i)],
+    ["Effective FG%", pick(["effectiveFieldGoalPct", "effectiveFieldGoalPercentage", "eFGPct"])],
+    ["Free throw %", pick(["freeThrowPct", "freeThrowPercentage", "avgFreeThrowPct"], /offen|team|general/i)],
+    ["Assists/game", pick(["assistsPerGame", "avgAssists", "assists"], /offen|team|general/i)],
+    ["Off. rebounds/game", pick(["offensiveReboundsPerGame", "avgOffensiveRebounds", "offensiveRebounds"], /offen|team|general/i)],
+    ["Assist/turnover ratio", pick(["assistTurnoverRatio", "assistToTurnoverRatio"])],
+    ["Pace", pick(["pace", "possessionsPerGame", "estimatedPossessionsPerGame"])]
+  ];
+  const defense = [
+    ["Opponent points/game", fmt(avgAgainst) || pick(["opponentPointsPerGame", "pointsAllowedPerGame", "avgPointsAgainst"])],
+    ["Opponent FG%", pick(["opponentFieldGoalPct", "defensiveFieldGoalPct", "fieldGoalPctAgainst"])],
+    ["Opponent 3-point %", pick(["opponentThreePointFieldGoalPct", "defensiveThreePointPct", "threePointPctAgainst"])],
+    ["Steals/game", pick(["stealsPerGame", "avgSteals", "steals"], /defen|team|general/i)],
+    ["Blocks/game", pick(["blocksPerGame", "avgBlocks", "blocks"], /defen|team|general/i)],
+    ["Def. rebounds/game", pick(["defensiveReboundsPerGame", "avgDefensiveRebounds", "defensiveRebounds"], /defen|team|general/i)],
+    ["Turnovers forced/game", pick(["opponentTurnoversPerGame", "turnoversForcedPerGame", "avgTurnoversForced"])],
+    ["Opponent eFG%", pick(["opponentEffectiveFieldGoalPct", "defensiveEffectiveFieldGoalPct"])],
+    ["Personal fouls/game", pick(["foulsPerGame", "avgFouls", "personalFoulsPerGame"])],
+    ["Point differential", pick(["pointDifferential", "avgPointDifferential", "averagePointDifferential"])]
+  ];
+  return '<section class="card team-section"><h2>Team stats</h2><p class="muted small">Betting-focused season averages and efficiency indicators.</p><div class="team-stats-columns">' +
+    '<div><h3>Offense</h3><div class="team-stat-grid">' + offense.map((x) => statTile(x[0], x[1])).join("") + '</div></div>' +
+    '<div><h3>Defense</h3><div class="team-stat-grid">' + defense.map((x) => statTile(x[0], x[1])).join("") + '</div></div></div>' +
+    '<p class="muted small">Availability depends on the statistics ESPN publishes for the current season.</p></section>';
+}
+
+function renderNBASchedule(data, teamId) {
+  const events = (data.events || []).slice().sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+  if (!events.length) return '<section class="card team-section"><h2>Season schedule</h2><div class="muted">Schedule unavailable.</div></section>';
+  const months = [];
+  const indexed = {};
+  events.forEach((event) => {
+    const date = Date.parse(event.date);
+    const key = isNaN(date) ? "tbd" : new Date(date).getFullYear() + "-" + new Date(date).getMonth();
+    if (!indexed[key]) {
+      indexed[key] = { label: isNaN(date) ? "Date TBD" : new Date(date).toLocaleDateString([], { month: "long" }), events: [] };
+      months.push(indexed[key]);
+    }
+    indexed[key].events.push(event);
+  });
+  const monthHtml = months.map((month, index) => '<details class="schedule-month"' + (index === 0 ? " open" : "") + '><summary>' +
+    esc(month.label) + ' <span>' + month.events.length + ' game' + (month.events.length === 1 ? "" : "s") + '</span></summary><div class="schedule-list">' +
+    month.events.map((event) => {
+      const comp = (event.competitions || [])[0] || {};
+      const sides = comp.competitors || [];
+      const mine = sides.find((x) => String(x.id || (x.team && x.team.id)) === String(teamId));
+      const opp = sides.find((x) => x !== mine) || {};
+      const ot = opp.team || {};
+      const state = ((comp.status || event.status || {}).type || {}).state || "pre";
+      const date = Date.parse(event.date);
+      const when = isNaN(date) ? "TBD" : new Date(date).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+      let result;
+      if (state === "post" && mine) {
+        const a = scoreValue(mine);
+        const b = scoreValue(opp);
+        result = !isNaN(a) && !isNaN(b) ? (mine.winner ? "W" : "L") + " " + a + "–" + b : "Final";
+      } else {
+        result = ((comp.status || event.status || {}).type || {}).shortDetail || "Scheduled";
+      }
+      return '<div class="schedule-row"><span><b>' + esc(when) + '</b></span><span class="schedule-opponent">' +
+        esc(mine && mine.homeAway === "away" ? "at " : "vs ") + esc(ot.displayName || ot.shortDisplayName || "Opponent") +
+        '</span><strong>' + esc(result) + '</strong></div>';
+    }).join("") + '</div></details>').join("");
+  return '<section class="card team-section"><h2>Season schedule</h2><div class="month-schedule">' + monthHtml + '</div></section>';
+}
+
+function paintNBATeam(d, abbr, team, schedule, stats) {
+  if (detail !== d) return;
+  const logo = teamLogo(team);
+  const record = team.recordSummary || (team.record && team.record.items && team.record.items[0] && team.record.items[0].summary) || "";
+  view.innerHTML = backButton() + '<section class="team-hero" style="--team-color:#' + esc(team.color || "263444") + '">' +
+    (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
+    '<div><div class="eyebrow">NBA TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
+    esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>' +
+    renderNBAStats(team, stats) + renderNBASchedule(schedule || {}, team.id);
+}
+
+async function showNBATeam() {
+  const d = detail;
+  const abbr = d.teamAbbr;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading team page&hellip;</div>';
+  try {
+    const cache = await getJson("data/nba_teams.json");
+    const entry = cache && cache.data && cache.data.teams && cache.data.teams[String(abbr).toUpperCase()];
+    if (!entry || !entry.team || !entry.team.id) throw new Error("Team cache unavailable");
+    paintNBATeam(d, abbr, entry.team, entry.schedule, entry.stats);
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message"><b>NBA team profiles have not been downloaded yet.</b><br>' +
+      'Run the Update sports data workflow once after installing this version, then refresh the page.</div>';
+  }
+}
+
+function openNBATeam(abbr) {
+  const returnTo = current;
+  detail = { sportId: "nba", kind: "nba-team", teamAbbr: abbr, returnTo: returnTo };
+  if (current === "live") current = "nba";
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
+}
+
 function athleteId(ref) {
   const match = String((ref && (ref.$ref || ref.href)) || "").match(/athletes\/(\d+)/);
   return match ? match[1] : String((ref && ref.id) || "");
@@ -1420,7 +1540,12 @@ view.addEventListener("click", (event) => {
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const teamEl = event.target.closest("button[data-team]");
-  if (teamEl) { event.stopPropagation(); openNFLTeam(teamEl.getAttribute("data-team")); return; }
+  if (teamEl) {
+    event.stopPropagation();
+    const opener = teamEl.getAttribute("data-team-sport") === "nba" ? openNBATeam : openNFLTeam;
+    opener(teamEl.getAttribute("data-team"));
+    return;
+  }
   const el = event.target.closest(".game[data-id]");
   if (el) openGame(el.getAttribute("data-id"), el.getAttribute("data-sport"));
 });
@@ -1467,6 +1592,7 @@ async function show() {
     if (detail.kind === "race") await showRace();
     else if (detail.kind === "driver") await showF1Driver();
     else if (detail.kind === "team") await showNFLTeam();
+    else if (detail.kind === "nba-team") await showNBATeam();
     else await showDetail();
     return;
   }

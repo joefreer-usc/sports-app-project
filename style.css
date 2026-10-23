@@ -202,7 +202,7 @@ tr.past td { color: var(--muted); }
 .live-league-card .game { border-top: 0; padding-top: 7px; }
 .league-tag { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
 
-/* NFL team pages */
+/* NFL and NBA team pages */
 .team-hero { position: relative; display: flex; align-items: center; gap: 24px; overflow: hidden; margin: 12px 0; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, color-mix(in srgb, var(--team-color) 28%, var(--card)), var(--card)); }
 .team-hero::after { content: ""; position: absolute; right: -50px; top: -80px; width: 220px; height: 220px; border-radius: 50%; background: color-mix(in srgb, var(--team-color) 18%, transparent); }
 .team-hero img { position: relative; z-index: 1; width: 104px; height: 104px; object-fit: contain; background: transparent; }
@@ -227,6 +227,11 @@ tr.past td { color: var(--muted); }
 .schedule-row span:first-child b, .schedule-row span:first-child small { display: block; }
 .schedule-row small { color: var(--muted); font-weight: 400; }
 .schedule-row > strong { text-align: right; font-variant-numeric: tabular-nums; }
+.month-schedule { display: grid; gap: 10px; }
+.schedule-month { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: rgba(15,23,32,.34); }
+.schedule-month > summary { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; color: var(--text); font-size: 14px; font-weight: 800; cursor: pointer; }
+.schedule-month > summary span { color: var(--muted); font-size: 11px; font-weight: 700; }
+.schedule-month .schedule-list { padding: 0 14px 5px; }
 
 /* F1 driver profiles */
 .driver-hero { position: relative; display: grid; grid-template-columns: minmax(150px, 230px) minmax(0, 1fr); align-items: stretch; gap: 26px; min-height: 250px; overflow: hidden; margin: 12px 0; padding: 0 28px 0 0; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--driver-color) 30%, var(--card)), var(--card) 70%); }

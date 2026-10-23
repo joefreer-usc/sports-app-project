@@ -772,3 +772,70 @@ fetch_nfl_team_cache <- function() {
 }
 
 tryCatch(fetch_nfl_team_cache(), error = function(e) message("nfl_teams: FAILED - ", conditionMessage(e)))
+
+# ---- NBA team pages --------------------------------------------------------
+# Like NFL profiles, NBA profiles use a local cache so GitHub Pages visitors
+# are not dependent on cross-origin ESPN requests from their browsers.
+
+nba_team_cache_is_fresh <- function(hours = 12) {
+  path <- file.path("data", "nba_teams.json")
+  if (!file.exists(path)) return(FALSE)
+  stamp <- tryCatch(fromJSON(path, simplifyVector = FALSE)$updated, error = function(e) NULL)
+  if (is.null(stamp)) return(FALSE)
+  then <- as.POSIXct(stamp, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
+  !is.na(then) && as.numeric(difftime(Sys.time(), then, units = "hours")) < hours
+}
+
+fetch_nba_team_cache <- function() {
+  if (nba_team_cache_is_fresh()) {
+    message("nba_teams: cache is still fresh")
+    return(invisible(FALSE))
+  }
+
+  safe_json <- function(url) {
+    tryCatch(get_json(url), error = function(e) {
+      message("  nba team request failed: ", conditionMessage(e))
+      NULL
+    })
+  }
+
+  index <- get_json(paste0(espn_site, "basketball/nba/teams?limit=50"))
+  wrappers <- index$sports[[1]]$leagues[[1]]$teams %||% list()
+  year <- as.integer(format(Sys.Date(), "%Y"))
+  month <- as.integer(format(Sys.Date(), "%m"))
+  # ESPN names an NBA season by the calendar year in which the Finals occur.
+  season <- if (month >= 7L) year + 1L else year
+  teams_out <- list()
+
+  for (wrapper in wrappers) {
+    team <- wrapper$team %||% wrapper
+    id <- as.character(team$id %||% "")
+    abbr <- toupper(team$abbreviation %||% "")
+    if (!nzchar(id) || !nzchar(abbr)) next
+    message("  nba team page: ", abbr)
+
+    schedule <- safe_json(paste0(espn_site, "basketball/nba/teams/", id,
+                                 "/schedule?season=", season))
+    stats <- safe_json(paste0("https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/seasons/",
+                              season, "/types/2/teams/", id, "/statistics"))
+
+    if (!is.null(schedule$team)) {
+      team$recordSummary <- schedule$team$recordSummary %||% ""
+      team$standingSummary <- schedule$team$standingSummary %||% team$standingSummary %||% ""
+      team$logo <- schedule$team$logo %||% team$logo %||% ""
+    }
+    teams_out[[abbr]] <- list(team = team, schedule = schedule, stats = stats)
+  }
+
+  if (length(teams_out) == 0) stop("ESPN returned no NBA teams")
+  out <- list(
+    updated = format(Sys.time(), tz = "UTC", "%Y-%m-%dT%H:%M:%SZ"),
+    data = list(season = season, teams = teams_out)
+  )
+  write_json(out, file.path("data", "nba_teams.json"), auto_unbox = TRUE,
+             pretty = FALSE, null = "null")
+  message("nba_teams: saved ", length(teams_out), " teams")
+  invisible(TRUE)
+}
+
+tryCatch(fetch_nba_team_cache(), error = function(e) message("nba_teams: FAILED - ", conditionMessage(e)))
