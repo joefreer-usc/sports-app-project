@@ -162,6 +162,30 @@ fetch_f1 <- function() {
     image      = image_for(r$date)
   ))
 
+  # Current official-style driver headshots and team colors from OpenF1.
+  open_drivers <- tryCatch(
+    get_json("https://api.openf1.org/v1/drivers?session_key=latest"),
+    error = function(e) { message("  openf1 drivers: ", conditionMessage(e)); list() }
+  )
+  if (length(open_drivers) > 0 && length(drivers) > 0) {
+    for (i in seq_along(drivers)) {
+      code <- toupper(drivers[[i]]$code %||% "")
+      number <- as.character(drivers[[i]]$number %||% "")
+      matches <- Filter(function(x) {
+        identical(toupper(x$name_acronym %||% ""), code) ||
+          (nzchar(number) && identical(as.character(x$driver_number %||% ""), number))
+      }, open_drivers)
+      if (length(matches) > 0) {
+        photo <- matches[[1]]
+        drivers[[i]]$headshot <- photo$headshot_url %||% ""
+        drivers[[i]]$teamColor <- photo$team_colour %||% ""
+      } else {
+        drivers[[i]]$headshot <- ""
+        drivers[[i]]$teamColor <- ""
+      }
+    }
+  }
+
   # All completed race results in one request, grouped by driver for profiles.
   all_results_data <- tryCatch(
     get_json(paste0(base, "/results/?limit=2000")),

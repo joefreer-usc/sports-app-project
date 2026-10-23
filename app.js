@@ -310,9 +310,15 @@ function renderDriverProfile(driver, results, season) {
     ["Best finish", best === "—" ? best : "P" + best],
     ["Average finish", average]
   ];
-  let html = backButton() + '<section class="driver-hero">' + driverFlag(driver, true) + '<div>' +
+  const color = String(driver.teamColor || "e10600").replace(/[^0-9a-f]/gi, "").slice(0, 6) || "e10600";
+  const portrait = driver.headshot
+    ? '<img class="driver-photo" src="' + esc(driver.headshot) + '" alt="' + esc(driver.name) + '" loading="eager" onerror="this.style.display=\'none\'">'
+    : '';
+  let html = backButton() + '<section class="driver-hero" style="--driver-color:#' + esc(color) + '">' +
+    '<div class="driver-portrait">' + portrait + '<span class="driver-number">' + esc(driver.number || driver.code || "F1") +
+    '</span></div><div class="driver-bio">' +
     '<div class="eyebrow">FORMULA 1 DRIVER</div><h2>' + esc(driver.name) + '</h2><p>' +
-    esc([driver.nationality, driver.team, driver.number ? "Car " + driver.number : ""].filter(Boolean).join(" · ")) +
+    driverFlag(driver, false) + esc([driver.nationality, driver.team, driver.number ? "Car " + driver.number : ""].filter(Boolean).join(" · ")) +
     '</p>' + (born ? '<small>Born ' + esc(born) + (age !== "" ? " · Age " + esc(age) : "") + '</small>' : '') + '</div></section>';
   html += '<section class="card"><h2>' + esc(season) + ' season</h2><div class="driver-stat-grid">' +
     facts.map((x) => '<div><span>' + esc(x[0]) + '</span><strong>' + esc(x[1]) + '</strong></div>').join("") + '</div></section>';
