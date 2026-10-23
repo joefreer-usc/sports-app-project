@@ -1,41 +1,17 @@
 {
-  "updated": "2026-10-23T02:36:31Z",
+  "updated": "2026-10-23T03:04:56Z",
   "data": {
     "games": [
-      {
-        "id": "401869845",
-        "date": "2026-10-22T23:00Z",
-        "state": "in",
-        "detail": "0:47 - 4th",
-        "away": {
-          "name": "James Madison Dukes",
-          "abbr": "JMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png",
-          "score": "24",
-          "record": "7-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "App State Mountaineers",
-          "abbr": "APP",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2026.png",
-          "score": "31",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401862807",
         "date": "2026-10-22T23:30Z",
         "state": "in",
-        "detail": "14:35 - 4th",
+        "detail": "6:29 - 4th",
         "away": {
           "name": "East Carolina Pirates",
           "abbr": "ECU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
-          "score": "24",
+          "score": "27",
           "record": "3-3",
           "rank": 0,
           "winner": false
@@ -44,10 +20,34 @@
           "name": "Memphis Tigers",
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
-          "score": "20",
+          "score": "27",
           "record": "5-2",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401869845",
+        "date": "2026-10-22T23:00Z",
+        "state": "post",
+        "detail": "Final/OT",
+        "away": {
+          "name": "James Madison Dukes",
+          "abbr": "JMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png",
+          "score": "31",
+          "record": "7-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "App State Mountaineers",
+          "abbr": "APP",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2026.png",
+          "score": "34",
+          "record": "5-2",
+          "rank": 0,
+          "winner": true
         }
       },
       {
