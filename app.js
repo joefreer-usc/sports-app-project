@@ -1218,7 +1218,7 @@ function flattenTeamStats(node, path, out) {
   if (!node || typeof node !== "object") return out;
   if (node.name && (node.displayValue != null || node.value != null)) {
     out.push({ name: node.name, label: node.displayName || node.label || node.name,
-      value: node.displayValue != null ? node.displayValue : String(node.value), path: path });
+      value: node.displayValue != null ? node.displayValue : String(node.value), rawValue: node.value, path: path });
   }
   Object.keys(node).forEach((key) => {
     const value = node[key];
@@ -1228,33 +1228,88 @@ function flattenTeamStats(node, path, out) {
 }
 
 function findTeamStat(stats, names, pathTest) {
-  const wanted = names.map((x) => x.toLowerCase());
-  let hit = stats.find((x) => wanted.includes(String(x.name).toLowerCase()) && (!pathTest || pathTest.test(x.path)));
-  if (!hit) hit = stats.find((x) => wanted.includes(String(x.name).toLowerCase()));
+  const normalize = (value) => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const wanted = names.map(normalize);
+  const matches = (x) => wanted.includes(normalize(x.name)) || wanted.includes(normalize(x.label));
+  let hit = stats.find((x) => matches(x) && (!pathTest || pathTest.test(x.path)));
+  if (!hit) hit = stats.find(matches);
+  if (!hit) hit = stats.find((x) => wanted.some((name) => name.length > 7 &&
+    (normalize(x.name).includes(name) || name.includes(normalize(x.name)) || normalize(x.label).includes(name))));
   return hit ? hit.value : "Not available";
+}
+
+function findTeamNumber(stats, names, pathTest) {
+  const normalize = (value) => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const wanted = names.map(normalize);
+  const matches = (x) => wanted.includes(normalize(x.name)) || wanted.includes(normalize(x.label));
+  let hit = stats.find((x) => matches(x) && (!pathTest || pathTest.test(x.path)));
+  if (!hit) hit = stats.find(matches);
+  if (!hit) return null;
+  const number = Number(hit.rawValue != null ? hit.rawValue : String(hit.value).replace(/[%,$]/g, ""));
+  return Number.isFinite(number) ? number : null;
+}
+
+function completedScheduleStats(schedule, teamId) {
+  const total = { games: 0, pointsFor: 0, pointsAgainst: 0 };
+  (schedule && schedule.events || []).forEach((event) => {
+    const comp = (event.competitions || [])[0] || {};
+    const state = ((comp.status || event.status || {}).type || {}).state;
+    if (state !== "post") return;
+    const sides = comp.competitors || [];
+    const mine = sides.find((x) => String(x.id || (x.team && x.team.id)) === String(teamId));
+    const opp = sides.find((x) => x !== mine);
+    const a = scoreValue(mine);
+    const b = scoreValue(opp);
+    if (!mine || !opp || !Number.isFinite(a) || !Number.isFinite(b)) return;
+    total.games += 1;
+    total.pointsFor += a;
+    total.pointsAgainst += b;
+  });
+  return total;
+}
+
+function perGameFromStats(stats, perGameNames, totalNames, games, pathTest) {
+  const direct = findTeamStat(stats, perGameNames, pathTest);
+  if (direct !== "Not available") return direct;
+  const total = findTeamNumber(stats, totalNames, pathTest);
+  return total != null && games ? (total / games).toFixed(1) : "Not available";
+}
+
+function derivedPercent(stats, pctNames, madeNames, attemptNames, pathTest) {
+  const direct = findTeamStat(stats, pctNames, pathTest);
+  if (direct !== "Not available") return direct;
+  const made = findTeamNumber(stats, madeNames, pathTest);
+  const attempts = findTeamNumber(stats, attemptNames, pathTest);
+  return made != null && attempts ? (made / attempts * 100).toFixed(1) + "%" : "Not available";
 }
 
 function statTile(label, value) {
   return '<div class="team-stat"><span>' + esc(label) + '</span><strong>' + esc(value == null ? "Not available" : value) + '</strong></div>';
 }
 
-function renderNFLStats(team, data) {
+function renderNFLStats(team, data, schedule) {
   const stats = flattenTeamStats(data || {}, "", []);
+  const played = completedScheduleStats(schedule, team.id);
   const avgFor = recordStat(team, "avgPointsFor");
   const avgAgainst = recordStat(team, "avgPointsAgainst");
   const fmt = (x) => x == null ? null : Number(x).toFixed(1);
   const offense = [
-    ["Points/game", fmt(avgFor) || findTeamStat(stats, ["pointsPerGame", "totalPointsPerGame"])],
-    ["Pass yards/game", findTeamStat(stats, ["passingYardsPerGame", "netPassingYardsPerGame"])],
-    ["Rush yards/game", findTeamStat(stats, ["rushingYardsPerGame"])],
+    ["Points/game", fmt(avgFor) || (played.games ? (played.pointsFor / played.games).toFixed(1) : null) || findTeamStat(stats, ["pointsPerGame", "totalPointsPerGame"])],
+    ["Pass yards/game", perGameFromStats(stats, ["passingYardsPerGame", "netPassingYardsPerGame"], ["passingYards", "netPassingYards"], played.games, /offen|team|pass/i)],
+    ["Rush yards/game", perGameFromStats(stats, ["rushingYardsPerGame"], ["rushingYards", "totalRushingYards"], played.games, /offen|team|rush/i)],
     ["Touchdowns", findTeamStat(stats, ["totalTouchdowns", "offensiveTouchdowns"], /offen/i)],
-    ["Points/drive", findTeamStat(stats, ["pointsPerDrive", "offensivePointsPerDrive"])],
+    ["Points/drive", (() => {
+      const published = findTeamStat(stats, ["pointsPerDrive", "offensivePointsPerDrive"]);
+      if (published !== "Not available") return published;
+      const drives = findTeamNumber(stats, ["totalDrives", "offensiveDrives", "drives"], /offen|team/i);
+      return drives && played.games ? (played.pointsFor / drives).toFixed(2) : "Not available";
+    })()],
     ["Sacks allowed", findTeamStat(stats, ["sacksAllowed", "timesSacked", "sacksTaken"], /pass|offen/i)]
   ];
   const defense = [
-    ["Points allowed/game", fmt(avgAgainst) || findTeamStat(stats, ["pointsAllowedPerGame", "opponentPointsPerGame"])],
-    ["Pass yards allowed/game", findTeamStat(stats, ["passingYardsAllowedPerGame", "opponentPassingYardsPerGame"])],
-    ["Rush yards allowed/game", findTeamStat(stats, ["rushingYardsAllowedPerGame", "opponentRushingYardsPerGame"])],
+    ["Points allowed/game", fmt(avgAgainst) || (played.games ? (played.pointsAgainst / played.games).toFixed(1) : null) || findTeamStat(stats, ["pointsAllowedPerGame", "opponentPointsPerGame"])],
+    ["Pass yards allowed/game", perGameFromStats(stats, ["passingYardsAllowedPerGame", "opponentPassingYardsPerGame"], ["passingYardsAllowed", "opponentPassingYards"], played.games, /defen|opponent/i)],
+    ["Rush yards allowed/game", perGameFromStats(stats, ["rushingYardsAllowedPerGame", "opponentRushingYardsPerGame"], ["rushingYardsAllowed", "opponentRushingYards"], played.games, /defen|opponent/i)],
     ["Touchdowns allowed", findTeamStat(stats, ["touchdownsAllowed", "totalTouchdownsAllowed"])],
     ["Sacks", findTeamStat(stats, ["sacks", "totalSacks"], /defen/i)],
     ["Takeaways", findTeamStat(stats, ["takeaways", "totalTakeaways"]) ]
@@ -1262,7 +1317,7 @@ function renderNFLStats(team, data) {
   return '<section class="card team-section"><h2>Team stats</h2><div class="team-stats-columns">' +
     '<div><h3>Offense</h3><div class="team-stat-grid">' + offense.map((x) => statTile(x[0], x[1])).join("") + '</div></div>' +
     '<div><h3>Defense</h3><div class="team-stat-grid">' + defense.map((x) => statTile(x[0], x[1])).join("") + '</div></div></div>' +
-    '<p class="muted small">Season averages and totals. Some advanced statistics may not be published by ESPN.</p></section>';
+    '<p class="muted small">Missing averages are calculated from completed games or season totals when the required inputs are available.</p></section>';
 }
 
 function renderNFLSchedule(data, teamId) {
@@ -1299,40 +1354,41 @@ function scoreValue(side) {
   return Number(score);
 }
 
-function renderNBAStats(team, data) {
+function renderNBAStats(team, data, schedule) {
   const stats = flattenTeamStats(data || {}, "", []);
+  const played = completedScheduleStats(schedule, team.id);
   const avgFor = recordStat(team, "avgPointsFor");
   const avgAgainst = recordStat(team, "avgPointsAgainst");
   const fmt = (x) => x == null ? null : Number(x).toFixed(1);
   const pick = (names, pathTest) => findTeamStat(stats, names, pathTest);
   const offense = [
-    ["Points/game", fmt(avgFor) || pick(["avgPoints", "pointsPerGame", "averagePoints"])],
-    ["Field goal %", pick(["fieldGoalPct", "fieldGoalPercentage", "avgFieldGoalPct"], /offen|team|general/i)],
-    ["3-point %", pick(["threePointFieldGoalPct", "threePointPct", "threePointFieldGoalPercentage"], /offen|team|general/i)],
-    ["Turnovers/game", pick(["turnoversPerGame", "avgTurnovers", "turnovers"], /offen|team|general/i)],
+    ["Points/game", fmt(avgFor) || (played.games ? (played.pointsFor / played.games).toFixed(1) : null) || pick(["avgPoints", "pointsPerGame", "averagePoints"])],
+    ["Field goal %", derivedPercent(stats, ["fieldGoalPct", "fieldGoalPercentage", "avgFieldGoalPct"], ["fieldGoalsMade", "totalFieldGoalsMade"], ["fieldGoalsAttempted", "totalFieldGoalsAttempted"], /offen|team|general/i)],
+    ["3-point %", derivedPercent(stats, ["threePointFieldGoalPct", "threePointPct", "threePointFieldGoalPercentage"], ["threePointFieldGoalsMade", "threePointersMade"], ["threePointFieldGoalsAttempted", "threePointersAttempted"], /offen|team|general/i)],
+    ["Turnovers/game", perGameFromStats(stats, ["turnoversPerGame", "avgTurnovers"], ["turnovers", "totalTurnovers"], played.games, /offen|team|general/i)],
     ["Effective FG%", pick(["effectiveFieldGoalPct", "effectiveFieldGoalPercentage", "eFGPct"])],
     ["Free throw %", pick(["freeThrowPct", "freeThrowPercentage", "avgFreeThrowPct"], /offen|team|general/i)],
-    ["Assists/game", pick(["assistsPerGame", "avgAssists", "assists"], /offen|team|general/i)],
-    ["Off. rebounds/game", pick(["offensiveReboundsPerGame", "avgOffensiveRebounds", "offensiveRebounds"], /offen|team|general/i)],
+    ["Assists/game", perGameFromStats(stats, ["assistsPerGame", "avgAssists"], ["assists", "totalAssists"], played.games, /offen|team|general/i)],
+    ["Off. rebounds/game", perGameFromStats(stats, ["offensiveReboundsPerGame", "avgOffensiveRebounds"], ["offensiveRebounds", "totalOffensiveRebounds"], played.games, /offen|team|general/i)],
     ["Assist/turnover ratio", pick(["assistTurnoverRatio", "assistToTurnoverRatio"])],
     ["Pace", pick(["pace", "possessionsPerGame", "estimatedPossessionsPerGame"])]
   ];
   const defense = [
-    ["Opponent points/game", fmt(avgAgainst) || pick(["opponentPointsPerGame", "pointsAllowedPerGame", "avgPointsAgainst"])],
-    ["Opponent FG%", pick(["opponentFieldGoalPct", "defensiveFieldGoalPct", "fieldGoalPctAgainst"])],
-    ["Opponent 3-point %", pick(["opponentThreePointFieldGoalPct", "defensiveThreePointPct", "threePointPctAgainst"])],
-    ["Steals/game", pick(["stealsPerGame", "avgSteals", "steals"], /defen|team|general/i)],
-    ["Blocks/game", pick(["blocksPerGame", "avgBlocks", "blocks"], /defen|team|general/i)],
-    ["Def. rebounds/game", pick(["defensiveReboundsPerGame", "avgDefensiveRebounds", "defensiveRebounds"], /defen|team|general/i)],
+    ["Opponent points/game", fmt(avgAgainst) || (played.games ? (played.pointsAgainst / played.games).toFixed(1) : null) || pick(["opponentPointsPerGame", "pointsAllowedPerGame", "avgPointsAgainst"])],
+    ["Opponent FG%", derivedPercent(stats, ["opponentFieldGoalPct", "defensiveFieldGoalPct", "fieldGoalPctAgainst"], ["opponentFieldGoalsMade", "fieldGoalsMadeAgainst"], ["opponentFieldGoalsAttempted", "fieldGoalsAttemptedAgainst"], /defen|opponent/i)],
+    ["Opponent 3-point %", derivedPercent(stats, ["opponentThreePointFieldGoalPct", "defensiveThreePointPct", "threePointPctAgainst"], ["opponentThreePointFieldGoalsMade", "threePointFieldGoalsMadeAgainst"], ["opponentThreePointFieldGoalsAttempted", "threePointFieldGoalsAttemptedAgainst"], /defen|opponent/i)],
+    ["Steals/game", perGameFromStats(stats, ["stealsPerGame", "avgSteals"], ["steals", "totalSteals"], played.games, /defen|team|general/i)],
+    ["Blocks/game", perGameFromStats(stats, ["blocksPerGame", "avgBlocks"], ["blocks", "totalBlocks"], played.games, /defen|team|general/i)],
+    ["Def. rebounds/game", perGameFromStats(stats, ["defensiveReboundsPerGame", "avgDefensiveRebounds"], ["defensiveRebounds", "totalDefensiveRebounds"], played.games, /defen|team|general/i)],
     ["Turnovers forced/game", pick(["opponentTurnoversPerGame", "turnoversForcedPerGame", "avgTurnoversForced"])],
     ["Opponent eFG%", pick(["opponentEffectiveFieldGoalPct", "defensiveEffectiveFieldGoalPct"])],
     ["Personal fouls/game", pick(["foulsPerGame", "avgFouls", "personalFoulsPerGame"])],
-    ["Point differential", pick(["pointDifferential", "avgPointDifferential", "averagePointDifferential"])]
+    ["Point differential", played.games ? ((played.pointsFor - played.pointsAgainst) / played.games).toFixed(1) : pick(["pointDifferential", "avgPointDifferential", "averagePointDifferential"])]
   ];
   return '<section class="card team-section"><h2>Team stats</h2><p class="muted small">Betting-focused season averages and efficiency indicators.</p><div class="team-stats-columns">' +
     '<div><h3>Offense</h3><div class="team-stat-grid">' + offense.map((x) => statTile(x[0], x[1])).join("") + '</div></div>' +
     '<div><h3>Defense</h3><div class="team-stat-grid">' + defense.map((x) => statTile(x[0], x[1])).join("") + '</div></div></div>' +
-    '<p class="muted small">Availability depends on the statistics ESPN publishes for the current season.</p></section>';
+    '<p class="muted small">Missing averages and percentages are calculated from completed games or season totals when the required inputs are available.</p></section>';
 }
 
 function renderNBASchedule(data, teamId) {
@@ -1441,7 +1497,7 @@ function paintNBATeam(d, abbr, team, schedule, stats, depth, roster) {
     (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
     '<div><div class="eyebrow">NBA TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
     esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>' +
-    renderNBAStats(team, stats) + renderNBADepth(depth || {}, roster || {}) + renderNBASchedule(schedule || {}, team.id);
+    renderNBAStats(team, stats, schedule || {}) + renderNBADepth(depth || {}, roster || {}) + renderNBASchedule(schedule || {}, team.id);
 }
 
 async function showNBATeam() {
@@ -1520,7 +1576,7 @@ function paintNFLTeam(d, abbr, team, schedule, stats, depth, roster) {
       try { return render(); } catch (err) { return fallback; }
     };
     view.innerHTML = header +
-      section(() => renderNFLStats(team, stats),
+      section(() => renderNFLStats(team, stats, schedule || {}),
         '<section class="card team-section"><h2>Team stats</h2><div class="muted">Stats are temporarily unavailable.</div></section>') +
       section(() => renderNFLDepth(depth || {}, roster || {}),
         '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart is temporarily unavailable.</div></section>') +
