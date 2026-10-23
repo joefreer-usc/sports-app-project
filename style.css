@@ -232,6 +232,14 @@ tr.past td { color: var(--muted); }
 .schedule-month > summary { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; color: var(--text); font-size: 14px; font-weight: 800; cursor: pointer; }
 .schedule-month > summary span { color: var(--muted); font-size: 11px; font-weight: 700; }
 .schedule-month .schedule-list { padding: 0 14px 5px; }
+.nba-depth-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.nba-depth-position { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: rgba(15,23,32,.4); }
+.nba-depth-position h3 { margin: 0; padding: 10px 12px; border-bottom: 1px solid var(--line); color: var(--accent); font-size: 13px; }
+.nba-depth-player { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.nba-depth-player:first-of-type { border-top: 0; }
+.nba-depth-player .depth-rank { grid-column: 1 / -1; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
+.nba-depth-player strong { overflow: hidden; font-size: 12px; line-height: 1.25; text-overflow: ellipsis; }
+.nba-depth-player small { color: var(--muted); font-size: 10px; }
 
 /* F1 driver profiles */
 .driver-hero { position: relative; display: grid; grid-template-columns: minmax(150px, 230px) minmax(0, 1fr); align-items: stretch; gap: 26px; min-height: 250px; overflow: hidden; margin: 12px 0; padding: 0 28px 0 0; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--driver-color) 30%, var(--card)), var(--card) 70%); }
@@ -399,6 +407,7 @@ tr.fastest td { color: #c77dff; }
   .team-hero { gap: 17px; padding: 19px; }
   .team-hero img { width: 76px; height: 76px; }
   .team-stats-columns, .depth-grid { grid-template-columns: 1fr; }
+  .nba-depth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .schedule-row { grid-template-columns: 68px minmax(0, 1fr) auto; font-size: 12px; }
   .driver-hero { grid-template-columns: 116px minmax(0, 1fr); gap: 15px; min-height: 190px; padding-right: 15px; }
   .driver-portrait { min-height: 190px; }

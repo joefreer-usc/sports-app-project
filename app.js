@@ -1375,7 +1375,65 @@ function renderNBASchedule(data, teamId) {
   return '<section class="card team-section"><h2>Season schedule</h2><div class="month-schedule">' + monthHtml + '</div></section>';
 }
 
-function paintNBATeam(d, abbr, team, schedule, stats) {
+function renderNBADepth(depth, roster) {
+  const playersById = rosterAthletes(roster || {});
+  const positions = {};
+  let hasPublishedDepth = false;
+  const positionOrder = ["PG", "SG", "SF", "PF", "C", "G", "F"];
+  const addPlayer = (position, slot, order) => {
+    const ref = slot.athlete || slot.player || slot;
+    const id = athleteId(ref);
+    const player = playersById[id] || ref || {};
+    const name = player.displayName || player.fullName || player.shortName || slot.displayName;
+    if (!name) return;
+    const pos = String(position || (player.position && player.position.abbreviation) || "ROT").toUpperCase();
+    if (!positions[pos]) positions[pos] = [];
+    if (!positions[pos].some((x) => x.id === id && id)) {
+      positions[pos].push({ id: id, name: name, jersey: player.jersey || slot.jersey || "", order: Number(order) || positions[pos].length + 1 });
+    }
+  };
+
+  const containers = [depth || {}].concat((depth && depth.items) || []);
+  containers.forEach((chart) => {
+    const chartPositions = chart.positions || {};
+    Object.keys(chartPositions).forEach((key) => {
+      const position = chartPositions[key] || {};
+      const label = (position.position && position.position.abbreviation) || position.abbreviation || key;
+      const slots = position.athletes || position.items || [];
+      if (slots.length) hasPublishedDepth = true;
+      slots.forEach((slot, index) => addPlayer(label, slot, slot.rank || slot.order || index + 1));
+    });
+  });
+
+  // ESPN occasionally publishes the roster before its formal depth chart.
+  // In that case, still show a useful position-by-position rotation.
+  if (!Object.keys(positions).length) {
+    Object.keys(playersById).forEach((id) => {
+      const player = playersById[id];
+      addPlayer((player.position || {}).abbreviation, player, 99);
+    });
+  }
+
+  const keys = Object.keys(positions).sort((a, b) => {
+    const ai = positionOrder.indexOf(a);
+    const bi = positionOrder.indexOf(b);
+    return (ai < 0 ? 99 : ai) - (bi < 0 ? 99 : bi) || a.localeCompare(b);
+  });
+  if (!keys.length) return '<section class="card team-section"><h2>Depth chart</h2><div class="muted">Depth chart unavailable.</div></section>';
+
+  const cards = keys.map((position) => {
+    const players = positions[position].sort((a, b) => a.order - b.order);
+    return '<div class="nba-depth-position"><h3>' + esc(position) + '</h3>' + players.map((player, index) =>
+      '<div class="nba-depth-player"><span class="depth-rank">' + (hasPublishedDepth ? (index === 0 ? "Starter" : "Bench " + index) : "Rotation " + (index + 1)) + '</span>' +
+      '<strong>' + esc(player.name) + '</strong>' + (player.jersey ? '<small>#' + esc(player.jersey) + '</small>' : '') + '</div>'
+    ).join("") + '</div>';
+  }).join("");
+  return '<section class="card team-section"><details open><summary>Depth chart</summary><p class="muted small">' +
+    (hasPublishedDepth ? "Current starters and rotation by position." : "Current roster grouped by position; official starter order is not available.") + '</p>' +
+    '<div class="nba-depth-grid">' + cards + '</div></details></section>';
+}
+
+function paintNBATeam(d, abbr, team, schedule, stats, depth, roster) {
   if (detail !== d) return;
   const logo = teamLogo(team);
   const record = team.recordSummary || (team.record && team.record.items && team.record.items[0] && team.record.items[0].summary) || "";
@@ -1383,7 +1441,7 @@ function paintNBATeam(d, abbr, team, schedule, stats) {
     (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
     '<div><div class="eyebrow">NBA TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
     esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>' +
-    renderNBAStats(team, stats) + renderNBASchedule(schedule || {}, team.id);
+    renderNBAStats(team, stats) + renderNBADepth(depth || {}, roster || {}) + renderNBASchedule(schedule || {}, team.id);
 }
 
 async function showNBATeam() {
@@ -1395,7 +1453,7 @@ async function showNBATeam() {
     const cache = await getJson("data/nba_teams.json");
     const entry = cache && cache.data && cache.data.teams && cache.data.teams[String(abbr).toUpperCase()];
     if (!entry || !entry.team || !entry.team.id) throw new Error("Team cache unavailable");
-    paintNBATeam(d, abbr, entry.team, entry.schedule, entry.stats);
+    paintNBATeam(d, abbr, entry.team, entry.schedule, entry.stats, entry.depth, entry.roster);
   } catch (err) {
     if (detail !== d) return;
     view.innerHTML = backButton() + '<div class="message"><b>NBA team profiles have not been downloaded yet.</b><br>' +
