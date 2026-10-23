@@ -657,10 +657,14 @@ function renderGames(games, sport) {
     byKey[key].games.push(g);
   });
 
-  return groups.map((grp) =>
-    '<section class="card"><h2>' + esc(grp.label) + "</h2>" +
-    grp.games.map((g) => gameCard(g, !!g.id && (g.state !== "pre" || (sport && sport.id === "nfl")), sport && sport.id)).join("") + "</section>"
-  ).join("");
+  return groups.map((grp, index) => {
+    const hasLive = grp.games.some((g) => g.state === "in");
+    const open = grp.label === "Today" || hasLive || (index === 0 && !groups.some((x) => x.label === "Today"));
+    return '<section class="card game-day"><details' + (open ? " open" : "") + '><summary><span>' + esc(grp.label) +
+      '</span><small>' + grp.games.length + ' game' + (grp.games.length === 1 ? "" : "s") + '</small></summary><div class="game-day-list">' +
+      grp.games.map((g) => gameCard(g, !!g.id && (g.state !== "pre" || (sport && sport.id === "nfl")), sport && sport.id)).join("") +
+      "</div></details></section>";
+  }).join("");
 }
 
 function renderStandings(data) {
@@ -690,7 +694,8 @@ function renderStandings(data) {
     return (grp.name ? "<h3>" + esc(grp.name) + "</h3>" : "") + table(headers, rows);
   }).join("");
 
-  return '<section class="card"><details><summary>Standings' + season + "</summary>" + body + "</details></section>";
+  const open = window.matchMedia && window.matchMedia("(min-width: 721px)").matches ? " open" : "";
+  return '<section class="card"><details' + open + '><summary>Standings' + season + "</summary>" + body + "</details></section>";
 }
 
 function renderRankings(data) {
@@ -709,7 +714,8 @@ function renderRankings(data) {
       '<td class="num">' + trend + "</td></tr>";
   });
 
-  return '<section class="card"><details open><summary>' + esc(data.name || "Top 25") + "</summary>" +
+  const open = window.matchMedia && window.matchMedia("(min-width: 721px)").matches ? " open" : "";
+  return '<section class="card"><details' + open + '><summary>' + esc(data.name || "Top 25") + "</summary>" +
     table([{ label: "#" }, { label: "Team" }, { label: "", num: true }], rows) +
     "</details></section>";
 }
@@ -930,11 +936,13 @@ function renderSoccerTable(data) {
       '<div class="scroll">' + table(heads, rows) + "</div>";
   }).join("");
 
-  return '<section class="card"><details open><summary>League table' + season + "</summary>" + body + "</details></section>";
+  const open = window.matchMedia && window.matchMedia("(min-width: 721px)").matches ? " open" : "";
+  return '<section class="card"><details' + open + '><summary>League table' + season + "</summary>" + body + "</details></section>";
 }
 
 function renderLeague(sport, scores, extra) {
   let html = sideSwitch(sport);
+  html += '<div class="league-layout"><div class="league-primary">';
   if (scores) {
     // The games sit in their own box so live updates can swap them without
     // collapsing the standings dropdown below.
@@ -942,11 +950,13 @@ function renderLeague(sport, scores, extra) {
   } else {
     html += '<section class="card"><h2>Scores</h2><div class="muted">No scores yet.</div></section>';
   }
+  html += '</div><aside class="league-sidebar">';
   if (extra) {
     if (sport.extraType === "rankings") html += renderRankings(extra.data);
     else if (sport.extraType === "table") html += renderSoccerTable(extra.data);
     else html += renderStandings(extra.data);
   }
+  html += '</aside></div>';
   return html;
 }
 
