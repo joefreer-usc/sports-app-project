@@ -186,12 +186,31 @@ fetch_f1 <- function() {
     }
   }
 
-  # All completed race results in one request, grouped by driver for profiles.
-  all_results_data <- tryCatch(
-    get_json(paste0(base, "/results/?limit=2000")),
-    error = function(e) { message("  f1 season results: ", conditionMessage(e)); NULL }
-  )
-  all_races <- if (is.null(all_results_data)) list() else all_results_data$MRData$RaceTable$Races %||% list()
+  # Jolpica caps this feed at 100 driver-results (roughly five races), so walk
+  # every page and merge races that happen to span a page boundary.
+  all_races_by_round <- list()
+  offset <- 0L
+  total <- 1L
+  while (offset < total && offset < 5000L) {
+    page <- tryCatch(
+      get_json(paste0(base, "/results/?limit=100&offset=", offset)),
+      error = function(e) { message("  f1 season results: ", conditionMessage(e)); NULL }
+    )
+    if (is.null(page)) break
+    total <- as.integer(page$MRData$total %||% 0)
+    for (race in page$MRData$RaceTable$Races %||% list()) {
+      key <- as.character(race$round %||% length(all_races_by_round) + 1L)
+      if (is.null(all_races_by_round[[key]])) {
+        all_races_by_round[[key]] <- race
+      } else {
+        all_races_by_round[[key]]$Results <- c(all_races_by_round[[key]]$Results %||% list(),
+                                               race$Results %||% list())
+      }
+    }
+    offset <- offset + 100L
+    if (offset < total) Sys.sleep(0.2)
+  }
+  all_races <- unname(all_races_by_round)
   driver_results <- list()
   for (race in all_races) {
     for (r in race$Results %||% list()) {
@@ -381,7 +400,8 @@ parse_event <- function(e) {
     rank <- suppressWarnings(as.integer(x$curatedRank$current %||% 0))
     if (is.na(rank) || rank < 1 || rank > 25) rank <- 0L
     logos <- x$team$logos %||% list()
-    logo <- if (length(logos) > 0) logos[[1]]$href %||% "" else ""
+    logo <- x$team$logo %||% ""
+    if (!nzchar(logo) && length(logos) > 0) logo <- logos[[1]]$href %||% ""
     list(
       name   = x$team$displayName %||% x$team$name %||% "",
       abbr   = x$team$abbreviation %||% "",
@@ -575,7 +595,11 @@ parse_soccer_entry <- function(en) {
     rank   = rank,
     name   = en$team$displayName %||% en$team$name %||% "",
     abbr   = en$team$abbreviation %||% "",
-    logo   = if (length(en$team$logos %||% list()) > 0) en$team$logos[[1]]$href %||% "" else "",
+    logo   = {
+      direct <- en$team$logo %||% ""
+      logos <- en$team$logos %||% list()
+      if (nzchar(direct)) direct else if (length(logos) > 0) logos[[1]]$href %||% "" else ""
+    },
     played = soccer_stat(st, "gamesPlayed"),
     won    = soccer_stat(st, "wins"),
     drawn  = soccer_stat(st, "ties"),
