@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-23T01:54:41Z",
+  "updated": "2026-10-24T00:34:30Z",
   "data": {
     "games": [
       {
         "id": "401908042",
         "date": "2026-10-24T00:00Z",
-        "state": "pre",
-        "detail": "10/23 - 8:00 PM EDT",
+        "state": "in",
+        "detail": "Bot 1st",
         "away": {
           "name": "Tampa Bay Rays",
           "abbr": "TB",
@@ -20,7 +20,7 @@
           "name": "Milwaukee Brewers",
           "abbr": "MIL",
           "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mil.png",
-          "score": "0",
+          "score": "2",
           "record": "103-59",
           "rank": 0,
           "winner": false
@@ -46,6 +46,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mil.png",
           "score": "0",
           "record": "103-59",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401908044",
+        "date": "2026-10-27T00:00Z",
+        "state": "pre",
+        "detail": "10/26 - 8:00 PM EDT",
+        "away": {
+          "name": "Milwaukee Brewers",
+          "abbr": "MIL",
+          "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mil.png",
+          "score": "0",
+          "record": "103-59",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Tampa Bay Rays",
+          "abbr": "TB",
+          "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/tb.png",
+          "score": "0",
+          "record": "98-64",
           "rank": 0,
           "winner": false
         }
