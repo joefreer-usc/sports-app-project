@@ -1,42 +1,18 @@
 {
-  "updated": "2026-10-24T01:57:11Z",
+  "updated": "2026-10-24T02:21:36Z",
   "data": {
     "games": [
       {
-        "id": "401858271",
-        "date": "2026-10-23T23:00Z",
-        "state": "in",
-        "detail": "4:30 - 4th",
-        "away": {
-          "name": "Duke Blue Devils",
-          "abbr": "DUKE",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/150.png",
-          "score": "13",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Virginia Cavaliers",
-          "abbr": "UVA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png",
-          "score": "13",
-          "record": "4-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401861965",
         "date": "2026-10-23T23:00Z",
-        "state": "in",
-        "detail": "8:08 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Massachusetts Minutemen",
           "abbr": "MASS",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/113.png",
-          "score": "9",
-          "record": "4-3",
+          "score": "16",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         },
@@ -44,22 +20,22 @@
           "name": "UConn Huskies",
           "abbr": "CONN",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/41.png",
-          "score": "28",
-          "record": "3-3",
+          "score": "35",
+          "record": "4-3",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401862808",
         "date": "2026-10-24T00:30Z",
         "state": "in",
-        "detail": "0:23 - 2nd",
+        "detail": "Halftime",
         "away": {
           "name": "Army Black Knights",
           "abbr": "ARMY",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/349.png",
-          "score": "17",
+          "score": "20",
           "record": "4-2",
           "rank": 0,
           "winner": false
@@ -78,12 +54,12 @@
         "id": "401864525",
         "date": "2026-10-24T01:00Z",
         "state": "in",
-        "detail": "14:21 - 2nd",
+        "detail": "2:00 - 2nd",
         "away": {
           "name": "Air Force Falcons",
           "abbr": "AFA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png",
-          "score": "3",
+          "score": "6",
           "record": "5-1",
           "rank": 0,
           "winner": false
@@ -92,8 +68,32 @@
           "name": "Wyoming Cowboys",
           "abbr": "WYO",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
-          "score": "7",
+          "score": "14",
           "record": "4-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401858271",
+        "date": "2026-10-23T23:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Duke Blue Devils",
+          "abbr": "DUKE",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/150.png",
+          "score": "19",
+          "record": "5-2",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Virginia Cavaliers",
+          "abbr": "UVA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png",
+          "score": "16",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         }
