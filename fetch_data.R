@@ -737,8 +737,12 @@ run_section("golf", fetch_golf)
 nfl_team_cache_is_fresh <- function(hours = 12) {
   path <- file.path("data", "nfl_teams.json")
   if (!file.exists(path)) return(FALSE)
-  stamp <- tryCatch(fromJSON(path, simplifyVector = FALSE)$updated, error = function(e) NULL)
+  cached <- tryCatch(fromJSON(path, simplifyVector = FALSE), error = function(e) NULL)
+  stamp <- cached$updated %||% NULL
   if (is.null(stamp)) return(FALSE)
+  entries <- cached$data$teams %||% list()
+  # Refresh older caches once so the league page receives team player leaders.
+  if (!length(entries) || !any(vapply(entries, function(x) !is.null(x$leaders), logical(1)))) return(FALSE)
   then <- as.POSIXct(stamp, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
   !is.na(then) && as.numeric(difftime(Sys.time(), then, units = "hours")) < hours
 }
@@ -776,6 +780,7 @@ fetch_nfl_team_cache <- function() {
     depth <- safe_json(paste0("https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/",
                               season, "/teams/", id, "/depthcharts"))
     roster <- safe_json(paste0(espn_site, "football/nfl/teams/", id, "/roster"))
+    leaders <- safe_json(paste0(espn_site, "football/nfl/teams/", id, "/leaders"))
 
     if (!is.null(schedule$team)) {
       team$recordSummary <- schedule$team$recordSummary %||% ""
@@ -783,7 +788,7 @@ fetch_nfl_team_cache <- function() {
       team$logo <- schedule$team$logo %||% team$logo %||% ""
     }
     teams_out[[abbr]] <- list(team = team, schedule = schedule, stats = stats,
-                              depth = depth, roster = roster)
+                              depth = depth, roster = roster, leaders = leaders)
   }
 
   if (length(teams_out) == 0) stop("ESPN returned no NFL teams")

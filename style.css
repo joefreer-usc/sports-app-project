@@ -294,6 +294,10 @@ tr.past td { color: var(--muted); }
 .schedule-row span:first-child b, .schedule-row span:first-child small { display: block; }
 .schedule-row small { color: var(--muted); font-weight: 400; }
 .schedule-row > strong { text-align: right; font-variant-numeric: tabular-nums; }
+.schedule-result-link { margin: 0 -7px; padding-left: 7px; padding-right: 7px; border-radius: 9px; cursor: pointer; transition: background 140ms ease, transform 140ms ease; }
+.schedule-result-link:hover { background: var(--accent-soft); transform: translateX(2px); }
+.schedule-result-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.schedule-result-link > strong span { margin-left: 4px; color: var(--accent); font-size: 18px; }
 .month-schedule { display: grid; gap: 10px; }
 .schedule-month { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: rgba(15,23,32,.34); }
 .schedule-month > summary { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; color: var(--text); font-size: 14px; font-weight: 800; cursor: pointer; }
@@ -307,6 +311,37 @@ tr.past td { color: var(--muted); }
 .nba-depth-player .depth-rank { grid-column: 1 / -1; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
 .nba-depth-player strong { overflow: hidden; font-size: 12px; line-height: 1.25; text-overflow: ellipsis; }
 .nba-depth-player small { color: var(--muted); font-size: 10px; }
+.nfl-season-leaders > details > summary { font-size: 16px; }
+.nfl-season-leaders h3 { margin-top: 16px; color: var(--text); font-size: 13px; letter-spacing: .2px; }
+.player-leader-grid { display: grid; gap: 10px; }
+.leader-board { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: rgba(8,17,27,.38); }
+.leader-board-title { display: flex; align-items: center; gap: 9px; padding: 10px 11px; border-bottom: 1px solid var(--line); }
+.leader-board-title > span { display: grid; place-items: center; width: 34px; height: 25px; border-radius: 7px; background: var(--accent-soft); color: var(--accent); font-size: 10px; font-weight: 900; }
+.leader-board-title strong, .leader-board-title small { display: block; }
+.leader-board-title strong { font-size: 12px; }
+.leader-board-title small { color: var(--muted); font-size: 9px; }
+.season-leader-row { display: grid; grid-template-columns: 16px 28px minmax(0, 1fr) auto; align-items: center; gap: 7px; min-height: 45px; padding: 6px 10px; border-top: 1px solid var(--line); }
+.season-leader-row:first-of-type { border-top: 0; }
+.season-leader-row > b { color: var(--muted); font-size: 10px; }
+.season-leader-row > img, .leader-avatar { width: 28px; height: 28px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,.06); }
+.leader-avatar { display: grid; place-items: center; color: var(--muted); font-size: 7px; font-weight: 900; }
+.season-leader-row > div { min-width: 0; }
+.season-leader-row > div button { display: block; max-width: 100%; overflow: hidden; font-size: 11px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+.season-leader-row > div small { display: block; color: var(--muted); font-size: 9px; }
+.season-leader-row > strong { font-size: 11px; font-variant-numeric: tabular-nums; }
+.leader-empty { padding: 12px; }
+.team-leaders-wrap { display: grid; gap: 12px; margin-top: 14px; }
+.team-leader-group { padding-top: 2px; }
+.team-leader-group > h3 { margin: 0 0 7px; }
+.team-leader-grid { display: grid; gap: 8px; }
+.team-leader-metric { padding: 9px; border: 1px solid var(--line); border-radius: 11px; background: rgba(8,17,27,.38); }
+.team-leader-metric h4 { margin: 0 0 5px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .6px; }
+.team-leader-metric > div { display: grid; grid-template-columns: 15px 24px minmax(0, 1fr) auto; align-items: center; gap: 6px; min-height: 34px; border-top: 1px solid var(--line); }
+.team-leader-metric > div:first-of-type { border-top: 0; }
+.team-leader-metric > div > b { color: var(--muted); font-size: 9px; }
+.team-leader-metric img { width: 22px; height: 22px; object-fit: contain; }
+.team-leader-metric .team-link { font-size: 11px; }
+.team-leader-metric > div > strong { font-size: 11px; font-variant-numeric: tabular-nums; }
 
 /* F1 driver profiles */
 .driver-hero { position: relative; display: grid; grid-template-columns: minmax(150px, 230px) minmax(0, 1fr); align-items: stretch; gap: 26px; min-height: 250px; overflow: hidden; margin: 12px 0; padding: 0 28px 0 0; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--driver-color) 30%, var(--card)), var(--card) 70%); }

@@ -700,6 +700,91 @@ function renderStandings(data) {
   return '<section class="card"><details' + open + '><summary>Standings' + season + "</summary>" + body + "</details></section>";
 }
 
+function nflLeaderCandidates(node, path, out) {
+  if (!node || typeof node !== "object") return out;
+  const nextPath = path + " " + (node.name || node.displayName || node.label || "");
+  if (node.athlete && (node.displayValue != null || node.value != null)) {
+    const athlete = node.athlete || {};
+    const raw = node.value != null ? Number(node.value) : Number(String(node.displayValue).replace(/[^0-9.-]/g, ""));
+    out.push({ athlete: athlete, value: Number.isFinite(raw) ? raw : 0,
+      displayValue: node.displayValue != null ? node.displayValue : node.value, path: nextPath });
+  }
+  Object.keys(node).forEach((key) => {
+    const value = node[key];
+    if (value && typeof value === "object") nflLeaderCandidates(value, nextPath + " " + key, out);
+  });
+  return out;
+}
+
+function nflTeamPlayerLeader(entry, pattern) {
+  const candidates = nflLeaderCandidates((entry && entry.leaders) || {}, "", [])
+    .filter((item) => pattern.test(item.path));
+  if (!candidates.length) return null;
+  candidates.sort((a, b) => b.value - a.value);
+  return candidates[0];
+}
+
+function nflTeamStatNumber(entry, names, pathTest) {
+  return findTeamNumber(flattenTeamStats((entry && entry.stats) || {}, "", []), names, pathTest);
+}
+
+function renderNFLSeasonLeaders(cache) {
+  const teams = cache && cache.data && cache.data.teams || {};
+  const entries = Object.keys(teams).map((abbr) => ({ abbr: abbr, entry: teams[abbr] }));
+  if (!entries.length) return "";
+
+  const playerGroups = [
+    { label: "QB", title: "Passing yards", pattern: /pass[^ ]*yard|passing yards|passing.*yard/i },
+    { label: "RB", title: "Rushing yards", pattern: /rush[^ ]*yard|rushing yards|rushing.*yard/i },
+    { label: "WR", title: "Receiving yards", pattern: /receiv[^ ]*yard|receiving yards|receiving.*yard/i }
+  ];
+  const playerHtml = playerGroups.map((group) => {
+    const leaders = entries.map(({ abbr, entry }) => {
+      const lead = nflTeamPlayerLeader(entry, group.pattern);
+      if (!lead) return null;
+      const athlete = lead.athlete || {};
+      return { abbr: abbr, id: athlete.id || athleteId(athlete), name: athlete.shortName || athlete.displayName || athlete.fullName || "Player",
+        value: lead.value, displayValue: lead.displayValue, headshot: nflPlayerImage(athlete) };
+    }).filter(Boolean).sort((a, b) => b.value - a.value).slice(0, 5);
+    return '<div class="leader-board"><div class="leader-board-title"><span>' + esc(group.label) + '</span><div><strong>' + esc(group.title) +
+      '</strong><small>Top 5</small></div></div>' + (leaders.length ? leaders.map((lead, index) =>
+        '<div class="season-leader-row"><b>' + (index + 1) + '</b>' + (lead.headshot ? '<img src="' + esc(lead.headshot) + '" alt="">' : '<span class="leader-avatar">' + esc(lead.abbr) + '</span>') +
+        '<div><button type="button" class="nfl-player-link" data-nfl-player="' + esc(lead.id) + '" data-player-team="' + esc(lead.abbr) + '">' +
+        esc(lead.name) + '</button><small>' + esc(lead.abbr) + '</small></div><strong>' + esc(lead.displayValue) + '</strong></div>').join("")
+        : '<div class="muted small leader-empty">Leader data is updating.</div>') + '</div>';
+  }).join("");
+
+  const teamMetrics = [
+    { section: "Offensive leaders", label: "Total yards", names: ["totalYards", "totalOffensiveYards", "offensiveYards"], path: /offen|team|general/i, low: false },
+    { section: "Offensive leaders", label: "Passing yards", names: ["passingYards", "netPassingYards"], path: /offen|team|pass/i, low: false },
+    { section: "Offensive leaders", label: "Rushing yards", names: ["rushingYards", "totalRushingYards"], path: /offen|team|rush/i, low: false },
+    { section: "Defensive leaders", label: "Yards allowed", names: ["totalYardsAllowed", "yardsAllowed", "opponentTotalYards"], path: /defen|opponent/i, low: true },
+    { section: "Defensive leaders", label: "Sacks", names: ["sacks", "totalSacks"], path: /defen/i, low: false },
+    { section: "Defensive leaders", label: "Turnovers", names: ["takeaways", "totalTakeaways", "turnoversForced"], path: /defen|opponent/i, low: false }
+  ];
+  const teamSections = ["Offensive leaders", "Defensive leaders"].map((section) => {
+    const metrics = teamMetrics.filter((metric) => metric.section === section).map((metric) => {
+      const ranked = entries.map(({ abbr, entry }) => {
+        const value = nflTeamStatNumber(entry, metric.names, metric.path);
+        return value == null ? null : { abbr: abbr, entry: entry, value: value };
+      }).filter(Boolean).sort((a, b) => metric.low ? a.value - b.value : b.value - a.value).slice(0, 3);
+      return '<div class="team-leader-metric"><h4>' + esc(metric.label) + '</h4>' + (ranked.length ? ranked.map((row, index) => {
+        const team = row.entry.team || {};
+        const logo = teamLogo(team);
+        return '<div><b>' + (index + 1) + '</b>' + (logo ? '<img src="' + esc(logo) + '" alt="">' : '') +
+          '<button type="button" class="team-link" data-team="' + esc(row.abbr) + '" data-team-sport="nfl"><span class="team-name">' +
+          esc(team.shortDisplayName || team.name || row.abbr) + '</span></button><strong>' + esc(Number(row.value).toLocaleString()) + '</strong></div>';
+      }).join("") : '<p class="muted small">Updating</p>') + '</div>';
+    }).join("");
+    return '<div class="team-leader-group"><h3>' + esc(section) + '</h3><div class="team-leader-grid">' + metrics + '</div></div>';
+  }).join("");
+
+  const open = window.matchMedia && window.matchMedia("(min-width: 721px)").matches ? " open" : "";
+  return '<section class="card nfl-season-leaders"><details' + open + '><summary>Season leaders</summary><h3>Player leaders</h3>' +
+    '<div class="player-leader-grid">' + playerHtml + '</div><div class="team-leaders-wrap">' + teamSections + '</div>' +
+    '<p class="muted small">NFL regular-season totals. Yards allowed ranks the lowest total first.</p></details></section>';
+}
+
 function renderRankings(data) {
   const teams = (data && data.teams) || [];
   if (!teams.length) return "";
@@ -942,7 +1027,7 @@ function renderSoccerTable(data) {
   return '<section class="card"><details' + open + '><summary>League table' + season + "</summary>" + body + "</details></section>";
 }
 
-function renderLeague(sport, scores, extra) {
+function renderLeague(sport, scores, extra, nflTeams) {
   let html = sideSwitch(sport);
   html += '<div class="league-layout"><div class="league-primary">';
   if (scores) {
@@ -958,6 +1043,7 @@ function renderLeague(sport, scores, extra) {
     else if (sport.extraType === "table") html += renderSoccerTable(extra.data);
     else html += renderStandings(extra.data);
   }
+  if (sport.id === "nfl" && nflTeams) html += renderNFLSeasonLeaders(nflTeams);
   html += '</aside></div>';
   return html;
 }
@@ -1483,9 +1569,26 @@ function renderNFLSchedule(data, teamId) {
       } else {
         result = ((comp.status || event.status || {}).type || {}).shortDetail || "Scheduled";
       }
-      return '<div class="schedule-row"><span><b>' + esc((event.week && event.week.text) || when) + '</b><small>' + esc(when) + '</small></span>' +
+      if (state === "post" && event.id) {
+        const scheduleTeam = (side) => {
+          const rawTeam = side.team || {};
+          const score = scoreValue(side);
+          return { name: rawTeam.displayName || rawTeam.shortDisplayName || rawTeam.name || "Team",
+            abbr: rawTeam.abbreviation || "", logo: rawTeam.logo || ((rawTeam.logos || [])[0] || {}).href || "",
+            score: Number.isFinite(score) ? String(score) : "", record: ((side.records || [])[0] || {}).summary || "", winner: !!side.winner };
+        };
+        const awaySide = sides.find((x) => x.homeAway === "away") || {};
+        const homeSide = sides.find((x) => x.homeAway === "home") || {};
+        gamesById["nfl:" + event.id] = { id: String(event.id), date: event.date || "", state: "post",
+          detail: ((comp.status || event.status || {}).type || {}).shortDetail || "Final",
+          away: scheduleTeam(awaySide), home: scheduleTeam(homeSide) };
+      }
+      const rowAttrs = state === "post" && event.id
+        ? ' class="schedule-row schedule-result-link" role="button" tabindex="0" data-schedule-game="' + esc(event.id) + '" aria-label="View game result"'
+        : ' class="schedule-row"';
+      return '<div' + rowAttrs + '><span><b>' + esc((event.week && event.week.text) || when) + '</b><small>' + esc(when) + '</small></span>' +
         '<span class="schedule-opponent">' + esc(mine && mine.homeAway === "away" ? "at " : "vs ") + esc(ot.displayName || ot.shortDisplayName || "Opponent") +
-        '</span><strong>' + esc(result) + '</strong></div>';
+        '</span><strong>' + esc(result) + (state === "post" && event.id ? ' <span aria-hidden="true">&rsaquo;</span>' : '') + '</strong></div>';
     }).join("") + '</div></details></section>';
 }
 
@@ -1971,6 +2074,16 @@ function openGame(id, sportId) {
   show();
 }
 
+function openNFLScheduleGame(id) {
+  const game = gamesById["nfl:" + id] || gamesById[id];
+  if (!game) return;
+  const parentTeamAbbr = detail && detail.teamAbbr;
+  detail = { sportId: "nfl", id: id, game: game, returnTo: "nfl", parentTeamAbbr: parentTeamAbbr };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
+}
+
 function leaveDetail() {
   const returnTo = detail && detail.returnTo;
   if (detail && detail.kind === "nfl-player" && detail.teamAbbr) {
@@ -1984,6 +2097,14 @@ function leaveDetail() {
   if (detail && detail.kind === "nba-player" && detail.teamAbbr) {
     detail = { sportId: "nba", kind: "nba-team", teamAbbr: detail.teamAbbr, returnTo: "nba" };
     current = "nba";
+    view.removeAttribute("data-detail");
+    syncPageMenu();
+    show();
+    return;
+  }
+  if (detail && detail.parentTeamAbbr) {
+    detail = { sportId: "nfl", kind: "team", teamAbbr: detail.parentTeamAbbr, returnTo: "nfl" };
+    current = "nfl";
     view.removeAttribute("data-detail");
     syncPageMenu();
     show();
@@ -2027,6 +2148,8 @@ view.addEventListener("click", (event) => {
     openNBAPlayer(nbaPlayerEl.getAttribute("data-nba-player"), nbaPlayerEl.getAttribute("data-player-team"));
     return;
   }
+  const scheduleGame = event.target.closest("[data-schedule-game]");
+  if (scheduleGame) { openNFLScheduleGame(scheduleGame.getAttribute("data-schedule-game")); return; }
   const raceEl = event.target.closest("[data-round]");
   if (raceEl) { openRace(Number(raceEl.getAttribute("data-round"))); return; }
   const teamEl = event.target.closest("button[data-team]");
@@ -2050,6 +2173,8 @@ view.addEventListener("change", (event) => {
 view.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" && event.key !== " ") return;
   if (event.target.closest && event.target.closest("button[data-team]")) return;
+  const scheduleGame = event.target.closest && event.target.closest("[data-schedule-game]");
+  if (scheduleGame) { event.preventDefault(); openNFLScheduleGame(scheduleGame.getAttribute("data-schedule-game")); return; }
   const el = event.target.closest && event.target.closest(".game[data-id]");
   if (el) { event.preventDefault(); openGame(el.getAttribute("data-id"), el.getAttribute("data-sport")); }
 });
@@ -2100,14 +2225,17 @@ async function show() {
       return;
     }
 
-    const results = await Promise.allSettled([getJson(sport.scores), getJson(sport.extra)]);
+    const requests = [getJson(sport.scores), getJson(sport.extra)];
+    if (sport.id === "nfl") requests.push(getJson("data/nfl_teams.json"));
+    const results = await Promise.allSettled(requests);
     if (current !== sport.id) return;
     const scores = results[0].status === "fulfilled" ? results[0].value : null;
     const extra = results[1].status === "fulfilled" ? results[1].value : null;
+    const nflTeams = results[2] && results[2].status === "fulfilled" ? results[2].value : null;
     if (!scores && !extra) throw new Error("no data");
     loaded[sport.id] = { scores: scores, extra: extra };
     const shown = scores ? { updated: scores.updated, data: { games: mergedGames(sport.id, scores) } } : null;
-    view.innerHTML = renderLeague(sport, shown, extra);
+    view.innerHTML = renderLeague(sport, shown, extra, nflTeams);
     updatedEl.textContent = scores && scores.updated ? "Scores changed " + timeAgo(scores.updated) : "";
     refreshLive(); // if a game is on, grab fresher scores right away
   } catch (err) {
