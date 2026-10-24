@@ -1222,6 +1222,82 @@ function renderPlayByPlay(data, sportId) {
     '<div class="play-feed">' + rows + '</div></details></section>';
 }
 
+function nflLiveTeams(data, game) {
+  const comp = data.header && data.header.competitions && data.header.competitions[0];
+  const competitors = (comp && comp.competitors) || [];
+  const side = (homeAway) => {
+    const raw = competitors.find((item) => item.homeAway === homeAway) || {};
+    const team = raw.team || {};
+    const fallback = game[homeAway] || {};
+    return {
+      id: String(team.id || raw.id || ""), name: team.displayName || team.shortDisplayName || fallback.name || "",
+      abbr: team.abbreviation || fallback.abbr || "",
+      logo: team.logo || (team.logos && team.logos[0] && team.logos[0].href) || fallback.logo || "",
+      score: raw.score != null ? String(raw.score) : String(fallback.score || "0"),
+      timeouts: raw.timeouts != null ? Number(raw.timeouts) : null
+    };
+  };
+  return { away: side("away"), home: side("home") };
+}
+
+function nflLatestPlay(data) {
+  const plays = playList(data);
+  return plays.length ? plays[plays.length - 1] : {};
+}
+
+function nflFieldState(data, teams) {
+  const situation = data.situation || {};
+  const play = situation.lastPlay || nflLatestPlay(data) || {};
+  const drives = data.drives || {};
+  const drive = drives.current || {};
+  const spot = play.end || drive.end || play.start || drive.start || {};
+  const possessionId = String(situation.possession || (drive.team && drive.team.id) ||
+    (play.team && play.team.id) || (spot.team && spot.team.id) || "");
+  const spotTeamId = String((spot.team && spot.team.id) || possessionId);
+  const yardLine = spot.yardLine == null || spot.yardLine === "" ? NaN : Number(spot.yardLine);
+  let fieldX = 50;
+  if (Number.isFinite(yardLine)) {
+    fieldX = spotTeamId === teams.home.id ? 100 - yardLine : yardLine;
+    fieldX = Math.max(2, Math.min(98, fieldX));
+  }
+  const offense = possessionId === teams.home.id ? teams.home : teams.away;
+  return {
+    play: play, offense: offense, fieldX: fieldX, hasSpot: Number.isFinite(yardLine),
+    down: situation.shortDownDistanceText || situation.downDistanceText || play.shortText || "Drive in progress",
+    driveText: drive.description || drive.displayResult || drive.result || "Current possession"
+  };
+}
+
+function nflTimeoutDots(team) {
+  if (!Number.isFinite(team.timeouts)) return "";
+  return '<span class="nfl-timeouts" aria-label="' + esc(team.timeouts) + ' timeouts remaining">' +
+    Array.from({ length: 3 }, (_, i) => '<i class="' + (i < team.timeouts ? "on" : "") + '"></i>').join("") + '</span>';
+}
+
+function renderNFLLiveCenter(data, game) {
+  const teams = nflLiveTeams(data, game);
+  const field = nflFieldState(data, teams);
+  const status = ((data.header && data.header.competitions && data.header.competitions[0] &&
+    data.header.competitions[0].status && data.header.competitions[0].status.type) || {});
+  const liveText = status.shortDetail || status.detail || game.detail || "Live";
+  const lastText = field.play.text || field.play.shortText || "Live drive information will update automatically.";
+  const possessionName = field.offense.abbr || field.offense.name || "Offense";
+  const teamBlock = (team, side) => '<div class="nfl-live-team ' + side + '">' +
+    (team.logo ? '<img src="' + esc(team.logo) + '" alt="' + esc(team.name) + ' logo">' : '') +
+    '<div><span>' + esc(team.abbr || team.name) + '</span><strong>' + esc(team.score) + '</strong>' + nflTimeoutDots(team) + '</div></div>';
+  return '<section class="nfl-live-center"><div class="nfl-live-scorebar">' + teamBlock(teams.away, "away") +
+    '<div class="nfl-live-status"><span><i></i> LIVE</span><strong>' + esc(liveText) + '</strong><small>' +
+    esc(field.down) + '</small></div>' + teamBlock(teams.home, "home") + '</div>' +
+    '<div class="nfl-field-shell"><div class="nfl-field" style="--ball-x:' + field.fieldX + '%">' +
+    '<div class="nfl-endzone nfl-away-endzone"><span>' + esc(teams.away.abbr) + '</span></div>' +
+    '<div class="nfl-field-numbers"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>40</span><span>30</span><span>20</span><span>10</span></div>' +
+    '<div class="nfl-scrimmage"></div>' + (field.hasSpot ? '<div class="nfl-ball-marker"><b></b><span>' + esc(possessionName) + '</span></div>' : '') +
+    '<div class="nfl-endzone nfl-home-endzone"><span>' + esc(teams.home.abbr) + '</span></div></div></div>' +
+    '<div class="nfl-drive-strip"><div><span>POSSESSION</span><strong>' + esc(possessionName) + '</strong></div>' +
+    '<div><span>CURRENT DRIVE</span><strong>' + esc(field.driveText) + '</strong></div></div>' +
+    '<div class="nfl-last-play"><span>LATEST PLAY</span><p>' + esc(lastText) + '</p></div></section>';
+}
+
 function renderBoxscore(data, sportId) {
   let html = renderLinescore(data);
   html += renderPlayByPlay(data, sportId);
@@ -1402,14 +1478,17 @@ async function showDetail() {
     const fresh = games.find((x) => x.id === d.id);
     if (fresh) d.game = fresh;
   }
-  const header = backButton() + '<section class="card">' + gameCard(d.game, false) + "</section>";
+  const standardHeader = '<section class="card">' + gameCard(d.game, false) + "</section>";
 
   if (results[1].status === "fulfilled") {
-    view.innerHTML = header + (d.game.state === "pre"
-      ? renderPregame(results[1].value, d.game)
-      : renderBoxscore(results[1].value, sport.id));
+    const summary = results[1].value;
+    const gameHeader = sport.id === "nfl" && d.game.state === "in"
+      ? renderNFLLiveCenter(summary, d.game) : standardHeader;
+    view.innerHTML = backButton() + gameHeader + (d.game.state === "pre"
+      ? renderPregame(summary, d.game)
+      : renderBoxscore(summary, sport.id));
   } else {
-    view.innerHTML = header +
+    view.innerHTML = backButton() + standardHeader +
       '<div class="message">Couldn\'t load the box score. It may not be available yet, or ESPN may be ' +
       "blocking requests from the browser. Try again in a minute.</div>";
   }
