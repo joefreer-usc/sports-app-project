@@ -1,35 +1,11 @@
 {
-  "updated": "2026-10-23T23:18:15Z",
+  "updated": "2026-10-24T01:48:37Z",
   "data": {
     "season": "2026-27",
     "groups": [
       {
         "name": "Eastern Conference",
         "teams": [
-          {
-            "name": "Indiana Pacers",
-            "abbr": "IND",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
-            "name": "Toronto Raptors",
-            "abbr": "TOR",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
-            "name": "Washington Wizards",
-            "abbr": "WSH",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
           {
             "name": "Detroit Pistons",
             "abbr": "DET",
@@ -41,18 +17,10 @@
           {
             "name": "Atlanta Hawks",
             "abbr": "ATL",
-            "record": "1-0",
+            "record": "2-0",
             "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
-            "name": "Charlotte Hornets",
-            "abbr": "CHA",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
+            "gb": "-",
+            "streak": "W2"
           },
           {
             "name": "Philadelphia 76ers",
@@ -63,6 +31,30 @@
             "streak": "W2"
           },
           {
+            "name": "Toronto Raptors",
+            "abbr": "TOR",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W2"
+          },
+          {
+            "name": "Indiana Pacers",
+            "abbr": "IND",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
+            "name": "Washington Wizards",
+            "abbr": "WSH",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
             "name": "Chicago Bulls",
             "abbr": "CHI",
             "record": "1-1",
@@ -71,8 +63,24 @@
             "streak": "W1"
           },
           {
+            "name": "Charlotte Hornets",
+            "abbr": "CHA",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
             "name": "Milwaukee Bucks",
             "abbr": "MIL",
+            "record": "0-2",
+            "pct": ".000",
+            "gb": "2",
+            "streak": "L2"
+          },
+          {
+            "name": "Orlando Magic",
+            "abbr": "ORL",
             "record": "0-2",
             "pct": ".000",
             "gb": "2",
@@ -95,14 +103,6 @@
             "streak": "L1"
           },
           {
-            "name": "Brooklyn Nets",
-            "abbr": "BKN",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
             "name": "New York Knicks",
             "abbr": "NY",
             "record": "0-1",
@@ -111,8 +111,8 @@
             "streak": "L1"
           },
           {
-            "name": "Orlando Magic",
-            "abbr": "ORL",
+            "name": "Brooklyn Nets",
+            "abbr": "BKN",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
@@ -132,8 +132,8 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "Minnesota Timberwolves",
-            "abbr": "MIN",
+            "name": "Houston Rockets",
+            "abbr": "HOU",
             "record": "1-0",
             "pct": "1.000",
             "gb": "0.5",
@@ -172,20 +172,28 @@
             "streak": "W1"
           },
           {
-            "name": "Houston Rockets",
-            "abbr": "HOU",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
             "name": "Oklahoma City Thunder",
             "abbr": "OKC",
             "record": "2-0",
             "pct": "1.000",
             "gb": "-",
             "streak": "W2"
+          },
+          {
+            "name": "Minnesota Timberwolves",
+            "abbr": "MIN",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W2"
+          },
+          {
+            "name": "Dallas Mavericks",
+            "abbr": "DAL",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1",
+            "streak": "W1"
           },
           {
             "name": "New Orleans Pelicans",
@@ -206,14 +214,6 @@
           {
             "name": "San Antonio Spurs",
             "abbr": "SA",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Dallas Mavericks",
-            "abbr": "DAL",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
