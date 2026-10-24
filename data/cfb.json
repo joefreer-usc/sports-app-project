@@ -1,12 +1,84 @@
 {
-  "updated": "2026-10-24T06:13:21Z",
+  "updated": "2026-10-24T16:16:41Z",
   "data": {
     "games": [
       {
+        "id": "401856840",
+        "date": "2026-10-24T16:00Z",
+        "state": "in",
+        "detail": "11:05 - 1st",
+        "away": {
+          "name": "Texas Tech Red Raiders",
+          "abbr": "TTU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
+          "score": "0",
+          "record": "6-0",
+          "rank": 8,
+          "winner": false
+        },
+        "home": {
+          "name": "Cincinnati Bearcats",
+          "abbr": "CIN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
+          "score": "3",
+          "record": "4-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401856841",
+        "date": "2026-10-24T16:00Z",
+        "state": "in",
+        "detail": "7:29 - 1st",
+        "away": {
+          "name": "West Virginia Mountaineers",
+          "abbr": "WVU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
+          "score": "3",
+          "record": "4-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "TCU Horned Frogs",
+          "abbr": "TCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2628.png",
+          "score": "0",
+          "record": "3-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401866450",
+        "date": "2026-10-24T16:00Z",
+        "state": "in",
+        "detail": "11:02 - 1st",
+        "away": {
+          "name": "Western Michigan Broncos",
+          "abbr": "WMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png",
+          "score": "0",
+          "record": "5-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Toledo Rockets",
+          "abbr": "TOL",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2649.png",
+          "score": "7",
+          "record": "5-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401858274",
         "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
+        "state": "in",
+        "detail": "9:23 - 1st",
         "away": {
           "name": "Pittsburgh Panthers",
           "abbr": "PITT",
@@ -29,8 +101,8 @@
       {
         "id": "401858496",
         "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
+        "state": "in",
+        "detail": "12:29 - 1st",
         "away": {
           "name": "Indiana Hoosiers",
           "abbr": "IU",
@@ -51,34 +123,10 @@
         }
       },
       {
-        "id": "401856840",
-        "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
-        "away": {
-          "name": "Texas Tech Red Raiders",
-          "abbr": "TTU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
-          "score": "0",
-          "record": "6-0",
-          "rank": 8,
-          "winner": false
-        },
-        "home": {
-          "name": "Cincinnati Bearcats",
-          "abbr": "CIN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
-          "score": "0",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401856728",
         "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
+        "state": "in",
+        "detail": "11:46 - 1st",
         "away": {
           "name": "LSU Tigers",
           "abbr": "LSU",
@@ -101,8 +149,8 @@
       {
         "id": "401858270",
         "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
+        "state": "in",
+        "detail": "12:04 - 1st",
         "away": {
           "name": "California Golden Bears",
           "abbr": "CAL",
@@ -125,8 +173,8 @@
       {
         "id": "401858498",
         "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
+        "state": "in",
+        "detail": "9:53 - 1st",
         "away": {
           "name": "Rutgers Scarlet Knights",
           "abbr": "RUTG",
@@ -140,46 +188,22 @@
           "name": "Northwestern Wildcats",
           "abbr": "NU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png",
-          "score": "0",
+          "score": "7",
           "record": "5-1",
           "rank": 24,
           "winner": false
         }
       },
       {
-        "id": "401856841",
-        "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
-        "away": {
-          "name": "West Virginia Mountaineers",
-          "abbr": "WVU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
-          "score": "0",
-          "record": "4-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "TCU Horned Frogs",
-          "abbr": "TCU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2628.png",
-          "score": "0",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401862809",
         "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
+        "state": "in",
+        "detail": "11:09 - 1st",
         "away": {
           "name": "Rice Owls",
           "abbr": "RICE",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/242.png",
-          "score": "0",
+          "score": "7",
           "record": "1-6",
           "rank": 0,
           "winner": false
@@ -190,30 +214,6 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2226.png",
           "score": "0",
           "record": "4-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401866450",
-        "date": "2026-10-24T16:00Z",
-        "state": "pre",
-        "detail": "10/24 - 12:00 PM EDT",
-        "away": {
-          "name": "Western Michigan Broncos",
-          "abbr": "WMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png",
-          "score": "0",
-          "record": "5-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Toledo Rockets",
-          "abbr": "TOL",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2649.png",
-          "score": "0",
-          "record": "5-2",
           "rank": 0,
           "winner": false
         }

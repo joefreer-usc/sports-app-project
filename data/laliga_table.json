@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T14:07:32Z",
+  "updated": "2026-10-24T16:16:44Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -258,6 +258,31 @@
           },
           {
             "rank": 11,
+            "name": "Racing Santander",
+            "abbr": "RAC",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "10",
+            "won": "3",
+            "drawn": "2",
+            "lost": "5",
+            "gd": "-11",
+            "pts": "11",
+            "note": ""
+          },
+          {
+            "rank": 12,
             "name": "Levante",
             "abbr": "LEV",
             "logo": [
@@ -282,7 +307,7 @@
             "note": ""
           },
           {
-            "rank": 12,
+            "rank": 13,
             "name": "Elche",
             "abbr": "ELC",
             "logo": [
@@ -307,7 +332,7 @@
             "note": ""
           },
           {
-            "rank": 13,
+            "rank": 14,
             "name": "Villarreal",
             "abbr": "VIL",
             "logo": [
@@ -332,7 +357,7 @@
             "note": ""
           },
           {
-            "rank": 14,
+            "rank": 15,
             "name": "Athletic Club",
             "abbr": "ATH",
             "logo": [
@@ -357,7 +382,7 @@
             "note": ""
           },
           {
-            "rank": 15,
+            "rank": 16,
             "name": "Getafe",
             "abbr": "GET",
             "logo": [
@@ -382,7 +407,7 @@
             "note": ""
           },
           {
-            "rank": 16,
+            "rank": 17,
             "name": "Rayo Vallecano",
             "abbr": "RAY",
             "logo": [
@@ -407,7 +432,7 @@
             "note": ""
           },
           {
-            "rank": 17,
+            "rank": 18,
             "name": "Espanyol",
             "abbr": "ESP",
             "logo": [
@@ -423,36 +448,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "2",
             "drawn": "2",
-            "lost": "5",
-            "gd": "-1",
-            "pts": "8",
-            "note": ""
-          },
-          {
-            "rank": 18,
-            "name": "Racing Santander",
-            "abbr": "RAC",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "9",
-            "won": "2",
-            "drawn": "2",
-            "lost": "5",
-            "gd": "-12",
+            "lost": "6",
+            "gd": "-2",
             "pts": "8",
             "note": "Relegation"
           },
