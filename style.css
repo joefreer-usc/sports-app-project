@@ -39,6 +39,9 @@ header {
 }
 
 h1 { margin: 0; font-size: clamp(25px, 4vw, 34px); letter-spacing: -0.7px; }
+#brandHome { margin: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; font-weight: 800; letter-spacing: inherit; cursor: pointer; }
+#brandHome:hover { color: var(--accent); }
+#brandHome:focus-visible { outline: 3px solid rgba(56,167,255,.4); outline-offset: 5px; border-radius: 4px; }
 .eyebrow { margin: 0 0 2px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: 1.8px; }
 .header-actions { display: flex; align-items: center; gap: 14px; }
 
@@ -271,9 +274,10 @@ tr.past td { color: var(--muted); }
 .depth-row span { color: var(--muted); }
 .depth-players { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 7px; }
 .depth-players i { color: var(--muted); font-style: normal; }
-.nfl-player-link { margin: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
-.nfl-player-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.nfl-player-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.nfl-player-link, .nba-player-link { margin: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
+.nfl-player-link:hover, .nba-player-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.nfl-player-link:focus-visible, .nba-player-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.nba-player-hero { background: linear-gradient(135deg, color-mix(in srgb, var(--player-color) 36%, var(--card)), var(--card) 70%); }
 .nfl-player-hero { position: relative; display: grid; grid-template-columns: minmax(155px, 225px) minmax(0, 1fr); align-items: stretch; gap: 26px; min-height: 250px; overflow: hidden; margin: 12px 0; padding-right: 28px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--player-color) 32%, var(--card)), var(--card) 70%); }
 .nfl-player-hero::after { content: ""; position: absolute; right: -75px; top: -120px; width: 310px; height: 310px; border-radius: 50%; background: color-mix(in srgb, var(--player-color) 18%, transparent); }
 .nfl-player-photo { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: center; min-height: 250px; overflow: hidden; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--player-color) 24%, transparent)); }

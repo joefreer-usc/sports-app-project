@@ -50,6 +50,7 @@ const LIVE = {
 
 const view = document.getElementById("view");
 const pageMenu = document.getElementById("pageMenu");
+const brandHome = document.getElementById("brandHome");
 const updatedEl = document.getElementById("updated");
 
 let current = loadTab();
@@ -1000,9 +1001,12 @@ function playerTable(group, sportId, teamAbbr) {
     const name = ath.shortName || ath.displayName || "";
     const pos = ath.position && ath.position.abbreviation
       ? '<span class="sub">' + esc(ath.position.abbreviation) + "</span>" : "";
-    const linkedName = sportId === "nfl" && ath.id
-      ? '<button type="button" class="nfl-player-link" data-nfl-player="' + esc(ath.id) + '" data-player-team="' + esc(teamAbbr || "") + '">' + esc(name) + '</button>'
-      : esc(name);
+    let linkedName = esc(name);
+    if (ath.id && sportId === "nfl") {
+      linkedName = '<button type="button" class="nfl-player-link" data-nfl-player="' + esc(ath.id) + '" data-player-team="' + esc(teamAbbr || "") + '">' + esc(name) + '</button>';
+    } else if (ath.id && sportId === "nba") {
+      linkedName = '<button type="button" class="nba-player-link" data-nba-player="' + esc(ath.id) + '" data-player-team="' + esc(teamAbbr || "") + '">' + esc(name) + '</button>';
+    }
     rows.push(
       "<tr><td>" + linkedName + pos + "</td>" +
       labels.map((_, i) => '<td class="num">' + esc(stats[i]) + "</td>").join("") + "</tr>"
@@ -1569,7 +1573,7 @@ function renderNBASchedule(data, teamId) {
   return '<section class="card team-section"><h2>Season schedule</h2><div class="month-schedule">' + monthHtml + '</div></section>';
 }
 
-function renderNBADepth(depth, roster) {
+function renderNBADepth(depth, roster, teamAbbr) {
   const playersById = rosterAthletes(roster || {});
   const positions = {};
   let hasPublishedDepth = false;
@@ -1619,12 +1623,101 @@ function renderNBADepth(depth, roster) {
     const players = positions[position].sort((a, b) => a.order - b.order);
     return '<div class="nba-depth-position"><h3>' + esc(position) + '</h3>' + players.map((player, index) =>
       '<div class="nba-depth-player"><span class="depth-rank">' + (hasPublishedDepth ? (index === 0 ? "Starter" : "Bench " + index) : "Rotation " + (index + 1)) + '</span>' +
-      '<strong>' + esc(player.name) + '</strong>' + (player.jersey ? '<small>#' + esc(player.jersey) + '</small>' : '') + '</div>'
+      '<strong>' + (player.id ? '<button type="button" class="nba-player-link" data-nba-player="' + esc(player.id) +
+        '" data-player-team="' + esc(teamAbbr || "") + '">' + esc(player.name) + '</button>' : esc(player.name)) + '</strong>' +
+      (player.jersey ? '<small>#' + esc(player.jersey) + '</small>' : '') + '</div>'
     ).join("") + '</div>';
   }).join("");
   return '<section class="card team-section"><details open><summary>Depth chart</summary><p class="muted small">' +
     (hasPublishedDepth ? "Current starters and rotation by position." : "Current roster grouped by position; official starter order is not available.") + '</p>' +
     '<div class="nba-depth-grid">' + cards + '</div></details></section>';
+}
+
+function nbaPlayerStatSet(statsPayload) {
+  const stats = flattenTeamStats(statsPayload || {}, "", []);
+  const pick = (label, names) => [label, findTeamStat(stats, names)];
+  return [
+    pick("Games", ["gamesPlayed", "games"]), pick("Games started", ["gamesStarted", "starts"]),
+    pick("Minutes/game", ["avgMinutes", "minutesPerGame", "averageMinutes"]),
+    pick("Points/game", ["avgPoints", "pointsPerGame", "averagePoints"]),
+    pick("Rebounds/game", ["avgRebounds", "reboundsPerGame", "averageRebounds"]),
+    pick("Assists/game", ["avgAssists", "assistsPerGame", "averageAssists"]),
+    pick("Field goal %", ["fieldGoalPct", "fieldGoalPercentage"]),
+    pick("3-point %", ["threePointFieldGoalPct", "threePointPct", "threePointFieldGoalPercentage"]),
+    pick("Free throw %", ["freeThrowPct", "freeThrowPercentage"]),
+    pick("Steals/game", ["avgSteals", "stealsPerGame", "averageSteals"]),
+    pick("Blocks/game", ["avgBlocks", "blocksPerGame", "averageBlocks"]),
+    pick("Turnovers/game", ["avgTurnovers", "turnoversPerGame", "averageTurnovers"]),
+    pick("Off. rebounds/game", ["avgOffensiveRebounds", "offensiveReboundsPerGame"]),
+    pick("Def. rebounds/game", ["avgDefensiveRebounds", "defensiveReboundsPerGame"]),
+    pick("Assist/turnover", ["assistTurnoverRatio", "assistToTurnoverRatio"]),
+    pick("Double-doubles", ["doubleDouble", "doubleDoubles"])
+  ].filter((item) => item[1] !== "Not available");
+}
+
+function renderNBAPlayerProfile(player, overview, statsPayload, team) {
+  const source = (overview && (overview.athlete || overview.player)) || overview || {};
+  const merged = Object.assign({}, player || {}, source || {});
+  const name = merged.displayName || merged.fullName || merged.shortName || "NBA player";
+  const position = nflPlayerPosition(merged) || nflPlayerPosition(player);
+  const photo = nflPlayerImage(merged) || nflPlayerImage(player) ||
+    (merged.id ? "https://a.espncdn.com/i/headshots/nba/players/full/" + encodeURIComponent(merged.id) + ".png" : "");
+  const number = merged.jersey || merged.number || "";
+  const height = merged.displayHeight || merged.heightDisplay || "";
+  const weight = merged.displayWeight || (merged.weight ? merged.weight + " lbs" : "");
+  const experience = merged.experience && (merged.experience.displayValue || (merged.experience.years != null ? merged.experience.years + " years" : ""));
+  const college = merged.college && (merged.college.name || merged.college.displayName || merged.college);
+  const birth = merged.dateOfBirth ? new Date(merged.dateOfBirth).toLocaleDateString([], { year: "numeric", month: "short", day: "numeric" }) : "";
+  const details = [height, weight, experience, college, birth ? "Born " + birth : ""].filter(Boolean);
+  const stats = nbaPlayerStatSet(statsPayload);
+  const logo = teamLogo(team);
+  const color = String(team.color || "263444").replace(/[^0-9a-f]/gi, "").slice(0, 6) || "263444";
+  return backButton() + '<section class="nfl-player-hero nba-player-hero" style="--player-color:#' + esc(color) + '">' +
+    '<div class="nfl-player-photo">' + (photo ? '<img src="' + esc(photo) + '" alt="' + esc(name) + '" onerror="this.style.display=\'none\'">' : '') +
+    (number ? '<span>' + esc(number) + '</span>' : '') + '</div><div class="nfl-player-bio"><div class="eyebrow">NBA PLAYER</div><h2>' + esc(name) +
+    '</h2><p>' + esc([team.displayName || team.name, position, number ? "#" + number : ""].filter(Boolean).join(" · ")) +
+    '</p><small>' + esc(details.join(" · ")) + '</small></div>' +
+    (logo ? '<img class="nfl-player-team-logo" src="' + esc(logo) + '" alt="">' : '') + '</section>' +
+    '<section class="card team-section"><h2>Season stats</h2>' + (stats.length
+      ? '<div class="nfl-player-stats nba-player-stats">' + stats.map((item) => statTile(item[0], item[1])).join("") + '</div>'
+      : '<div class="muted">Season statistics are not available for this player yet.</div>') +
+    '<p class="muted small">Current NBA regular-season averages and totals.</p></section>';
+}
+
+async function showNBAPlayer() {
+  const d = detail;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading player profile&hellip;</div>';
+  try {
+    const cache = await getJson("data/nba_teams.json");
+    const teams = cache && cache.data && cache.data.teams || {};
+    let entry = teams[String(d.teamAbbr || "").toUpperCase()];
+    if (!entry) {
+      entry = Object.keys(teams).map((key) => teams[key]).find((candidate) =>
+        !!rosterAthletes(candidate.roster || {})[String(d.playerId)]);
+    }
+    if (!entry || !entry.team) throw new Error("Team unavailable");
+    const player = rosterAthletes(entry.roster || {})[String(d.playerId)] || { id: d.playerId };
+    const base = "https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/" + encodeURIComponent(d.playerId);
+    const results = await Promise.allSettled([
+      fetch(base + "/overview", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch(base + "/stats", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    ]);
+    const overview = results[0].status === "fulfilled" ? results[0].value : {};
+    const stats = results[1].status === "fulfilled" ? results[1].value : overview;
+    if (detail !== d) return;
+    view.innerHTML = renderNBAPlayerProfile(player, overview, stats, entry.team);
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message">Couldn\'t load this NBA player right now. Run the data workflow once, then refresh.</div>';
+  }
+}
+
+function openNBAPlayer(playerId, teamAbbr) {
+  detail = { sportId: "nba", kind: "nba-player", playerId: playerId, teamAbbr: teamAbbr, returnTo: current };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
 }
 
 function paintNBATeam(d, abbr, team, schedule, stats, depth, roster) {
@@ -1635,7 +1728,7 @@ function paintNBATeam(d, abbr, team, schedule, stats, depth, roster) {
     (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
     '<div><div class="eyebrow">NBA TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
     esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>' +
-    renderNBAStats(team, stats, schedule || {}) + renderNBADepth(depth || {}, roster || {}) + renderNBASchedule(schedule || {}, team.id);
+    renderNBAStats(team, stats, schedule || {}) + renderNBADepth(depth || {}, roster || {}, abbr) + renderNBASchedule(schedule || {}, team.id);
 }
 
 async function showNBATeam() {
@@ -1888,6 +1981,14 @@ function leaveDetail() {
     show();
     return;
   }
+  if (detail && detail.kind === "nba-player" && detail.teamAbbr) {
+    detail = { sportId: "nba", kind: "nba-team", teamAbbr: detail.teamAbbr, returnTo: "nba" };
+    current = "nba";
+    view.removeAttribute("data-detail");
+    syncPageMenu();
+    show();
+    return;
+  }
   detail = null;
   if (returnTo) current = returnTo;
   view.removeAttribute("data-detail");
@@ -1918,6 +2019,12 @@ view.addEventListener("click", (event) => {
   if (nflPlayerEl) {
     event.stopPropagation();
     openNFLPlayer(nflPlayerEl.getAttribute("data-nfl-player"), nflPlayerEl.getAttribute("data-player-team"));
+    return;
+  }
+  const nbaPlayerEl = event.target.closest("button[data-nba-player]");
+  if (nbaPlayerEl) {
+    event.stopPropagation();
+    openNBAPlayer(nbaPlayerEl.getAttribute("data-nba-player"), nbaPlayerEl.getAttribute("data-player-team"));
     return;
   }
   const raceEl = event.target.closest("[data-round]");
@@ -1960,6 +2067,7 @@ function selectSport(id) {
 }
 
 pageMenu.addEventListener("change", () => selectSport(pageMenu.value));
+brandHome.addEventListener("click", () => selectSport("home"));
 
 const NO_DATA =
   '<div class="message">No data yet. In your GitHub repo, open the Actions tab, ' +
@@ -1976,6 +2084,7 @@ async function show() {
     else if (detail.kind === "driver") await showF1Driver();
     else if (detail.kind === "golfer") await showGolfPlayer();
     else if (detail.kind === "nfl-player") await showNFLPlayer();
+    else if (detail.kind === "nba-player") await showNBAPlayer();
     else if (detail.kind === "team") await showNFLTeam();
     else if (detail.kind === "nba-team") await showNBATeam();
     else await showDetail();

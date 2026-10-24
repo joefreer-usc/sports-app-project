@@ -1,6 +1,6 @@
 // Simple service worker: always try the network first, fall back to the
 // last saved copy so the app still opens when you have no signal.
-const CACHE = "sports-hub-v27";
+const CACHE = "sports-hub-v28";
 const SHELL = [
   "./",
   "index.html",
