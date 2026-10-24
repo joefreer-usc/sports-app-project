@@ -433,7 +433,23 @@ function f1SessionRows(session, weekend, limit) {
     });
 }
 
-function renderF1WeekendControl(race, weekend) {
+function renderF1TrackSvg(track, race) {
+  if (!track || !(track.sectors || []).length) {
+    return race.image ? '<img src="' + esc(race.image) + '" alt="' + esc(race.circuit) + ' layout">' : '<div class="f1-track-placeholder">TRACK MAP</div>';
+  }
+  const colors = ["#ff3b30", "#2997ff", "#ffd60a"];
+  const polylines = track.sectors.map((sector, index) => '<polyline class="f1-sector-line" points="' +
+    (sector.points || []).map((p) => esc(p[0]) + ',' + esc(p[1])).join(' ') + '" stroke="' + colors[index] + '"></polyline>').join("");
+  const labels = track.sectors.map((sector, index) => {
+    const p = sector.label || [0, 0];
+    return '<g class="f1-sector-label" transform="translate(' + esc(p[0]) + ' ' + esc(p[1]) + ')"><circle r="21" fill="' +
+      colors[index] + '"></circle><text text-anchor="middle" dominant-baseline="central">S' + (index + 1) + '</text></g>';
+  }).join("");
+  return '<svg class="f1-own-track" viewBox="0 0 1000 750" role="img" aria-label="' + esc(race.circuit) +
+    ' sectors"><g class="f1-track-shadow">' + polylines + '</g>' + polylines + labels + '</svg>';
+}
+
+function renderF1WeekendControl(race, weekend, track) {
   const sessions = (weekend && weekend.sessions || []).slice().sort((a, b) => Date.parse(a.dateStart) - Date.parse(b.dateStart));
   const completed = sessions.filter((s) => (s.results || []).length);
   const active = completed.length ? completed[completed.length - 1] : null;
@@ -444,7 +460,7 @@ function renderF1WeekendControl(race, weekend) {
       '</b><span class="f1-driver-code">' + esc(row.driver.code || row.result.driver_number) + '</span><span class="f1-driver-team">' +
       esc(row.driver.team || "") + '</span><strong>' + esc(row.gap || row.time) + '</strong></div>';
   }).join("") : '<div class="f1-control-empty">Timing appears after the first completed session.</div>';
-  const track = race.image ? '<img src="' + esc(race.image) + '" alt="' + esc(race.circuit) + ' layout">' : '<div class="f1-track-placeholder">TRACK MAP</div>';
+  const trackArt = renderF1TrackSvg(track, race);
   const cards = sessions.length ? sessions.map((session) => {
     const hasResults = (session.results || []).length > 0;
     const start = Date.parse(session.dateStart);
@@ -456,7 +472,7 @@ function renderF1WeekendControl(race, weekend) {
   return '<section class="f1-control"><div class="f1-control-head"><div><span class="f1-control-kicker">WEEKEND CONTROL</span><h2>' +
     esc(race.name) + '</h2><p>' + esc(race.circuit) + ' · Round ' + esc(race.round) + '</p></div><div class="f1-control-state"><i></i>' +
     esc(active ? "LATEST: " + active.name : "UPCOMING") + '</div></div><div class="f1-control-grid"><div class="f1-timing-tower"><div class="f1-timing-head"><span>POS</span><span>DRIVER</span><span>TEAM</span><span>GAP / TIME</span></div>' +
-    tower + '</div><div class="f1-track-panel">' + track + '<div><span>' + esc(race.location) + '</span><strong>' +
+    tower + '</div><div class="f1-track-panel">' + trackArt + '<div><span>' + esc(race.location) + '</span><strong>' +
     esc(active ? active.name : fmtRaceWhen(race)) + '</strong></div></div></div>' +
     (cards ? '<div class="f1-session-links">' + cards + '</div>' : '') + '</section>';
 }
@@ -615,12 +631,16 @@ async function showRace() {
   }
 
   let weekend = null;
+  let track = null;
   try {
     weekend = (await getJson("data/f1_weekend_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json")).data || null;
   } catch (err) { /* The workflow may not have created this weekend yet. */ }
+  if (race.circuitKey) {
+    try { track = (await getJson("data/f1_track_" + race.circuitKey + ".json")).data || null; } catch (err) { /* use remote fallback */ }
+  }
   if (detail !== d) return;
 
-  let html = backButton() + renderF1WeekendControl(race, weekend || {});
+  let html = backButton() + renderF1WeekendControl(race, weekend || {}, track);
   if (!weekend) html += renderSessions(race);
 
   const finished = raceStartMs(race) + 3 * 3600 * 1000 < Date.now();

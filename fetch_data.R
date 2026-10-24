@@ -162,6 +162,7 @@ fetch_f1 <- function() {
       time       = r$time %||% "",
       sessions   = sessions_of(r),
       meetingKey = meeting$meeting_key %||% 0L,
+      circuitKey = meeting$circuit_key %||% 0L,
       image      = meeting$circuit_image %||% ""
     )
   })
@@ -337,6 +338,90 @@ fetch_f1_weekend_files <- function(max_files = 3) {
 }
 
 tryCatch(fetch_f1_weekend_files(), error = function(e) message("f1 weekend files: FAILED - ", conditionMessage(e)))
+
+# ---- App-owned F1 circuit vectors ------------------------------------------
+# Build one clean centreline from a representative timed lap. Sector colours
+# use the lap's real S1/S2 timing splits; the browser renders the saved points
+# as resolution-independent SVG rather than depending on a remote track image.
+
+f1_time <- function(x) as.POSIXct(substr(x %||% "", 1, 23), tz = "UTC", format = "%Y-%m-%dT%H:%M:%OS")
+
+fetch_f1_track <- function(race) {
+  circuit_key <- as.integer(race$circuitKey %||% 0L)
+  meeting_key <- as.integer(race$meetingKey %||% 0L)
+  if (circuit_key <= 0L) return(NULL)
+  sessions <- if (meeting_key > 0L) get_json(paste0("https://api.openf1.org/v1/sessions?meeting_key=", meeting_key)) else list()
+  finished <- Filter(function(s) {
+    end <- f1_time(s$date_end)
+    !is.na(end) && Sys.time() > end && (s$session_name %||% "") %in% c("Race", "Qualifying", "Sprint")
+  }, sessions)
+  if (length(finished) == 0) {
+    history <- get_json(paste0("https://api.openf1.org/v1/sessions?circuit_key=", circuit_key, "&session_name=Qualifying"))
+    finished <- Filter(function(s) { end <- f1_time(s$date_end); !is.na(end) && Sys.time() > end }, history)
+  }
+  if (length(finished) == 0) return(NULL)
+  session <- finished[[which.max(vapply(finished, function(s) as.numeric(f1_time(s$date_start)), numeric(1)))]]
+  session_key <- as.integer(session$session_key %||% 0L)
+  result <- get_json(paste0("https://api.openf1.org/v1/session_result?session_key=", session_key, "&position=1"))
+  if (length(result) == 0) return(NULL)
+  driver <- as.integer(result[[1]]$driver_number %||% 0L)
+  laps <- get_json(paste0("https://api.openf1.org/v1/laps?session_key=", session_key, "&driver_number=", driver))
+  valid <- Filter(function(lap) !is.null(lap$duration_lap) && !is.null(lap$duration_sector_1) &&
+                    !is.null(lap$duration_sector_2) && nzchar(lap$date_start %||% ""), laps)
+  if (length(valid) == 0) return(NULL)
+  lap <- valid[[which.min(vapply(valid, function(x) as.numeric(x$duration_lap), numeric(1)))]]
+  start <- lap$date_start
+  finish <- format(f1_time(start) + as.numeric(lap$duration_lap) + 1, tz = "UTC", "%Y-%m-%dT%H:%M:%OS3Z")
+  url <- paste0("https://api.openf1.org/v1/location?session_key=", session_key, "&driver_number=", driver,
+                "&date%3E=", URLencode(start, reserved = TRUE), "&date%3C=", URLencode(finish, reserved = TRUE))
+  loc <- get_json(url)
+  if (length(loc) < 30) return(NULL)
+  # Keep enough points for smooth corners without bloating the repository.
+  step <- max(1L, floor(length(loc) / 450L))
+  loc <- loc[seq(1, length(loc), by = step)]
+  xs <- vapply(loc, function(p) as.numeric(p$x %||% 0), numeric(1))
+  ys <- vapply(loc, function(p) as.numeric(p$y %||% 0), numeric(1))
+  times <- vapply(loc, function(p) as.numeric(f1_time(p$date) - f1_time(start), units = "secs"), numeric(1))
+  xr <- range(xs); yr <- range(ys)
+  scale <- min(900 / max(1, diff(xr)), 650 / max(1, diff(yr)))
+  nx <- 50 + (xs - xr[1]) * scale + (900 - diff(xr) * scale) / 2
+  ny <- 50 + (yr[2] - ys) * scale + (650 - diff(yr) * scale) / 2
+  split1 <- as.numeric(lap$duration_sector_1)
+  split2 <- split1 + as.numeric(lap$duration_sector_2)
+  sector_no <- ifelse(times <= split1, 1L, ifelse(times <= split2, 2L, 3L))
+  sectors <- lapply(1:3, function(number) {
+    idx <- which(sector_no == number)
+    # Repeat the boundary point so coloured strokes meet without a visible gap.
+    if (number > 1 && length(idx)) idx <- c(max(1, min(idx) - 1), idx)
+    pts <- lapply(idx, function(i) list(round(nx[i], 1), round(ny[i], 1)))
+    mid <- if (length(idx)) idx[[ceiling(length(idx) / 2)]] else 1L
+    list(number = number, points = pts, label = list(round(nx[mid], 1), round(ny[mid], 1)))
+  })
+  list(circuitKey = circuit_key, circuit = race$circuit, sourceSession = session$session_name,
+       sourceYear = session$year, sectors = sectors)
+}
+
+fetch_f1_track_files <- function(max_new = 3) {
+  f1 <- fromJSON("data/f1.json", simplifyVector = FALSE)$data
+  made <- 0L
+  schedule <- f1$schedule %||% list()
+  priority <- Filter(function(r) grepl("Madring|Barcelona", paste(r$circuit %||% "", r$name %||% ""), ignore.case = TRUE), schedule)
+  others <- Filter(function(r) !grepl("Madring|Barcelona", paste(r$circuit %||% "", r$name %||% ""), ignore.case = TRUE), schedule)
+  for (race in c(priority, others)) {
+    if (made >= max_new) break
+    key <- as.integer(race$circuitKey %||% 0L)
+    if (key <= 0L) next
+    name <- paste0("f1_track_", key)
+    if (file.exists(file.path("data", paste0(name, ".json")))) next
+    made <- made + 1L
+    tryCatch({
+      track <- fetch_f1_track(race)
+      if (!is.null(track)) save_if_changed(name, track)
+    }, error = function(e) message(name, ": FAILED - ", conditionMessage(e)))
+  }
+}
+
+tryCatch(fetch_f1_track_files(), error = function(e) message("f1 track files: FAILED - ", conditionMessage(e)))
 
 # ---- F1 per-race results and lap times --------------------------------------
 # Finished races never change, so each one is saved once to its own file
