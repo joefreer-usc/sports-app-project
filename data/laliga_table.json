@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T16:16:44Z",
+  "updated": "2026-10-24T19:02:53Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -183,6 +183,31 @@
           },
           {
             "rank": 8,
+            "name": "Villarreal",
+            "abbr": "VIL",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-08-02T20:09Z"
+              }
+            ],
+            "played": "10",
+            "won": "3",
+            "drawn": "3",
+            "lost": "4",
+            "gd": "+1",
+            "pts": "12",
+            "note": ""
+          },
+          {
+            "rank": 9,
             "name": "Celta Vigo",
             "abbr": "CEL",
             "logo": [
@@ -207,7 +232,7 @@
             "note": ""
           },
           {
-            "rank": 9,
+            "rank": 10,
             "name": "Deportivo",
             "abbr": "DEP",
             "logo": [
@@ -229,10 +254,10 @@
             "lost": "2",
             "gd": "+1",
             "pts": "11",
-            "note": ""
+            "note": "Europa League"
           },
           {
-            "rank": 10,
+            "rank": 11,
             "name": "Osasuna",
             "abbr": "OSA",
             "logo": [
@@ -254,10 +279,10 @@
             "lost": "4",
             "gd": "-8",
             "pts": "11",
-            "note": "Europa League"
+            "note": ""
           },
           {
-            "rank": 11,
+            "rank": 12,
             "name": "Racing Santander",
             "abbr": "RAC",
             "logo": [
@@ -282,7 +307,7 @@
             "note": ""
           },
           {
-            "rank": 12,
+            "rank": 13,
             "name": "Levante",
             "abbr": "LEV",
             "logo": [
@@ -307,7 +332,7 @@
             "note": ""
           },
           {
-            "rank": 13,
+            "rank": 14,
             "name": "Elche",
             "abbr": "ELC",
             "logo": [
@@ -329,31 +354,6 @@
             "lost": "4",
             "gd": "-3",
             "pts": "10",
-            "note": ""
-          },
-          {
-            "rank": 14,
-            "name": "Villarreal",
-            "abbr": "VIL",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2021-08-02T20:09Z"
-              }
-            ],
-            "played": "9",
-            "won": "2",
-            "drawn": "3",
-            "lost": "4",
-            "gd": "0",
-            "pts": "9",
             "note": ""
           },
           {
@@ -473,11 +473,11 @@
                 "lastUpdated": "2024-01-04T17:49Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "1",
             "drawn": "3",
-            "lost": "5",
-            "gd": "-9",
+            "lost": "6",
+            "gd": "-10",
             "pts": "6",
             "note": "Relegation"
           },
