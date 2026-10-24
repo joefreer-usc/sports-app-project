@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T01:57:11Z",
+  "updated": "2026-10-24T02:55:33Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -7,16 +7,16 @@
         "name": "Eastern Conference",
         "teams": [
           {
-            "name": "Detroit Pistons",
-            "abbr": "DET",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
             "name": "Atlanta Hawks",
             "abbr": "ATL",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W2"
+          },
+          {
+            "name": "Detroit Pistons",
+            "abbr": "DET",
             "record": "2-0",
             "pct": "1.000",
             "gb": "-",
@@ -103,6 +103,14 @@
             "streak": "L2"
           },
           {
+            "name": "Miami Heat",
+            "abbr": "MIA",
+            "record": "0-2",
+            "pct": ".000",
+            "gb": "2",
+            "streak": "L2"
+          },
+          {
             "name": "Brooklyn Nets",
             "abbr": "BKN",
             "record": "0-1",
@@ -113,14 +121,6 @@
           {
             "name": "Cleveland Cavaliers",
             "abbr": "CLE",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Miami Heat",
-            "abbr": "MIA",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
