@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T04:20:11Z",
+  "updated": "2026-10-24T04:28:50Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -132,24 +132,8 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "Portland Trail Blazers",
-            "abbr": "POR",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
             "name": "LA Clippers",
             "abbr": "LAC",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
-            "name": "Los Angeles Lakers",
-            "abbr": "LAL",
             "record": "1-0",
             "pct": "1.000",
             "gb": "0.5",
@@ -164,12 +148,28 @@
             "streak": "W1"
           },
           {
-            "name": "Houston Rockets",
-            "abbr": "HOU",
+            "name": "Portland Trail Blazers",
+            "abbr": "POR",
             "record": "1-0",
             "pct": "1.000",
             "gb": "0.5",
             "streak": "W1"
+          },
+          {
+            "name": "Los Angeles Lakers",
+            "abbr": "LAL",
+            "record": "1-0",
+            "pct": "1.000",
+            "gb": "0.5",
+            "streak": "W1"
+          },
+          {
+            "name": "Houston Rockets",
+            "abbr": "HOU",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W2"
           },
           {
             "name": "Oklahoma City Thunder",
@@ -212,16 +212,16 @@
             "streak": "L2"
           },
           {
-            "name": "Denver Nuggets",
-            "abbr": "DEN",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
             "name": "San Antonio Spurs",
             "abbr": "SA",
+            "record": "0-2",
+            "pct": ".000",
+            "gb": "2",
+            "streak": "L2"
+          },
+          {
+            "name": "Denver Nuggets",
+            "abbr": "DEN",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
