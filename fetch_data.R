@@ -401,17 +401,34 @@ fetch_f1_track <- function(race) {
        sourceYear = session$year, sectors = sectors)
 }
 
-fetch_f1_track_files <- function(max_new = 3) {
+fetch_f1_track_files <- function(max_new = 1) {
   f1 <- fromJSON("data/f1.json", simplifyVector = FALSE)$data
   made <- 0L
   schedule <- f1$schedule %||% list()
+  # The meetings endpoint can be temporarily empty or rate-limited. Sessions
+  # carry the same keys, so match them to the calendar by race-week date.
+  season_sessions <- tryCatch(
+    get_json(paste0("https://api.openf1.org/v1/sessions?year=", f1$season)),
+    error = function(e) { message("  f1 track session index: ", conditionMessage(e)); list() }
+  )
   priority <- Filter(function(r) grepl("Madring|Barcelona", paste(r$circuit %||% "", r$name %||% ""), ignore.case = TRUE), schedule)
   others <- Filter(function(r) !grepl("Madring|Barcelona", paste(r$circuit %||% "", r$name %||% ""), ignore.case = TRUE), schedule)
   for (race in c(priority, others)) {
     if (made >= max_new) break
+    if (as.integer(race$circuitKey %||% 0L) <= 0L || as.integer(race$meetingKey %||% 0L) <= 0L) {
+      race_day <- as.Date(race$date %||% NA_character_)
+      matches <- Filter(function(s) {
+        session_day <- as.Date(substr(s$date_start %||% "", 1, 10))
+        !is.na(race_day) && !is.na(session_day) && abs(as.numeric(session_day - race_day)) <= 4
+      }, season_sessions)
+      if (length(matches) > 0) {
+        race$meetingKey <- matches[[1]]$meeting_key %||% 0L
+        race$circuitKey <- matches[[1]]$circuit_key %||% 0L
+      }
+    }
     key <- as.integer(race$circuitKey %||% 0L)
-    if (key <= 0L) next
-    name <- paste0("f1_track_", key)
+    if (key <= 0L) { message("f1_track_", f1$season, "_", race$round, ": no session match yet"); next }
+    name <- sprintf("f1_track_%s_%02d", f1$season, as.integer(race$round %||% 0))
     if (file.exists(file.path("data", paste0(name, ".json")))) next
     made <- made + 1L
     tryCatch({

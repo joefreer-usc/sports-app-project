@@ -635,9 +635,9 @@ async function showRace() {
   try {
     weekend = (await getJson("data/f1_weekend_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json")).data || null;
   } catch (err) { /* The workflow may not have created this weekend yet. */ }
-  if (race.circuitKey) {
-    try { track = (await getJson("data/f1_track_" + race.circuitKey + ".json")).data || null; } catch (err) { /* use remote fallback */ }
-  }
+  try {
+    track = (await getJson("data/f1_track_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json")).data || null;
+  } catch (err) { /* use remote fallback until the workflow builds this round */ }
   if (detail !== d) return;
 
   let html = backButton() + renderF1WeekendControl(race, weekend || {}, track);
