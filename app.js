@@ -399,6 +399,87 @@ function renderSessions(race) {
     '<p class="muted small">Shown in your local time' + (tz ? " (" + esc(tz) + ")" : "") + ".</p></section>";
 }
 
+function f1Seconds(value) {
+  const seconds = Number(value);
+  if (!Number.isFinite(seconds)) return "";
+  const mins = Math.floor(seconds / 60);
+  return mins ? mins + ":" + (seconds % 60).toFixed(3).padStart(6, "0") : seconds.toFixed(3);
+}
+
+function f1SessionValue(value) {
+  if (Array.isArray(value)) {
+    const available = value.filter((x) => Number.isFinite(Number(x)));
+    return available.length ? f1Seconds(available[available.length - 1]) : "—";
+  }
+  return f1Seconds(value) || "—";
+}
+
+function f1WeekendDrivers(weekend) {
+  const out = {};
+  (weekend.drivers || []).forEach((driver) => { out[String(driver.number)] = driver; });
+  return out;
+}
+
+function f1SessionRows(session, weekend, limit) {
+  const drivers = f1WeekendDrivers(weekend);
+  return (session.results || []).slice().sort((a, b) => Number(a.position) - Number(b.position))
+    .slice(0, limit || 100).map((result) => {
+      const driver = drivers[String(result.driver_number)] || {};
+      const gapRaw = Array.isArray(result.gap_to_leader)
+        ? result.gap_to_leader.filter((x) => x != null).slice(-1)[0] : result.gap_to_leader;
+      const gap = Number(result.position) === 1 ? "LEADER" : (Number.isFinite(Number(gapRaw)) ? "+" + Number(gapRaw).toFixed(3) : "");
+      const status = result.dsq ? "DSQ" : result.dns ? "DNS" : result.dnf ? "DNF" : "";
+      return { result: result, driver: driver, gap: status || gap, time: f1SessionValue(result.duration) };
+    });
+}
+
+function renderF1WeekendControl(race, weekend) {
+  const sessions = (weekend && weekend.sessions || []).slice().sort((a, b) => Date.parse(a.dateStart) - Date.parse(b.dateStart));
+  const completed = sessions.filter((s) => (s.results || []).length);
+  const active = completed.length ? completed[completed.length - 1] : null;
+  const timing = active ? f1SessionRows(active, weekend, 10) : [];
+  const tower = timing.length ? timing.map((row) => {
+    const color = String(row.driver.teamColor || "66788d").replace(/[^0-9a-f]/gi, "").slice(0, 6) || "66788d";
+    return '<div class="f1-timing-row" style="--f1-team:#' + esc(color) + '"><b>' + esc(row.result.position) +
+      '</b><span class="f1-driver-code">' + esc(row.driver.code || row.result.driver_number) + '</span><span class="f1-driver-team">' +
+      esc(row.driver.team || "") + '</span><strong>' + esc(row.gap || row.time) + '</strong></div>';
+  }).join("") : '<div class="f1-control-empty">Timing appears after the first completed session.</div>';
+  const track = race.image ? '<img src="' + esc(race.image) + '" alt="' + esc(race.circuit) + ' layout">' : '<div class="f1-track-placeholder">TRACK MAP</div>';
+  const cards = sessions.length ? sessions.map((session) => {
+    const hasResults = (session.results || []).length > 0;
+    const start = Date.parse(session.dateStart);
+    const when = isNaN(start) ? "" : new Date(start).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" });
+    return '<button type="button" class="f1-session-link' + (hasResults ? ' complete' : '') + '" data-f1-session="' +
+      esc(session.sessionKey) + '" data-f1-round="' + esc(race.round) + '"><span>' + esc(session.name) + '</span><small>' +
+      esc(hasResults ? "View results" : when || "Scheduled") + '</small><i>&rsaquo;</i></button>';
+  }).join("") : "";
+  return '<section class="f1-control"><div class="f1-control-head"><div><span class="f1-control-kicker">WEEKEND CONTROL</span><h2>' +
+    esc(race.name) + '</h2><p>' + esc(race.circuit) + ' · Round ' + esc(race.round) + '</p></div><div class="f1-control-state"><i></i>' +
+    esc(active ? "LATEST: " + active.name : "UPCOMING") + '</div></div><div class="f1-control-grid"><div class="f1-timing-tower"><div class="f1-timing-head"><span>POS</span><span>DRIVER</span><span>TEAM</span><span>GAP / TIME</span></div>' +
+    tower + '</div><div class="f1-track-panel">' + track + '<div><span>' + esc(race.location) + '</span><strong>' +
+    esc(active ? active.name : fmtRaceWhen(race)) + '</strong></div></div></div>' +
+    (cards ? '<div class="f1-session-links">' + cards + '</div>' : '') + '</section>';
+}
+
+function renderF1SessionPage(race, weekend, session) {
+  const rows = f1SessionRows(session, weekend);
+  const drivers = f1WeekendDrivers(weekend);
+  const start = Date.parse(session.dateStart);
+  const subtitle = [race.name, isNaN(start) ? "" : new Date(start).toLocaleString([], {
+    weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit"
+  })].filter(Boolean).join(" · ");
+  return backButton() + '<section class="f1-session-hero"><span>SESSION RESULTS</span><h2>' + esc(session.name) +
+    '</h2><p>' + esc(subtitle) + '</p></section><section class="card f1-session-results">' +
+    (rows.length ? '<div class="scroll">' + table([{ label: "Pos" }, { label: "Driver" }, { label: "Team" }, { label: "Best / Time", num: true },
+      { label: "Gap", num: true }, { label: "Laps", num: true }], rows.map((row) => {
+        const driver = drivers[String(row.result.driver_number)] || row.driver;
+        return '<tr><td class="pos"><b>' + esc(row.result.position) + '</b></td><td><span class="f1-result-driver"><i style="--f1-team:#' +
+          esc(String(driver.teamColor || "66788d").replace(/[^0-9a-f]/gi, "")) + '"></i><strong>' + esc(driver.name || driver.code || row.result.driver_number) +
+          '</strong></span></td><td>' + esc(driver.team || "") + '</td><td class="num">' + esc(row.time) + '</td><td class="num">' +
+          esc(row.gap) + '</td><td class="num">' + esc(row.result.number_of_laps == null ? "" : row.result.number_of_laps) + '</td></tr>';
+      })) + '</div>' : '<div class="muted">Results will appear after this session is complete and the data workflow runs.</div>') + '</section>';
+}
+
 function renderTrack(race) {
   if (!race.image && !race.circuitUrl) return "";
   let html = '<section class="card"><h2>Track layout</h2>';
@@ -533,12 +614,14 @@ async function showRace() {
     return;
   }
 
-  let html = backButton() +
-    '<section class="card next-race"><div class="name">' + esc(race.name) + "</div>" +
-    '<div class="when">' + esc(fmtRaceWhen(race)) + "</div>" +
-    '<div class="where">' + esc(race.circuit) + " &middot; " + esc(race.location) +
-    " &middot; Round " + esc(race.round) + "</div></section>";
-  html += renderSessions(race) + renderTrack(race);
+  let weekend = null;
+  try {
+    weekend = (await getJson("data/f1_weekend_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json")).data || null;
+  } catch (err) { /* The workflow may not have created this weekend yet. */ }
+  if (detail !== d) return;
+
+  let html = backButton() + renderF1WeekendControl(race, weekend || {});
+  if (!weekend) html += renderSessions(race);
 
   const finished = raceStartMs(race) + 3 * 3600 * 1000 < Date.now();
   if (finished) {
@@ -563,6 +646,33 @@ async function showRace() {
   if (detail !== d) return;
   view.innerHTML = html;
   wireTrackImage();
+}
+
+async function showF1Session() {
+  const d = detail;
+  updatedEl.textContent = "";
+  view.innerHTML = backButton() + '<div class="message">Loading session results&hellip;</div>';
+  try {
+    const f1 = await getJson("data/f1.json");
+    const data = f1.data || {};
+    const race = (data.schedule || []).find((item) => Number(item.round) === Number(d.round));
+    if (!race) throw new Error("Race missing");
+    const weekend = (await getJson("data/f1_weekend_" + (data.season || "") + "_" + String(d.round).padStart(2, "0") + ".json")).data || {};
+    const session = (weekend.sessions || []).find((item) => String(item.sessionKey) === String(d.sessionKey));
+    if (!session) throw new Error("Session missing");
+    if (detail !== d) return;
+    view.innerHTML = renderF1SessionPage(race, weekend, session);
+  } catch (err) {
+    if (detail !== d) return;
+    view.innerHTML = backButton() + '<div class="message">These session results have not been downloaded yet. Run the data workflow once, then refresh.</div>';
+  }
+}
+
+function openF1Session(round, sessionKey) {
+  detail = { sportId: "f1", kind: "f1-session", round: Number(round), sessionKey: String(sessionKey), returnTo: "f1" };
+  history.pushState({ detail: true }, "", location.href);
+  window.scrollTo(0, 0);
+  show();
 }
 
 function openRace(round) {
@@ -2165,6 +2275,13 @@ function openNFLScheduleGame(id) {
 
 function leaveDetail() {
   const returnTo = detail && detail.returnTo;
+  if (detail && detail.kind === "f1-session" && detail.round) {
+    detail = { sportId: "f1", kind: "race", round: detail.round, returnTo: "f1" };
+    current = "f1";
+    view.removeAttribute("data-detail");
+    show();
+    return;
+  }
   if (detail && detail.kind === "nfl-player" && detail.teamAbbr) {
     detail = { sportId: "nfl", kind: "team", teamAbbr: detail.teamAbbr, returnTo: "nfl" };
     current = "nfl";
@@ -2213,6 +2330,11 @@ view.addEventListener("click", (event) => {
   if (sw) { selectSport(sw.getAttribute("data-switch")); return; }
   const driverEl = event.target.closest("button[data-driver]");
   if (driverEl) { event.stopPropagation(); openF1Driver(driverEl.getAttribute("data-driver")); return; }
+  const f1Session = event.target.closest("button[data-f1-session]");
+  if (f1Session) {
+    openF1Session(f1Session.getAttribute("data-f1-round"), f1Session.getAttribute("data-f1-session"));
+    return;
+  }
   const golferEl = event.target.closest("button[data-golfer]");
   if (golferEl) { event.stopPropagation(); openGolfPlayer(golferEl.getAttribute("data-golfer")); return; }
   const nflPlayerEl = event.target.closest("button[data-nfl-player]");
@@ -2285,6 +2407,7 @@ async function show() {
 
   if (detail && detail.sportId === current) {
     if (detail.kind === "race") await showRace();
+    else if (detail.kind === "f1-session") await showF1Session();
     else if (detail.kind === "driver") await showF1Driver();
     else if (detail.kind === "golfer") await showGolfPlayer();
     else if (detail.kind === "nfl-player") await showNFLPlayer();

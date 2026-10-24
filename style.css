@@ -460,6 +460,47 @@ h2.tap .chev { font-weight: 400; }
 
 a { color: var(--accent); }
 
+/* F1 weekend control and session results */
+.f1-control { overflow: hidden; margin: 12px 0 18px; border: 1px solid rgba(255,255,255,.11); border-radius: 20px; background: linear-gradient(145deg,#15181d,#090b0e 70%); box-shadow: 0 18px 45px rgba(0,0,0,.3); }
+.f1-control-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 22px 24px 18px; border-bottom: 1px solid rgba(255,255,255,.08); background: radial-gradient(circle at 15% 0,rgba(225,6,0,.2),transparent 42%); }
+.f1-control-kicker { color: #ff443d; font-size: 10px; font-weight: 900; letter-spacing: 1.7px; }
+.f1-control-head h2 { margin: 5px 0 3px; color: #fff; font-size: clamp(24px,4vw,36px); }
+.f1-control-head p { margin: 0; color: #8d98a7; }
+.f1-control-state { flex: 0 0 auto; margin-top: 3px; padding: 7px 10px; border: 1px solid rgba(255,68,61,.22); border-radius: 999px; background: rgba(225,6,0,.08); color: #ff746f; font-size: 9px; font-weight: 900; letter-spacing: .8px; }
+.f1-control-state i { display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: #ff443d; box-shadow: 0 0 10px #e10600; }
+.f1-control-grid { display: grid; grid-template-columns: minmax(330px,.95fr) minmax(300px,1.05fr); min-height: 410px; }
+.f1-timing-tower { padding: 12px 16px 17px; border-right: 1px solid rgba(255,255,255,.08); }
+.f1-timing-head, .f1-timing-row { display: grid; grid-template-columns: 35px 64px minmax(80px,1fr) 84px; align-items: center; gap: 8px; }
+.f1-timing-head { min-height: 30px; color: #606b79; font-size: 8px; font-weight: 900; letter-spacing: .8px; }
+.f1-timing-head span:last-child { text-align: right; }
+.f1-timing-row { position: relative; min-height: 35px; padding: 2px 0 2px 9px; border-top: 1px solid rgba(255,255,255,.065); }
+.f1-timing-row::before { content: ""; position: absolute; left: 0; top: 7px; bottom: 7px; width: 3px; border-radius: 2px; background: var(--f1-team); box-shadow: 0 0 8px color-mix(in srgb,var(--f1-team) 55%,transparent); }
+.f1-timing-row > b { color: #8b96a5; font-size: 11px; }
+.f1-driver-code { color: #fff; font-size: 13px; font-weight: 900; letter-spacing: .5px; }
+.f1-driver-team { overflow: hidden; color: #798594; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.f1-timing-row > strong { color: #dfe6ee; font-size: 11px; font-variant-numeric: tabular-nums; text-align: right; }
+.f1-control-empty { display: grid; min-height: 280px; place-items: center; color: #7f8a98; text-align: center; }
+.f1-track-panel { position: relative; display: grid; place-items: center; overflow: hidden; min-height: 380px; padding: 32px; background: radial-gradient(circle at center,rgba(225,6,0,.1),transparent 48%),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 12px); }
+.f1-track-panel img { display: block; max-width: 88%; max-height: 280px; object-fit: contain; filter: invert(1) grayscale(1) brightness(1.8) drop-shadow(0 0 16px rgba(255,255,255,.14)); }
+.f1-track-placeholder { color: rgba(255,255,255,.12); font-size: 28px; font-weight: 900; letter-spacing: 4px; }
+.f1-track-panel > div:last-child { position: absolute; left: 20px; right: 20px; bottom: 16px; display: flex; justify-content: space-between; gap: 12px; color: #7d8998; font-size: 10px; }
+.f1-track-panel > div strong { color: #d8e0e8; text-align: right; }
+.f1-session-links { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; border-top: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.08); }
+.f1-session-link { position: relative; min-width: 0; padding: 13px 29px 13px 14px; border: 0; background: #0d1116; color: #99a4b1; font: inherit; text-align: left; cursor: pointer; }
+.f1-session-link:hover { background: #151b22; }
+.f1-session-link.complete { box-shadow: inset 0 2px #e10600; color: #fff; }
+.f1-session-link span, .f1-session-link small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.f1-session-link span { font-size: 11px; font-weight: 800; }
+.f1-session-link small { margin-top: 3px; color: #6f7b89; font-size: 9px; }
+.f1-session-link i { position: absolute; right: 12px; top: 50%; color: #e10600; font-size: 20px; font-style: normal; transform: translateY(-50%); }
+.f1-session-hero { margin: 12px 0; padding: 24px; border: 1px solid rgba(255,255,255,.1); border-radius: 18px; background: radial-gradient(circle at 0 0,rgba(225,6,0,.23),transparent 42%),#101419; }
+.f1-session-hero > span { color: #ff625c; font-size: 10px; font-weight: 900; letter-spacing: 1.5px; }
+.f1-session-hero h2 { margin: 5px 0 3px; font-size: 32px; }
+.f1-session-hero p { margin: 0; color: var(--muted); }
+.f1-session-results table { width: 100%; }
+.f1-result-driver { display: flex; align-items: center; gap: 9px; }
+.f1-result-driver i { width: 3px; height: 25px; flex: 0 0 3px; border-radius: 2px; background: var(--f1-team); }
+
 /* the track picture is dark artwork, so it sits on a light panel */
 .track {
   background: #f2f4f7;
@@ -533,6 +574,10 @@ tr.fastest td { color: #c77dff; }
 @media (max-width: 820px) {
   .league-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   #updated { display: none; }
+  .f1-control-grid { grid-template-columns: 1fr; }
+  .f1-timing-tower { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .f1-track-panel { min-height: 310px; }
+  .f1-session-links { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
 @media (max-width: 980px) {
@@ -560,6 +605,17 @@ tr.fastest td { color: #c77dff; }
   .team { min-height: 39px; }
   .team .score { font-size: 18px; }
   .view-game { margin-top: 6px; padding-top: 6px; }
+  .f1-control { border-radius: 15px; }
+  .f1-control-head { padding: 17px 15px 14px; }
+  .f1-control-head p { font-size: 11px; }
+  .f1-control-state { max-width: 116px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .f1-timing-tower { padding: 9px 10px 12px; }
+  .f1-timing-head, .f1-timing-row { grid-template-columns: 27px 49px minmax(65px,1fr) 67px; gap: 5px; }
+  .f1-track-panel { min-height: 230px; padding: 24px; }
+  .f1-track-panel img { max-height: 180px; }
+  .f1-session-link { padding: 12px 25px 12px 10px; }
+  .f1-session-hero { padding: 18px; border-radius: 14px; }
+  .f1-session-hero h2 { font-size: 26px; }
   .nfl-live-center { margin: 9px 0 13px; border-radius: 15px; }
   .nfl-live-scorebar { grid-template-columns: minmax(0,1fr) 104px minmax(0,1fr); min-height: 100px; padding: 12px 10px; }
   .nfl-live-team { gap: 7px; }

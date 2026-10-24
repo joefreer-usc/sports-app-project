@@ -138,29 +138,33 @@ fetch_f1 <- function() {
     get_json(paste0("https://api.openf1.org/v1/meetings?year=", season)),
     error = function(e) { message("  openf1 meetings: ", conditionMessage(e)); list() }
   )
-  image_for <- function(race_date) {
+  meeting_for <- function(race_date) {
     day <- as.Date(race_date)
     for (m in meetings) {
       from <- as.Date(substr(m$date_start %||% "", 1, 10))
       to   <- as.Date(substr(m$date_end %||% "", 1, 10))
       if (!is.na(day) && !is.na(from) && !is.na(to) && day >= from && day <= to) {
-        return(m$circuit_image %||% "")
+        return(m)
       }
     }
-    ""
+    NULL
   }
 
-  schedule <- lapply(s$MRData$RaceTable$Races, function(r) list(
-    round      = as.integer(r$round),
-    name       = r$raceName,
-    circuit    = r$Circuit$circuitName,
-    circuitUrl = r$Circuit$url %||% "",
-    location   = paste(r$Circuit$Location$locality, r$Circuit$Location$country, sep = ", "),
-    date       = r$date,
-    time       = r$time %||% "",
-    sessions   = sessions_of(r),
-    image      = image_for(r$date)
-  ))
+  schedule <- lapply(s$MRData$RaceTable$Races, function(r) {
+    meeting <- meeting_for(r$date)
+    list(
+      round      = as.integer(r$round),
+      name       = r$raceName,
+      circuit    = r$Circuit$circuitName,
+      circuitUrl = r$Circuit$url %||% "",
+      location   = paste(r$Circuit$Location$locality, r$Circuit$Location$country, sep = ", "),
+      date       = r$date,
+      time       = r$time %||% "",
+      sessions   = sessions_of(r),
+      meetingKey = meeting$meeting_key %||% 0L,
+      image      = meeting$circuit_image %||% ""
+    )
+  })
 
   # Current official-style driver headshots and team colors from OpenF1.
   open_drivers <- tryCatch(
@@ -257,6 +261,82 @@ fetch_f1 <- function() {
 }
 
 run_section("f1", fetch_f1)
+
+# ---- F1 weekend sessions (practice, sprint and qualifying) -----------------
+# Each race weekend gets a small file. Existing results are reused, so the
+# five-minute workflow normally makes only one sessions request and downloads
+# a classification only when a new session has finished.
+
+fetch_f1_weekend <- function(season, race, old = NULL) {
+  meeting_key <- as.integer(race$meetingKey %||% 0L)
+  if (meeting_key <= 0L) return(NULL)
+  sessions <- get_json(paste0("https://api.openf1.org/v1/sessions?meeting_key=", meeting_key))
+  old_sessions <- old$sessions %||% list()
+  old_by_key <- list()
+  for (item in old_sessions) old_by_key[[as.character(item$sessionKey %||% "")]] <- item
+
+  drivers <- get_json(paste0("https://api.openf1.org/v1/drivers?meeting_key=", meeting_key))
+  driver_rows <- lapply(drivers, function(d) list(
+    number = as.integer(d$driver_number %||% 0),
+    code = d$name_acronym %||% "",
+    name = d$full_name %||% d$broadcast_name %||% d$name_acronym %||% "Driver",
+    team = d$team_name %||% "",
+    teamColor = d$team_colour %||% ""
+  ))
+
+  output <- list()
+  now <- Sys.time()
+  for (s in sessions) {
+    key <- as.character(s$session_key %||% "")
+    end_text <- substr(s$date_end %||% "", 1, 19)
+    end <- as.POSIXct(end_text, tz = "UTC", format = "%Y-%m-%dT%H:%M:%S")
+    previous <- old_by_key[[key]]
+    results <- previous$results %||% list()
+    if (!is.na(end) && now > end && length(results) == 0) {
+      results <- tryCatch(
+        get_json(paste0("https://api.openf1.org/v1/session_result?session_key=", key)),
+        error = function(e) { message("  f1 session ", key, ": ", conditionMessage(e)); list() }
+      )
+      Sys.sleep(0.15)
+    }
+    output[[length(output) + 1L]] <- list(
+      sessionKey = as.integer(s$session_key %||% 0),
+      name = s$session_name %||% s$session_type %||% "Session",
+      type = s$session_type %||% "",
+      dateStart = s$date_start %||% "",
+      dateEnd = s$date_end %||% "",
+      results = results
+    )
+  }
+  list(season = season, round = race$round, name = race$name, meetingKey = meeting_key,
+       drivers = driver_rows, sessions = output)
+}
+
+fetch_f1_weekend_files <- function(max_files = 3) {
+  f1 <- fromJSON("data/f1.json", simplifyVector = FALSE)$data
+  season <- f1$season %||% ""
+  candidates <- rev(f1$schedule %||% list())
+  handled <- 0L
+  for (race in candidates) {
+    if (handled >= max_files) break
+    first_dates <- vapply(race$sessions %||% list(), function(x) x$date %||% "9999-12-31", character(1))
+    first_date <- if (length(first_dates)) min(first_dates) else race$date %||% "9999-12-31"
+    if (as.Date(first_date) > Sys.Date()) next
+    name <- sprintf("f1_weekend_%s_%02d", season, as.integer(race$round %||% 0))
+    path <- file.path("data", paste0(name, ".json"))
+    old <- if (file.exists(path)) tryCatch(fromJSON(path, simplifyVector = FALSE)$data, error = function(e) NULL) else NULL
+    race_end <- as.Date(race$date %||% NA_character_)
+    complete <- !is.null(old) && !is.na(race_end) && Sys.Date() > race_end + 1
+    if (complete) next
+    handled <- handled + 1L
+    tryCatch({
+      payload <- fetch_f1_weekend(season, race, old)
+      if (!is.null(payload)) save_if_changed(name, payload)
+    }, error = function(e) message(name, ": FAILED - ", conditionMessage(e)))
+  }
+}
+
+tryCatch(fetch_f1_weekend_files(), error = function(e) message("f1 weekend files: FAILED - ", conditionMessage(e)))
 
 # ---- F1 per-race results and lap times --------------------------------------
 # Finished races never change, so each one is saved once to its own file
