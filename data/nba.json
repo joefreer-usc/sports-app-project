@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T02:55:33Z",
+  "updated": "2026-10-24T05:06:14Z",
   "data": {
     "games": [
       {
@@ -173,23 +173,23 @@
       {
         "id": "401909096",
         "date": "2026-10-24T01:30Z",
-        "state": "in",
-        "detail": "Halftime",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Houston Rockets",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png",
-          "score": "61",
-          "record": "1-0",
+          "score": "114",
+          "record": "2-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "San Antonio Spurs",
           "abbr": "SA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png",
-          "score": "59",
-          "record": "0-1",
+          "score": "110",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         }
@@ -197,14 +197,14 @@
       {
         "id": "401909849",
         "date": "2026-10-24T01:30Z",
-        "state": "in",
-        "detail": "Halftime",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "New Orleans Pelicans",
           "abbr": "NO",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png",
-          "score": "52",
-          "record": "0-1",
+          "score": "119",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         },
@@ -212,32 +212,32 @@
           "name": "Utah Jazz",
           "abbr": "UTAH",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png",
-          "score": "62",
-          "record": "0-1",
+          "score": "120",
+          "record": "1-1",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909850",
         "date": "2026-10-24T02:00Z",
-        "state": "in",
-        "detail": "9:51 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Memphis Grizzlies",
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
-          "score": "38",
-          "record": "1-0",
+          "score": "111",
+          "record": "2-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Golden State Warriors",
           "abbr": "GS",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
-          "score": "39",
-          "record": "0-1",
+          "score": "108",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         }
@@ -245,14 +245,14 @@
       {
         "id": "401909851",
         "date": "2026-10-24T02:00Z",
-        "state": "in",
-        "detail": "6:13 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "LA Clippers",
           "abbr": "LAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
-          "score": "48",
-          "record": "1-0",
+          "score": "117",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
@@ -260,32 +260,32 @@
           "name": "Los Angeles Lakers",
           "abbr": "LAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
-          "score": "45",
-          "record": "1-0",
+          "score": "125",
+          "record": "2-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909852",
         "date": "2026-10-24T02:00Z",
-        "state": "in",
-        "detail": "7:33 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Portland Trail Blazers",
           "abbr": "POR",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png",
-          "score": "39",
-          "record": "1-0",
+          "score": "128",
+          "record": "2-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
-          "score": "44",
-          "record": "0-1",
+          "score": "120",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         }
@@ -396,7 +396,7 @@
           "abbr": "SA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         },
@@ -420,7 +420,7 @@
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         },
@@ -444,7 +444,7 @@
           "abbr": "NO",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         },
@@ -468,7 +468,7 @@
           "abbr": "GS",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         },
@@ -492,7 +492,7 @@
           "abbr": "LAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         },
@@ -501,7 +501,7 @@
           "abbr": "UTAH",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png",
           "score": "0",
-          "record": "0-1",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }
@@ -588,7 +588,7 @@
           "abbr": "LAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
           "score": "0",
-          "record": "1-0",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
@@ -636,7 +636,7 @@
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         },
@@ -645,7 +645,7 @@
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         }
@@ -813,7 +813,7 @@
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         }
@@ -828,7 +828,7 @@
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         },
@@ -837,7 +837,7 @@
           "abbr": "UTAH",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png",
           "score": "0",
-          "record": "0-1",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }
@@ -852,7 +852,7 @@
           "abbr": "GS",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         },
