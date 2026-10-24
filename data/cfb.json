@@ -1,31 +1,7 @@
 {
-  "updated": "2026-10-24T05:48:52Z",
+  "updated": "2026-10-24T06:13:21Z",
   "data": {
     "games": [
-      {
-        "id": "401858272",
-        "date": "2026-10-24T02:30Z",
-        "state": "in",
-        "detail": "2:00 - 4th",
-        "away": {
-          "name": "NC State Wolfpack",
-          "abbr": "NCSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/152.png",
-          "score": "21",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Stanford Cardinal",
-          "abbr": "STAN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
-          "score": "31",
-          "record": "3-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401858274",
         "date": "2026-10-24T16:00Z",
@@ -1342,6 +1318,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
           "score": "28",
           "record": "5-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401858272",
+        "date": "2026-10-24T02:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "NC State Wolfpack",
+          "abbr": "NCSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/152.png",
+          "score": "28",
+          "record": "3-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Stanford Cardinal",
+          "abbr": "STAN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
+          "score": "31",
+          "record": "4-4",
           "rank": 0,
           "winner": true
         }
