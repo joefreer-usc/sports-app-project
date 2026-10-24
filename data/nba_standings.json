@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T04:28:50Z",
+  "updated": "2026-10-24T04:53:05Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -132,14 +132,6 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "LA Clippers",
-            "abbr": "LAC",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
             "name": "Memphis Grizzlies",
             "abbr": "MEM",
             "record": "1-0",
@@ -148,24 +140,24 @@
             "streak": "W1"
           },
           {
+            "name": "Minnesota Timberwolves",
+            "abbr": "MIN",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W2"
+          },
+          {
             "name": "Portland Trail Blazers",
             "abbr": "POR",
-            "record": "1-0",
+            "record": "2-0",
             "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
+            "gb": "-",
+            "streak": "W2"
           },
           {
             "name": "Los Angeles Lakers",
             "abbr": "LAL",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
-            "name": "Houston Rockets",
-            "abbr": "HOU",
             "record": "2-0",
             "pct": "1.000",
             "gb": "-",
@@ -180,12 +172,20 @@
             "streak": "W2"
           },
           {
-            "name": "Minnesota Timberwolves",
-            "abbr": "MIN",
+            "name": "Houston Rockets",
+            "abbr": "HOU",
             "record": "2-0",
             "pct": "1.000",
             "gb": "-",
             "streak": "W2"
+          },
+          {
+            "name": "LA Clippers",
+            "abbr": "LAC",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1",
+            "streak": "L1"
           },
           {
             "name": "Utah Jazz",
@@ -220,6 +220,14 @@
             "streak": "L2"
           },
           {
+            "name": "Sacramento Kings",
+            "abbr": "SAC",
+            "record": "0-2",
+            "pct": ".000",
+            "gb": "2",
+            "streak": "L2"
+          },
+          {
             "name": "Denver Nuggets",
             "abbr": "DEN",
             "record": "0-1",
@@ -230,14 +238,6 @@
           {
             "name": "Golden State Warriors",
             "abbr": "GS",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Sacramento Kings",
-            "abbr": "SAC",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
