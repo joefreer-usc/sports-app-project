@@ -157,6 +157,7 @@ fetch_f1 <- function() {
       name       = r$raceName,
       circuit    = r$Circuit$circuitName,
       circuitUrl = r$Circuit$url %||% "",
+      circuitId  = r$Circuit$circuitId %||% "",
       location   = paste(r$Circuit$Location$locality, r$Circuit$Location$country, sep = ", "),
       date       = r$date,
       time       = r$time %||% "",
@@ -438,7 +439,7 @@ fetch_f1_track_files <- function(max_new = 1) {
   }
 }
 
-tryCatch(fetch_f1_track_files(), error = function(e) message("f1 track files: FAILED - ", conditionMessage(e)))
+# Static SVG maps live in assets/tracks, so no telemetry track download runs here.
 
 # ---- F1 per-race results and lap times --------------------------------------
 # Finished races never change, so each one is saved once to its own file

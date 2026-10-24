@@ -433,20 +433,31 @@ function f1SessionRows(session, weekend, limit) {
     });
 }
 
+function f1TrackAsset(race) {
+  const text = [race.circuitId, race.circuit, race.name, race.location].filter(Boolean).join(" ").toLowerCase();
+  const matches = [
+    [/madring|madrid/, "madring"], [/barcelona|catalunya/, "catalunya"], [/albert|melbourne/, "albert_park"],
+    [/shanghai|chinese/, "shanghai"], [/suzuka|japanese/, "suzuka"], [/miami/, "miami"],
+    [/villeneuve|montreal|canadian/, "villeneuve"], [/monaco|monte carlo/, "monaco"],
+    [/red bull ring|spielberg|austrian/, "red_bull_ring"], [/silverstone|british/, "silverstone"],
+    [/spa|belgian/, "spa"], [/hungaroring|hungarian/, "hungaroring"], [/zandvoort|dutch/, "zandvoort"],
+    [/monza|italian/, "monza"], [/baku|azerbaijan/, "baku"], [/sepang|kuala lumpur|malaysia/, "sepang"],
+    [/marina bay|singapore/, "marina_bay"], [/americas|austin|united states/, "americas"],
+    [/rodríguez|rodriguez|mexico/, "rodriguez"], [/interlagos|josé carlos pace|jose carlos pace|brazil|são paulo|sao paulo/, "interlagos"],
+    [/vegas/, "vegas"], [/lusail|losail|qatar/, "losail"], [/yas marina|abu dhabi/, "yas_marina"]
+  ];
+  const found = matches.find((item) => item[0].test(text));
+  return found ? found[1] : "";
+}
+
 function renderF1TrackSvg(track, race) {
-  if (!track || !(track.sectors || []).length) {
-    return race.image ? '<img src="' + esc(race.image) + '" alt="' + esc(race.circuit) + ' layout">' : '<div class="f1-track-placeholder">TRACK MAP</div>';
+  const id = f1TrackAsset(race);
+  if (id) {
+    const fallback = race.image ? " onerror=\"this.onerror=null;this.src='" + esc(race.image) + "'\"" : "";
+    return '<img class="f1-owned-track-img" src="assets/tracks/' + esc(id) + '.svg" alt="' +
+      esc(race.circuit) + ' sector map" loading="eager"' + fallback + '>';
   }
-  const colors = ["#ff3b30", "#2997ff", "#ffd60a"];
-  const polylines = track.sectors.map((sector, index) => '<polyline class="f1-sector-line" points="' +
-    (sector.points || []).map((p) => esc(p[0]) + ',' + esc(p[1])).join(' ') + '" stroke="' + colors[index] + '"></polyline>').join("");
-  const labels = track.sectors.map((sector, index) => {
-    const p = sector.label || [0, 0];
-    return '<g class="f1-sector-label" transform="translate(' + esc(p[0]) + ' ' + esc(p[1]) + ')"><circle r="21" fill="' +
-      colors[index] + '"></circle><text text-anchor="middle" dominant-baseline="central">S' + (index + 1) + '</text></g>';
-  }).join("");
-  return '<svg class="f1-own-track" viewBox="0 0 1000 750" role="img" aria-label="' + esc(race.circuit) +
-    ' sectors"><g class="f1-track-shadow">' + polylines + '</g>' + polylines + labels + '</svg>';
+  return race.image ? '<img src="' + esc(race.image) + '" alt="' + esc(race.circuit) + ' layout">' : '<div class="f1-track-placeholder">TRACK MAP</div>';
 }
 
 function renderF1WeekendControl(race, weekend, track) {
@@ -631,16 +642,12 @@ async function showRace() {
   }
 
   let weekend = null;
-  let track = null;
   try {
     weekend = (await getJson("data/f1_weekend_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json")).data || null;
   } catch (err) { /* The workflow may not have created this weekend yet. */ }
-  try {
-    track = (await getJson("data/f1_track_" + (data.season || "") + "_" + String(race.round).padStart(2, "0") + ".json")).data || null;
-  } catch (err) { /* use remote fallback until the workflow builds this round */ }
   if (detail !== d) return;
 
-  let html = backButton() + renderF1WeekendControl(race, weekend || {}, track);
+  let html = backButton() + renderF1WeekendControl(race, weekend || {}, null);
   if (!weekend) html += renderSessions(race);
 
   const finished = raceStartMs(race) + 3 * 3600 * 1000 < Date.now();

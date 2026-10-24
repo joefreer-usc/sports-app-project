@@ -482,6 +482,7 @@ a { color: var(--accent); }
 .f1-control-empty { display: grid; min-height: 280px; place-items: center; color: #7f8a98; text-align: center; }
 .f1-track-panel { position: relative; display: grid; place-items: center; overflow: hidden; min-height: 380px; padding: 32px; background: radial-gradient(circle at center,rgba(225,6,0,.1),transparent 48%),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 12px); }
 .f1-track-panel img { display: block; max-width: 88%; max-height: 280px; object-fit: contain; filter: invert(1) grayscale(1) brightness(1.8) drop-shadow(0 0 16px rgba(255,255,255,.14)); }
+.f1-track-panel img.f1-owned-track-img { width: 100%; max-width: 620px; max-height: 315px; filter: drop-shadow(0 10px 18px rgba(0,0,0,.42)); }
 .f1-own-track { display: block; width: 100%; max-width: 620px; max-height: 315px; overflow: visible; }
 .f1-sector-line { fill: none; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .f1-track-shadow .f1-sector-line { stroke: rgba(0,0,0,.72); stroke-width: 23; }

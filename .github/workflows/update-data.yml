@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+# Never let two scheduled/manual data updates edit the JSON files at once.
+# A second run waits for the first one instead of creating merge conflicts.
+concurrency:
+  group: sports-data-update
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
