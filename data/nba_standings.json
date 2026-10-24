@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T04:53:05Z",
+  "updated": "2026-10-24T05:06:14Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -132,14 +132,6 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "Memphis Grizzlies",
-            "abbr": "MEM",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
             "name": "Minnesota Timberwolves",
             "abbr": "MIN",
             "record": "2-0",
@@ -166,6 +158,14 @@
           {
             "name": "Oklahoma City Thunder",
             "abbr": "OKC",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W2"
+          },
+          {
+            "name": "Memphis Grizzlies",
+            "abbr": "MEM",
             "record": "2-0",
             "pct": "1.000",
             "gb": "-",
@@ -220,6 +220,14 @@
             "streak": "L2"
           },
           {
+            "name": "Golden State Warriors",
+            "abbr": "GS",
+            "record": "0-2",
+            "pct": ".000",
+            "gb": "2",
+            "streak": "L2"
+          },
+          {
             "name": "Sacramento Kings",
             "abbr": "SAC",
             "record": "0-2",
@@ -230,14 +238,6 @@
           {
             "name": "Denver Nuggets",
             "abbr": "DEN",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Golden State Warriors",
-            "abbr": "GS",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
