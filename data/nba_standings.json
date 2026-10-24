@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T02:55:33Z",
+  "updated": "2026-10-24T04:20:11Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -132,14 +132,6 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "Houston Rockets",
-            "abbr": "HOU",
-            "record": "1-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W1"
-          },
-          {
             "name": "Portland Trail Blazers",
             "abbr": "POR",
             "record": "1-0",
@@ -172,6 +164,14 @@
             "streak": "W1"
           },
           {
+            "name": "Houston Rockets",
+            "abbr": "HOU",
+            "record": "1-0",
+            "pct": "1.000",
+            "gb": "0.5",
+            "streak": "W1"
+          },
+          {
             "name": "Oklahoma City Thunder",
             "abbr": "OKC",
             "record": "2-0",
@@ -188,6 +188,14 @@
             "streak": "W2"
           },
           {
+            "name": "Utah Jazz",
+            "abbr": "UTAH",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1",
+            "streak": "W1"
+          },
+          {
             "name": "Dallas Mavericks",
             "abbr": "DAL",
             "record": "1-1",
@@ -198,10 +206,10 @@
           {
             "name": "New Orleans Pelicans",
             "abbr": "NO",
-            "record": "0-1",
+            "record": "0-2",
             "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
+            "gb": "2",
+            "streak": "L2"
           },
           {
             "name": "Denver Nuggets",
@@ -214,14 +222,6 @@
           {
             "name": "San Antonio Spurs",
             "abbr": "SA",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Utah Jazz",
-            "abbr": "UTAH",
             "record": "0-1",
             "pct": ".000",
             "gb": "1.5",
