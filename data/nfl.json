@@ -1,79 +1,7 @@
 {
-  "updated": "2026-10-25T23:27:33Z",
+  "updated": "2026-10-25T23:49:34Z",
   "data": {
     "games": [
-      {
-        "id": "401873019",
-        "date": "2026-10-25T20:05Z",
-        "state": "in",
-        "detail": "0:36 - 4th",
-        "away": {
-          "name": "Denver Broncos",
-          "abbr": "DEN",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png",
-          "score": "30",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Arizona Cardinals",
-          "abbr": "ARI",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png",
-          "score": "16",
-          "record": "2-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401873020",
-        "date": "2026-10-25T20:25Z",
-        "state": "in",
-        "detail": "1:09 - 4th",
-        "away": {
-          "name": "Green Bay Packers",
-          "abbr": "GB",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png",
-          "score": "17",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Detroit Lions",
-          "abbr": "DET",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png",
-          "score": "17",
-          "record": "3-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401873021",
-        "date": "2026-10-25T20:25Z",
-        "state": "in",
-        "detail": "3:58 - 4th",
-        "away": {
-          "name": "Los Angeles Rams",
-          "abbr": "LAR",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
-          "score": "35",
-          "record": "2-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Las Vegas Raiders",
-          "abbr": "LV",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png",
-          "score": "21",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401873011",
         "date": "2026-10-25T13:30Z",
@@ -262,6 +190,78 @@
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png",
           "score": "21",
           "record": "2-5",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401873019",
+        "date": "2026-10-25T20:05Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Denver Broncos",
+          "abbr": "DEN",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png",
+          "score": "30",
+          "record": "5-2",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Arizona Cardinals",
+          "abbr": "ARI",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png",
+          "score": "16",
+          "record": "2-5",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401873020",
+        "date": "2026-10-25T20:25Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Green Bay Packers",
+          "abbr": "GB",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png",
+          "score": "17",
+          "record": "4-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Detroit Lions",
+          "abbr": "DET",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png",
+          "score": "20",
+          "record": "4-2",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401873021",
+        "date": "2026-10-25T20:25Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Los Angeles Rams",
+          "abbr": "LAR",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
+          "score": "35",
+          "record": "3-4",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Las Vegas Raiders",
+          "abbr": "LV",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png",
+          "score": "21",
+          "record": "3-4",
           "rank": 0,
           "winner": false
         }
