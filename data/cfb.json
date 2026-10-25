@@ -1,65 +1,17 @@
 {
-  "updated": "2026-10-25T03:12:22Z",
+  "updated": "2026-10-25T03:44:23Z",
   "data": {
     "games": [
-      {
-        "id": "401856732",
-        "date": "2026-10-24T23:30Z",
-        "state": "in",
-        "detail": "3:15 - 4th",
-        "away": {
-          "name": "Ole Miss Rebels",
-          "abbr": "MISS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
-          "score": "24",
-          "record": "5-1",
-          "rank": 7,
-          "winner": false
-        },
-        "home": {
-          "name": "Texas Longhorns",
-          "abbr": "TEX",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
-          "score": "31",
-          "record": "4-2",
-          "rank": 19,
-          "winner": false
-        }
-      },
-      {
-        "id": "401862811",
-        "date": "2026-10-25T00:00Z",
-        "state": "in",
-        "detail": "5:17 - 4th",
-        "away": {
-          "name": "UTSA Roadrunners",
-          "abbr": "UTSA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2636.png",
-          "score": "35",
-          "record": "6-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Tulane Green Wave",
-          "abbr": "TULN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png",
-          "score": "19",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401856837",
         "date": "2026-10-25T02:15Z",
         "state": "in",
-        "detail": "11:28 - 2nd",
+        "detail": "0:26 - 2nd",
         "away": {
           "name": "Houston Cougars",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "0",
+          "score": "3",
           "record": "6-1",
           "rank": 14,
           "winner": false
@@ -78,7 +30,7 @@
         "id": "401864527",
         "date": "2026-10-25T02:20Z",
         "state": "in",
-        "detail": "12:11 - 2nd",
+        "detail": "0:09 - 2nd",
         "away": {
           "name": "North Dakota State Bison",
           "abbr": "NDSU",
@@ -92,7 +44,7 @@
           "name": "New Mexico Lobos",
           "abbr": "UNM",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
-          "score": "7",
+          "score": "14",
           "record": "5-1",
           "rank": 0,
           "winner": false
@@ -168,6 +120,30 @@
           "record": "4-3",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401856732",
+        "date": "2026-10-24T23:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Ole Miss Rebels",
+          "abbr": "MISS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
+          "score": "27",
+          "record": "5-2",
+          "rank": 7,
+          "winner": false
+        },
+        "home": {
+          "name": "Texas Longhorns",
+          "abbr": "TEX",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
+          "score": "34",
+          "record": "5-2",
+          "rank": 19,
+          "winner": true
         }
       },
       {
@@ -1056,6 +1032,30 @@
           "record": "4-3",
           "rank": 0,
           "winner": true
+        }
+      },
+      {
+        "id": "401862811",
+        "date": "2026-10-25T00:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "UTSA Roadrunners",
+          "abbr": "UTSA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2636.png",
+          "score": "42",
+          "record": "7-1",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Tulane Green Wave",
+          "abbr": "TULN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png",
+          "score": "19",
+          "record": "3-4",
+          "rank": 0,
+          "winner": false
         }
       },
       {
