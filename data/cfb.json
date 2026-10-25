@@ -1,31 +1,7 @@
 {
-  "updated": "2026-10-25T05:49:05Z",
+  "updated": "2026-10-25T06:13:26Z",
   "data": {
     "games": [
-      {
-        "id": "401856837",
-        "date": "2026-10-25T02:15Z",
-        "state": "in",
-        "detail": "1:29 - 4th",
-        "away": {
-          "name": "Houston Cougars",
-          "abbr": "HOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "13",
-          "record": "6-1",
-          "rank": 14,
-          "winner": false
-        },
-        "home": {
-          "name": "Utah Utes",
-          "abbr": "UTAH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
-          "score": "21",
-          "record": "6-0",
-          "rank": 10,
-          "winner": false
-        }
-      },
       {
         "id": "401871055",
         "date": "2026-10-20T23:00Z",
@@ -455,6 +431,30 @@
           "score": "28",
           "record": "7-0",
           "rank": 9,
+          "winner": true
+        }
+      },
+      {
+        "id": "401856837",
+        "date": "2026-10-25T02:15Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Houston Cougars",
+          "abbr": "HOU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
+          "score": "13",
+          "record": "6-2",
+          "rank": 14,
+          "winner": false
+        },
+        "home": {
+          "name": "Utah Utes",
+          "abbr": "UTAH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
+          "score": "21",
+          "record": "7-0",
+          "rank": 10,
           "winner": true
         }
       },
