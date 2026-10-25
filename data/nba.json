@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-25T00:35:47Z",
+  "updated": "2026-10-25T01:14:16Z",
   "data": {
     "games": [
       {
         "id": "401909853",
         "date": "2026-10-24T22:00Z",
-        "state": "in",
-        "detail": "13.6 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Miami Heat",
           "abbr": "MIA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png",
-          "score": "107",
-          "record": "0-2",
+          "score": "110",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         },
@@ -20,22 +20,22 @@
           "name": "Charlotte Hornets",
           "abbr": "CHA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png",
-          "score": "113",
-          "record": "1-1",
+          "score": "115",
+          "record": "2-1",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909854",
         "date": "2026-10-24T23:30Z",
         "state": "in",
-        "detail": "4:04 - 2nd",
+        "detail": "9:10 - 3rd",
         "away": {
           "name": "Brooklyn Nets",
           "abbr": "BKN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png",
-          "score": "46",
+          "score": "56",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -44,7 +44,7 @@
           "name": "Cleveland Cavaliers",
           "abbr": "CLE",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png",
-          "score": "50",
+          "score": "72",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -54,12 +54,12 @@
         "id": "401909855",
         "date": "2026-10-24T23:30Z",
         "state": "in",
-        "detail": "1:39 - 2nd",
+        "detail": "3:47 - 3rd",
         "away": {
           "name": "Milwaukee Bucks",
           "abbr": "MIL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png",
-          "score": "56",
+          "score": "82",
           "record": "0-2",
           "rank": 0,
           "winner": false
@@ -68,7 +68,7 @@
           "name": "Philadelphia 76ers",
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
-          "score": "56",
+          "score": "82",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -78,12 +78,12 @@
         "id": "401909857",
         "date": "2026-10-25T00:00Z",
         "state": "in",
-        "detail": "1:13 - 1st",
+        "detail": "Halftime",
         "away": {
           "name": "Washington Wizards",
           "abbr": "WSH",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png",
-          "score": "26",
+          "score": "57",
           "record": "1-1",
           "rank": 0,
           "winner": false
@@ -92,7 +92,7 @@
           "name": "Chicago Bulls",
           "abbr": "CHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png",
-          "score": "24",
+          "score": "62",
           "record": "1-1",
           "rank": 0,
           "winner": false
@@ -102,12 +102,12 @@
         "id": "401909858",
         "date": "2026-10-25T00:00Z",
         "state": "in",
-        "detail": "2:21 - 1st",
+        "detail": "3.2 - 2nd",
         "away": {
           "name": "San Antonio Spurs",
           "abbr": "SA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png",
-          "score": "25",
+          "score": "68",
           "record": "0-2",
           "rank": 0,
           "winner": false
@@ -116,7 +116,7 @@
           "name": "Dallas Mavericks",
           "abbr": "DAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png",
-          "score": "24",
+          "score": "60",
           "record": "1-1",
           "rank": 0,
           "winner": false
@@ -125,13 +125,13 @@
       {
         "id": "401909856",
         "date": "2026-10-25T00:30Z",
-        "state": "pre",
-        "detail": "10/24 - 8:30 PM EDT",
+        "state": "in",
+        "detail": "10:46 - 2nd",
         "away": {
           "name": "Houston Rockets",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png",
-          "score": "0",
+          "score": "32",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -140,7 +140,7 @@
           "name": "Atlanta Hawks",
           "abbr": "ATL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png",
-          "score": "0",
+          "score": "26",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -149,8 +149,8 @@
       {
         "id": "401909859",
         "date": "2026-10-25T01:00Z",
-        "state": "pre",
-        "detail": "10/24 - 9:00 PM EDT",
+        "state": "in",
+        "detail": "11:36 - 1st",
         "away": {
           "name": "New Orleans Pelicans",
           "abbr": "NO",
@@ -381,7 +381,7 @@
           "abbr": "CHA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png",
           "score": "0",
-          "record": "1-1",
+          "record": "2-1",
           "rank": 0,
           "winner": false
         }
@@ -453,7 +453,7 @@
           "abbr": "MIA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png",
           "score": "0",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         }
