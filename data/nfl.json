@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-25T19:55:54Z",
+  "updated": "2026-10-25T20:15:39Z",
   "data": {
     "games": [
       {
         "id": "401873017",
         "date": "2026-10-25T17:00Z",
-        "state": "in",
-        "detail": "2:42 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "San Francisco 49ers",
           "abbr": "SF",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
           "score": "20",
-          "record": "6-0",
+          "record": "6-1",
           "rank": 0,
           "winner": false
         },
@@ -20,104 +20,32 @@
           "name": "Atlanta Falcons",
           "abbr": "ATL",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png",
-          "score": "26",
-          "record": "2-4",
+          "score": "29",
+          "record": "3-4",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401873013",
         "date": "2026-10-25T17:00Z",
-        "state": "in",
-        "detail": "2:00 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Cleveland Browns",
           "abbr": "CLE",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png",
-          "score": "24",
-          "record": "4-2",
+          "score": "27",
+          "record": "5-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Tennessee Titans",
           "abbr": "TEN",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png",
-          "score": "17",
-          "record": "1-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401873015",
-        "date": "2026-10-25T17:00Z",
-        "state": "in",
-        "detail": "2:00 - 4th",
-        "away": {
-          "name": "Miami Dolphins",
-          "abbr": "MIA",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png",
-          "score": "28",
-          "record": "0-5",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "New York Jets",
-          "abbr": "NYJ",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png",
-          "score": "25",
-          "record": "2-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401873018",
-        "date": "2026-10-25T17:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Tampa Bay Buccaneers",
-          "abbr": "TB",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png",
-          "score": "43",
-          "record": "2-5",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Carolina Panthers",
-          "abbr": "CAR",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png",
-          "score": "13",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401873012",
-        "date": "2026-10-25T17:00Z",
-        "state": "in",
-        "detail": "1:27 - 4th",
-        "away": {
-          "name": "Cincinnati Bengals",
-          "abbr": "CIN",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png",
-          "score": "35",
-          "record": "3-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Baltimore Ravens",
-          "abbr": "BAL",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
-          "score": "13",
-          "record": "4-2",
+          "score": "24",
+          "record": "1-6",
           "rank": 0,
           "winner": false
         }
@@ -126,7 +54,7 @@
         "id": "401873016",
         "date": "2026-10-25T17:00Z",
         "state": "in",
-        "detail": "5:06 - 4th",
+        "detail": "10:00 - OT",
         "away": {
           "name": "New York Giants",
           "abbr": "NYG",
@@ -140,7 +68,7 @@
           "name": "Houston Texans",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png",
-          "score": "14",
+          "score": "21",
           "record": "2-4",
           "rank": 0,
           "winner": false
@@ -195,15 +123,87 @@
         }
       },
       {
+        "id": "401873015",
+        "date": "2026-10-25T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Miami Dolphins",
+          "abbr": "MIA",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png",
+          "score": "28",
+          "record": "1-5",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "New York Jets",
+          "abbr": "NYJ",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png",
+          "score": "25",
+          "record": "2-5",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401873018",
+        "date": "2026-10-25T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Tampa Bay Buccaneers",
+          "abbr": "TB",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png",
+          "score": "43",
+          "record": "2-5",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Carolina Panthers",
+          "abbr": "CAR",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png",
+          "score": "13",
+          "record": "3-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401873012",
+        "date": "2026-10-25T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Cincinnati Bengals",
+          "abbr": "CIN",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png",
+          "score": "35",
+          "record": "4-2",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Baltimore Ravens",
+          "abbr": "BAL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
+          "score": "13",
+          "record": "4-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401873019",
         "date": "2026-10-25T20:05Z",
-        "state": "pre",
-        "detail": "10/25 - 4:05 PM EDT",
+        "state": "in",
+        "detail": "11:00 - 1st",
         "away": {
           "name": "Denver Broncos",
           "abbr": "DEN",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png",
-          "score": "0",
+          "score": "3",
           "record": "4-2",
           "rank": 0,
           "winner": false
