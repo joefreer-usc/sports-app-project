@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T20:59:36Z",
+  "updated": "2026-10-25T15:03:21Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -183,6 +183,31 @@
           },
           {
             "rank": 8,
+            "name": "Athletic Club",
+            "abbr": "ATH",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2022-05-18T17:24Z"
+              }
+            ],
+            "played": "9",
+            "won": "3",
+            "drawn": "3",
+            "lost": "3",
+            "gd": "+3",
+            "pts": "12",
+            "note": ""
+          },
+          {
+            "rank": 9,
             "name": "Villarreal",
             "abbr": "VIL",
             "logo": [
@@ -207,7 +232,7 @@
             "note": ""
           },
           {
-            "rank": 9,
+            "rank": 10,
             "name": "Celta Vigo",
             "abbr": "CEL",
             "logo": [
@@ -229,10 +254,10 @@
             "lost": "2",
             "gd": "+3",
             "pts": "11",
-            "note": ""
+            "note": "Europa League"
           },
           {
-            "rank": 10,
+            "rank": 11,
             "name": "Deportivo",
             "abbr": "DEP",
             "logo": [
@@ -254,10 +279,10 @@
             "lost": "3",
             "gd": "0",
             "pts": "11",
-            "note": "Europa League"
+            "note": ""
           },
           {
-            "rank": 11,
+            "rank": 12,
             "name": "Osasuna",
             "abbr": "OSA",
             "logo": [
@@ -282,7 +307,7 @@
             "note": ""
           },
           {
-            "rank": 12,
+            "rank": 13,
             "name": "Racing Santander",
             "abbr": "RAC",
             "logo": [
@@ -307,7 +332,7 @@
             "note": ""
           },
           {
-            "rank": 13,
+            "rank": 14,
             "name": "Levante",
             "abbr": "LEV",
             "logo": [
@@ -332,7 +357,7 @@
             "note": ""
           },
           {
-            "rank": 14,
+            "rank": 15,
             "name": "Elche",
             "abbr": "ELC",
             "logo": [
@@ -357,57 +382,7 @@
             "note": ""
           },
           {
-            "rank": 15,
-            "name": "Athletic Club",
-            "abbr": "ATH",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2022-05-18T17:24Z"
-              }
-            ],
-            "played": "8",
-            "won": "2",
-            "drawn": "3",
-            "lost": "3",
-            "gd": "-1",
-            "pts": "9",
-            "note": ""
-          },
-          {
             "rank": 16,
-            "name": "Getafe",
-            "abbr": "GET",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2026-10-12T17:04Z"
-              }
-            ],
-            "played": "9",
-            "won": "2",
-            "drawn": "3",
-            "lost": "4",
-            "gd": "-6",
-            "pts": "9",
-            "note": ""
-          },
-          {
-            "rank": 17,
             "name": "Rayo Vallecano",
             "abbr": "RAY",
             "logo": [
@@ -428,6 +403,31 @@
             "drawn": "3",
             "lost": "4",
             "gd": "-8",
+            "pts": "9",
+            "note": ""
+          },
+          {
+            "rank": 17,
+            "name": "Getafe",
+            "abbr": "GET",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2026-10-12T17:04Z"
+              }
+            ],
+            "played": "10",
+            "won": "2",
+            "drawn": "3",
+            "lost": "5",
+            "gd": "-10",
             "pts": "9",
             "note": ""
           },
