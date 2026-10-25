@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T01:14:16Z",
+  "updated": "2026-10-25T02:12:13Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -11,7 +11,7 @@
             "abbr": "ATL",
             "record": "2-0",
             "pct": "1.000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
           },
           {
@@ -19,15 +19,7 @@
             "abbr": "DET",
             "record": "2-0",
             "pct": "1.000",
-            "gb": "-",
-            "streak": "W2"
-          },
-          {
-            "name": "Philadelphia 76ers",
-            "abbr": "PHI",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
           },
           {
@@ -35,15 +27,23 @@
             "abbr": "TOR",
             "record": "2-0",
             "pct": "1.000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
+          },
+          {
+            "name": "Philadelphia 76ers",
+            "abbr": "PHI",
+            "record": "3-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W3"
           },
           {
             "name": "Charlotte Hornets",
             "abbr": "CHA",
             "record": "2-1",
             "pct": ".667",
-            "gb": "0.5",
+            "gb": "1",
             "streak": "W1"
           },
           {
@@ -51,7 +51,7 @@
             "abbr": "IND",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
             "streak": "L1"
           },
           {
@@ -59,7 +59,7 @@
             "abbr": "WSH",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
             "streak": "L1"
           },
           {
@@ -67,7 +67,7 @@
             "abbr": "BOS",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
             "streak": "W1"
           },
           {
@@ -75,15 +75,23 @@
             "abbr": "CHI",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
             "streak": "W1"
+          },
+          {
+            "name": "Milwaukee Bucks",
+            "abbr": "MIL",
+            "record": "0-3",
+            "pct": ".000",
+            "gb": "3",
+            "streak": "L3"
           },
           {
             "name": "Miami Heat",
             "abbr": "MIA",
             "record": "0-3",
             "pct": ".000",
-            "gb": "2.5",
+            "gb": "3",
             "streak": "L3"
           },
           {
@@ -91,15 +99,7 @@
             "abbr": "NY",
             "record": "0-2",
             "pct": ".000",
-            "gb": "2",
-            "streak": "L2"
-          },
-          {
-            "name": "Milwaukee Bucks",
-            "abbr": "MIL",
-            "record": "0-2",
-            "pct": ".000",
-            "gb": "2",
+            "gb": "2.5",
             "streak": "L2"
           },
           {
@@ -107,7 +107,7 @@
             "abbr": "ORL",
             "record": "0-2",
             "pct": ".000",
-            "gb": "2",
+            "gb": "2.5",
             "streak": "L2"
           },
           {
@@ -115,7 +115,7 @@
             "abbr": "BKN",
             "record": "0-1",
             "pct": ".000",
-            "gb": "1.5",
+            "gb": "2",
             "streak": "L1"
           },
           {
@@ -123,7 +123,7 @@
             "abbr": "CLE",
             "record": "0-1",
             "pct": ".000",
-            "gb": "1.5",
+            "gb": "2",
             "streak": "L1"
           }
         ]
