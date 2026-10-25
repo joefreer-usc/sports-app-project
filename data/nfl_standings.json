@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T03:36:49Z",
+  "updated": "2026-10-25T16:53:39Z",
   "data": {
     "season": "2026",
     "groups": [
@@ -44,27 +44,27 @@
         "name": "AFC North",
         "teams": [
           {
+            "name": "Pittsburgh Steelers",
+            "abbr": "PIT",
+            "record": "5-2",
+            "pct": ".714",
+            "gb": "-",
+            "streak": "W3"
+          },
+          {
             "name": "Cleveland Browns",
             "abbr": "CLE",
             "record": "4-2",
             "pct": ".667",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W1"
-          },
-          {
-            "name": "Pittsburgh Steelers",
-            "abbr": "PIT",
-            "record": "4-2",
-            "pct": ".667",
-            "gb": "-",
-            "streak": "W2"
           },
           {
             "name": "Baltimore Ravens",
             "abbr": "BAL",
             "record": "4-2",
             "pct": ".667",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "L1"
           },
           {
@@ -72,7 +72,7 @@
             "abbr": "CIN",
             "record": "3-2",
             "pct": ".600",
-            "gb": "0.5",
+            "gb": "1",
             "streak": "W1"
           }
         ]
@@ -247,10 +247,10 @@
           {
             "name": "New Orleans Saints",
             "abbr": "NO",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "1.5",
-            "streak": "W1"
+            "record": "2-5",
+            "pct": ".286",
+            "gb": "2",
+            "streak": "L1"
           },
           {
             "name": "Tampa Bay Buccaneers",
