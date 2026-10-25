@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T04:16:33Z",
+  "updated": "2026-10-25T04:51:43Z",
   "data": {
     "games": [
       {
@@ -173,14 +173,14 @@
       {
         "id": "401909860",
         "date": "2026-10-25T02:00Z",
-        "state": "in",
-        "detail": "7:37 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Golden State Warriors",
           "abbr": "GS",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
-          "score": "102",
-          "record": "0-2",
+          "score": "122",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         },
@@ -188,10 +188,10 @@
           "name": "Phoenix Suns",
           "abbr": "PHX",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png",
-          "score": "112",
-          "record": "0-1",
+          "score": "131",
+          "record": "1-1",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -492,7 +492,7 @@
           "abbr": "PHX",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png",
           "score": "0",
-          "record": "0-1",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
@@ -564,7 +564,7 @@
           "abbr": "GS",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
           "score": "0",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         },

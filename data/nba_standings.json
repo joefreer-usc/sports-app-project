@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T04:16:33Z",
+  "updated": "2026-10-25T04:51:44Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -140,6 +140,14 @@
             "streak": "W2"
           },
           {
+            "name": "Portland Trail Blazers",
+            "abbr": "POR",
+            "record": "2-0",
+            "pct": "1.000",
+            "gb": "0.5",
+            "streak": "W2"
+          },
+          {
             "name": "Los Angeles Lakers",
             "abbr": "LAL",
             "record": "2-0",
@@ -158,14 +166,6 @@
           {
             "name": "Memphis Grizzlies",
             "abbr": "MEM",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W2"
-          },
-          {
-            "name": "Portland Trail Blazers",
-            "abbr": "POR",
             "record": "2-0",
             "pct": "1.000",
             "gb": "0.5",
@@ -204,6 +204,14 @@
             "streak": "W1"
           },
           {
+            "name": "Phoenix Suns",
+            "abbr": "PHX",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1.5",
+            "streak": "W1"
+          },
+          {
             "name": "San Antonio Spurs",
             "abbr": "SA",
             "record": "1-2",
@@ -230,10 +238,10 @@
           {
             "name": "Golden State Warriors",
             "abbr": "GS",
-            "record": "0-2",
+            "record": "0-3",
             "pct": ".000",
-            "gb": "2.5",
-            "streak": "L2"
+            "gb": "3",
+            "streak": "L3"
           },
           {
             "name": "Sacramento Kings",
@@ -242,14 +250,6 @@
             "pct": ".000",
             "gb": "2.5",
             "streak": "L2"
-          },
-          {
-            "name": "Phoenix Suns",
-            "abbr": "PHX",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "2",
-            "streak": "L1"
           }
         ]
       }
