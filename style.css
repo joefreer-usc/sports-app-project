@@ -428,6 +428,50 @@ tr.past td { color: var(--muted); }
 @keyframes game-panel-in { from { opacity: .55; transform: translateY(3px); } }
 .game-center-panel > .pregame-label { margin-top: 4px; }
 
+/* interactive game charts */
+.game-charts { padding: 16px; }
+.game-chart-heading, .lineup-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.game-chart-heading h2, .lineup-heading h2 { margin: 0; }
+.chart-switch, .lineup-team-switch { display: inline-flex; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: rgba(6,14,23,.38); }
+.chart-switch button, .lineup-team-switch button { padding: 6px 10px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); font: inherit; font-size: 10px; font-weight: 800; cursor: pointer; }
+.chart-switch button.active, .lineup-team-switch button.active { background: var(--accent-soft); color: var(--accent); }
+.chart-panel, .lineup-panel { display: none; }
+.chart-panel.active, .lineup-panel.active { display: block; }
+.scoring-chart { display: grid; grid-template-columns: repeat(var(--periods), minmax(42px,1fr)); align-items: end; gap: 10px; min-height: 215px; padding: 20px 12px 0; overflow-x: auto; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); background-image: repeating-linear-gradient(to top, transparent 0, transparent 49px, rgba(255,255,255,.045) 50px); }
+.chart-period { display: grid; grid-template-rows: 170px 25px; align-items: end; min-width: 42px; text-align: center; }
+.chart-bars { display: flex; align-items: end; justify-content: center; gap: 5px; height: 160px; }
+.chart-bar { position: relative; display: flex; align-items: end; width: min(25px,38%); height: max(6px,var(--bar-height)); min-height: 5px; border-radius: 5px 5px 1px 1px; background: var(--bar-color); box-shadow: 0 0 14px color-mix(in srgb, var(--bar-color) 28%, transparent); transition: filter 130ms ease, transform 130ms ease; }
+.chart-bar:hover { filter: brightness(1.2); transform: translateY(-2px); }
+.chart-bar b { position: absolute; top: -18px; left: 50%; color: var(--text); font-size: 9px; font-variant-numeric: tabular-nums; transform: translateX(-50%); }
+.chart-period small { color: var(--muted); font-size: 10px; }
+.chart-legend { display: flex; justify-content: center; gap: 18px; padding-top: 11px; color: var(--muted); font-size: 10px; font-weight: 700; }
+.chart-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.chart-legend i { width: 8px; height: 8px; border-radius: 2px; background: var(--legend); }
+.comparison-chart-head { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--muted); font-size: 10px; font-weight: 850; }
+.comparison-chart { display: grid; gap: 12px; }
+.comparison-values { display: grid; grid-template-columns: 60px minmax(0,1fr) 60px; gap: 8px; margin-bottom: 4px; text-align: center; }
+.comparison-values b { font-size: 11px; font-variant-numeric: tabular-nums; }
+.comparison-values span { overflow: hidden; color: var(--muted); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.comparison-bars { display: flex; justify-content: center; height: 7px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.04); }
+.comparison-bars i:first-child { margin-left: auto; background: var(--accent); }
+.comparison-bars i:last-child { margin-right: auto; background: #ff7b83; }
+.chart-empty { padding: 30px 10px; color: var(--muted); text-align: center; }
+
+/* soccer formations */
+.soccer-lineups { padding: 16px; }
+.formation-label { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: .7px; text-transform: uppercase; }
+.soccer-pitch { position: relative; min-height: 510px; overflow: hidden; border: 2px solid rgba(255,255,255,.36); border-radius: 12px; background-color: #16633f; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0, rgba(255,255,255,.025) 10%, rgba(0,0,0,.025) 10%, rgba(0,0,0,.025) 20%); box-shadow: inset 0 0 45px rgba(0,0,0,.2); }
+.soccer-pitch::before { content: ""; position: absolute; inset: 50% 0 auto; border-top: 2px solid rgba(255,255,255,.42); }
+.soccer-pitch::after { content: ""; position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; border: 2px solid rgba(255,255,255,.42); border-radius: 50%; transform: translate(-50%,-50%); }
+.pitch-player { position: absolute; z-index: 2; left: var(--player-x); top: var(--player-y); display: grid; justify-items: center; width: 90px; transform: translate(-50%,-50%); }
+.pitch-player b { display: grid; place-items: center; width: 34px; height: 34px; border: 2px solid rgba(255,255,255,.85); border-radius: 50%; background: #0c1b29; color: #fff; font-size: 10px; box-shadow: 0 5px 12px rgba(0,0,0,.32); }
+.pitch-player span { max-width: 90px; margin-top: 4px; padding: 2px 5px; overflow: hidden; border-radius: 5px; background: rgba(6,18,13,.76); color: #fff; font-size: 9px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+.lineup-subs { margin-top: 10px; border-top: 1px solid var(--line); }
+.lineup-subs summary { padding-top: 12px; }
+.lineup-subs > div { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 7px; padding: 4px 0 8px; }
+.lineup-subs span { overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.lineup-subs span b { display: inline-block; width: 25px; color: var(--accent); }
+
 /* NFL live game center */
 .nfl-live-center { overflow: hidden; margin: 12px 0 16px; border: 1px solid rgba(255,255,255,.11); border-radius: 20px; background: linear-gradient(145deg, #111a25, #0a1119 62%, #071018); box-shadow: 0 18px 45px rgba(0,0,0,.28); }
 .nfl-live-scorebar { display: grid; grid-template-columns: minmax(0,1fr) 150px minmax(0,1fr); align-items: center; min-height: 116px; padding: 15px 22px; background: radial-gradient(circle at 50% -35%, rgba(76,194,255,.16), transparent 55%); }
@@ -710,6 +754,17 @@ tr.fastest td { color: #c77dff; }
   .game-center-status span { font-size: 8px; }
   .game-center-tabs { margin-bottom: 10px; border-radius: 0 0 12px 12px; }
   .game-center-tabs button { min-height: 44px; font-size: 11px; }
+  .game-chart-heading, .lineup-heading { align-items: flex-start; flex-direction: column; }
+  .chart-switch, .lineup-team-switch { width: 100%; }
+  .chart-switch button, .lineup-team-switch button { flex: 1; }
+  .scoring-chart { min-height: 185px; padding-right: 5px; padding-left: 5px; }
+  .chart-period { grid-template-rows: 140px 25px; }
+  .chart-bars { height: 130px; }
+  .soccer-pitch { min-height: 440px; }
+  .pitch-player { width: 70px; }
+  .pitch-player b { width: 30px; height: 30px; }
+  .pitch-player span { max-width: 70px; font-size: 8px; }
+  .lineup-subs > div { grid-template-columns: 1fr; }
   .nfl-live-scorebar { grid-template-columns: minmax(0,1fr) 104px minmax(0,1fr); min-height: 100px; padding: 12px 10px; }
   .nfl-live-team { gap: 7px; }
   .nfl-live-team img { width: 43px; height: 43px; }

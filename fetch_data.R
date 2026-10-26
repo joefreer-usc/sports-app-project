@@ -768,15 +768,17 @@ parse_soccer_entry <- function(en) {
   st <- en$stats %||% list()
   rank <- suppressWarnings(as.integer(soccer_stat(st, "rank")))
   if (length(rank) == 0 || is.na(rank)) rank <- 0L
+  team_id <- as.character(en$team$id %||% "")
+  direct_logo <- en$team$logo %||% ""
+  team_logos <- en$team$logos %||% list()
+  crest <- if (nzchar(direct_logo)) direct_logo else if (length(team_logos) > 0) team_logos[[1]]$href %||% "" else ""
+  if (!nzchar(crest) && nzchar(team_id)) crest <- paste0("https://a.espncdn.com/i/teamlogos/soccer/500/", team_id, ".png")
   list(
     rank   = rank,
+    id     = team_id,
     name   = en$team$displayName %||% en$team$name %||% "",
     abbr   = en$team$abbreviation %||% "",
-    logo   = {
-      direct <- en$team$logo %||% ""
-      logos <- en$team$logos %||% list()
-      if (nzchar(direct)) direct else if (length(logos) > 0) logos[[1]]$href %||% "" else ""
-    },
+    logo   = crest,
     played = soccer_stat(st, "gamesPlayed"),
     won    = soccer_stat(st, "wins"),
     drawn  = soccer_stat(st, "ties"),

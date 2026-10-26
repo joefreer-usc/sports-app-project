@@ -1240,14 +1240,17 @@ function renderSoccerTable(data) {
       { label: "#" }, { label: "Team" }, { label: "P", num: true }, { label: "W", num: true },
       { label: "D", num: true }, { label: "L", num: true }, { label: "GD", num: true }, { label: "Pts", num: true }
     ];
-    const rows = teams.map((t) =>
+    const rows = teams.map((t) => {
+      const crest = t.logo || (t.id ? "https://a.espncdn.com/i/teamlogos/soccer/500/" + encodeURIComponent(t.id) + ".png" : "");
+      return (
       '<tr><td class="pos">' + esc(t.rank || "") + '</td><td><span class="table-team">' +
-      (t.logo ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy">' : '') + '<span>' + esc(t.name || t.abbr) + '</span></span>' +
+      (crest ? '<img src="' + esc(crest) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') + '<span>' + esc(t.name || t.abbr) + '</span></span>' +
       (t.note ? '<span class="sub">' + esc(t.note) + "</span>" : "") + "</td>" +
       '<td class="num">' + esc(t.played) + '</td><td class="num">' + esc(t.won) +
       '</td><td class="num">' + esc(t.drawn) + '</td><td class="num">' + esc(t.lost) +
       '</td><td class="num">' + esc(t.gd) + '</td><td class="num"><b>' + esc(t.pts) + "</b></td></tr>"
-    );
+      );
+    });
     return (groups.length > 1 && grp.name ? "<h3>" + esc(grp.name) + "</h3>" : "") +
       '<div class="scroll">' + table(heads, rows) + "</div>";
   }).join("");
@@ -1699,6 +1702,123 @@ function renderPregame(data, game, sportId) {
   return html;
 }
 
+function chartNumber(value) {
+  const match = String(value == null ? "" : value).replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
+  return match ? Number(match[0]) : NaN;
+}
+
+function renderScoringChart(data) {
+  const comp = data.header && data.header.competitions && data.header.competitions[0];
+  const teams = ((comp && comp.competitors) || []).slice().sort(
+    (a, b) => (a.homeAway === "away" ? 0 : 1) - (b.homeAway === "away" ? 0 : 1)
+  );
+  if (teams.length !== 2 || !teams.some((team) => (team.linescores || []).length)) return '<div class="chart-empty">Scoring data will appear after play begins.</div>';
+  const periods = Math.max.apply(null, teams.map((team) => (team.linescores || []).length));
+  const values = [];
+  teams.forEach((team) => (team.linescores || []).forEach((line) => {
+    const value = chartNumber(line.displayValue != null ? line.displayValue : line.value);
+    if (Number.isFinite(value)) values.push(value);
+  }));
+  const max = Math.max(1, ...values);
+  const colors = ["var(--accent)", "#ff7b83"];
+  return '<div class="scoring-chart" style="--periods:' + periods + '">' + Array.from({ length: periods }, (_, index) => {
+    const bars = teams.map((team, teamIndex) => {
+      const line = (team.linescores || [])[index] || {};
+      const value = chartNumber(line.displayValue != null ? line.displayValue : line.value);
+      const shown = Number.isFinite(value) ? value : 0;
+      const name = (team.team && (team.team.abbreviation || team.team.displayName)) || "Team";
+      return '<span class="chart-bar" style="--bar-height:' + Math.max(4, shown / max * 100) + '%;--bar-color:' + colors[teamIndex] + '" title="' + esc(name + ': ' + shown) + '"><i></i><b>' + esc(shown) + '</b></span>';
+    }).join("");
+    return '<div class="chart-period"><div class="chart-bars">' + bars + '</div><small>' + (index + 1) + '</small></div>';
+  }).join("") + '</div><div class="chart-legend">' + teams.map((team, index) => '<span><i style="--legend:' + colors[index] + '"></i>' +
+    esc((team.team && (team.team.abbreviation || team.team.displayName)) || "Team") + '</span>').join("") + '</div>';
+}
+
+function renderComparisonChart(data) {
+  const teams = (data.boxscore && data.boxscore.teams) || [];
+  if (teams.length !== 2) return '<div class="chart-empty">Team comparison data is not available yet.</div>';
+  const a = flatStats(teams[0]);
+  const b = flatStats(teams[1]);
+  const rows = [];
+  for (let index = 0; index < Math.min(a.length, b.length); index++) {
+    const av = chartNumber(statValue(a[index]));
+    const bv = chartNumber(statValue(b[index]));
+    const label = statLabel(a[index]);
+    if (!label || !Number.isFinite(av) || !Number.isFinite(bv) || (av === 0 && bv === 0)) continue;
+    rows.push({ label: label, a: av, b: bv, ad: statValue(a[index]), bd: statValue(b[index]) });
+    if (rows.length === 8) break;
+  }
+  if (!rows.length) return '<div class="chart-empty">Team comparison data is not available yet.</div>';
+  const names = teams.map((team) => (team.team && (team.team.abbreviation || team.team.displayName)) || "Team");
+  return '<div class="comparison-chart-head"><span>' + esc(names[0]) + '</span><span>' + esc(names[1]) + '</span></div><div class="comparison-chart">' + rows.map((row) => {
+    const total = Math.abs(row.a) + Math.abs(row.b) || 1;
+    return '<div class="comparison-chart-row"><div class="comparison-values"><b>' + esc(row.ad) + '</b><span>' + esc(row.label) + '</span><b>' + esc(row.bd) + '</b></div>' +
+      '<div class="comparison-bars"><i style="width:' + (Math.abs(row.a) / total * 100) + '%"></i><i style="width:' + (Math.abs(row.b) / total * 100) + '%"></i></div></div>';
+  }).join("") + '</div>';
+}
+
+function renderInteractiveCharts(data, game) {
+  if (game.state === "pre") return "";
+  return '<section class="card game-charts"><div class="game-chart-heading"><h2>Game charts</h2><div class="chart-switch" role="group" aria-label="Choose chart">' +
+    '<button type="button" class="active" data-chart-view="scoring">Scoring</button><button type="button" data-chart-view="comparison">Comparison</button></div></div>' +
+    '<div class="chart-panel active" data-chart-panel="scoring">' + renderScoringChart(data) + '</div>' +
+    '<div class="chart-panel" data-chart-panel="comparison">' + renderComparisonChart(data) + '</div></section>';
+}
+
+function soccerLineupGroups(data) {
+  const raw = Array.isArray(data.rosters) ? data.rosters : (Array.isArray(data.lineups) ? data.lineups : []);
+  return raw.map((group) => {
+    const team = group.team || {};
+    const entries = group.roster || group.athletes || group.players || [];
+    const players = entries.map((entry) => {
+      const athlete = entry.athlete || entry.player || entry;
+      const pos = (athlete.position && (athlete.position.abbreviation || athlete.position.name)) ||
+        (entry.position && (entry.position.abbreviation || entry.position.name)) || "";
+      return {
+        name: athlete.shortName || athlete.displayName || athlete.fullName || "Player",
+        jersey: athlete.jersey || entry.jersey || "",
+        position: String(pos).toUpperCase(),
+        starter: entry.starter === true || entry.isStarter === true || entry.substitute === false,
+        slot: Number(entry.formationPlace || entry.formationPosition || 0)
+      };
+    });
+    return { team: team, formation: group.formation || group.formationName || "", players: players };
+  }).filter((group) => group.players.length);
+}
+
+function lineupCoordinates(players) {
+  const starters = players.filter((player) => player.starter).slice(0, 11);
+  const chosen = starters.length >= 7 ? starters : players.slice(0, 11);
+  const bands = { GK: [], DEF: [], MID: [], FWD: [] };
+  chosen.forEach((player) => {
+    const pos = player.position;
+    const band = /GK|GOAL/.test(pos) ? "GK" : /CB|LB|RB|WB|DEF/.test(pos) ? "DEF" : /FW|ST|CF|LW|RW|ATT/.test(pos) ? "FWD" : "MID";
+    bands[band].push(player);
+  });
+  const y = { GK: 91, DEF: 70, MID: 44, FWD: 18 };
+  return Object.keys(bands).flatMap((band) => bands[band].map((player, index, list) => Object.assign({}, player, {
+    x: (index + 1) * 100 / (list.length + 1), y: y[band]
+  })));
+}
+
+function renderSoccerLineups(data, sportId) {
+  if (!["epl", "ucl", "laliga"].includes(sportId)) return "";
+  const groups = soccerLineupGroups(data);
+  if (!groups.length) return '<section class="card soccer-lineups"><h2>Formations & lineups</h2><div class="muted">Lineups normally appear shortly before kickoff.</div></section>';
+  const tabs = groups.map((group, index) => '<button type="button" class="' + (index === 0 ? "active" : "") + '" data-lineup-team="' + index + '">' +
+    esc(group.team.abbreviation || group.team.shortDisplayName || group.team.displayName || "Team " + (index + 1)) + '</button>').join("");
+  const panels = groups.map((group, index) => {
+    const starters = lineupCoordinates(group.players);
+    const substitutes = group.players.filter((player) => !starters.some((starter) => starter.name === player.name));
+    const pitch = starters.map((player) => '<div class="pitch-player" style="--player-x:' + player.x + '%;--player-y:' + player.y + '%" title="' + esc(player.position) + '">' +
+      '<b>' + esc(player.jersey || player.position || "•") + '</b><span>' + esc(player.name) + '</span></div>').join("");
+    return '<div class="lineup-panel' + (index === 0 ? " active" : "") + '" data-lineup-panel="' + index + '"><div class="formation-label">' +
+      esc(group.formation ? "Formation " + group.formation : "Starting XI") + '</div><div class="soccer-pitch">' + pitch + '</div>' +
+      (substitutes.length ? '<details class="lineup-subs"><summary>Substitutes</summary><div>' + substitutes.map((player) => '<span><b>' + esc(player.jersey || "") + '</b>' + esc(player.name) + '</span>').join("") + '</div></details>' : '') + '</div>';
+  }).join("");
+  return '<section class="card soccer-lineups"><div class="lineup-heading"><h2>Formations & lineups</h2><div class="lineup-team-switch">' + tabs + '</div></div>' + panels + '</section>';
+}
+
 function gameCenterTeams(data, game) {
   const comp = data.header && data.header.competitions && data.header.competitions[0];
   const competitors = (comp && comp.competitors) || [];
@@ -1749,7 +1869,8 @@ function renderGameCenter(data, game, sport) {
   const defaultTab = isPregame ? "overview" : "boxscore";
   let overview = renderPregameInfo(data, game) + renderPregameOdds(data);
   if (sport.id === "nfl" && game.state === "in") overview = renderNFLLiveCenter(data, game) + overview;
-  overview += renderPregameLeaders(data, sport.id) + renderPregameInjuries(data, sport.id);
+  overview += renderInteractiveCharts(data, game) + renderSoccerLineups(data, sport.id) +
+    renderPregameLeaders(data, sport.id) + renderPregameInjuries(data, sport.id);
   const boxscore = renderBoxscore(data, sport.id);
   const plays = renderPlayByPlay(data, sport.id);
   return renderGameCenterHeader(data, game, sport) +
@@ -2527,6 +2648,22 @@ view.addEventListener("click", (event) => {
     const target = gameTab.getAttribute("data-game-tab");
     view.querySelectorAll("[data-game-tab]").forEach((button) => button.classList.toggle("active", button === gameTab));
     view.querySelectorAll("[data-game-panel]").forEach((panel) => panel.classList.toggle("active", panel.getAttribute("data-game-panel") === target));
+    return;
+  }
+  const chartView = event.target.closest("button[data-chart-view]");
+  if (chartView) {
+    const target = chartView.getAttribute("data-chart-view");
+    const card = chartView.closest(".game-charts");
+    card.querySelectorAll("[data-chart-view]").forEach((button) => button.classList.toggle("active", button === chartView));
+    card.querySelectorAll("[data-chart-panel]").forEach((panel) => panel.classList.toggle("active", panel.getAttribute("data-chart-panel") === target));
+    return;
+  }
+  const lineupTeam = event.target.closest("button[data-lineup-team]");
+  if (lineupTeam) {
+    const target = lineupTeam.getAttribute("data-lineup-team");
+    const card = lineupTeam.closest(".soccer-lineups");
+    card.querySelectorAll("[data-lineup-team]").forEach((button) => button.classList.toggle("active", button === lineupTeam));
+    card.querySelectorAll("[data-lineup-panel]").forEach((panel) => panel.classList.toggle("active", panel.getAttribute("data-lineup-panel") === target));
     return;
   }
   const league = event.target.closest("[data-league]");
