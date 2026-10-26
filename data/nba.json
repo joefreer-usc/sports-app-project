@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T03:28:53Z",
+  "updated": "2026-10-26T04:05:01Z",
   "data": {
     "games": [
       {
@@ -149,23 +149,23 @@
       {
         "id": "401909867",
         "date": "2026-10-26T01:00Z",
-        "state": "in",
-        "detail": "1:03 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Memphis Grizzlies",
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
           "score": "123",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
-          "score": "111",
-          "record": "0-2",
+          "score": "112",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         }
@@ -348,7 +348,7 @@
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         },
@@ -444,7 +444,7 @@
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
           "score": "0",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         },
