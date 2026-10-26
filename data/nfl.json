@@ -1,31 +1,7 @@
 {
-  "updated": "2026-10-26T02:56:26Z",
+  "updated": "2026-10-26T03:28:53Z",
   "data": {
     "games": [
-      {
-        "id": "401873022",
-        "date": "2026-10-26T00:20Z",
-        "state": "in",
-        "detail": "4:48 - 4th",
-        "away": {
-          "name": "Kansas City Chiefs",
-          "abbr": "KC",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png",
-          "score": "3",
-          "record": "5-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Seattle Seahawks",
-          "abbr": "SEA",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png",
-          "score": "13",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401873011",
         "date": "2026-10-25T13:30Z",
@@ -288,6 +264,30 @@
           "record": "3-4",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401873022",
+        "date": "2026-10-26T00:20Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Kansas City Chiefs",
+          "abbr": "KC",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png",
+          "score": "3",
+          "record": "5-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Seattle Seahawks",
+          "abbr": "SEA",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png",
+          "score": "20",
+          "record": "4-3",
+          "rank": 0,
+          "winner": true
         }
       },
       {
