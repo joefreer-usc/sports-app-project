@@ -174,7 +174,7 @@ tr.past td { color: var(--muted); }
 
 .team {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) auto;
+  grid-template-columns: 32px minmax(0, 1fr) 30px auto;
   align-items: center;
   gap: 10px;
   min-height: 45px;
@@ -224,6 +224,37 @@ tr.past td { color: var(--muted); }
 .live-league-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 12px 16px 10px; }
 .live-league-card .game { border-top: 0; padding-top: 7px; }
 .league-tag { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+
+/* saved teams and favorites feed */
+.favorite-button { display: inline-grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #788da2; font-size: 21px; line-height: 1; cursor: pointer; transition: color 140ms ease, background 140ms ease, transform 140ms ease; }
+.favorite-button:hover { color: #ffd45c; background: rgba(255,212,92,.1); transform: scale(1.08); }
+.favorite-button.active { color: #ffd45c; }
+.favorite-button:focus-visible { outline: 2px solid #ffd45c; outline-offset: 2px; }
+.game-favorite { align-self: center; }
+.favorite-team-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 28px; }
+.favorite-team-card { display: grid; grid-template-columns: minmax(0, 1fr) 38px; align-items: center; min-width: 0; padding: 10px 8px 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, var(--card-raised), var(--card)); }
+.favorite-team-main { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.favorite-team-main img, .favorite-team-fallback { width: 40px; height: 40px; flex: 0 0 40px; object-fit: contain; }
+.favorite-team-fallback { display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 10px; font-weight: 900; }
+.favorite-team-main span:last-child { min-width: 0; }
+.favorite-team-main strong, .favorite-team-main small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.favorite-team-main strong { font-size: 13px; }
+.favorite-team-main small { margin-top: 1px; color: var(--muted); font-size: 10px; }
+.favorite-team-main:hover strong { color: var(--accent); }
+.favorite-remove { justify-self: end; }
+.favorites-title { align-items: end; margin-bottom: 13px; }
+.favorites-title .eyebrow { margin-bottom: 2px; }
+.favorites-games-heading { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 10px; }
+.favorites-games-heading h2 { margin: 0; font-size: 20px; }
+.favorites-games-heading span { color: var(--muted); font-size: 11px; }
+.favorites-game-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.favorite-game-card { min-width: 0; padding: 12px 16px 10px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.favorite-game-card .game { padding-top: 7px; border-top: 0; }
+.favorites-no-games { grid-column: 1 / -1; margin: 0; padding: 18px; }
+.favorites-no-games p { margin: 4px 0; color: var(--muted); }
+.empty-star { color: #ffd45c; font-size: 58px; line-height: 1; }
+.team-hero-heading { display: flex; align-items: center; gap: 14px; }
+.hero-favorite { width: 42px; height: 42px; flex: 0 0 42px; border: 1px solid color-mix(in srgb, #ffd45c 38%, var(--line)); background: rgba(8,17,27,.34); font-size: 27px; }
 
 /* PGA leaderboard and player profiles */
 .golfer-link { padding: 0; border: 0; background: transparent; color: var(--text); font: inherit; font-weight: 750; text-align: left; cursor: pointer; }
@@ -591,6 +622,7 @@ tr.fastest td { color: #c77dff; }
 @media (max-width: 980px) {
   .league-layout { grid-template-columns: 1fr; gap: 0; }
   .league-sidebar { position: static; }
+  .favorite-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 560px) {
@@ -645,6 +677,10 @@ tr.fastest td { color: #c77dff; }
   .odds-grid { grid-template-columns: 1fr; }
   .comparison-grid, .injury-grid { grid-template-columns: 1fr; }
   .live-grid { grid-template-columns: 1fr; }
+  .favorite-team-grid, .favorites-game-grid { grid-template-columns: 1fr; }
+  .favorite-team-grid { margin-bottom: 22px; }
+  .favorite-game-card { padding: 10px 12px 8px; }
+  .favorites-games-heading span { display: none; }
   .team-hero { gap: 17px; padding: 19px; }
   .team-hero img { width: 76px; height: 76px; }
   .nfl-player-hero { grid-template-columns: 115px minmax(0, 1fr); gap: 15px; min-height: 190px; padding-right: 15px; }

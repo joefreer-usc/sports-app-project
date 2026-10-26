@@ -60,6 +60,8 @@ let gamesById = {};
 // When set, the page shows one game's box score instead of the tab's usual content.
 let detail = null; // { sportId, id, game }
 
+const FAVORITES_KEY = "sports-hub-favorites-v1";
+
 // ---- helpers ----------------------------------------------------------------
 
 function esc(value) {
@@ -83,6 +85,50 @@ function saveTab(id) {
 
 function syncPageMenu() {
   pageMenu.value = ["home", "live", "favorites"].includes(current) ? current : "";
+}
+
+function loadFavorites() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "{}");
+    return saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+  } catch (e) { return {}; }
+}
+
+function favoriteKey(sportId, abbr) {
+  return String(sportId || "").toLowerCase() + ":" + String(abbr || "").toUpperCase();
+}
+
+function isFavorite(sportId, abbr) {
+  return !!loadFavorites()[favoriteKey(sportId, abbr)];
+}
+
+function favoriteButton(sportId, team, extraClass) {
+  if (!sportId || !team || !team.abbr) return "";
+  const active = isFavorite(sportId, team.abbr);
+  const label = (active ? "Remove " : "Add ") + (team.name || team.abbr) + (active ? " from favorites" : " to favorites");
+  return '<button type="button" class="favorite-button' + (active ? ' active' : '') + (extraClass ? ' ' + esc(extraClass) : '') + '"' +
+    ' data-favorite-sport="' + esc(sportId) + '" data-favorite-abbr="' + esc(team.abbr) + '"' +
+    ' data-favorite-name="' + esc(team.name || team.abbr) + '" data-favorite-logo="' + esc(team.logo || "") + '"' +
+    ' aria-pressed="' + (active ? "true" : "false") + '" aria-label="' + esc(label) + '" title="' + esc(label) + '">' +
+    '<span aria-hidden="true">' + (active ? "★" : "☆") + '</span></button>';
+}
+
+function toggleFavorite(button) {
+  const sportId = button.getAttribute("data-favorite-sport");
+  const abbr = button.getAttribute("data-favorite-abbr");
+  if (!sportId || !abbr) return;
+  const key = favoriteKey(sportId, abbr);
+  const favorites = loadFavorites();
+  if (favorites[key]) delete favorites[key];
+  else favorites[key] = {
+    sportId: sportId,
+    abbr: abbr,
+    name: button.getAttribute("data-favorite-name") || abbr,
+    logo: button.getAttribute("data-favorite-logo") || ""
+  };
+  try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites)); } catch (e) { /* ignore */ }
+  if (current === "favorites") renderFavorites();
+  else show();
 }
 
 function renderHome() {
@@ -133,11 +179,56 @@ function renderLiveCards(live) {
       gameCard(x.game, true, x.sport.id) + '</article>').join("") + '</section>';
 }
 
-function renderFavorites() {
+async function renderFavorites() {
   updatedEl.textContent = "";
-  view.innerHTML = '<section class="empty-state"><h2>My Favorites is coming next</h2>' +
-    '<p>Soon you’ll be able to follow teams and bring their games to one personal feed.</p>' +
-    '<button type="button" data-go-home>Browse leagues</button></section>';
+  const favorites = Object.values(loadFavorites());
+  if (!favorites.length) {
+    view.innerHTML = '<section class="empty-state favorites-empty"><div class="empty-star" aria-hidden="true">☆</div>' +
+      '<h2>Build your favorites feed</h2><p>Tap the star beside a team on any scores page. Its games will appear here automatically.</p>' +
+      '<button type="button" data-go-home>Find a team</button></section>';
+    return;
+  }
+
+  view.innerHTML = '<div class="message">Loading your teams&hellip;</div>';
+  const leagues = SPORTS.filter((sport) => sport.kind === "league");
+  const results = await Promise.allSettled(leagues.map((sport) => getJson(sport.scores)));
+  if (current !== "favorites") return;
+  const favoriteMap = loadFavorites();
+  const games = [];
+  results.forEach((result, index) => {
+    if (result.status !== "fulfilled") return;
+    const sport = leagues[index];
+    ((result.value.data && result.value.data.games) || []).forEach((game) => {
+      const teams = [game.away || {}, game.home || {}];
+      if (teams.some((team) => favoriteMap[favoriteKey(sport.id, team.abbr)])) games.push({ sport: sport, game: game });
+    });
+  });
+  games.sort((a, b) => Date.parse(a.game.date) - Date.parse(b.game.date));
+  gamesById = {};
+  games.forEach((item) => { gamesById[item.sport.id + ":" + item.game.id] = item.game; });
+
+  const teamCards = Object.values(favoriteMap).map((team) => {
+    const sport = SPORTS.find((item) => item.id === team.sportId) || {};
+    const canOpen = ["nfl", "nba"].includes(team.sportId);
+    return '<article class="favorite-team-card">' +
+      '<button type="button" class="favorite-team-main" ' + (canOpen
+        ? 'data-team="' + esc(team.abbr) + '" data-team-sport="' + esc(team.sportId) + '"'
+        : 'data-league="' + esc(team.sportId) + '"') + '>' +
+      (team.logo ? '<img src="' + esc(team.logo) + '" alt="" loading="lazy">' : '<span class="favorite-team-fallback">' + esc(team.abbr) + '</span>') +
+      '<span><strong>' + esc(team.name) + '</strong><small>' + esc(sport.side || sport.label || team.sportId.toUpperCase()) + '</small></span></button>' +
+      favoriteButton(team.sportId, team, "favorite-remove") + '</article>';
+  }).join("");
+
+  const gameCards = games.length
+    ? games.map((item) => '<article class="favorite-game-card"><div class="league-tag">' + esc(item.sport.side || item.sport.label) + '</div>' +
+      gameCard(item.game, !!item.game.id && (item.game.state !== "pre" || item.sport.id === "nfl"), item.sport.id) + '</article>').join("")
+    : '<section class="card favorites-no-games"><h2>No games in the current window</h2><p>Your teams are saved. Their games will show here when the schedule data includes them.</p></section>';
+
+  view.innerHTML = '<div class="section-title favorites-title"><div><p class="eyebrow">YOUR TEAMS</p><h2>My Favorites</h2></div>' +
+    '<span class="live-count">' + Object.keys(favoriteMap).length + ' saved</span></div>' +
+    '<section class="favorite-team-grid" aria-label="Favorite teams">' + teamCards + '</section>' +
+    '<div class="favorites-games-heading"><h2>Games</h2><span>Live, upcoming and recent</span></div>' +
+    '<section class="favorites-game-grid">' + gameCards + '</section>';
 }
 
 function timeAgo(iso) {
@@ -741,6 +832,7 @@ function teamRow(t, state, isWinner, sportId) {
   return '<div class="team' + (isWinner ? " win" : "") + '">' +
     '<span class="team-mark">' + mark + '</span>' +
     '<span class="tname">' + rank + linkedName + rec + "</span>" +
+    favoriteButton(sportId, t, "game-favorite") +
     '<span class="score">' + score + "</span></div>";
 }
 
@@ -2045,7 +2137,8 @@ function paintNBATeam(d, abbr, team, schedule, stats, depth, roster) {
   const record = team.recordSummary || (team.record && team.record.items && team.record.items[0] && team.record.items[0].summary) || "";
   view.innerHTML = backButton() + '<section class="team-hero" style="--team-color:#' + esc(team.color || "263444") + '">' +
     (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
-    '<div><div class="eyebrow">NBA TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
+    '<div><div class="team-hero-heading"><div><div class="eyebrow">NBA TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2></div>' +
+    favoriteButton("nba", { abbr: abbr, name: team.displayName || abbr, logo: logo }, "hero-favorite") + '</div><p>' +
     esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>' +
     renderNBAStats(team, stats, schedule || {}) + renderNBADepth(depth || {}, roster || {}, abbr) + renderNBASchedule(schedule || {}, team.id);
 }
@@ -2070,7 +2163,7 @@ async function showNBATeam() {
 function openNBATeam(abbr) {
   const returnTo = current;
   detail = { sportId: "nba", kind: "nba-team", teamAbbr: abbr, returnTo: returnTo };
-  if (current === "live") current = "nba";
+  if (["live", "favorites"].includes(current)) current = "nba";
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
@@ -2235,7 +2328,8 @@ function paintNFLTeam(d, abbr, team, schedule, stats, depth, roster) {
       ? team.record.items[0].summary : (team.recordSummary || "");
     const header = backButton() + '<section class="team-hero" style="--team-color:#' + esc(team.color || "263444") + '">' +
       (logo ? '<img src="' + esc(logo) + '" alt="' + esc(team.displayName || abbr) + ' logo">' : '') +
-      '<div><div class="eyebrow">NFL TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2><p>' +
+      '<div><div class="team-hero-heading"><div><div class="eyebrow">NFL TEAM</div><h2>' + esc(team.displayName || abbr) + '</h2></div>' +
+      favoriteButton("nfl", { abbr: abbr, name: team.displayName || abbr, logo: logo }, "hero-favorite") + '</div><p>' +
       esc([record, team.standingSummary].filter(Boolean).join(" · ")) + '</p></div></section>';
     const section = (render, fallback) => {
       try { return render(); } catch (err) { return fallback; }
@@ -2271,7 +2365,7 @@ async function showNFLTeam() {
 function openNFLTeam(abbr) {
   const returnTo = current;
   detail = { sportId: "nfl", kind: "team", teamAbbr: abbr, returnTo: returnTo };
-  if (current === "live") current = "nfl";
+  if (["live", "favorites"].includes(current)) current = "nfl";
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
@@ -2284,7 +2378,7 @@ function openGame(id, sportId) {
   if (!sport || !game) return;
   const returnTo = current;
   detail = { sportId: sport.id, id: id, game: game, returnTo: returnTo };
-  if (current === "live") current = sport.id;
+  if (["live", "favorites"].includes(current)) current = sport.id;
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
@@ -2349,6 +2443,8 @@ function goBack() {
 window.addEventListener("popstate", () => { if (detail) leaveDetail(); });
 
 view.addEventListener("click", (event) => {
+  const favorite = event.target.closest("button[data-favorite-sport]");
+  if (favorite) { event.preventDefault(); event.stopPropagation(); toggleFavorite(favorite); return; }
   const league = event.target.closest("[data-league]");
   if (league) { selectSport(league.getAttribute("data-league")); return; }
   if (event.target.closest("[data-go-home]")) { selectSport("home"); return; }
@@ -2429,7 +2525,7 @@ const NO_DATA =
 async function show() {
   if (current === "home") { renderHome(); return; }
   if (current === "live") { await renderLive(); return; }
-  if (current === "favorites") { renderFavorites(); return; }
+  if (current === "favorites") { await renderFavorites(); return; }
   const sport = SPORTS.find((s) => s.id === current);
 
   if (detail && detail.sportId === current) {
