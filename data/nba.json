@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T01:39:40Z",
+  "updated": "2026-10-26T04:05:01Z",
   "data": {
     "games": [
       {
@@ -53,23 +53,23 @@
       {
         "id": "401909863",
         "date": "2026-10-25T23:00Z",
-        "state": "in",
-        "detail": "0.0 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Orlando Magic",
           "abbr": "ORL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png",
           "score": "111",
-          "record": "0-2",
+          "record": "1-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "New York Knicks",
           "abbr": "NY",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png",
           "score": "102",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         }
@@ -125,23 +125,23 @@
       {
         "id": "401909866",
         "date": "2026-10-25T23:30Z",
-        "state": "in",
-        "detail": "11:19 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Detroit Pistons",
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
-          "score": "79",
-          "record": "2-0",
+          "score": "106",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Philadelphia 76ers",
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
-          "score": "71",
-          "record": "3-0",
+          "score": "93",
+          "record": "3-1",
           "rank": 0,
           "winner": false
         }
@@ -149,23 +149,23 @@
       {
         "id": "401909867",
         "date": "2026-10-26T01:00Z",
-        "state": "in",
-        "detail": "0.0 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Memphis Grizzlies",
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
-          "score": "26",
-          "record": "2-0",
+          "score": "123",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
-          "score": "28",
-          "record": "0-2",
+          "score": "112",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         }
@@ -348,7 +348,7 @@
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         },
@@ -420,7 +420,7 @@
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         },
@@ -429,7 +429,7 @@
           "abbr": "NY",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png",
           "score": "0",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         }
@@ -444,7 +444,7 @@
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
           "score": "0",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         },
@@ -549,7 +549,7 @@
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         }
@@ -564,7 +564,7 @@
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
           "score": "0",
-          "record": "3-0",
+          "record": "3-1",
           "rank": 0,
           "winner": false
         },
@@ -588,7 +588,7 @@
           "abbr": "ORL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png",
           "score": "0",
-          "record": "0-2",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         },
@@ -612,7 +612,7 @@
           "abbr": "NY",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png",
           "score": "0",
-          "record": "0-2",
+          "record": "0-3",
           "rank": 0,
           "winner": false
         },
