@@ -664,6 +664,11 @@ parse_entry <- function(en) {
   pct <- stat_of(st, "winPercent")
   gb <- stat_of(st, "gamesBehind")
   strk <- stat_of(st, "streak")
+  last_ten <- stat_of(st, "lastTen") %||% stat_of(st, "last10")
+  team_id <- as.character(en$team$id %||% "")
+  direct_logo <- en$team$logo %||% ""
+  team_logos <- en$team$logos %||% list()
+  logo <- if (nzchar(direct_logo)) direct_logo else if (length(team_logos) > 0) team_logos[[1]]$href %||% "" else ""
 
   record <- if (!is.null(overall)) {
     overall$displayValue %||% overall$summary %||% ""
@@ -674,12 +679,16 @@ parse_entry <- function(en) {
   } else ""
 
   list(
+    id     = team_id,
     name   = en$team$displayName %||% en$team$name %||% "",
     abbr   = en$team$abbreviation %||% "",
+    logo   = logo,
     record = record,
     pct    = pct$displayValue %||% "",
     gb     = gb$displayValue %||% "",
     streak = strk$displayValue %||% "",
+    lastTen = last_ten$displayValue %||% last_ten$summary %||% "",
+    note   = en$note$description %||% "",
     sort   = as.numeric(pct$value %||% 0)
   )
 }

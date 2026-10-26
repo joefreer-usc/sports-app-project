@@ -898,31 +898,38 @@ function renderGames(games, sport) {
   }).join("");
 }
 
-function renderStandings(data) {
+function renderStandings(data, sportId) {
   const groups = (data && data.groups) || [];
   if (!groups.length) return "";
   const season = data.season ? " &middot; " + esc(data.season) : "";
 
   const body = groups.map((grp) => {
     const teams = grp.teams || [];
-    const hasPct = teams.some((t) => t.pct);
     const hasGb = teams.some((t) => t.gb && t.gb !== "-" && t.gb !== "0");
     const hasStreak = teams.some((t) => t.streak);
+    const hasLastTen = teams.some((t) => t.lastTen);
 
-    const headers = [{ label: "Team" }, { label: "Record", num: true }];
-    if (hasPct) headers.push({ label: "Pct", num: true });
+    const headers = [{ label: "#" }, { label: "Team" }, { label: "Record", num: true }];
     if (hasGb) headers.push({ label: "GB", num: true });
+    if (hasLastTen) headers.push({ label: "L10", num: true });
     if (hasStreak) headers.push({ label: "Strk", num: true });
 
-    const rows = teams.map((t) => {
-      let cells = "<td>" + esc(t.name || t.abbr) + "</td>" + '<td class="num">' + esc(t.record) + "</td>";
-      if (hasPct) cells += '<td class="num">' + esc(t.pct) + "</td>";
+    const rows = teams.map((t, index) => {
+      const name = '<span class="standings-team-name">' + esc(t.name || t.abbr) + '</span>';
+      const linked = ["nfl", "nba"].includes(sportId) && t.abbr
+        ? '<button type="button" class="team-link" data-team="' + esc(t.abbr) + '" data-team-sport="' + esc(sportId) + '">' + name + '</button>' : name;
+      let cells = '<td class="pos">' + (index + 1) + '</td><td><span class="standings-team">' +
+        (t.logo ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '<span class="standings-abbr">' + esc(t.abbr || "") + '</span>') +
+        '<span>' + linked + (t.note ? '<small>' + esc(t.note) + '</small>' : '') + '</span>' + favoriteButton(sportId, t, "standings-favorite") +
+        '</span></td><td class="num">' + esc(t.record) + "</td>";
       if (hasGb) cells += '<td class="num">' + esc(t.gb) + "</td>";
+      if (hasLastTen) cells += '<td class="num standings-form">' + esc(t.lastTen) + "</td>";
       if (hasStreak) cells += '<td class="num">' + esc(t.streak) + "</td>";
-      return "<tr>" + cells + "</tr>";
+      return '<tr class="standings-row">' + cells + "</tr>";
     });
 
-    return (grp.name ? "<h3>" + esc(grp.name) + "</h3>" : "") + table(headers, rows);
+    return (grp.name ? '<h3 class="standings-group-title">' + esc(grp.name) + "</h3>" : "") +
+      '<div class="standings-scroll">' + table(headers, rows).replace('<table>', '<table class="standings-table">') + '</div>';
   }).join("");
 
   const open = window.matchMedia && window.matchMedia("(min-width: 721px)").matches ? " open" : "";
@@ -1242,8 +1249,9 @@ function renderSoccerTable(data) {
     ];
     const rows = teams.map((t) => {
       const crest = t.logo || (t.id ? "https://a.espncdn.com/i/teamlogos/soccer/500/" + encodeURIComponent(t.id) + ".png" : "");
+      const noteClass = /relegat/i.test(t.note || "") ? " relegation-zone" : (/champion|qualif|playoff/i.test(t.note || "") ? " qualification-zone" : "");
       return (
-      '<tr><td class="pos">' + esc(t.rank || "") + '</td><td><span class="table-team">' +
+      '<tr class="soccer-standing-row' + noteClass + '"><td class="pos">' + esc(t.rank || "") + '</td><td><span class="table-team">' +
       (crest ? '<img src="' + esc(crest) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') + '<span>' + esc(t.name || t.abbr) + '</span></span>' +
       (t.note ? '<span class="sub">' + esc(t.note) + "</span>" : "") + "</td>" +
       '<td class="num">' + esc(t.played) + '</td><td class="num">' + esc(t.won) +
@@ -1273,7 +1281,7 @@ function renderLeague(sport, scores, extra, nflTeams) {
   if (extra) {
     if (sport.extraType === "rankings") html += renderRankings(extra.data);
     else if (sport.extraType === "table") html += renderSoccerTable(extra.data);
-    else html += renderStandings(extra.data);
+    else html += renderStandings(extra.data, sport.id);
   }
   if (sport.id === "nfl" && nflTeams) html += renderNFLSeasonLeaders(nflTeams);
   html += '</aside></div>';
@@ -1702,6 +1710,102 @@ function renderPregame(data, game, sportId) {
   return html;
 }
 
+function matchupStatPreferences(sportId) {
+  const common = {
+    nfl: [[/points.?per.?game|avgpoints|pointsfor/i, "PPG", false], [/total.?yards|yards.?per.?game/i, "Yards", false], [/turnover/i, "Turnovers", true], [/sacks/i, "Sacks", false]],
+    cfb: [[/points.?per.?game|avgpoints|pointsfor/i, "PPG", false], [/total.?yards|yards.?per.?game/i, "Yards", false], [/turnover/i, "Turnovers", true], [/third.?down/i, "3rd down", false]],
+    nba: [[/points.?per.?game|avgpoints/i, "PPG", false], [/field.?goal.?pct|fieldgoalpercentage/i, "FG%", false], [/three.?point.*pct|threepointpercentage/i, "3PT%", false], [/turnover/i, "Turnovers", true]],
+    cbb: [[/points.?per.?game|avgpoints/i, "PPG", false], [/field.?goal.?pct|fieldgoalpercentage/i, "FG%", false], [/rebound/i, "Rebounds", false], [/turnover/i, "Turnovers", true]],
+    wcbb: [[/points.?per.?game|avgpoints/i, "PPG", false], [/field.?goal.?pct|fieldgoalpercentage/i, "FG%", false], [/rebound/i, "Rebounds", false], [/turnover/i, "Turnovers", true]],
+    mlb: [[/runs.?per.?game|runs/i, "Runs", false], [/batting.?average|avg/i, "AVG", false], [/on.?base/i, "OBP", false], [/earned.?run|era/i, "ERA", true]],
+    nhl: [[/goals.?per.?game|goals/i, "Goals", false], [/shots.?per.?game|shots/i, "Shots", false], [/power.?play/i, "Power play", false], [/goals.?against/i, "Goals allowed", true]],
+    epl: [[/goals/i, "Goals", false], [/shots.?on.?target|shots/i, "Shots", false], [/possession/i, "Possession", false], [/goals.?against/i, "Goals allowed", true]],
+    ucl: [[/goals/i, "Goals", false], [/shots.?on.?target|shots/i, "Shots", false], [/possession/i, "Possession", false], [/goals.?against/i, "Goals allowed", true]],
+    laliga: [[/goals/i, "Goals", false], [/shots.?on.?target|shots/i, "Shots", false], [/possession/i, "Possession", false], [/goals.?against/i, "Goals allowed", true]]
+  };
+  return common[sportId] || [];
+}
+
+function matchupMetrics(data, sportId) {
+  const teams = (data.boxscore && data.boxscore.teams) || [];
+  if (teams.length !== 2) return [];
+  const stats = teams.map((team) => flatStats(team));
+  const normalize = (value) => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const used = {};
+  return matchupStatPreferences(sportId).map((pref) => {
+    const pattern = pref[0];
+    const found = stats.map((list) => list.find((stat) => pattern.test(normalize(stat.name) + " " + normalize(statLabel(stat)))));
+    if (!found[0] || !found[1]) return null;
+    const key = normalize(statLabel(found[0]));
+    if (used[key]) return null;
+    used[key] = true;
+    const values = found.map((stat) => chartNumber(statValue(stat)));
+    if (!values.every(Number.isFinite)) return null;
+    let edge = values[0] === values[1] ? -1 : (pref[2] ? (values[0] < values[1] ? 0 : 1) : (values[0] > values[1] ? 0 : 1));
+    return { label: pref[1], displays: found.map(statValue), edge: edge };
+  }).filter(Boolean).slice(0, 4);
+}
+
+function matchupInfo(data, game) {
+  const info = data.gameInfo || {};
+  const venue = info.venue || {};
+  const broadcasts = ((data.header && data.header.competitions && data.header.competitions[0] &&
+    data.header.competitions[0].broadcasts) || []).flatMap((item) => item.names || []).filter(Boolean);
+  const start = Date.parse(game.date);
+  const items = [];
+  if (!isNaN(start)) items.push(["Start", new Date(start).toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })]);
+  if (venue.fullName) items.push(["Venue", venue.fullName]);
+  if (broadcasts.length) items.push(["Watch", broadcasts.join(", ")]);
+  return items.slice(0, 3);
+}
+
+function matchupOdds(data) {
+  const line = (data.pickcenter || [])[0] || {};
+  const items = [];
+  if (line.details) items.push(["Spread", line.details]);
+  if (line.overUnder != null) items.push(["Total", "O/U " + line.overUnder]);
+  const away = oddsValue(line.awayTeamOdds || {}, "moneyLine") || oddsValue(line.awayTeamOdds || {}, "moneyline");
+  const home = oddsValue(line.homeTeamOdds || {}, "moneyLine") || oddsValue(line.homeTeamOdds || {}, "moneyline");
+  if (away || home) items.push(["Moneyline", [away, home].filter(Boolean).join(" / ")]);
+  return { provider: line.provider && line.provider.name || "", items: items.slice(0, 3) };
+}
+
+function renderMatchupIntelligence(data, game, sportId) {
+  const teams = gameCenterTeams(data, game);
+  const metrics = matchupMetrics(data, sportId);
+  const leaders = leaderGroups(data, sportId);
+  const injuries = data.injuries || [];
+  const info = matchupInfo(data, game);
+  const odds = matchupOdds(data);
+  const teamNames = [teams.away.abbr || teams.away.name, teams.home.abbr || teams.home.name];
+  const records = [teams.away.record || "—", teams.home.record || "—"];
+
+  const edgeRows = metrics.length ? metrics.map((metric) => '<div class="matchup-edge-row"><strong class="' + (metric.edge === 0 ? "has-edge" : "") + '">' +
+    esc(metric.displays[0]) + '</strong><span>' + esc(metric.label) + '</span><strong class="' + (metric.edge === 1 ? "has-edge" : "") + '">' +
+    esc(metric.displays[1]) + '</strong></div>').join("") :
+    '<div class="matchup-edge-row"><strong>' + esc(records[0]) + '</strong><span>Record</span><strong>' + esc(records[1]) + '</strong></div>';
+
+  const leaderHtml = leaders.length ? '<div class="intel-section"><h3>Players to watch</h3><div class="intel-player-teams">' + leaders.slice(0, 2).map((team) =>
+    '<div><b>' + esc(team.abbr || team.name) + '</b>' + team.groups.slice(0, 2).map((player) => '<span><i>' + esc(player.label) + '</i><strong>' +
+      esc(player.name) + '</strong><small>' + esc(player.value) + '</small></span>').join("") + '</div>').join("") + '</div></div>' : "";
+
+  const injuryHtml = injuries.length ? '<div class="intel-section intel-injuries"><h3>Availability</h3><div>' + injuries.slice(0, 2).map((group) => {
+    const team = group.team || {};
+    const list = group.injuries || [];
+    const notable = list.slice(0, 2).map((injury) => (injury.athlete && (injury.athlete.shortName || injury.athlete.displayName)) || "Player").join(", ");
+    return '<span><b>' + esc(team.abbreviation || team.shortDisplayName || team.displayName || "Team") + '</b><strong>' + list.length + ' listed</strong>' +
+      (notable ? '<small>' + esc(notable) + (list.length > 2 ? " +" + (list.length - 2) : "") + '</small>' : '') + '</span>';
+  }).join("") + '</div></div>' : "";
+
+  return '<section class="matchup-intelligence"><div class="intel-head"><div><p class="eyebrow">PREGAME</p><h2>Matchup Intelligence</h2></div><span>Quick read</span></div>' +
+    '<div class="intel-team-head"><strong>' + esc(teamNames[0]) + '</strong><span>vs</span><strong>' + esc(teamNames[1]) + '</strong></div>' +
+    '<div class="matchup-edge-grid">' + edgeRows + '</div>' +
+    (odds.items.length ? '<div class="intel-odds">' + odds.items.map((item) => '<span><small>' + esc(item[0]) + '</small><strong>' + esc(item[1]) + '</strong></span>').join("") + '</div>' : '') +
+    leaderHtml + injuryHtml +
+    (info.length ? '<details class="intel-details"><summary>Game details</summary><div>' + info.map((item) => '<span><small>' + esc(item[0]) + '</small><strong>' + esc(item[1]) + '</strong></span>').join("") + '</div></details>' : '') +
+    '<p class="intel-note">Edges summarize available season data; they are not a prediction.</p></section>';
+}
+
 function chartNumber(value) {
   const match = String(value == null ? "" : value).replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
   return match ? Number(match[0]) : NaN;
@@ -1867,10 +1971,9 @@ function renderGameCenterHeader(data, game, sport) {
 function renderGameCenter(data, game, sport) {
   const isPregame = game.state === "pre";
   const defaultTab = isPregame ? "overview" : "boxscore";
-  let overview = renderPregameInfo(data, game) + renderPregameOdds(data);
+  let overview = isPregame ? renderMatchupIntelligence(data, game, sport.id) : renderInteractiveCharts(data, game);
   if (sport.id === "nfl" && game.state === "in") overview = renderNFLLiveCenter(data, game) + overview;
-  overview += renderInteractiveCharts(data, game) + renderSoccerLineups(data, sport.id) +
-    renderPregameLeaders(data, sport.id) + renderPregameInjuries(data, sport.id);
+  overview += renderSoccerLineups(data, sport.id);
   const boxscore = renderBoxscore(data, sport.id);
   const plays = renderPlayByPlay(data, sport.id);
   return renderGameCenterHeader(data, game, sport) +

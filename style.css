@@ -152,6 +152,22 @@ td.pos { width: 28px; color: var(--muted); }
 td .sub { display: block; color: var(--muted); font-size: 12px; }
 .table-team { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
 .table-team img { width: 24px; height: 24px; flex: 0 0 24px; object-fit: contain; background: transparent; }
+.standings-scroll { overflow-x: auto; }
+.standings-group-title { display: flex; align-items: center; min-height: 30px; margin: 13px 0 2px !important; padding: 0 4px; color: var(--text) !important; font-size: 11px !important; font-weight: 850 !important; letter-spacing: .7px; text-transform: uppercase; }
+.standings-table { min-width: 430px; }
+.standings-table th, .standings-table td { padding-top: 8px; padding-bottom: 8px; }
+.standings-row { transition: background 120ms ease; }
+.standings-row:hover { background: rgba(255,255,255,.025); }
+.standings-team { display: grid; grid-template-columns: 27px minmax(90px,1fr) 27px; align-items: center; gap: 8px; min-width: 150px; }
+.standings-team > img, .standings-abbr { width: 25px; height: 25px; object-fit: contain; }
+.standings-abbr { display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 7px; font-weight: 900; }
+.standings-team > span:nth-child(2) { min-width: 0; }
+.standings-team-name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.standings-team small { display: block; overflow: hidden; color: var(--muted); font-size: 8px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.standings-favorite { width: 25px; height: 25px; font-size: 17px; }
+.soccer-standing-row { box-shadow: inset 3px 0 transparent; }
+.soccer-standing-row.qualification-zone { box-shadow: inset 3px 0 var(--accent); }
+.soccer-standing-row.relegation-zone { box-shadow: inset 3px 0 var(--down); }
 
 details summary {
   cursor: pointer;
@@ -682,6 +698,47 @@ tr.fastest td { color: #c77dff; }
 .odds-grid span { margin-bottom: 3px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .7px; }
 .comparison-grid, .injury-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .comparison-team h3, .injury-grid h3 { margin: 0 0 8px; color: var(--text); font-size: 14px; }
+
+/* condensed pregame matchup intelligence */
+.matchup-intelligence { overflow: hidden; margin: 12px 0; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(145deg,var(--card-raised),var(--card)); box-shadow: var(--shadow); }
+.intel-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; padding: 17px 18px 13px; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 0 0,rgba(56,167,255,.12),transparent 55%); }
+.intel-head h2 { margin: 1px 0 0; font-size: 20px; }
+.intel-head > span { color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .7px; }
+.intel-team-head, .matchup-edge-row { display: grid; grid-template-columns: minmax(72px,1fr) minmax(90px,1.25fr) minmax(72px,1fr); align-items: center; gap: 8px; text-align: center; }
+.intel-team-head { padding: 11px 18px 7px; }
+.intel-team-head strong { font-size: 12px; }
+.intel-team-head span { color: var(--muted); font-size: 9px; font-weight: 850; text-transform: uppercase; }
+.matchup-edge-grid { padding: 0 18px 12px; }
+.matchup-edge-row { min-height: 37px; border-top: 1px solid rgba(255,255,255,.06); }
+.matchup-edge-row strong { font-size: 13px; font-variant-numeric: tabular-nums; }
+.matchup-edge-row strong.has-edge { color: var(--accent); }
+.matchup-edge-row strong.has-edge::after { content: " •"; color: var(--up); }
+.matchup-edge-row span { color: var(--muted); font-size: 10px; }
+.intel-odds { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--line); }
+.intel-odds > span { min-width: 0; padding: 10px 12px; background: rgba(8,17,27,.76); text-align: center; }
+.intel-odds small, .intel-odds strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.intel-odds small { color: var(--muted); font-size: 8px; font-weight: 850; text-transform: uppercase; letter-spacing: .6px; }
+.intel-odds strong { margin-top: 2px; font-size: 11px; }
+.intel-section { padding: 13px 18px; border-bottom: 1px solid var(--line); }
+.intel-section h3 { margin: 0 0 9px; color: var(--muted); font-size: 9px; font-weight: 850; letter-spacing: .8px; text-transform: uppercase; }
+.intel-player-teams, .intel-injuries > div { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.intel-player-teams > div > b { display: block; margin-bottom: 4px; font-size: 10px; }
+.intel-player-teams > div > span { display: grid; grid-template-columns: 31px minmax(0,1fr) auto; align-items: center; gap: 6px; min-height: 28px; border-top: 1px solid rgba(255,255,255,.055); }
+.intel-player-teams i { color: var(--accent); font-size: 8px; font-style: normal; font-weight: 900; }
+.intel-player-teams strong { overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.intel-player-teams small { color: var(--muted); font-size: 9px; }
+.intel-injuries > div > span { min-width: 0; }
+.intel-injuries b, .intel-injuries strong, .intel-injuries small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.intel-injuries b { color: var(--muted); font-size: 9px; }
+.intel-injuries strong { margin-top: 2px; font-size: 11px; }
+.intel-injuries small { margin-top: 2px; color: var(--muted); font-size: 9px; }
+.intel-details { padding: 0 18px; }
+.intel-details > summary { padding: 12px 0; color: var(--accent); font-size: 11px; }
+.intel-details > div { display: grid; gap: 7px; padding-bottom: 13px; }
+.intel-details > div > span { display: flex; justify-content: space-between; gap: 15px; }
+.intel-details small { color: var(--muted); }
+.intel-details strong { max-width: 72%; font-size: 11px; text-align: right; }
+.intel-note { margin: 0 !important; padding: 0 18px 13px; color: var(--muted); font-size: 9px; }
 .leader-row { display: flex; align-items: center; gap: 9px; padding: 8px 0; border-top: 1px solid var(--line); }
 .position-pill { width: 52px; flex: 0 0 52px; padding: 4px 5px; border-radius: 999px; background: rgba(76,194,255,.12); color: var(--accent); font-size: 10px; font-weight: 800; text-align: center; }
 .leader-row strong, .leader-row small { display: block; }
@@ -784,6 +841,18 @@ tr.fastest td { color: #c77dff; }
   .nfl-last-play p { font-size: 12px; }
   .odds-grid { grid-template-columns: 1fr; }
   .comparison-grid, .injury-grid { grid-template-columns: 1fr; }
+  .standings-table { min-width: 360px; }
+  .standings-team { grid-template-columns: 24px minmax(82px,1fr) 23px; min-width: 130px; gap: 6px; }
+  .standings-team > img, .standings-abbr { width: 22px; height: 22px; }
+  .intel-head { padding: 15px 14px 11px; }
+  .intel-head h2 { font-size: 18px; }
+  .intel-team-head { padding-right: 14px; padding-left: 14px; }
+  .matchup-edge-grid { padding-right: 14px; padding-left: 14px; }
+  .intel-section { padding-right: 14px; padding-left: 14px; }
+  .intel-player-teams { gap: 10px; }
+  .intel-player-teams > div > span { grid-template-columns: 27px minmax(0,1fr); }
+  .intel-player-teams small { display: none; }
+  .intel-details { padding: 0 14px; }
   .live-grid { grid-template-columns: 1fr; }
   .favorite-team-grid, .favorites-game-grid { grid-template-columns: 1fr; }
   .favorite-team-grid { margin-bottom: 22px; }
