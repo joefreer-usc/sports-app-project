@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T00:58:16Z",
+  "updated": "2026-10-26T01:39:40Z",
   "data": {
     "games": [
       {
@@ -54,12 +54,12 @@
         "id": "401909863",
         "date": "2026-10-25T23:00Z",
         "state": "in",
-        "detail": "9:35 - 4th",
+        "detail": "0.0 - 4th",
         "away": {
           "name": "Orlando Magic",
           "abbr": "ORL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png",
-          "score": "76",
+          "score": "111",
           "record": "0-2",
           "rank": 0,
           "winner": false
@@ -68,7 +68,7 @@
           "name": "New York Knicks",
           "abbr": "NY",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png",
-          "score": "84",
+          "score": "102",
           "record": "0-2",
           "rank": 0,
           "winner": false
@@ -77,14 +77,14 @@
       {
         "id": "401909864",
         "date": "2026-10-25T23:00Z",
-        "state": "in",
-        "detail": "2:31 - 3rd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Toronto Raptors",
           "abbr": "TOR",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png",
-          "score": "61",
-          "record": "2-0",
+          "score": "94",
+          "record": "2-1",
           "rank": 0,
           "winner": false
         },
@@ -92,23 +92,23 @@
           "name": "Minnesota Timberwolves",
           "abbr": "MIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
-          "score": "86",
-          "record": "2-0",
+          "score": "117",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909865",
         "date": "2026-10-25T23:00Z",
-        "state": "in",
-        "detail": "7:11 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "LA Clippers",
           "abbr": "LAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
-          "score": "88",
-          "record": "1-1",
+          "score": "101",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         },
@@ -116,22 +116,22 @@
           "name": "Oklahoma City Thunder",
           "abbr": "OKC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png",
-          "score": "90",
-          "record": "2-0",
+          "score": "108",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909866",
         "date": "2026-10-25T23:30Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "11:19 - 4th",
         "away": {
           "name": "Detroit Pistons",
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
-          "score": "56",
+          "score": "79",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -140,7 +140,7 @@
           "name": "Philadelphia 76ers",
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
-          "score": "44",
+          "score": "71",
           "record": "3-0",
           "rank": 0,
           "winner": false
@@ -149,13 +149,13 @@
       {
         "id": "401909867",
         "date": "2026-10-26T01:00Z",
-        "state": "pre",
-        "detail": "10/25 - 9:00 PM EDT",
+        "state": "in",
+        "detail": "0.0 - 2nd",
         "away": {
           "name": "Memphis Grizzlies",
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
-          "score": "0",
+          "score": "26",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -164,7 +164,7 @@
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
-          "score": "0",
+          "score": "28",
           "record": "0-2",
           "rank": 0,
           "winner": false
@@ -204,7 +204,7 @@
           "abbr": "MIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         },
@@ -309,7 +309,7 @@
           "abbr": "OKC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         }
@@ -597,7 +597,7 @@
           "abbr": "TOR",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png",
           "score": "0",
-          "record": "2-0",
+          "record": "2-1",
           "rank": 0,
           "winner": false
         }
@@ -669,7 +669,7 @@
           "abbr": "MIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         }
@@ -732,7 +732,7 @@
           "abbr": "OKC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         },
@@ -765,7 +765,7 @@
           "abbr": "LAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
           "score": "0",
-          "record": "1-1",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         }

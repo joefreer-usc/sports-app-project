@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T00:58:16Z",
+  "updated": "2026-10-26T01:39:40Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -9,14 +9,6 @@
           {
             "name": "Detroit Pistons",
             "abbr": "DET",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W2"
-          },
-          {
-            "name": "Toronto Raptors",
-            "abbr": "TOR",
             "record": "2-0",
             "pct": "1.000",
             "gb": "0.5",
@@ -33,6 +25,14 @@
           {
             "name": "Atlanta Hawks",
             "abbr": "ATL",
+            "record": "2-1",
+            "pct": ".667",
+            "gb": "1",
+            "streak": "L1"
+          },
+          {
+            "name": "Toronto Raptors",
+            "abbr": "TOR",
             "record": "2-1",
             "pct": ".667",
             "gb": "1",
@@ -132,22 +132,6 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "Oklahoma City Thunder",
-            "abbr": "OKC",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W2"
-          },
-          {
-            "name": "Minnesota Timberwolves",
-            "abbr": "MIN",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "0.5",
-            "streak": "W2"
-          },
-          {
             "name": "Portland Trail Blazers",
             "abbr": "POR",
             "record": "2-0",
@@ -164,8 +148,8 @@
             "streak": "W2"
           },
           {
-            "name": "Los Angeles Lakers",
-            "abbr": "LAL",
+            "name": "Oklahoma City Thunder",
+            "abbr": "OKC",
             "record": "3-0",
             "pct": "1.000",
             "gb": "-",
@@ -180,12 +164,20 @@
             "streak": "W3"
           },
           {
-            "name": "LA Clippers",
-            "abbr": "LAC",
-            "record": "1-1",
-            "pct": ".500",
-            "gb": "1.5",
-            "streak": "L1"
+            "name": "Los Angeles Lakers",
+            "abbr": "LAL",
+            "record": "3-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W3"
+          },
+          {
+            "name": "Minnesota Timberwolves",
+            "abbr": "MIN",
+            "record": "3-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W3"
           },
           {
             "name": "Denver Nuggets",
@@ -210,6 +202,14 @@
             "pct": ".333",
             "gb": "2",
             "streak": "W1"
+          },
+          {
+            "name": "LA Clippers",
+            "abbr": "LAC",
+            "record": "1-2",
+            "pct": ".333",
+            "gb": "2",
+            "streak": "L2"
           },
           {
             "name": "Utah Jazz",
