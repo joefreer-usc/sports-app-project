@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T03:36:49Z",
+  "updated": "2026-10-25T23:49:34Z",
   "data": {
     "season": "2026",
     "groups": [
@@ -25,18 +25,18 @@
           {
             "name": "New York Jets",
             "abbr": "NYJ",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "3",
-            "streak": "L1"
+            "record": "2-5",
+            "pct": ".286",
+            "gb": "3.5",
+            "streak": "L2"
           },
           {
             "name": "Miami Dolphins",
             "abbr": "MIA",
-            "record": "0-5",
-            "pct": ".000",
-            "gb": "4.5",
-            "streak": "L5"
+            "record": "1-5",
+            "pct": ".167",
+            "gb": "4",
+            "streak": "W1"
           }
         ]
       },
@@ -46,34 +46,34 @@
           {
             "name": "Cleveland Browns",
             "abbr": "CLE",
-            "record": "4-2",
-            "pct": ".667",
+            "record": "5-2",
+            "pct": ".714",
             "gb": "-",
-            "streak": "W1"
+            "streak": "W2"
           },
           {
             "name": "Pittsburgh Steelers",
             "abbr": "PIT",
+            "record": "5-2",
+            "pct": ".714",
+            "gb": "-",
+            "streak": "W3"
+          },
+          {
+            "name": "Cincinnati Bengals",
+            "abbr": "CIN",
             "record": "4-2",
             "pct": ".667",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
           },
           {
             "name": "Baltimore Ravens",
             "abbr": "BAL",
-            "record": "4-2",
-            "pct": ".667",
-            "gb": "-",
-            "streak": "L1"
-          },
-          {
-            "name": "Cincinnati Bengals",
-            "abbr": "CIN",
-            "record": "3-2",
-            "pct": ".600",
-            "gb": "0.5",
-            "streak": "W1"
+            "record": "4-3",
+            "pct": ".571",
+            "gb": "1",
+            "streak": "L2"
           }
         ]
       },
@@ -91,26 +91,26 @@
           {
             "name": "Indianapolis Colts",
             "abbr": "IND",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "2",
-            "streak": "L2"
+            "record": "2-5",
+            "pct": ".286",
+            "gb": "2.5",
+            "streak": "L3"
           },
           {
             "name": "Houston Texans",
             "abbr": "HOU",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "2",
-            "streak": "W2"
+            "record": "2-5",
+            "pct": ".286",
+            "gb": "2.5",
+            "streak": "L1"
           },
           {
             "name": "Tennessee Titans",
             "abbr": "TEN",
-            "record": "1-5",
-            "pct": ".167",
-            "gb": "3",
-            "streak": "W1"
+            "record": "1-6",
+            "pct": ".143",
+            "gb": "3.5",
+            "streak": "L1"
           }
         ]
       },
@@ -128,18 +128,18 @@
           {
             "name": "Denver Broncos",
             "abbr": "DEN",
-            "record": "4-2",
-            "pct": ".667",
-            "gb": "1.5",
-            "streak": "W2"
+            "record": "5-2",
+            "pct": ".714",
+            "gb": "1",
+            "streak": "W3"
           },
           {
             "name": "Las Vegas Raiders",
             "abbr": "LV",
-            "record": "3-3",
-            "pct": ".500",
-            "gb": "2.5",
-            "streak": "L3"
+            "record": "3-4",
+            "pct": ".429",
+            "gb": "3",
+            "streak": "L4"
           },
           {
             "name": "Los Angeles Chargers",
@@ -157,17 +157,17 @@
           {
             "name": "New York Giants",
             "abbr": "NYG",
-            "record": "3-2-1",
-            "pct": ".583",
+            "record": "4-2-1",
+            "pct": ".643",
             "gb": "-",
-            "streak": "L1"
+            "streak": "W1"
           },
           {
             "name": "Philadelphia Eagles",
             "abbr": "PHI",
             "record": "2-4",
             "pct": ".333",
-            "gb": "1.5",
+            "gb": "2",
             "streak": "L4"
           },
           {
@@ -175,7 +175,7 @@
             "abbr": "DAL",
             "record": "2-4",
             "pct": ".333",
-            "gb": "1.5",
+            "gb": "2",
             "streak": "L2"
           },
           {
@@ -183,7 +183,7 @@
             "abbr": "WSH",
             "record": "1-4-1",
             "pct": ".250",
-            "gb": "2",
+            "gb": "2.5",
             "streak": "L1"
           }
         ]
@@ -194,34 +194,34 @@
           {
             "name": "Minnesota Vikings",
             "abbr": "MIN",
-            "record": "5-0",
+            "record": "6-0",
             "pct": "1.000",
             "gb": "-",
-            "streak": "W5"
+            "streak": "W6"
           },
           {
             "name": "Chicago Bears",
             "abbr": "CHI",
             "record": "5-2",
             "pct": ".714",
-            "gb": "1",
+            "gb": "1.5",
+            "streak": "W2"
+          },
+          {
+            "name": "Detroit Lions",
+            "abbr": "DET",
+            "record": "4-2",
+            "pct": ".667",
+            "gb": "2",
             "streak": "W2"
           },
           {
             "name": "Green Bay Packers",
             "abbr": "GB",
-            "record": "4-2",
-            "pct": ".667",
-            "gb": "1.5",
-            "streak": "W3"
-          },
-          {
-            "name": "Detroit Lions",
-            "abbr": "DET",
-            "record": "3-2",
-            "pct": ".600",
-            "gb": "2",
-            "streak": "W1"
+            "record": "4-3",
+            "pct": ".571",
+            "gb": "2.5",
+            "streak": "L1"
           }
         ]
       },
@@ -231,33 +231,33 @@
           {
             "name": "Carolina Panthers",
             "abbr": "CAR",
-            "record": "3-2",
-            "pct": ".600",
+            "record": "3-3",
+            "pct": ".500",
             "gb": "-",
-            "streak": "W2"
+            "streak": "L1"
           },
           {
             "name": "Atlanta Falcons",
             "abbr": "ATL",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "1.5",
-            "streak": "L2"
-          },
-          {
-            "name": "New Orleans Saints",
-            "abbr": "NO",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "1.5",
+            "record": "3-4",
+            "pct": ".429",
+            "gb": "0.5",
             "streak": "W1"
           },
           {
             "name": "Tampa Bay Buccaneers",
             "abbr": "TB",
-            "record": "1-5",
-            "pct": ".167",
-            "gb": "2.5",
+            "record": "2-5",
+            "pct": ".286",
+            "gb": "1.5",
+            "streak": "W1"
+          },
+          {
+            "name": "New Orleans Saints",
+            "abbr": "NO",
+            "record": "2-5",
+            "pct": ".286",
+            "gb": "1.5",
             "streak": "L1"
           }
         ]
@@ -268,34 +268,34 @@
           {
             "name": "San Francisco 49ers",
             "abbr": "SF",
-            "record": "6-0",
-            "pct": "1.000",
+            "record": "6-1",
+            "pct": ".857",
             "gb": "-",
-            "streak": "W6"
+            "streak": "L1"
           },
           {
             "name": "Seattle Seahawks",
             "abbr": "SEA",
             "record": "3-3",
             "pct": ".500",
-            "gb": "3",
+            "gb": "2.5",
             "streak": "L2"
-          },
-          {
-            "name": "Arizona Cardinals",
-            "abbr": "ARI",
-            "record": "2-4",
-            "pct": ".333",
-            "gb": "4",
-            "streak": "W1"
           },
           {
             "name": "Los Angeles Rams",
             "abbr": "LAR",
-            "record": "2-4",
-            "pct": ".333",
+            "record": "3-4",
+            "pct": ".429",
+            "gb": "3",
+            "streak": "W1"
+          },
+          {
+            "name": "Arizona Cardinals",
+            "abbr": "ARI",
+            "record": "2-5",
+            "pct": ".286",
             "gb": "4",
-            "streak": "L2"
+            "streak": "L1"
           }
         ]
       }

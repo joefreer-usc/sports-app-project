@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T05:06:14Z",
+  "updated": "2026-10-26T01:39:40Z",
   "data": {
     "season": "2026-27",
     "groups": [
@@ -7,91 +7,115 @@
         "name": "Eastern Conference",
         "teams": [
           {
-            "name": "Atlanta Hawks",
-            "abbr": "ATL",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "-",
-            "streak": "W2"
-          },
-          {
             "name": "Detroit Pistons",
             "abbr": "DET",
             "record": "2-0",
             "pct": "1.000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
           },
           {
             "name": "Philadelphia 76ers",
             "abbr": "PHI",
-            "record": "2-0",
+            "record": "3-0",
             "pct": "1.000",
             "gb": "-",
-            "streak": "W2"
+            "streak": "W3"
+          },
+          {
+            "name": "Atlanta Hawks",
+            "abbr": "ATL",
+            "record": "2-1",
+            "pct": ".667",
+            "gb": "1",
+            "streak": "L1"
           },
           {
             "name": "Toronto Raptors",
             "abbr": "TOR",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "-",
-            "streak": "W2"
+            "record": "2-1",
+            "pct": ".667",
+            "gb": "1",
+            "streak": "L1"
           },
           {
             "name": "Indiana Pacers",
             "abbr": "IND",
-            "record": "1-1",
-            "pct": ".500",
-            "gb": "1",
-            "streak": "L1"
-          },
-          {
-            "name": "Washington Wizards",
-            "abbr": "WSH",
-            "record": "1-1",
-            "pct": ".500",
-            "gb": "1",
-            "streak": "L1"
-          },
-          {
-            "name": "Boston Celtics",
-            "abbr": "BOS",
-            "record": "1-1",
-            "pct": ".500",
-            "gb": "1",
-            "streak": "W1"
-          },
-          {
-            "name": "Chicago Bulls",
-            "abbr": "CHI",
-            "record": "1-1",
-            "pct": ".500",
+            "record": "2-1",
+            "pct": ".667",
             "gb": "1",
             "streak": "W1"
           },
           {
             "name": "Charlotte Hornets",
             "abbr": "CHA",
+            "record": "2-1",
+            "pct": ".667",
+            "gb": "1",
+            "streak": "W1"
+          },
+          {
+            "name": "Washington Wizards",
+            "abbr": "WSH",
+            "record": "2-1",
+            "pct": ".667",
+            "gb": "1",
+            "streak": "W1"
+          },
+          {
+            "name": "Boston Celtics",
+            "abbr": "BOS",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
+            "streak": "W1"
+          },
+          {
+            "name": "Cleveland Cavaliers",
+            "abbr": "CLE",
+            "record": "1-1",
+            "pct": ".500",
+            "gb": "1.5",
+            "streak": "W1"
+          },
+          {
+            "name": "Chicago Bulls",
+            "abbr": "CHI",
+            "record": "1-2",
+            "pct": ".333",
+            "gb": "2",
             "streak": "L1"
+          },
+          {
+            "name": "Milwaukee Bucks",
+            "abbr": "MIL",
+            "record": "0-3",
+            "pct": ".000",
+            "gb": "3",
+            "streak": "L3"
+          },
+          {
+            "name": "Brooklyn Nets",
+            "abbr": "BKN",
+            "record": "0-3",
+            "pct": ".000",
+            "gb": "3",
+            "streak": "L3"
+          },
+          {
+            "name": "Miami Heat",
+            "abbr": "MIA",
+            "record": "0-3",
+            "pct": ".000",
+            "gb": "3",
+            "streak": "L3"
           },
           {
             "name": "New York Knicks",
             "abbr": "NY",
             "record": "0-2",
             "pct": ".000",
-            "gb": "2",
-            "streak": "L2"
-          },
-          {
-            "name": "Milwaukee Bucks",
-            "abbr": "MIL",
-            "record": "0-2",
-            "pct": ".000",
-            "gb": "2",
+            "gb": "2.5",
             "streak": "L2"
           },
           {
@@ -99,32 +123,8 @@
             "abbr": "ORL",
             "record": "0-2",
             "pct": ".000",
-            "gb": "2",
+            "gb": "2.5",
             "streak": "L2"
-          },
-          {
-            "name": "Miami Heat",
-            "abbr": "MIA",
-            "record": "0-2",
-            "pct": ".000",
-            "gb": "2",
-            "streak": "L2"
-          },
-          {
-            "name": "Brooklyn Nets",
-            "abbr": "BKN",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Cleveland Cavaliers",
-            "abbr": "CLE",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
           }
         ]
       },
@@ -132,35 +132,11 @@
         "name": "Western Conference",
         "teams": [
           {
-            "name": "Minnesota Timberwolves",
-            "abbr": "MIN",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "-",
-            "streak": "W2"
-          },
-          {
             "name": "Portland Trail Blazers",
             "abbr": "POR",
             "record": "2-0",
             "pct": "1.000",
-            "gb": "-",
-            "streak": "W2"
-          },
-          {
-            "name": "Los Angeles Lakers",
-            "abbr": "LAL",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "-",
-            "streak": "W2"
-          },
-          {
-            "name": "Oklahoma City Thunder",
-            "abbr": "OKC",
-            "record": "2-0",
-            "pct": "1.000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
           },
           {
@@ -168,88 +144,112 @@
             "abbr": "MEM",
             "record": "2-0",
             "pct": "1.000",
-            "gb": "-",
+            "gb": "0.5",
             "streak": "W2"
+          },
+          {
+            "name": "Oklahoma City Thunder",
+            "abbr": "OKC",
+            "record": "3-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W3"
           },
           {
             "name": "Houston Rockets",
             "abbr": "HOU",
-            "record": "2-0",
+            "record": "3-0",
             "pct": "1.000",
             "gb": "-",
-            "streak": "W2"
+            "streak": "W3"
           },
           {
-            "name": "LA Clippers",
-            "abbr": "LAC",
-            "record": "1-1",
-            "pct": ".500",
-            "gb": "1",
-            "streak": "L1"
+            "name": "Los Angeles Lakers",
+            "abbr": "LAL",
+            "record": "3-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W3"
           },
           {
-            "name": "Utah Jazz",
-            "abbr": "UTAH",
+            "name": "Minnesota Timberwolves",
+            "abbr": "MIN",
+            "record": "3-0",
+            "pct": "1.000",
+            "gb": "-",
+            "streak": "W3"
+          },
+          {
+            "name": "Denver Nuggets",
+            "abbr": "DEN",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
             "streak": "W1"
           },
           {
-            "name": "Dallas Mavericks",
-            "abbr": "DAL",
+            "name": "Phoenix Suns",
+            "abbr": "PHX",
             "record": "1-1",
             "pct": ".500",
-            "gb": "1",
+            "gb": "1.5",
             "streak": "W1"
-          },
-          {
-            "name": "New Orleans Pelicans",
-            "abbr": "NO",
-            "record": "0-2",
-            "pct": ".000",
-            "gb": "2",
-            "streak": "L2"
           },
           {
             "name": "San Antonio Spurs",
             "abbr": "SA",
-            "record": "0-2",
-            "pct": ".000",
+            "record": "1-2",
+            "pct": ".333",
+            "gb": "2",
+            "streak": "W1"
+          },
+          {
+            "name": "LA Clippers",
+            "abbr": "LAC",
+            "record": "1-2",
+            "pct": ".333",
             "gb": "2",
             "streak": "L2"
           },
           {
+            "name": "Utah Jazz",
+            "abbr": "UTAH",
+            "record": "1-2",
+            "pct": ".333",
+            "gb": "2",
+            "streak": "L1"
+          },
+          {
+            "name": "Dallas Mavericks",
+            "abbr": "DAL",
+            "record": "1-2",
+            "pct": ".333",
+            "gb": "2",
+            "streak": "L1"
+          },
+          {
+            "name": "New Orleans Pelicans",
+            "abbr": "NO",
+            "record": "0-3",
+            "pct": ".000",
+            "gb": "3",
+            "streak": "L3"
+          },
+          {
             "name": "Golden State Warriors",
             "abbr": "GS",
-            "record": "0-2",
+            "record": "0-3",
             "pct": ".000",
-            "gb": "2",
-            "streak": "L2"
+            "gb": "3",
+            "streak": "L3"
           },
           {
             "name": "Sacramento Kings",
             "abbr": "SAC",
             "record": "0-2",
             "pct": ".000",
-            "gb": "2",
+            "gb": "2.5",
             "streak": "L2"
-          },
-          {
-            "name": "Denver Nuggets",
-            "abbr": "DEN",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
-          },
-          {
-            "name": "Phoenix Suns",
-            "abbr": "PHX",
-            "record": "0-1",
-            "pct": ".000",
-            "gb": "1.5",
-            "streak": "L1"
           }
         ]
       }
