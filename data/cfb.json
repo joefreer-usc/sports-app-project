@@ -1,55 +1,7 @@
 {
-  "updated": "2026-10-28T03:47:11Z",
+  "updated": "2026-10-28T04:35:50Z",
   "data": {
     "games": [
-      {
-        "id": "401871071",
-        "date": "2026-10-27T23:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Delaware Blue Hens",
-          "abbr": "DEL",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/48.png",
-          "score": "35",
-          "record": "4-4",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Western Kentucky Hilltoppers",
-          "abbr": "WKU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/98.png",
-          "score": "21",
-          "record": "3-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401871072",
-        "date": "2026-10-28T00:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Sam Houston Bearkats",
-          "abbr": "SHSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2534.png",
-          "score": "3",
-          "record": "1-7",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Missouri State Bears",
-          "abbr": "MOST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
-          "score": "24",
-          "record": "3-5",
-          "rank": 0,
-          "winner": true
-        }
-      },
       {
         "id": "401871058",
         "date": "2026-10-28T23:00Z",
@@ -96,6 +48,54 @@
           "record": "3-4",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401871071",
+        "date": "2026-10-27T23:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Delaware Blue Hens",
+          "abbr": "DEL",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/48.png",
+          "score": "35",
+          "record": "4-4",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Western Kentucky Hilltoppers",
+          "abbr": "WKU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/98.png",
+          "score": "21",
+          "record": "3-5",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401871072",
+        "date": "2026-10-28T00:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Sam Houston Bearkats",
+          "abbr": "SHSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2534.png",
+          "score": "3",
+          "record": "1-7",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Missouri State Bears",
+          "abbr": "MOST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
+          "score": "24",
+          "record": "3-5",
+          "rank": 0,
+          "winner": true
         }
       },
       {
