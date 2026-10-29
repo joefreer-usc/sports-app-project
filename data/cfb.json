@@ -1,41 +1,17 @@
 {
-  "updated": "2026-10-29T02:13:36Z",
+  "updated": "2026-10-29T02:58:14Z",
   "data": {
     "games": [
-      {
-        "id": "401871058",
-        "date": "2026-10-28T23:00Z",
-        "state": "in",
-        "detail": "8:31 - 4th",
-        "away": {
-          "name": "Kennesaw State Owls",
-          "abbr": "KENN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/338.png",
-          "score": "34",
-          "record": "1-6",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Middle Tennessee Blue Raiders",
-          "abbr": "MTSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png",
-          "score": "20",
-          "record": "4-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401871057",
         "date": "2026-10-29T00:00Z",
         "state": "in",
-        "detail": "4:06 - 3rd",
+        "detail": "4:48 - 4th",
         "away": {
           "name": "Jacksonville State Gamecocks",
           "abbr": "JXST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/55.png",
-          "score": "10",
+          "score": "24",
           "record": "5-2",
           "rank": 0,
           "winner": false
@@ -46,6 +22,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/166.png",
           "score": "0",
           "record": "3-4",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401871058",
+        "date": "2026-10-28T23:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Kennesaw State Owls",
+          "abbr": "KENN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/338.png",
+          "score": "44",
+          "record": "2-6",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Middle Tennessee Blue Raiders",
+          "abbr": "MTSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png",
+          "score": "28",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         }
