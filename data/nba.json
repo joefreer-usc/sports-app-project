@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-30T02:00:50Z",
+  "updated": "2026-10-30T02:45:56Z",
   "data": {
     "games": [
       {
         "id": "401909893",
         "date": "2026-10-30T00:00Z",
-        "state": "in",
-        "detail": "8:32 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Cleveland Cavaliers",
           "abbr": "CLE",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png",
-          "score": "88",
-          "record": "3-1",
+          "score": "111",
+          "record": "3-2",
           "rank": 0,
           "winner": false
         },
@@ -20,23 +20,23 @@
           "name": "Atlanta Hawks",
           "abbr": "ATL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png",
-          "score": "97",
-          "record": "2-3",
+          "score": "114",
+          "record": "3-3",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909894",
         "date": "2026-10-30T00:00Z",
-        "state": "in",
-        "detail": "8:20 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Sacramento Kings",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
-          "score": "101",
-          "record": "0-4",
+          "score": "120",
+          "record": "0-5",
           "rank": 0,
           "winner": false
         },
@@ -44,22 +44,22 @@
           "name": "New Orleans Pelicans",
           "abbr": "NO",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png",
-          "score": "111",
-          "record": "0-4",
+          "score": "132",
+          "record": "1-4",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909895",
         "date": "2026-10-30T02:00Z",
-        "state": "pre",
-        "detail": "10/29 - 10:00 PM EDT",
+        "state": "in",
+        "detail": "9:53 - 2nd",
         "away": {
           "name": "Memphis Grizzlies",
           "abbr": "MEM",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
-          "score": "0",
+          "score": "28",
           "record": "4-0",
           "rank": 0,
           "winner": false
@@ -68,7 +68,7 @@
           "name": "Portland Trail Blazers",
           "abbr": "POR",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png",
-          "score": "0",
+          "score": "32",
           "record": "3-0",
           "rank": 0,
           "winner": false
@@ -372,7 +372,7 @@
           "abbr": "ATL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png",
           "score": "0",
-          "record": "2-3",
+          "record": "3-3",
           "rank": 0,
           "winner": false
         },
@@ -381,7 +381,7 @@
           "abbr": "NO",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png",
           "score": "0",
-          "record": "0-4",
+          "record": "1-4",
           "rank": 0,
           "winner": false
         }
@@ -396,7 +396,7 @@
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
           "score": "0",
-          "record": "0-4",
+          "record": "0-5",
           "rank": 0,
           "winner": false
         },
@@ -420,7 +420,7 @@
           "abbr": "CLE",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png",
           "score": "0",
-          "record": "3-1",
+          "record": "3-2",
           "rank": 0,
           "winner": false
         },
