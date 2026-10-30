@@ -61,6 +61,14 @@ let gamesById = {};
 let detail = null; // { sportId, id, game }
 
 const FAVORITES_KEY = "sports-hub-favorites-v1";
+const ODDS_KEY = "sports-hub-odds-api-key-v1";
+const ODDS_CACHE_KEY = "sports-hub-nba-props-cache-v1";
+const ODDS_HISTORY_KEY = "sports-hub-nba-form-cache-v1";
+const ODDS_CACHE_MS = 10 * 60 * 1000;
+const ODDS_HISTORY_MS = 24 * 60 * 60 * 1000;
+const ODDS_API = "https://api.sportsgameodds.com/v2/events";
+let oddsState = { props: [], events: [], fetchedAt: 0, error: "", loading: false, filter: "all", sort: "heat", query: "" };
+let oddsHistoryEvents = [];
 
 // ---- helpers ----------------------------------------------------------------
 
@@ -76,7 +84,7 @@ function loadTab() {
   let saved = null;
   try { saved = localStorage.getItem("sports-hub-tab"); } catch (e) { /* ignore */ }
   const wanted = (location.hash || "").replace("#", "") || saved;
-  return SPORTS.some((s) => s.id === wanted) || ["home", "live", "favorites"].includes(wanted) ? wanted : "home";
+  return SPORTS.some((s) => s.id === wanted) || ["home", "live", "favorites", "odds"].includes(wanted) ? wanted : "home";
 }
 
 function saveTab(id) {
@@ -84,7 +92,259 @@ function saveTab(id) {
 }
 
 function syncPageMenu() {
-  pageMenu.value = ["home", "live", "favorites"].includes(current) ? current : "";
+  pageMenu.value = ["home", "live", "favorites", "odds"].includes(current) ? current : "";
+}
+
+function oddsApiKey() {
+  try { return localStorage.getItem(ODDS_KEY) || ""; } catch (e) { return ""; }
+}
+
+function saveOddsKey(value) {
+  try {
+    if (value) localStorage.setItem(ODDS_KEY, value);
+    else localStorage.removeItem(ODDS_KEY);
+  } catch (e) { /* storage can be unavailable in private browsing */ }
+}
+
+function readOddsCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(ODDS_CACHE_KEY) || "null");
+    return cached && Array.isArray(cached.events) ? cached : null;
+  } catch (e) { return null; }
+}
+
+function writeOddsCache(events) {
+  try { localStorage.setItem(ODDS_CACHE_KEY, JSON.stringify({ fetchedAt: Date.now(), events: events })); } catch (e) { /* ignore */ }
+}
+
+function readOddsHistoryCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(ODDS_HISTORY_KEY) || "null");
+    return cached && Array.isArray(cached.events) ? cached : null;
+  } catch (e) { return null; }
+}
+
+function resultNumber(value) {
+  if (value && typeof value === "object") value = value.value != null ? value.value : (value.score != null ? value.score : value.displayValue);
+  return numberValue(value);
+}
+
+function propForm(playerId, stat, line) {
+  const values = oddsHistoryEvents.map((event) => {
+    const game = event.results && event.results.game || {};
+    const player = game[playerId] || {};
+    return { at: Date.parse(event.status && event.status.startsAt || event.startsAt || "") || 0, value: resultNumber(player[stat]) };
+  }).filter((item) => item.value != null).sort((a, b) => b.at - a.at).slice(0, 10).map((item) => item.value);
+  if (!values.length) return null;
+  const recent = values.slice(0, 5);
+  const hits = recent.filter((value) => value > line).length;
+  return { games: recent.length, hits: hits, average: recent.reduce((sum, value) => sum + value, 0) / recent.length, streak: values.findIndex((value) => value <= line) < 0 ? values.length : values.findIndex((value) => value <= line) };
+}
+
+async function loadOddsHistory(key) {
+  const cached = readOddsHistoryCache();
+  if (cached) oddsHistoryEvents = cached.events;
+  if (cached && Date.now() - cached.fetchedAt < ODDS_HISTORY_MS) return;
+  const after = new Date(Date.now() - 15 * 86400000).toISOString();
+  const before = new Date().toISOString();
+  const params = new URLSearchParams({ leagueID: "NBA", finalized: "true", expandResults: "true", startsAfter: after, startsBefore: before, limit: "50" });
+  try {
+    const response = await fetch(ODDS_API + "?" + params.toString(), { cache: "no-store", headers: { "x-api-key": key } });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || payload.success === false) return;
+    oddsHistoryEvents = Array.isArray(payload.data) ? payload.data : oddsHistoryEvents;
+    localStorage.setItem(ODDS_HISTORY_KEY, JSON.stringify({ fetchedAt: Date.now(), events: oddsHistoryEvents }));
+  } catch (e) { /* current props still work if form data is unavailable */ }
+}
+
+function numberValue(value) {
+  const n = Number(String(value == null ? "" : value).replace("+", ""));
+  return Number.isFinite(n) ? n : null;
+}
+
+function americanLabel(value) {
+  const n = numberValue(value);
+  if (n == null) return "—";
+  return n > 0 ? "+" + n : String(n);
+}
+
+function impliedProbability(value) {
+  const n = numberValue(value);
+  if (n == null || n === 0) return 0;
+  return n < 0 ? (-n) / ((-n) + 100) : 100 / (n + 100);
+}
+
+function propPlayerName(odd) {
+  const named = odd.player && (odd.player.name || odd.player.displayName || odd.player.fullName);
+  if (named) return named;
+  const market = String(odd.marketName || odd.name || "");
+  const suffixes = [" Points", " Rebounds", " Assists", " Three Pointers", " 3-Pointers", " Over/Under"];
+  let name = market;
+  suffixes.forEach((suffix) => { const at = name.indexOf(suffix); if (at > 0) name = name.slice(0, at); });
+  if (name && name !== market) return name.trim();
+  return String(odd.statEntityID || odd.playerID || "Player").replace(/_\d+_NBA$/i, "").replace(/_/g, " ").toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function eventTeamName(event, side) {
+  const team = event && event.teams && event.teams[side] || {};
+  return (team.names && (team.names.short || team.names.medium || team.names.long)) || team.name || team.displayName || side;
+}
+
+function oddsStatLabel(stat) {
+  const labels = { points: "Points", rebounds: "Rebounds", assists: "Assists", threePointersMade: "3-Pointers", threePointFieldGoalsMade: "3-Pointers", pointsReboundsAssists: "Pts + Reb + Ast" };
+  return labels[stat] || String(stat || "Prop").replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
+}
+
+function normalizeNbaProps(events) {
+  const groups = {};
+  (events || []).forEach((event) => {
+    Object.keys(event.odds || {}).forEach((oddId) => {
+      const odd = event.odds[oddId] || {};
+      const entity = String(odd.statEntityID || odd.playerID || "");
+      if (!entity || ["home", "away", "all"].includes(entity.toLowerCase())) return;
+      if (odd.periodID && odd.periodID !== "game") return;
+      if (odd.betTypeID && odd.betTypeID !== "ou") return;
+      const side = String(odd.sideID || "").toLowerCase();
+      if (side !== "over" && side !== "under") return;
+      const stat = odd.statID || "prop";
+      const allowed = ["points", "rebounds", "assists", "threePointersMade", "threePointFieldGoalsMade", "pointsReboundsAssists"];
+      if (!allowed.includes(stat)) return;
+      const books = odd.byBookmaker || {};
+      Object.keys(books).forEach((bookId) => {
+        const book = books[bookId] || {};
+        if (book.available === false) return;
+        const line = numberValue(book.overUnder != null ? book.overUnder : (book.line != null ? book.line : odd.bookOverUnder));
+        const price = numberValue(book.odds != null ? book.odds : book.price);
+        if (line == null || price == null) return;
+        const key = [event.eventID || event.id, entity, stat, line].join("|");
+        if (!groups[key]) groups[key] = {
+          id: key, eventId: event.eventID || event.id || "", playerId: odd.playerID || entity,
+          player: propPlayerName(odd), stat: stat, statLabel: oddsStatLabel(stat), line: line,
+          startsAt: event.status && event.status.startsAt || event.startsAt || "",
+          matchup: eventTeamName(event, "away") + " @ " + eventTeamName(event, "home"), over: [], under: []
+        };
+        groups[key][side].push({ book: bookId, price: price, updated: book.lastUpdatedAt || odd.lastUpdatedAt || "" });
+      });
+    });
+  });
+  return Object.values(groups).map((prop) => {
+    const best = (items) => items.slice().sort((a, b) => b.price - a.price)[0] || null;
+    const all = prop.over.concat(prop.under);
+    const overBest = best(prop.over), underBest = best(prop.under);
+    const newest = all.map((item) => Date.parse(item.updated)).filter(Number.isFinite).sort((a, b) => b - a)[0] || 0;
+    const form = propForm(prop.playerId, prop.stat, prop.line);
+    return Object.assign(prop, {
+      bestOver: overBest, bestUnder: underBest, books: new Set(all.map((item) => item.book)).size,
+      form: form,
+      heat: Math.round(Math.min(99, 40 + Math.abs((impliedProbability(overBest && overBest.price) || .5) - .5) * 110 + Math.min(18, all.length * 2) + (form ? (form.hits / form.games) * 20 : 0))),
+      updatedAt: newest ? new Date(newest).toISOString() : ""
+    });
+  });
+}
+
+function bookLabel(id) {
+  const labels = { draftkings: "DraftKings", fanduel: "FanDuel", betmgm: "BetMGM", caesars: "Caesars", espnbet: "ESPN BET", fanatics: "Fanatics", bovada: "Bovada" };
+  return labels[String(id || "").toLowerCase()] || String(id || "Book").replace(/[_-]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function renderOddsSetup(message) {
+  updatedEl.textContent = "";
+  view.innerHTML = '<section class="odds-hero"><div><p class="eyebrow">NBA RESEARCH</p><h2>Odds &amp; Props</h2>' +
+    '<p>Live player-prop lines, best prices and market signals—without entering lines yourself.</p></div><span class="odds-live-pill">AUTO REFRESH</span></section>' +
+    '<section class="card odds-setup"><div class="odds-setup-icon" aria-hidden="true">↗</div><div><h2>Connect live NBA props</h2>' +
+    '<p>Paste a SportsGameOdds API key once. It stays in this browser and is used only to request odds.</p>' +
+    (message ? '<p class="odds-error">' + esc(message) + '</p>' : '') +
+    '<form id="oddsKeyForm"><label for="oddsApiKey">API key</label><div class="odds-key-row"><input id="oddsApiKey" name="apiKey" type="password" autocomplete="off" placeholder="Paste your API key" required>' +
+    '<button type="submit">Connect props</button></div></form><p class="odds-help">Create a free Amateur key at <a href="https://sportsgameodds.com" target="_blank" rel="noopener noreferrer">sportsgameodds.com</a>. Free data normally refreshes about every ten minutes.</p></div></section>';
+}
+
+function oddsFilters() {
+  const stats = [{ id: "all", label: "All props" }, { id: "points", label: "Points" }, { id: "rebounds", label: "Rebounds" }, { id: "assists", label: "Assists" }, { id: "threePointersMade", label: "3-Pointers" }, { id: "pointsReboundsAssists", label: "PRA" }];
+  return '<div class="odds-toolbar"><div class="prop-tabs" role="group" aria-label="Prop market">' + stats.map((item) =>
+    '<button type="button" class="prop-tab' + (oddsState.filter === item.id ? ' active' : '') + '" data-prop-filter="' + esc(item.id) + '">' + esc(item.label) + '</button>').join("") +
+    '</div><div class="odds-controls"><label class="sr-only" for="propSearch">Search players</label><input id="propSearch" type="search" placeholder="Search player" value="' + esc(oddsState.query) + '">' +
+    '<label class="sr-only" for="propSort">Sort props</label><select id="propSort"><option value="heat"' + (oddsState.sort === "heat" ? " selected" : "") + '>Market heat</option><option value="time"' + (oddsState.sort === "time" ? " selected" : "") + '>Game time</option><option value="player"' + (oddsState.sort === "player" ? " selected" : "") + '>Player</option><option value="books"' + (oddsState.sort === "books" ? " selected" : "") + '>Most books</option></select>' +
+    '<button type="button" class="odds-refresh" data-refresh-odds>Refresh</button><button type="button" class="odds-settings" data-odds-settings aria-label="Odds settings">•••</button></div></div>';
+}
+
+function filteredProps() {
+  const query = oddsState.query.trim().toLowerCase();
+  const list = oddsState.props.filter((prop) => (oddsState.filter === "all" || prop.stat === oddsState.filter || (oddsState.filter === "threePointersMade" && prop.stat === "threePointFieldGoalsMade")) &&
+    (!query || prop.player.toLowerCase().includes(query) || prop.matchup.toLowerCase().includes(query)));
+  return list.sort((a, b) => {
+    if (oddsState.sort === "time") return Date.parse(a.startsAt) - Date.parse(b.startsAt);
+    if (oddsState.sort === "player") return a.player.localeCompare(b.player);
+    if (oddsState.sort === "books") return b.books - a.books;
+    return b.heat - a.heat || b.books - a.books;
+  });
+}
+
+function propCard(prop) {
+  const when = prop.startsAt ? new Date(prop.startsAt).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" }) : "Upcoming";
+  const price = (item) => item ? '<strong>' + americanLabel(item.price) + '</strong><small>' + esc(bookLabel(item.book)) + '</small>' : '<strong>—</strong><small>Unavailable</small>';
+  const signal = prop.form && prop.form.games >= 3 && prop.form.hits === prop.form.games ? "Great form" : (prop.heat >= 75 ? "Hot market" : (prop.books >= 4 ? "Strong coverage" : "Limited books"));
+  return '<article class="prop-card"><div class="prop-card-head"><div><span class="prop-market">' + esc(prop.statLabel) + '</span><h3>' + esc(prop.player) + '</h3><p>' + esc(prop.matchup) + ' · ' + esc(when) + '</p></div><span class="heat-badge heat-' + (prop.heat >= 75 ? "hot" : "normal") + '">' + esc(signal) + '</span></div>' +
+    '<div class="prop-line"><span>Consensus line</span><strong>' + esc(prop.line) + '</strong><small>' + prop.books + ' book' + (prop.books === 1 ? '' : 's') + '</small></div>' +
+    '<div class="prop-sides"><div><span>OVER ' + esc(prop.line) + '</span>' + price(prop.bestOver) + '</div><div><span>UNDER ' + esc(prop.line) + '</span>' + price(prop.bestUnder) + '</div></div>' +
+    (prop.form ? '<div class="prop-form"><span>Last ' + prop.form.games + ': <b>' + prop.form.hits + ' hits</b></span><span>Avg <b>' + esc(prop.form.average.toFixed(1)) + '</b></span>' + (prop.form.streak >= 2 ? '<span><b>' + prop.form.streak + '-game</b> run</span>' : '') + '</div>' : '') +
+    '<div class="prop-card-foot"><span>Research score <b>' + esc(prop.heat) + '</b></span><span>' + (prop.updatedAt ? 'Updated ' + esc(timeAgo(prop.updatedAt)) : 'Live market') + '</span></div></article>';
+}
+
+function paintOdds() {
+  if (current !== "odds") return;
+  const props = filteredProps();
+  const hot = oddsState.props.slice().sort((a, b) => b.heat - a.heat).slice(0, 3);
+  updatedEl.textContent = oddsState.fetchedAt ? "Odds updated " + timeAgo(new Date(oddsState.fetchedAt).toISOString()) : "";
+  view.innerHTML = '<section class="odds-hero"><div><p class="eyebrow">NBA RESEARCH</p><h2>Odds &amp; Props</h2><p>Compare current player props and find the strongest market signals.</p></div><span class="odds-live-pill"><i></i> LIVE LINES</span></section>' +
+    (hot.length ? '<section class="hot-strip"><div class="hot-strip-title"><span>🔥</span><div><strong>Form &amp; market leaders</strong><small>Recent results plus current sportsbook signals</small></div></div>' + hot.map((prop, i) => '<button type="button" data-prop-player="' + esc(prop.player) + '"><span>#' + (i + 1) + '</span><strong>' + esc(prop.player) + '</strong><small>' + esc(prop.statLabel) + ' ' + esc(prop.line) + (prop.form ? ' · ' + prop.form.hits + '/' + prop.form.games : '') + '</small></button>').join("") + '</section>' : '') +
+    oddsFilters() + (oddsState.error ? '<div class="odds-notice"><strong>Couldn\'t refresh:</strong> ' + esc(oddsState.error) + ' Showing the last saved board.</div>' : '') +
+    '<div class="prop-results-head"><strong>' + props.length + ' props</strong><span>Lines can move quickly. Verify before acting.</span></div>' +
+    (props.length ? '<section class="prop-grid">' + props.map(propCard).join("") + '</section>' : '<section class="empty-state odds-empty"><h2>No matching props</h2><p>NBA player props are usually posted closer to game time. Try another filter or refresh later.</p></section>') +
+    '<p class="responsible-note">For research and entertainment only. Research score combines recent results, sportsbook coverage and pricing strength; it is not a prediction or guarantee.</p>';
+}
+
+async function fetchNbaProps(force) {
+  const key = oddsApiKey();
+  if (!key) { renderOddsSetup(); return; }
+  const cached = readOddsCache();
+  if (!force && cached && Date.now() - cached.fetchedAt < ODDS_CACHE_MS) {
+    await loadOddsHistory(key);
+    oddsState.events = cached.events;
+    oddsState.props = normalizeNbaProps(cached.events);
+    oddsState.fetchedAt = cached.fetchedAt;
+    oddsState.error = "";
+    paintOdds();
+    return;
+  }
+  oddsState.loading = true;
+  oddsState.error = "";
+  view.innerHTML = '<section class="odds-loading"><span></span><h2>Loading NBA props</h2><p>Comparing lines across sportsbooks…</p></section>';
+  try {
+    const params = new URLSearchParams({ leagueID: "NBA", oddsAvailable: "true", includeOpposingOdds: "true", includeAltLines: "false", limit: "15" });
+    const response = await fetch(ODDS_API + "?" + params.toString(), { cache: "no-store", headers: { "x-api-key": key } });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || payload.success === false) throw new Error(payload.error || "The odds service returned " + response.status);
+    const events = Array.isArray(payload.data) ? payload.data : [];
+    await loadOddsHistory(key);
+    writeOddsCache(events);
+    oddsState.events = events;
+    oddsState.props = normalizeNbaProps(events);
+    oddsState.fetchedAt = Date.now();
+    paintOdds();
+  } catch (error) {
+    oddsState.error = error && error.message ? error.message : "Unable to reach the odds service.";
+    if (cached && cached.events.length) {
+      oddsState.events = cached.events;
+      oddsState.props = normalizeNbaProps(cached.events);
+      oddsState.fetchedAt = cached.fetchedAt;
+      paintOdds();
+    } else renderOddsSetup(oddsState.error + " Check the key and try again.");
+  } finally { oddsState.loading = false; }
+}
+
+async function renderOdds() {
+  updatedEl.textContent = "";
+  await fetchNbaProps(false);
 }
 
 function loadFavorites() {
@@ -2537,7 +2797,7 @@ async function showNBATeam() {
 function openNBATeam(abbr) {
   const returnTo = current;
   detail = { sportId: "nba", kind: "nba-team", teamAbbr: abbr, returnTo: returnTo };
-  if (["home", "live", "favorites"].includes(current)) current = "nba";
+  if (["home", "live", "favorites", "odds"].includes(current)) current = "nba";
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
@@ -2739,7 +2999,7 @@ async function showNFLTeam() {
 function openNFLTeam(abbr) {
   const returnTo = current;
   detail = { sportId: "nfl", kind: "team", teamAbbr: abbr, returnTo: returnTo };
-  if (["home", "live", "favorites"].includes(current)) current = "nfl";
+  if (["home", "live", "favorites", "odds"].includes(current)) current = "nfl";
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
@@ -2752,7 +3012,7 @@ function openGame(id, sportId) {
   if (!sport || !game) return;
   const returnTo = current;
   detail = { sportId: sport.id, id: id, game: game, returnTo: returnTo };
-  if (["home", "live", "favorites"].includes(current)) current = sport.id;
+  if (["home", "live", "favorites", "odds"].includes(current)) current = sport.id;
   history.pushState({ detail: true }, "", location.href);
   window.scrollTo(0, 0);
   show();
@@ -2817,6 +3077,12 @@ function goBack() {
 window.addEventListener("popstate", () => { if (detail) leaveDetail(); });
 
 view.addEventListener("click", (event) => {
+  const propFilter = event.target.closest("button[data-prop-filter]");
+  if (propFilter) { oddsState.filter = propFilter.getAttribute("data-prop-filter") || "all"; paintOdds(); return; }
+  const propPlayer = event.target.closest("button[data-prop-player]");
+  if (propPlayer) { oddsState.query = propPlayer.getAttribute("data-prop-player") || ""; paintOdds(); return; }
+  if (event.target.closest("[data-refresh-odds]")) { fetchNbaProps(true); return; }
+  if (event.target.closest("[data-odds-settings]")) { saveOddsKey(""); renderOddsSetup("Enter a different key below."); return; }
   const favorite = event.target.closest("button[data-favorite-sport]");
   if (favorite) { event.preventDefault(); event.stopPropagation(); toggleFavorite(favorite); return; }
   if (event.target.closest("[data-open-favorites]")) { selectSport("favorites"); return; }
@@ -2887,9 +3153,31 @@ view.addEventListener("click", (event) => {
 
 // Picking a different driver in the lap-by-lap table.
 view.addEventListener("change", (event) => {
+  if (event.target && event.target.id === "propSort") { oddsState.sort = event.target.value; paintOdds(); return; }
   if (event.target && event.target.id === "lapDriver" && raceData) {
     document.getElementById("lapTable").innerHTML = renderLapTable(raceData, event.target.value);
   }
+});
+
+view.addEventListener("input", (event) => {
+  if (event.target && event.target.id === "propSearch") {
+    oddsState.query = event.target.value;
+    const cursor = event.target.selectionStart;
+    paintOdds();
+    const input = document.getElementById("propSearch");
+    if (input) { input.focus(); input.setSelectionRange(cursor, cursor); }
+  }
+});
+
+view.addEventListener("submit", (event) => {
+  if (!event.target || event.target.id !== "oddsKeyForm") return;
+  event.preventDefault();
+  const input = event.target.querySelector("[name=apiKey]");
+  const key = input && input.value.trim();
+  if (!key) return;
+  saveOddsKey(key);
+  try { localStorage.removeItem(ODDS_CACHE_KEY); localStorage.removeItem(ODDS_HISTORY_KEY); } catch (e) { /* ignore */ }
+  fetchNbaProps(true);
 });
 
 view.addEventListener("keydown", (event) => {
@@ -2924,6 +3212,7 @@ async function show() {
   if (current === "home") { await renderHome(); return; }
   if (current === "live") { await renderLive(); return; }
   if (current === "favorites") { await renderFavorites(); return; }
+  if (current === "odds") { await renderOdds(); return; }
   const sport = SPORTS.find((s) => s.id === current);
 
   if (detail && detail.sportId === current) {
