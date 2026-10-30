@@ -1,116 +1,20 @@
 {
-  "updated": "2026-10-25T18:40:13Z",
+  "updated": "2026-10-29T00:18:50Z",
   "data": {
     "games": [
       {
-        "id": "401879253",
-        "date": "2026-10-23T19:00Z",
-        "state": "post",
-        "detail": "FT",
+        "id": "401879248",
+        "date": "2026-10-31T12:30Z",
+        "state": "pre",
+        "detail": "Scheduled",
         "away": {
-          "name": "Nottingham Forest",
-          "abbr": "NFO",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
-          "score": "1",
-          "record": "1-3-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Ipswich Town",
-          "abbr": "IPS",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
-          "score": "1",
-          "record": "3-1-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401879256",
-        "date": "2026-10-24T11:30Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Manchester City",
-          "abbr": "MNC",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-          "score": "1",
-          "record": "7-0-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Aston Villa",
-          "abbr": "AVL",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
-          "score": "2",
-          "record": "3-2-3",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401878768",
-        "date": "2026-10-24T14:00Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Everton",
-          "abbr": "EVE",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+          "name": "Manchester United",
+          "abbr": "MAN",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
           "score": "0",
-          "record": "2-4-2",
+          "record": "1-4-3",
           "rank": 0,
           "winner": false
-        },
-        "home": {
-          "name": "Arsenal",
-          "abbr": "ARS",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
-          "score": "2",
-          "record": "7-0-1",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401879255",
-        "date": "2026-10-24T14:00Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Fulham",
-          "abbr": "FUL",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png",
-          "score": "1",
-          "record": "2-2-4",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Coventry City",
-          "abbr": "COV",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
-          "score": "0",
-          "record": "2-0-6",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401878767",
-        "date": "2026-10-24T16:30Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Tottenham Hotspur",
-          "abbr": "TOT",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
-          "score": "2",
-          "record": "2-3-3",
-          "rank": 0,
-          "winner": true
         },
         "home": {
           "name": "Chelsea",
@@ -123,106 +27,10 @@
         }
       },
       {
-        "id": "401879254",
-        "date": "2026-10-25T14:00Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Newcastle United",
-          "abbr": "NEW",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
-          "score": "2",
-          "record": "3-2-3",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Crystal Palace",
-          "abbr": "CRY",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
-          "score": "0",
-          "record": "2-1-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401878766",
-        "date": "2026-10-25T14:00Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Brentford",
-          "abbr": "BRE",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
-          "score": "1",
-          "record": "2-5-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Hull City",
-          "abbr": "HUL",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
-          "score": "1",
-          "record": "2-4-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401878765",
-        "date": "2026-10-25T14:00Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "Brighton & Hove Albion",
-          "abbr": "BHA",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
-          "score": "0",
-          "record": "5-1-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Liverpool",
-          "abbr": "LIV",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-          "score": "2",
-          "record": "4-3-1",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401879252",
-        "date": "2026-10-25T14:00Z",
-        "state": "post",
-        "detail": "FT",
-        "away": {
-          "name": "AFC Bournemouth",
-          "abbr": "BOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
-          "score": "3",
-          "record": "2-3-3",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Manchester United",
-          "abbr": "MAN",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
-          "score": "0",
-          "record": "1-4-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401878764",
-        "date": "2026-10-25T16:30Z",
-        "state": "post",
-        "detail": "FT",
+        "id": "401879251",
+        "date": "2026-10-31T15:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
         "away": {
           "name": "Leeds United",
           "abbr": "LEE",
@@ -233,11 +41,203 @@
           "winner": false
         },
         "home": {
+          "name": "AFC Bournemouth",
+          "abbr": "BOU",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+          "score": "0",
+          "record": "2-3-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401879249",
+        "date": "2026-10-31T15:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Nottingham Forest",
+          "abbr": "NFO",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+          "score": "0",
+          "record": "1-3-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Brentford",
+          "abbr": "BRE",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+          "score": "0",
+          "record": "2-5-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401879247",
+        "date": "2026-10-31T15:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
           "name": "Sunderland",
           "abbr": "SUN",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
           "score": "0",
           "record": "1-2-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Coventry City",
+          "abbr": "COV",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
+          "score": "0",
+          "record": "2-0-6",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401878763",
+        "date": "2026-10-31T15:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Ipswich Town",
+          "abbr": "IPS",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
+          "score": "0",
+          "record": "3-1-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Hull City",
+          "abbr": "HUL",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
+          "score": "0",
+          "record": "2-4-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401879245",
+        "date": "2026-10-31T15:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Brighton & Hove Albion",
+          "abbr": "BHA",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+          "score": "0",
+          "record": "5-1-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Manchester City",
+          "abbr": "MNC",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+          "score": "0",
+          "record": "7-0-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401878761",
+        "date": "2026-10-31T17:30Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Crystal Palace",
+          "abbr": "CRY",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+          "score": "0",
+          "record": "2-1-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Tottenham Hotspur",
+          "abbr": "TOT",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+          "score": "0",
+          "record": "2-3-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401879250",
+        "date": "2026-10-31T20:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Fulham",
+          "abbr": "FUL",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png",
+          "score": "0",
+          "record": "2-2-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Aston Villa",
+          "abbr": "AVL",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+          "score": "0",
+          "record": "3-2-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401879246",
+        "date": "2026-11-01T16:30Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Arsenal",
+          "abbr": "ARS",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+          "score": "0",
+          "record": "7-0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Liverpool",
+          "abbr": "LIV",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+          "score": "0",
+          "record": "4-3-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401878762",
+        "date": "2026-11-02T20:00Z",
+        "state": "pre",
+        "detail": "Scheduled",
+        "away": {
+          "name": "Everton",
+          "abbr": "EVE",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+          "score": "0",
+          "record": "2-4-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Newcastle United",
+          "abbr": "NEW",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+          "score": "0",
+          "record": "3-2-3",
           "rank": 0,
           "winner": false
         }
