@@ -1,36 +1,12 @@
 {
-  "updated": "2026-10-31T03:10:56Z",
+  "updated": "2026-10-31T03:50:58Z",
   "data": {
     "games": [
-      {
-        "id": "401856844",
-        "date": "2026-10-30T23:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Baylor Bears",
-          "abbr": "BAY",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/239.png",
-          "score": "41",
-          "record": "5-3",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "UCF Knights",
-          "abbr": "UCF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png",
-          "score": "9",
-          "record": "4-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401866451",
         "date": "2026-10-31T02:30Z",
         "state": "in",
-        "detail": "4:55 - 1st",
+        "detail": "5:28 - 2nd",
         "away": {
           "name": "Kent State Golden Flashes",
           "abbr": "KENT",
@@ -44,7 +20,7 @@
           "name": "Sacramento State Hornets",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
-          "score": "0",
+          "score": "6",
           "record": "1-7",
           "rank": 0,
           "winner": false
@@ -70,6 +46,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png",
           "score": "31",
           "record": "1-7",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401856844",
+        "date": "2026-10-30T23:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Baylor Bears",
+          "abbr": "BAY",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/239.png",
+          "score": "41",
+          "record": "5-3",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "UCF Knights",
+          "abbr": "UCF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png",
+          "score": "9",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         }
