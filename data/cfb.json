@@ -1,51 +1,27 @@
 {
-  "updated": "2026-10-31T02:24:55Z",
+  "updated": "2026-10-31T03:10:56Z",
   "data": {
     "games": [
       {
-        "id": "401862813",
-        "date": "2026-10-30T23:00Z",
-        "state": "in",
-        "detail": "1:58 - 4th",
-        "away": {
-          "name": "Tulane Green Wave",
-          "abbr": "TULN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png",
-          "score": "24",
-          "record": "3-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Charlotte 49ers",
-          "abbr": "CLT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png",
-          "score": "31",
-          "record": "1-6",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401856844",
         "date": "2026-10-30T23:30Z",
-        "state": "in",
-        "detail": "End of 3rd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Baylor Bears",
           "abbr": "BAY",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/239.png",
-          "score": "34",
-          "record": "4-3",
+          "score": "41",
+          "record": "5-3",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "UCF Knights",
           "abbr": "UCF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png",
           "score": "9",
-          "record": "4-3",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         }
@@ -53,13 +29,13 @@
       {
         "id": "401866451",
         "date": "2026-10-31T02:30Z",
-        "state": "pre",
-        "detail": "10/30 - 10:30 PM EDT",
+        "state": "in",
+        "detail": "4:55 - 1st",
         "away": {
           "name": "Kent State Golden Flashes",
           "abbr": "KENT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2309.png",
-          "score": "0",
+          "score": "7",
           "record": "3-5",
           "rank": 0,
           "winner": false
@@ -69,6 +45,30 @@
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
           "score": "0",
+          "record": "1-7",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401862813",
+        "date": "2026-10-30T23:00Z",
+        "state": "post",
+        "detail": "Final/OT",
+        "away": {
+          "name": "Tulane Green Wave",
+          "abbr": "TULN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png",
+          "score": "38",
+          "record": "4-4",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Charlotte 49ers",
+          "abbr": "CLT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png",
+          "score": "31",
           "record": "1-7",
           "rank": 0,
           "winner": false
