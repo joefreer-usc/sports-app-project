@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30T22:16:22Z",
+  "updated": "2026-10-31T15:01:39Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -8,6 +8,32 @@
         "teams": [
           {
             "rank": 1,
+            "id": "1068",
+            "name": "Atlético Madrid",
+            "abbr": "ATM",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2025-09-19T20:43Z"
+              }
+            ],
+            "played": "11",
+            "won": "9",
+            "drawn": "1",
+            "lost": "1",
+            "gd": "+14",
+            "pts": "28",
+            "note": "Champions League"
+          },
+          {
+            "rank": 2,
             "id": "83",
             "name": "Barcelona",
             "abbr": "BAR",
@@ -30,32 +56,6 @@
             "lost": "1",
             "gd": "+29",
             "pts": "27",
-            "note": "Champions League"
-          },
-          {
-            "rank": 2,
-            "id": "1068",
-            "name": "Atlético Madrid",
-            "abbr": "ATM",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2025-09-19T20:43Z"
-              }
-            ],
-            "played": "10",
-            "won": "8",
-            "drawn": "1",
-            "lost": "1",
-            "gd": "+12",
-            "pts": "25",
             "note": "Champions League"
           },
           {
@@ -372,32 +372,6 @@
           },
           {
             "rank": 15,
-            "id": "1538",
-            "name": "Levante",
-            "abbr": "LEV",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "10",
-            "won": "2",
-            "drawn": "4",
-            "lost": "4",
-            "gd": "-3",
-            "pts": "10",
-            "note": ""
-          },
-          {
-            "rank": 16,
             "id": "3751",
             "name": "Elche",
             "abbr": "ELC",
@@ -419,6 +393,32 @@
             "drawn": "4",
             "lost": "4",
             "gd": "-3",
+            "pts": "10",
+            "note": ""
+          },
+          {
+            "rank": 16,
+            "id": "1538",
+            "name": "Levante",
+            "abbr": "LEV",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "11",
+            "won": "2",
+            "drawn": "4",
+            "lost": "5",
+            "gd": "-5",
             "pts": "10",
             "note": ""
           },
