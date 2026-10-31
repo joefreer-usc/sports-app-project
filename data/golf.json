@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T01:35:23Z",
+  "updated": "2026-10-31T16:08:43Z",
   "data": {
     "event": {
       "id": "401850978",
@@ -7,8 +7,8 @@
       "start": "2026-10-29T04:00Z",
       "end": "2026-11-01T04:00Z",
       "state": "in",
-      "detail": "Round 2 - Play Complete",
-      "round": 2,
+      "detail": "Round 3 - In Progress",
+      "round": 3,
       "season": 2026,
       "cutLine": "-4",
       "cutOfficial": true
@@ -26,6 +26,7 @@
         "rounds": [
           "-4",
           "-10",
+          "-",
           ""
         ]
       },
@@ -41,6 +42,7 @@
         "rounds": [
           "-4",
           "-7",
+          "-",
           ""
         ]
       },
@@ -56,21 +58,7 @@
         "rounds": [
           "-6",
           "-5",
-          ""
-        ]
-      },
-      {
-        "id": "5076011",
-        "pos": "T2",
-        "name": "Adrien Dumont de Chassart",
-        "country": "Belgium",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5076011.png",
-        "status": "Scheduled",
-        "toPar": "-11",
-        "thru": "2026-10-31T17:40:00Z",
-        "rounds": [
-          "-7",
-          "-4",
+          "-",
           ""
         ]
       },
@@ -86,6 +74,23 @@
         "rounds": [
           "-7",
           "-4",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "5076011",
+        "pos": "T2",
+        "name": "Adrien Dumont de Chassart",
+        "country": "Belgium",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5076011.png",
+        "status": "Scheduled",
+        "toPar": "-11",
+        "thru": "2026-10-31T17:40:00Z",
+        "rounds": [
+          "-7",
+          "-4",
+          "-",
           ""
         ]
       },
@@ -101,6 +106,7 @@
         "rounds": [
           "-8",
           "-3",
+          "-",
           ""
         ]
       },
@@ -116,6 +122,7 @@
         "rounds": [
           "-4",
           "-6",
+          "-",
           ""
         ]
       },
@@ -131,6 +138,7 @@
         "rounds": [
           "-6",
           "-4",
+          "-",
           ""
         ]
       },
@@ -146,6 +154,7 @@
         "rounds": [
           "-6",
           "-4",
+          "-",
           ""
         ]
       },
@@ -161,6 +170,7 @@
         "rounds": [
           "-7",
           "-3",
+          "-",
           ""
         ]
       },
@@ -176,6 +186,7 @@
         "rounds": [
           "-3",
           "-6",
+          "-",
           ""
         ]
       },
@@ -191,21 +202,7 @@
         "rounds": [
           "-4",
           "-5",
-          ""
-        ]
-      },
-      {
-        "id": "4982182",
-        "pos": "T11",
-        "name": "Jackson Suber",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4982182.png",
-        "status": "Scheduled",
-        "toPar": "-9",
-        "thru": "2026-10-31T17:18:00Z",
-        "rounds": [
-          "-5",
-          "-4",
+          "-",
           ""
         ]
       },
@@ -221,6 +218,7 @@
         "rounds": [
           "-5",
           "-4",
+          "-",
           ""
         ]
       },
@@ -236,21 +234,23 @@
         "rounds": [
           "-5",
           "-4",
+          "-",
           ""
         ]
       },
       {
-        "id": "11456",
+        "id": "4982182",
         "pos": "T11",
-        "name": "Doug Ghim",
+        "name": "Jackson Suber",
         "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11456.png",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4982182.png",
         "status": "Scheduled",
         "toPar": "-9",
         "thru": "2026-10-31T17:18:00Z",
         "rounds": [
-          "-6",
-          "-3",
+          "-5",
+          "-4",
+          "-",
           ""
         ]
       },
@@ -266,21 +266,23 @@
         "rounds": [
           "-6",
           "-3",
+          "-",
           ""
         ]
       },
       {
-        "id": "11393",
+        "id": "11456",
         "pos": "T11",
-        "name": "Garrick Higgo",
-        "country": "South Africa",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11393.png",
+        "name": "Doug Ghim",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11456.png",
         "status": "Scheduled",
         "toPar": "-9",
-        "thru": "2026-10-31T17:07:00Z",
+        "thru": "2026-10-31T17:18:00Z",
         "rounds": [
-          "-7",
-          "-2",
+          "-6",
+          "-3",
+          "-",
           ""
         ]
       },
@@ -296,36 +298,23 @@
         "rounds": [
           "-7",
           "-2",
+          "-",
           ""
         ]
       },
       {
-        "id": "2283",
-        "pos": "T20",
-        "name": "Brice Garnett",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/2283.png",
+        "id": "11393",
+        "pos": "T11",
+        "name": "Garrick Higgo",
+        "country": "South Africa",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11393.png",
         "status": "Scheduled",
-        "toPar": "-8",
-        "thru": "2026-10-31T16:45:00Z",
+        "toPar": "-9",
+        "thru": "2026-10-31T17:07:00Z",
         "rounds": [
-          "-3",
-          "-5",
-          ""
-        ]
-      },
-      {
-        "id": "8889",
-        "pos": "T20",
-        "name": "Zecheng Dou",
-        "country": "China",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8889.png",
-        "status": "Scheduled",
-        "toPar": "-8",
-        "thru": "2026-10-31T16:45:00Z",
-        "rounds": [
-          "-3",
-          "-5",
+          "-7",
+          "-2",
+          "-",
           ""
         ]
       },
@@ -341,21 +330,39 @@
         "rounds": [
           "-3",
           "-5",
+          "-",
           ""
         ]
       },
       {
-        "id": "10588",
+        "id": "2283",
         "pos": "T20",
-        "name": "Jeremy Paul",
-        "country": "Germany",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10588.png",
+        "name": "Brice Garnett",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/2283.png",
         "status": "Scheduled",
         "toPar": "-8",
-        "thru": "2026-10-31T16:34:00Z",
+        "thru": "2026-10-31T16:45:00Z",
         "rounds": [
-          "-4",
-          "-4",
+          "-3",
+          "-5",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "8889",
+        "pos": "T20",
+        "name": "Zecheng Dou",
+        "country": "China",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8889.png",
+        "status": "Scheduled",
+        "toPar": "-8",
+        "thru": "2026-10-31T16:45:00Z",
+        "rounds": [
+          "-3",
+          "-5",
+          "-",
           ""
         ]
       },
@@ -371,6 +378,23 @@
         "rounds": [
           "-4",
           "-4",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "10588",
+        "pos": "T20",
+        "name": "Jeremy Paul",
+        "country": "Germany",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10588.png",
+        "status": "Scheduled",
+        "toPar": "-8",
+        "thru": "2026-10-31T16:34:00Z",
+        "rounds": [
+          "-4",
+          "-4",
+          "-",
           ""
         ]
       },
@@ -386,36 +410,7 @@
         "rounds": [
           "-6",
           "-2",
-          ""
-        ]
-      },
-      {
-        "id": "4587989",
-        "pos": "T26",
-        "name": "Chandler Phillips",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4587989.png",
-        "status": "Scheduled",
-        "toPar": "-7",
-        "thru": "2026-10-31T16:23:00Z",
-        "rounds": [
-          "-2",
-          "-5",
-          ""
-        ]
-      },
-      {
-        "id": "4589438",
-        "pos": "T26",
-        "name": "Harry Hall",
-        "country": "England",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4589438.png",
-        "status": "Scheduled",
-        "toPar": "-7",
-        "thru": "2026-10-31T16:12:00Z",
-        "rounds": [
-          "-2",
-          "-5",
+          "-",
           ""
         ]
       },
@@ -431,6 +426,39 @@
         "rounds": [
           "-2",
           "-5",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "4589438",
+        "pos": "T26",
+        "name": "Harry Hall",
+        "country": "England",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4589438.png",
+        "status": "Scheduled",
+        "toPar": "-7",
+        "thru": "2026-10-31T16:12:00Z",
+        "rounds": [
+          "-2",
+          "-5",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "4587989",
+        "pos": "T26",
+        "name": "Chandler Phillips",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4587989.png",
+        "status": "Scheduled",
+        "toPar": "-7",
+        "thru": "2026-10-31T16:23:00Z",
+        "rounds": [
+          "-2",
+          "-5",
+          "-",
           ""
         ]
       },
@@ -446,6 +474,7 @@
         "rounds": [
           "-3",
           "-4",
+          "-",
           ""
         ]
       },
@@ -461,6 +490,7 @@
         "rounds": [
           "-3",
           "-4",
+          "-",
           ""
         ]
       },
@@ -476,6 +506,7 @@
         "rounds": [
           "-4",
           "-3",
+          "-",
           ""
         ]
       },
@@ -491,6 +522,7 @@
         "rounds": [
           "-4",
           "-3",
+          "-",
           ""
         ]
       },
@@ -506,6 +538,7 @@
         "rounds": [
           "-5",
           "-2",
+          "-",
           ""
         ]
       },
@@ -515,12 +548,77 @@
         "name": "Rafael Campos",
         "country": "Puerto Rico",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/3683.png",
-        "status": "Scheduled",
+        "status": "In Progress",
         "toPar": "-6",
-        "thru": "2026-10-31T15:50:00Z",
+        "thru": "Thru 1",
         "rounds": [
           "+1",
           "-7",
+          "E",
+          ""
+        ]
+      },
+      {
+        "id": "5548",
+        "pos": "T34",
+        "name": "Adam Hadwin",
+        "country": "Canada",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5548.png",
+        "status": "In Progress",
+        "toPar": "-6",
+        "thru": "Thru 1",
+        "rounds": [
+          "E",
+          "-6",
+          "E",
+          ""
+        ]
+      },
+      {
+        "id": "4791222",
+        "pos": "T34",
+        "name": "Mac Meissner",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4791222.png",
+        "status": "In Progress",
+        "toPar": "-6",
+        "thru": "Thru 1",
+        "rounds": [
+          "-4",
+          "-2",
+          "E",
+          ""
+        ]
+      },
+      {
+        "id": "7120",
+        "pos": "T34",
+        "name": "Marcelo Rozo",
+        "country": "Colombia",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/7120.png",
+        "status": "In Progress",
+        "toPar": "-6",
+        "thru": "Thru 1",
+        "rounds": [
+          "-4",
+          "-2",
+          "E",
+          ""
+        ]
+      },
+      {
+        "id": "11383",
+        "pos": "T34",
+        "name": "Max McGreevy",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11383.png",
+        "status": "In Progress",
+        "toPar": "-6",
+        "thru": "Thru 1",
+        "rounds": [
+          "-5",
+          "-1",
+          "E",
           ""
         ]
       },
@@ -536,21 +634,7 @@
         "rounds": [
           "+1",
           "-7",
-          ""
-        ]
-      },
-      {
-        "id": "5548",
-        "pos": "T34",
-        "name": "Adam Hadwin",
-        "country": "Canada",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5548.png",
-        "status": "Scheduled",
-        "toPar": "-6",
-        "thru": "2026-10-31T15:50:00Z",
-        "rounds": [
-          "E",
-          "-6",
+          "-",
           ""
         ]
       },
@@ -566,6 +650,7 @@
         "rounds": [
           "-1",
           "-5",
+          "-",
           ""
         ]
       },
@@ -581,6 +666,7 @@
         "rounds": [
           "-1",
           "-5",
+          "-",
           ""
         ]
       },
@@ -596,6 +682,7 @@
         "rounds": [
           "-2",
           "-4",
+          "-",
           ""
         ]
       },
@@ -611,6 +698,7 @@
         "rounds": [
           "-2",
           "-4",
+          "-",
           ""
         ]
       },
@@ -626,6 +714,7 @@
         "rounds": [
           "-3",
           "-3",
+          "-",
           ""
         ]
       },
@@ -641,6 +730,7 @@
         "rounds": [
           "-3",
           "-3",
+          "-",
           ""
         ]
       },
@@ -656,36 +746,7 @@
         "rounds": [
           "-3",
           "-3",
-          ""
-        ]
-      },
-      {
-        "id": "4791222",
-        "pos": "T34",
-        "name": "Mac Meissner",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4791222.png",
-        "status": "Scheduled",
-        "toPar": "-6",
-        "thru": "2026-10-31T15:50:00Z",
-        "rounds": [
-          "-4",
-          "-2",
-          ""
-        ]
-      },
-      {
-        "id": "7120",
-        "pos": "T34",
-        "name": "Marcelo Rozo",
-        "country": "Colombia",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/7120.png",
-        "status": "Scheduled",
-        "toPar": "-6",
-        "thru": "2026-10-31T15:50:00Z",
-        "rounds": [
-          "-4",
-          "-2",
+          "-",
           ""
         ]
       },
@@ -701,42 +762,29 @@
         "rounds": [
           "-4",
           "-2",
-          ""
-        ]
-      },
-      {
-        "id": "11383",
-        "pos": "T34",
-        "name": "Max McGreevy",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11383.png",
-        "status": "Scheduled",
-        "toPar": "-6",
-        "thru": "2026-10-31T15:50:00Z",
-        "rounds": [
-          "-5",
-          "-1",
+          "-",
           ""
         ]
       },
       {
         "id": "5147097",
-        "pos": "T34",
+        "pos": "T48",
         "name": "Karl Vilips",
         "country": "Australia",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5147097.png",
-        "status": "Scheduled",
-        "toPar": "-6",
-        "thru": "2026-10-31T15:50:00Z",
+        "status": "In Progress",
+        "toPar": "-5",
+        "thru": "Thru 1",
         "rounds": [
           "-9",
           "+3",
+          "+1",
           ""
         ]
       },
       {
         "id": "4832045",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Cameron Tankersley",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4832045.png",
@@ -746,12 +794,13 @@
         "rounds": [
           "E",
           "-5",
+          "-",
           ""
         ]
       },
       {
         "id": "5215694",
-        "pos": "T49",
+        "pos": "T48",
         "name": "John Daly II",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5215694.png",
@@ -761,27 +810,13 @@
         "rounds": [
           "-1",
           "-4",
-          ""
-        ]
-      },
-      {
-        "id": "4358083",
-        "pos": "T49",
-        "name": "Patrick Fishburn",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4358083.png",
-        "status": "Scheduled",
-        "toPar": "-5",
-        "thru": "2026-10-31T16:34:00Z",
-        "rounds": [
-          "-2",
-          "-3",
+          "-",
           ""
         ]
       },
       {
         "id": "9506",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Jordan Smith",
         "country": "England",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9506.png",
@@ -791,12 +826,29 @@
         "rounds": [
           "-2",
           "-3",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "4358083",
+        "pos": "T48",
+        "name": "Patrick Fishburn",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4358083.png",
+        "status": "Scheduled",
+        "toPar": "-5",
+        "thru": "2026-10-31T16:34:00Z",
+        "rounds": [
+          "-2",
+          "-3",
+          "-",
           ""
         ]
       },
       {
         "id": "5882",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Emiliano Grillo",
         "country": "Argentina",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5882.png",
@@ -806,12 +858,13 @@
         "rounds": [
           "-2",
           "-3",
+          "-",
           ""
         ]
       },
       {
         "id": "4408315",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Vince Whaley",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4408315.png",
@@ -821,12 +874,13 @@
         "rounds": [
           "-3",
           "-2",
+          "-",
           ""
         ]
       },
       {
         "id": "4858859",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Rasmus Neergaard-Petersen",
         "country": "Denmark",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4858859.png",
@@ -836,12 +890,13 @@
         "rounds": [
           "-3",
           "-2",
+          "-",
           ""
         ]
       },
       {
         "id": "10057",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Chad Ramey",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10057.png",
@@ -851,12 +906,13 @@
         "rounds": [
           "-3",
           "-2",
+          "-",
           ""
         ]
       },
       {
         "id": "6196",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Joel Dahmen",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/6196.png",
@@ -866,12 +922,13 @@
         "rounds": [
           "-4",
           "-1",
+          "-",
           ""
         ]
       },
       {
         "id": "8973",
-        "pos": "T49",
+        "pos": "T48",
         "name": "Max Homa",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8973.png",
@@ -881,6 +938,7 @@
         "rounds": [
           "-5",
           "E",
+          "-",
           ""
         ]
       },
@@ -896,6 +954,7 @@
         "rounds": [
           "E",
           "-4",
+          "-",
           ""
         ]
       },
@@ -911,6 +970,7 @@
         "rounds": [
           "E",
           "-4",
+          "-",
           ""
         ]
       },
@@ -926,6 +986,7 @@
         "rounds": [
           "E",
           "-4",
+          "-",
           ""
         ]
       },
@@ -941,6 +1002,7 @@
         "rounds": [
           "E",
           "-4",
+          "-",
           ""
         ]
       },
@@ -956,6 +1018,7 @@
         "rounds": [
           "-1",
           "-3",
+          "-",
           ""
         ]
       },
@@ -971,6 +1034,7 @@
         "rounds": [
           "-1",
           "-3",
+          "-",
           ""
         ]
       },
@@ -986,21 +1050,7 @@
         "rounds": [
           "-2",
           "-2",
-          ""
-        ]
-      },
-      {
-        "id": "5209442",
-        "pos": "T59",
-        "name": "Neal Shipley",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5209442.png",
-        "status": "Scheduled",
-        "toPar": "-4",
-        "thru": "2026-10-31T17:18:00Z",
-        "rounds": [
-          "-3",
-          "-1",
+          "-",
           ""
         ]
       },
@@ -1016,6 +1066,23 @@
         "rounds": [
           "-3",
           "-1",
+          "-",
+          ""
+        ]
+      },
+      {
+        "id": "5209442",
+        "pos": "T59",
+        "name": "Neal Shipley",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5209442.png",
+        "status": "Scheduled",
+        "toPar": "-4",
+        "thru": "2026-10-31T17:18:00Z",
+        "rounds": [
+          "-3",
+          "-1",
+          "-",
           ""
         ]
       },
@@ -1031,6 +1098,7 @@
         "rounds": [
           "-5",
           "+1",
+          "-",
           ""
         ]
       },
