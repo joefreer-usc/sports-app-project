@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T19:37:25Z",
+  "updated": "2026-10-31T22:18:27Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -8,6 +8,32 @@
         "teams": [
           {
             "rank": 1,
+            "id": "83",
+            "name": "Barcelona",
+            "abbr": "BAR",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "11",
+            "won": "10",
+            "drawn": "0",
+            "lost": "1",
+            "gd": "+34",
+            "pts": "30",
+            "note": "Champions League"
+          },
+          {
+            "rank": 2,
             "id": "1068",
             "name": "Atlético Madrid",
             "abbr": "ATM",
@@ -30,32 +56,6 @@
             "lost": "1",
             "gd": "+14",
             "pts": "28",
-            "note": "Champions League"
-          },
-          {
-            "rank": 2,
-            "id": "83",
-            "name": "Barcelona",
-            "abbr": "BAR",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "10",
-            "won": "9",
-            "drawn": "0",
-            "lost": "1",
-            "gd": "+29",
-            "pts": "27",
             "note": "Champions League"
           },
           {
@@ -164,32 +164,6 @@
           },
           {
             "rank": 7,
-            "id": "96",
-            "name": "Alavés",
-            "abbr": "ALA",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2021-08-02T20:09Z"
-              }
-            ],
-            "played": "10",
-            "won": "3",
-            "drawn": "3",
-            "lost": "4",
-            "gd": "+3",
-            "pts": "12",
-            "note": "Conference League qualifying"
-          },
-          {
-            "rank": 8,
             "id": "93",
             "name": "Athletic Club",
             "abbr": "ATH",
@@ -212,10 +186,10 @@
             "lost": "3",
             "gd": "+3",
             "pts": "12",
-            "note": ""
+            "note": "Conference League qualifying"
           },
           {
-            "rank": 9,
+            "rank": 8,
             "id": "102",
             "name": "Villarreal",
             "abbr": "VIL",
@@ -241,7 +215,7 @@
             "note": ""
           },
           {
-            "rank": 10,
+            "rank": 9,
             "id": "85",
             "name": "Celta Vigo",
             "abbr": "CEL",
@@ -263,6 +237,32 @@
             "drawn": "6",
             "lost": "3",
             "gd": "0",
+            "pts": "12",
+            "note": ""
+          },
+          {
+            "rank": 10,
+            "id": "96",
+            "name": "Alavés",
+            "abbr": "ALA",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-08-02T20:09Z"
+              }
+            ],
+            "played": "11",
+            "won": "3",
+            "drawn": "3",
+            "lost": "5",
+            "gd": "-2",
             "pts": "12",
             "note": "Europa League"
           },
