@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-01T20:56:23Z",
+  "updated": "2026-11-01T21:26:30Z",
   "data": {
     "games": [
       {
         "id": "401873026",
         "date": "2026-11-01T18:00Z",
-        "state": "in",
-        "detail": "12:14 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Baltimore Ravens",
           "abbr": "BAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
           "score": "10",
-          "record": "4-3",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         },
@@ -20,22 +20,22 @@
           "name": "Buffalo Bills",
           "abbr": "BUF",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png",
-          "score": "29",
-          "record": "5-1",
+          "score": "36",
+          "record": "6-1",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401873031",
         "date": "2026-11-01T18:00Z",
         "state": "in",
-        "detail": "8:42 - 4th",
+        "detail": "0:11 - 4th",
         "away": {
           "name": "Tennessee Titans",
           "abbr": "TEN",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png",
-          "score": "28",
+          "score": "36",
           "record": "1-6",
           "rank": 0,
           "winner": false
@@ -44,7 +44,7 @@
           "name": "Cincinnati Bengals",
           "abbr": "CIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png",
-          "score": "23",
+          "score": "36",
           "record": "4-2",
           "rank": 0,
           "winner": false
@@ -54,12 +54,12 @@
         "id": "401873024",
         "date": "2026-11-01T18:00Z",
         "state": "in",
-        "detail": "2:24 - 4th",
+        "detail": "End of 4th",
         "away": {
           "name": "Arizona Cardinals",
           "abbr": "ARI",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png",
-          "score": "17",
+          "score": "30",
           "record": "2-5",
           "rank": 0,
           "winner": false
@@ -68,7 +68,31 @@
           "name": "Dallas Cowboys",
           "abbr": "DAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png",
-          "score": "27",
+          "score": "30",
+          "record": "3-4",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401873032",
+        "date": "2026-11-01T21:05Z",
+        "state": "in",
+        "detail": "8:39 - 1st",
+        "away": {
+          "name": "Los Angeles Chargers",
+          "abbr": "LAC",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png",
+          "score": "0",
+          "record": "0-6",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Los Angeles Rams",
+          "abbr": "LAR",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
+          "score": "0",
           "record": "3-4",
           "rank": 0,
           "winner": false
@@ -77,14 +101,14 @@
       {
         "id": "401873030",
         "date": "2026-11-01T18:00Z",
-        "state": "in",
-        "detail": "3:51 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Minnesota Vikings",
           "abbr": "MIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png",
           "score": "15",
-          "record": "6-0",
+          "record": "6-1",
           "rank": 0,
           "winner": false
         },
@@ -93,31 +117,31 @@
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png",
           "score": "19",
-          "record": "4-2",
+          "record": "5-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401873029",
         "date": "2026-11-01T18:00Z",
-        "state": "in",
-        "detail": "1:17 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Las Vegas Raiders",
           "abbr": "LV",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png",
-          "score": "35",
-          "record": "3-4",
+          "score": "38",
+          "record": "4-4",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "New York Jets",
           "abbr": "NYJ",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png",
           "score": "33",
-          "record": "2-5",
+          "record": "2-6",
           "rank": 0,
           "winner": false
         }
@@ -125,14 +149,14 @@
       {
         "id": "401873027",
         "date": "2026-11-01T18:00Z",
-        "state": "in",
-        "detail": "3:38 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Cleveland Browns",
           "abbr": "CLE",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png",
           "score": "6",
-          "record": "5-2",
+          "record": "5-3",
           "rank": 0,
           "winner": false
         },
@@ -141,9 +165,9 @@
           "abbr": "PIT",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png",
           "score": "27",
-          "record": "5-2",
+          "record": "6-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -173,14 +197,14 @@
       {
         "id": "401873028",
         "date": "2026-11-01T18:00Z",
-        "state": "in",
-        "detail": "4:45 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Indianapolis Colts",
           "abbr": "IND",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png",
           "score": "7",
-          "record": "2-5",
+          "record": "2-6",
           "rank": 0,
           "winner": false
         },
@@ -189,40 +213,16 @@
           "abbr": "JAX",
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png",
           "score": "42",
-          "record": "4-2",
+          "record": "5-2",
           "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401873032",
-        "date": "2026-11-01T21:05Z",
-        "state": "pre",
-        "detail": "11/1 - 4:05 PM EST",
-        "away": {
-          "name": "Los Angeles Chargers",
-          "abbr": "LAC",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png",
-          "score": "0",
-          "record": "0-6",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Los Angeles Rams",
-          "abbr": "LAR",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
-          "score": "0",
-          "record": "3-4",
-          "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401873033",
         "date": "2026-11-01T21:25Z",
-        "state": "pre",
-        "detail": "11/1 - 4:25 PM EST",
+        "state": "in",
+        "detail": "15:00 - 1st",
         "away": {
           "name": "Kansas City Chiefs",
           "abbr": "KC",
@@ -245,8 +245,8 @@
       {
         "id": "401873034",
         "date": "2026-11-01T21:25Z",
-        "state": "pre",
-        "detail": "11/1 - 4:25 PM EST",
+        "state": "in",
+        "detail": "15:00 - 1st",
         "away": {
           "name": "New England Patriots",
           "abbr": "NE",
