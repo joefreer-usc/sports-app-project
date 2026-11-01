@@ -1,55 +1,7 @@
 {
-  "updated": "2026-11-01T06:15:43Z",
+  "updated": "2026-11-01T07:18:54Z",
   "data": {
     "games": [
-      {
-        "id": "401860908",
-        "date": "2026-11-01T02:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Texas State Bobcats",
-          "abbr": "TXST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
-          "score": "45",
-          "record": "4-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Boise State Broncos",
-          "abbr": "BOIS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/68.png",
-          "score": "46",
-          "record": "7-1",
-          "rank": 20,
-          "winner": true
-        }
-      },
-      {
-        "id": "401860924",
-        "date": "2026-11-01T03:00Z",
-        "state": "in",
-        "detail": "4:21 - 4th",
-        "away": {
-          "name": "Oregon State Beavers",
-          "abbr": "ORST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
-          "score": "16",
-          "record": "5-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Fresno State Bulldogs",
-          "abbr": "FRES",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
-          "score": "38",
-          "record": "4-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401871071",
         "date": "2026-10-27T23:00Z",
@@ -599,6 +551,30 @@
           "score": "34",
           "record": "5-3",
           "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401860908",
+        "date": "2026-11-01T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Texas State Bobcats",
+          "abbr": "TXST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
+          "score": "45",
+          "record": "4-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Boise State Broncos",
+          "abbr": "BOIS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/68.png",
+          "score": "46",
+          "record": "7-1",
+          "rank": 20,
           "winner": true
         }
       },
@@ -1341,6 +1317,30 @@
           "abbr": "UNLV",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png",
           "score": "31",
+          "record": "5-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401860924",
+        "date": "2026-11-01T03:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Oregon State Beavers",
+          "abbr": "ORST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
+          "score": "22",
+          "record": "5-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Fresno State Bulldogs",
+          "abbr": "FRES",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
+          "score": "38",
           "record": "5-3",
           "rank": 0,
           "winner": true
