@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01T22:00:44Z",
+  "updated": "2026-11-01T22:33:24Z",
   "data": {
     "event": {
       "id": "401850978",
@@ -22,7 +22,7 @@
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11332.png",
         "status": "In Progress",
         "toPar": "-26",
-        "thru": "Thru 14",
+        "thru": "Thru 16",
         "rounds": [
           "-4",
           "-10",
@@ -31,30 +31,14 @@
         ]
       },
       {
-        "id": "4426182",
-        "pos": "T2",
-        "name": "Steven Fisk",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4426182.png",
-        "status": "In Progress",
-        "toPar": "-20",
-        "thru": "Thru 17",
-        "rounds": [
-          "-4",
-          "-5",
-          "-3",
-          "-8"
-        ]
-      },
-      {
         "id": "4351896",
         "pos": "T2",
         "name": "Kristoffer Ventura",
         "country": "Norway",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4351896.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-20",
-        "thru": "Thru 16",
+        "thru": "F",
         "rounds": [
           "-2",
           "-5",
@@ -63,19 +47,19 @@
         ]
       },
       {
-        "id": "6931",
+        "id": "4426182",
         "pos": "T2",
-        "name": "Mackenzie Hughes",
-        "country": "Canada",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/6931.png",
-        "status": "In Progress",
+        "name": "Steven Fisk",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4426182.png",
+        "status": "F",
         "toPar": "-20",
-        "thru": "Thru 15",
+        "thru": "F",
         "rounds": [
-          "-6",
           "-4",
-          "-4",
-          "-6"
+          "-5",
+          "-3",
+          "-8"
         ]
       },
       {
@@ -86,7 +70,7 @@
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11456.png",
         "status": "In Progress",
         "toPar": "-20",
-        "thru": "Thru 14",
+        "thru": "Thru 16",
         "rounds": [
           "-6",
           "-3",
@@ -95,30 +79,46 @@
         ]
       },
       {
-        "id": "11101",
-        "pos": "6",
-        "name": "Max Greyserman",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11101.png",
+        "id": "6931",
+        "pos": "5",
+        "name": "Mackenzie Hughes",
+        "country": "Canada",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/6931.png",
         "status": "In Progress",
         "toPar": "-19",
-        "thru": "Thru 14",
+        "thru": "Thru 17",
         "rounds": [
           "-6",
           "-4",
+          "-4",
+          "-5"
+        ]
+      },
+      {
+        "id": "9364",
+        "pos": "T6",
+        "name": "Erik van Rooyen",
+        "country": "South Africa",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9364.png",
+        "status": "F",
+        "toPar": "-18",
+        "thru": "F",
+        "rounds": [
+          "-2",
+          "-4",
           "-5",
-          "-4"
+          "-7"
         ]
       },
       {
         "id": "9525",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Brian Campbell",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9525.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-18",
-        "thru": "Thru 16",
+        "thru": "F",
         "rounds": [
           "-4",
           "-3",
@@ -128,13 +128,13 @@
       },
       {
         "id": "4602673",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Tom Kim",
         "country": "South Korea",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4602673.png",
         "status": "In Progress",
         "toPar": "-18",
-        "thru": "Thru 15",
+        "thru": "Thru 17",
         "rounds": [
           "-4",
           "-3",
@@ -144,13 +144,13 @@
       },
       {
         "id": "4837368",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Pierceson Coody",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4837368.png",
         "status": "In Progress",
         "toPar": "-18",
-        "thru": "Thru 14",
+        "thru": "Thru 16",
         "rounds": [
           "-6",
           "-2",
@@ -160,13 +160,13 @@
       },
       {
         "id": "4404992",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Ben Griffin",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4404992.png",
         "status": "In Progress",
         "toPar": "-18",
-        "thru": "Thru 14",
+        "thru": "Thru 16",
         "rounds": [
           "-7",
           "-4",
@@ -176,13 +176,13 @@
       },
       {
         "id": "10596",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Matthieu Pavon",
         "country": "France",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10596.png",
         "status": "In Progress",
         "toPar": "-18",
-        "thru": "Thru 14",
+        "thru": "Thru 15",
         "rounds": [
           "-6",
           "-5",
@@ -207,6 +207,22 @@
         ]
       },
       {
+        "id": "5075548",
+        "pos": "T12",
+        "name": "Kensei Hirata",
+        "country": "Japan",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5075548.png",
+        "status": "F",
+        "toPar": "-17",
+        "thru": "F",
+        "rounds": [
+          "-8",
+          "-3",
+          "-2",
+          "-4"
+        ]
+      },
+      {
         "id": "5221421",
         "pos": "T12",
         "name": "Kihei Akina",
@@ -214,7 +230,7 @@
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5221421.png",
         "status": "In Progress",
         "toPar": "-17",
-        "thru": "Thru 15",
+        "thru": "Thru 17",
         "rounds": [
           "-4",
           "-7",
@@ -223,56 +239,24 @@
         ]
       },
       {
-        "id": "9364",
-        "pos": "T14",
-        "name": "Erik van Rooyen",
-        "country": "South Africa",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9364.png",
-        "status": "In Progress",
-        "toPar": "-16",
-        "thru": "Thru 17",
-        "rounds": [
-          "-2",
-          "-4",
-          "-5",
-          "-5"
-        ]
-      },
-      {
-        "id": "5211425",
-        "pos": "T14",
-        "name": "Blades Brown",
+        "id": "11101",
+        "pos": "T12",
+        "name": "Max Greyserman",
         "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5211425.png",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11101.png",
         "status": "In Progress",
-        "toPar": "-16",
+        "toPar": "-17",
         "thru": "Thru 16",
         "rounds": [
-          "-3",
           "-6",
           "-4",
-          "-3"
-        ]
-      },
-      {
-        "id": "5075548",
-        "pos": "T14",
-        "name": "Kensei Hirata",
-        "country": "Japan",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5075548.png",
-        "status": "In Progress",
-        "toPar": "-16",
-        "thru": "Thru 16",
-        "rounds": [
-          "-8",
-          "-3",
-          "-2",
-          "-3"
+          "-5",
+          "-2"
         ]
       },
       {
         "id": "5209442",
-        "pos": "T17",
+        "pos": "T16",
         "name": "Neal Shipley",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5209442.png",
@@ -288,7 +272,7 @@
       },
       {
         "id": "9506",
-        "pos": "T17",
+        "pos": "T16",
         "name": "Jordan Smith",
         "country": "England",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9506.png",
@@ -304,7 +288,7 @@
       },
       {
         "id": "5077389",
-        "pos": "T17",
+        "pos": "T16",
         "name": "Ben James",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5077389.png",
@@ -320,7 +304,7 @@
       },
       {
         "id": "4832045",
-        "pos": "T20",
+        "pos": "T19",
         "name": "Cameron Tankersley",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4832045.png",
@@ -336,7 +320,7 @@
       },
       {
         "id": "8910",
-        "pos": "T20",
+        "pos": "T19",
         "name": "Ben Silverman",
         "country": "Canada",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8910.png",
@@ -351,19 +335,35 @@
         ]
       },
       {
-        "id": "4589438",
-        "pos": "T20",
-        "name": "Harry Hall",
-        "country": "England",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4589438.png",
-        "status": "In Progress",
+        "id": "9243",
+        "pos": "T19",
+        "name": "Christiaan Bezuidenhout",
+        "country": "South Africa",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9243.png",
+        "status": "F",
         "toPar": "-14",
-        "thru": "Thru 17",
+        "thru": "F",
         "rounds": [
           "-2",
-          "-5",
           "-4",
-          "-3"
+          "-6",
+          "-2"
+        ]
+      },
+      {
+        "id": "5211425",
+        "pos": "T19",
+        "name": "Blades Brown",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5211425.png",
+        "status": "F",
+        "toPar": "-14",
+        "thru": "F",
+        "rounds": [
+          "-3",
+          "-6",
+          "-4",
+          "-1"
         ]
       },
       {
@@ -431,24 +431,40 @@
         ]
       },
       {
-        "id": "9243",
+        "id": "4589438",
         "pos": "T23",
-        "name": "Christiaan Bezuidenhout",
-        "country": "South Africa",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9243.png",
-        "status": "In Progress",
+        "name": "Harry Hall",
+        "country": "England",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4589438.png",
+        "status": "F",
         "toPar": "-13",
-        "thru": "Thru 16",
+        "thru": "F",
         "rounds": [
           "-2",
+          "-5",
           "-4",
-          "-6",
+          "-2"
+        ]
+      },
+      {
+        "id": "4587989",
+        "pos": "T23",
+        "name": "Chandler Phillips",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4587989.png",
+        "status": "F",
+        "toPar": "-13",
+        "thru": "F",
+        "rounds": [
+          "-2",
+          "-5",
+          "-5",
           "-1"
         ]
       },
       {
         "id": "11383",
-        "pos": "T28",
+        "pos": "T29",
         "name": "Max McGreevy",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11383.png",
@@ -464,7 +480,7 @@
       },
       {
         "id": "9221",
-        "pos": "T28",
+        "pos": "T29",
         "name": "Haotong Li",
         "country": "China",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9221.png",
@@ -480,7 +496,7 @@
       },
       {
         "id": "4699329",
-        "pos": "T28",
+        "pos": "T29",
         "name": "Jesper Svensson",
         "country": "Sweden",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4699329.png",
@@ -496,7 +512,7 @@
       },
       {
         "id": "11393",
-        "pos": "T28",
+        "pos": "T29",
         "name": "Garrick Higgo",
         "country": "South Africa",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11393.png",
@@ -512,7 +528,7 @@
       },
       {
         "id": "5215039",
-        "pos": "T28",
+        "pos": "T29",
         "name": "Luke Clanton",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5215039.png",
@@ -524,22 +540,6 @@
           "-4",
           "-2",
           "-1"
-        ]
-      },
-      {
-        "id": "4587989",
-        "pos": "T28",
-        "name": "Chandler Phillips",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4587989.png",
-        "status": "In Progress",
-        "toPar": "-12",
-        "thru": "Thru 16",
-        "rounds": [
-          "-2",
-          "-5",
-          "-5",
-          "E"
         ]
       },
       {
@@ -636,6 +636,22 @@
           "-4",
           "E",
           "E"
+        ]
+      },
+      {
+        "id": "10863",
+        "pos": "T40",
+        "name": "Cam Davis",
+        "country": "Australia",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10863.png",
+        "status": "F",
+        "toPar": "-10",
+        "thru": "F",
+        "rounds": [
+          "E",
+          "-4",
+          "+2",
+          "-8"
         ]
       },
       {
@@ -751,22 +767,6 @@
         ]
       },
       {
-        "id": "10863",
-        "pos": "47",
-        "name": "Cam Davis",
-        "country": "Australia",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10863.png",
-        "status": "In Progress",
-        "toPar": "-9",
-        "thru": "Thru 16",
-        "rounds": [
-          "E",
-          "-4",
-          "+2",
-          "-7"
-        ]
-      },
-      {
         "id": "9126",
         "pos": "T48",
         "name": "Corey Conners",
@@ -863,6 +863,22 @@
         ]
       },
       {
+        "id": "4358083",
+        "pos": "T54",
+        "name": "Patrick Fishburn",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4358083.png",
+        "status": "F",
+        "toPar": "-7",
+        "thru": "F",
+        "rounds": [
+          "-2",
+          "-3",
+          "+2",
+          "-4"
+        ]
+      },
+      {
         "id": "4425898",
         "pos": "T54",
         "name": "Austin Eckroat",
@@ -908,22 +924,6 @@
           "-2",
           "-2",
           "+1"
-        ]
-      },
-      {
-        "id": "4358083",
-        "pos": "T54",
-        "name": "Patrick Fishburn",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4358083.png",
-        "status": "In Progress",
-        "toPar": "-7",
-        "thru": "Thru 17",
-        "rounds": [
-          "-2",
-          "-3",
-          "+2",
-          "-4"
         ]
       },
       {
@@ -975,35 +975,35 @@
         ]
       },
       {
-        "id": "10048",
-        "pos": "T61",
-        "name": "Nick Hardy",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10048.png",
-        "status": "In Progress",
-        "toPar": "-5",
-        "thru": "Thru 17",
-        "rounds": [
-          "-1",
-          "-3",
-          "E",
-          "-1"
-        ]
-      },
-      {
         "id": "4423323",
         "pos": "T61",
         "name": "Dylan Wu",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4423323.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-5",
-        "thru": "Thru 16",
+        "thru": "F",
         "rounds": [
           "-2",
           "-2",
           "+1",
           "-2"
+        ]
+      },
+      {
+        "id": "10048",
+        "pos": "T61",
+        "name": "Nick Hardy",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10048.png",
+        "status": "F",
+        "toPar": "-5",
+        "thru": "F",
+        "rounds": [
+          "-1",
+          "-3",
+          "E",
+          "-1"
         ]
       },
       {
@@ -1023,6 +1023,22 @@
         ]
       },
       {
+        "id": "9600",
+        "pos": "T64",
+        "name": "Paul Peterson",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9600.png",
+        "status": "F",
+        "toPar": "-3",
+        "thru": "F",
+        "rounds": [
+          "E",
+          "-4",
+          "+2",
+          "-1"
+        ]
+      },
+      {
         "id": "3257",
         "pos": "T64",
         "name": "David Skinns",
@@ -1039,30 +1055,14 @@
         ]
       },
       {
-        "id": "9600",
-        "pos": "T64",
-        "name": "Paul Peterson",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9600.png",
-        "status": "In Progress",
-        "toPar": "-3",
-        "thru": "Thru 16",
-        "rounds": [
-          "E",
-          "-4",
-          "+2",
-          "-1"
-        ]
-      },
-      {
         "id": "8973",
         "pos": "66",
         "name": "Max Homa",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8973.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-2",
-        "thru": "Thru 16",
+        "thru": "F",
         "rounds": [
           "-5",
           "E",
@@ -1076,9 +1076,9 @@
         "name": "Jeremy Paul",
         "country": "Germany",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10588.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-1",
-        "thru": "Thru 16",
+        "thru": "F",
         "rounds": [
           "-4",
           "-4",
@@ -1092,9 +1092,9 @@
         "name": "Chandler Blanchet",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4618114.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "E",
-        "thru": "Thru 17",
+        "thru": "F",
         "rounds": [
           "E",
           "-4",
