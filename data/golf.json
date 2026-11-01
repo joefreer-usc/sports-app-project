@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-01T23:09:32Z",
+  "updated": "2026-11-01T23:39:49Z",
   "data": {
     "event": {
       "id": "401850978",
       "name": "VidantaWorld Mexico Open",
       "start": "2026-10-29T04:00Z",
       "end": "2026-11-01T04:00Z",
-      "state": "in",
-      "detail": "Round 4 - In Progress",
+      "state": "post",
+      "detail": "Final",
       "round": 4,
       "season": 2026,
       "cutLine": "-3",
@@ -20,9 +20,9 @@
         "name": "Andrew Novak",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11332.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-25",
-        "thru": "Thru 17",
+        "thru": "F",
         "rounds": [
           "-4",
           "-10",
@@ -63,24 +63,8 @@
         ]
       },
       {
-        "id": "11456",
-        "pos": "T2",
-        "name": "Doug Ghim",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11456.png",
-        "status": "In Progress",
-        "toPar": "-20",
-        "thru": "Thru 17",
-        "rounds": [
-          "-6",
-          "-3",
-          "-7",
-          "-4"
-        ]
-      },
-      {
         "id": "6931",
-        "pos": "T5",
+        "pos": "T4",
         "name": "Mackenzie Hughes",
         "country": "Canada",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/6931.png",
@@ -96,7 +80,7 @@
       },
       {
         "id": "4404992",
-        "pos": "T5",
+        "pos": "T4",
         "name": "Ben Griffin",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4404992.png",
@@ -112,7 +96,7 @@
       },
       {
         "id": "9364",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Erik van Rooyen",
         "country": "South Africa",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9364.png",
@@ -128,7 +112,7 @@
       },
       {
         "id": "9525",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Brian Campbell",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9525.png",
@@ -144,7 +128,7 @@
       },
       {
         "id": "4602673",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Tom Kim",
         "country": "South Korea",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4602673.png",
@@ -160,7 +144,7 @@
       },
       {
         "id": "4837368",
-        "pos": "T7",
+        "pos": "T6",
         "name": "Pierceson Coody",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/4837368.png",
@@ -172,6 +156,22 @@
           "-2",
           "-7",
           "-3"
+        ]
+      },
+      {
+        "id": "11456",
+        "pos": "T6",
+        "name": "Doug Ghim",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/11456.png",
+        "status": "F",
+        "toPar": "-18",
+        "thru": "F",
+        "rounds": [
+          "-6",
+          "-3",
+          "-7",
+          "-2"
         ]
       },
       {
@@ -228,9 +228,9 @@
         "name": "Matthieu Pavon",
         "country": "France",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/10596.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-17",
-        "thru": "Thru 17",
+        "thru": "F",
         "rounds": [
           "-6",
           "-5",
