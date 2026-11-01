@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-01T05:30:48Z",
+  "updated": "2026-11-01T06:15:43Z",
   "data": {
     "games": [
       {
         "id": "401860908",
         "date": "2026-11-01T02:00Z",
-        "state": "in",
-        "detail": "6:15 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Texas State Bobcats",
           "abbr": "TXST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
-          "score": "39",
-          "record": "4-3",
+          "score": "45",
+          "record": "4-4",
           "rank": 0,
           "winner": false
         },
@@ -20,41 +20,17 @@
           "name": "Boise State Broncos",
           "abbr": "BOIS",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/68.png",
-          "score": "34",
-          "record": "6-1",
+          "score": "46",
+          "record": "7-1",
           "rank": 20,
-          "winner": false
-        }
-      },
-      {
-        "id": "401864530",
-        "date": "2026-11-01T02:30Z",
-        "state": "in",
-        "detail": "7:21 - 4th",
-        "away": {
-          "name": "Northern Illinois Huskies",
-          "abbr": "NIU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2459.png",
-          "score": "24",
-          "record": "0-7",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UNLV Rebels",
-          "abbr": "UNLV",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png",
-          "score": "31",
-          "record": "4-3",
-          "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401860924",
         "date": "2026-11-01T03:00Z",
         "state": "in",
-        "detail": "1:35 - 3rd",
+        "detail": "4:21 - 4th",
         "away": {
           "name": "Oregon State Beavers",
           "abbr": "ORST",
@@ -68,7 +44,7 @@
           "name": "Fresno State Bulldogs",
           "abbr": "FRES",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
-          "score": "37",
+          "score": "38",
           "record": "4-3",
           "rank": 0,
           "winner": false
@@ -1342,6 +1318,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
           "score": "49",
           "record": "7-2",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401864530",
+        "date": "2026-11-01T02:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Northern Illinois Huskies",
+          "abbr": "NIU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2459.png",
+          "score": "24",
+          "record": "0-8",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UNLV Rebels",
+          "abbr": "UNLV",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png",
+          "score": "31",
+          "record": "5-3",
           "rank": 0,
           "winner": true
         }
