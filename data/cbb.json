@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-02T06:43:13Z",
+  "updated": "2026-11-02T08:04:46Z",
   "data": {
     "games": [
-      {
-        "id": "401920409",
-        "date": "2026-11-02T04:59Z",
-        "state": "in",
-        "detail": "4:50 - 2nd",
-        "away": {
-          "name": "Liberty Flames",
-          "abbr": "LIB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png",
-          "score": "52",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "High Point Panthers",
-          "abbr": "HPU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2272.png",
-          "score": "68",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401920982",
         "date": "2026-11-01T14:30Z",
@@ -48,6 +24,30 @@
           "record": "0-1",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401920409",
+        "date": "2026-11-02T04:59Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Liberty Flames",
+          "abbr": "LIB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png",
+          "score": "57",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "High Point Panthers",
+          "abbr": "HPU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2272.png",
+          "score": "72",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -5277,7 +5277,7 @@
           "abbr": "HPU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2272.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         }
