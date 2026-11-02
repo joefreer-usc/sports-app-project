@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T20:52:57Z",
+  "updated": "2026-11-02T21:29:17Z",
   "data": {
     "games": [
       {
@@ -27,16 +27,40 @@
         }
       },
       {
+        "id": "401920491",
+        "date": "2026-11-02T21:00Z",
+        "state": "in",
+        "detail": "3:16 - 1st",
+        "away": {
+          "name": "USC Trojans",
+          "abbr": "USC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
+          "score": "12",
+          "record": "0-0",
+          "rank": 3,
+          "winner": false
+        },
+        "home": {
+          "name": "UNLV Lady Rebels",
+          "abbr": "UNLV",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png",
+          "score": "9",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401918896",
         "date": "2026-11-02T19:30Z",
-        "state": "in",
-        "detail": "4:10 - 3rd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Lehigh Mountain Hawks",
           "abbr": "LEH",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2329.png",
-          "score": "30",
-          "record": "0-0",
+          "score": "53",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
@@ -44,22 +68,22 @@
           "name": "UCLA Bruins",
           "abbr": "UCLA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
-          "score": "44",
-          "record": "0-0",
+          "score": "73",
+          "record": "1-0",
           "rank": 11,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401906088",
         "date": "2026-11-02T19:50Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "7:42 - 4th",
         "away": {
           "name": "Oklahoma Sooners",
           "abbr": "OU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/201.png",
-          "score": "39",
+          "score": "78",
           "record": "0-0",
           "rank": 21,
           "winner": false
@@ -68,57 +92,9 @@
           "name": "North Carolina Tar Heels",
           "abbr": "UNC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/153.png",
-          "score": "38",
+          "score": "60",
           "record": "0-0",
           "rank": 12,
-          "winner": false
-        }
-      },
-      {
-        "id": "401926957",
-        "date": "2026-11-02T19:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Saint Martin's Saints",
-          "abbr": "STMA",
-          "logo": "https://a.espncdn.com/guid/764b3a05-0924-547d-5cb8-61ec770baa0f/logos/default.png",
-          "score": "47",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Idaho Vandals",
-          "abbr": "IDHO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/70.png",
-          "score": "71",
-          "record": "1-0",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401921305",
-        "date": "2026-11-02T19:00Z",
-        "state": "in",
-        "detail": "3:25 - 4th",
-        "away": {
-          "name": "Lafayette Leopards",
-          "abbr": "LAF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/322.png",
-          "score": "34",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "St. John's Red Storm",
-          "abbr": "SJU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2599.png",
-          "score": "90",
-          "record": "0-0",
-          "rank": 0,
           "winner": false
         }
       },
@@ -126,12 +102,12 @@
         "id": "401925979",
         "date": "2026-11-02T20:00Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "9:49 - 4th",
         "away": {
           "name": "Trinity College of Jacksonville Eagles",
           "abbr": "TCJ",
           "logo": "",
-          "score": "19",
+          "score": "31",
           "record": "",
           "rank": 0,
           "winner": false
@@ -140,7 +116,55 @@
           "name": "South Carolina State Lady Bulldogs",
           "abbr": "SCST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2569.png",
-          "score": "54",
+          "score": "88",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401927980",
+        "date": "2026-11-02T21:00Z",
+        "state": "in",
+        "detail": "0:15 - 1st",
+        "away": {
+          "name": "Chowan Hawks",
+          "abbr": "CWAN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2804.png",
+          "score": "17",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "William & Mary Tribe",
+          "abbr": "W&M",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png",
+          "score": "18",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401913810",
+        "date": "2026-11-02T21:00Z",
+        "state": "in",
+        "detail": "7:08 - 2nd",
+        "away": {
+          "name": "Saint Anselm Hawks",
+          "abbr": "SANS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2830.png",
+          "score": "18",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UMass Lowell River Hawks",
+          "abbr": "UML",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2349.png",
+          "score": "29",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -771,75 +795,51 @@
         }
       },
       {
-        "id": "401920491",
-        "date": "2026-11-02T21:00Z",
-        "state": "pre",
-        "detail": "11/2 - 4:00 PM EST",
+        "id": "401926957",
+        "date": "2026-11-02T19:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "USC Trojans",
-          "abbr": "USC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
-          "score": "0",
-          "record": "0-0",
-          "rank": 3,
-          "winner": false
-        },
-        "home": {
-          "name": "UNLV Lady Rebels",
-          "abbr": "UNLV",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png",
-          "score": "0",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401927980",
-        "date": "2026-11-02T21:00Z",
-        "state": "pre",
-        "detail": "11/2 - 4:00 PM EST",
-        "away": {
-          "name": "Chowan Hawks",
-          "abbr": "CWAN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2804.png",
-          "score": "0",
+          "name": "Saint Martin's Saints",
+          "abbr": "STMA",
+          "logo": "https://a.espncdn.com/guid/764b3a05-0924-547d-5cb8-61ec770baa0f/logos/default.png",
+          "score": "47",
           "record": "",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "William & Mary Tribe",
-          "abbr": "W&M",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png",
-          "score": "0",
-          "record": "0-0",
+          "name": "Idaho Vandals",
+          "abbr": "IDHO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/70.png",
+          "score": "71",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
-        "id": "401913810",
-        "date": "2026-11-02T21:00Z",
-        "state": "pre",
-        "detail": "11/2 - 4:00 PM EST",
+        "id": "401921305",
+        "date": "2026-11-02T19:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Saint Anselm Hawks",
-          "abbr": "SANS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2830.png",
-          "score": "0",
-          "record": "",
+          "name": "Lafayette Leopards",
+          "abbr": "LAF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/322.png",
+          "score": "37",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "UMass Lowell River Hawks",
-          "abbr": "UML",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2349.png",
-          "score": "0",
-          "record": "0-0",
+          "name": "St. John's Red Storm",
+          "abbr": "SJU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2599.png",
+          "score": "95",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
