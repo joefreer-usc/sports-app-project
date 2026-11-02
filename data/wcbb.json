@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T18:27:11Z",
+  "updated": "2026-11-02T19:24:15Z",
   "data": {
     "games": [
       {
@@ -29,14 +29,14 @@
       {
         "id": "401918849",
         "date": "2026-11-02T17:00Z",
-        "state": "in",
-        "detail": "5:12 - 3rd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Maryland Terrapins",
           "abbr": "MD",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/120.png",
-          "score": "48",
-          "record": "0-0",
+          "score": "93",
+          "record": "0-1",
           "rank": 20,
           "winner": false
         },
@@ -44,177 +44,33 @@
           "name": "South Carolina Gamecocks",
           "abbr": "SC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png",
-          "score": "72",
-          "record": "0-0",
+          "score": "101",
+          "record": "1-0",
           "rank": 1,
-          "winner": false
+          "winner": true
         }
       },
       {
-        "id": "401916067",
-        "date": "2026-11-02T17:00Z",
+        "id": "401927836",
+        "date": "2026-11-02T19:00Z",
         "state": "in",
-        "detail": "1:18 - 3rd",
+        "detail": "8:38 - 2nd",
         "away": {
-          "name": "Lipscomb Bisons",
-          "abbr": "LIP",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/288.png",
-          "score": "31",
+          "name": "UC San Diego Tritons",
+          "abbr": "UCSD",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/28.png",
+          "score": "21",
           "record": "0-0",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Vanderbilt Commodores",
-          "abbr": "VAN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png",
-          "score": "86",
+          "name": "Washington Huskies",
+          "abbr": "WASH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
+          "score": "22",
           "record": "0-0",
-          "rank": 8,
-          "winner": false
-        }
-      },
-      {
-        "id": "401923434",
-        "date": "2026-11-02T17:00Z",
-        "state": "in",
-        "detail": "1:37 - 3rd",
-        "away": {
-          "name": "Alcorn State Lady Braves",
-          "abbr": "ALCN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2016.png",
-          "score": "27",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Ole Miss Rebels",
-          "abbr": "MISS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
-          "score": "55",
-          "record": "0-0",
-          "rank": 19,
-          "winner": false
-        }
-      },
-      {
-        "id": "401929798",
-        "date": "2026-11-02T16:30Z",
-        "state": "in",
-        "detail": "3:11 - 4th",
-        "away": {
-          "name": "Oklahoma Christian Eagles",
-          "abbr": "OKCU",
-          "logo": "",
-          "score": "33",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "East Texas A&M Lions",
-          "abbr": "ETAM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2837.png",
-          "score": "78",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401927514",
-        "date": "2026-11-02T17:00Z",
-        "state": "in",
-        "detail": "3:03 - 3rd",
-        "away": {
-          "name": "Mississippi Christian Choctaws",
-          "abbr": "MSC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2401.png",
-          "score": "40",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Southern Miss Lady Eagles",
-          "abbr": "USM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2572.png",
-          "score": "63",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401920165",
-        "date": "2026-11-02T17:00Z",
-        "state": "in",
-        "detail": "End of 3rd",
-        "away": {
-          "name": "Texas A&M-Kingsville Javelinas",
-          "abbr": "TAMK",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2658.png",
-          "score": "37",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "McNeese Cowgirls",
-          "abbr": "MCN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2377.png",
-          "score": "53",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401918815",
-        "date": "2026-11-02T17:00Z",
-        "state": "in",
-        "detail": "3:41 - 3rd",
-        "away": {
-          "name": "Baker Wildcats",
-          "abbr": "BAK",
-          "logo": "",
-          "score": "24",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Kansas City Roos",
-          "abbr": "KC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/140.png",
-          "score": "80",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401911503",
-        "date": "2026-11-02T17:00Z",
-        "state": "in",
-        "detail": "8:10 - 4th",
-        "away": {
-          "name": "Radford Highlanders",
-          "abbr": "RAD",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2515.png",
-          "score": "39",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Clemson Tigers",
-          "abbr": "CLEM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/228.png",
-          "score": "53",
-          "record": "0-0",
-          "rank": 0,
+          "rank": 16,
           "winner": false
         }
       },
@@ -222,12 +78,12 @@
         "id": "401928217",
         "date": "2026-11-02T18:00Z",
         "state": "in",
-        "detail": "7:02 - 2nd",
+        "detail": "8:57 - 4th",
         "away": {
           "name": "Bushnell Beacons",
           "abbr": "BHL",
           "logo": "",
-          "score": "12",
+          "score": "34",
           "record": "",
           "rank": 0,
           "winner": false
@@ -236,7 +92,7 @@
           "name": "Boise State Broncos",
           "abbr": "BOIS",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/68.png",
-          "score": "23",
+          "score": "66",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -246,12 +102,12 @@
         "id": "401927011",
         "date": "2026-11-02T18:00Z",
         "state": "in",
-        "detail": "End of 1st",
+        "detail": "4:33 - 3rd",
         "away": {
           "name": "Life Pacific Warriors",
           "abbr": "LPU",
           "logo": "",
-          "score": "13",
+          "score": "21",
           "record": "",
           "rank": 0,
           "winner": false
@@ -260,7 +116,7 @@
           "name": "Utah Tech Trailblazers",
           "abbr": "UTU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png",
-          "score": "20",
+          "score": "68",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -270,12 +126,12 @@
         "id": "401926990",
         "date": "2026-11-02T18:00Z",
         "state": "in",
-        "detail": "9:53 - 2nd",
+        "detail": "0:09 - 3rd",
         "away": {
           "name": "Black Hills State Yellow Jackets",
           "abbr": "BHSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2069.png",
-          "score": "6",
+          "score": "31",
           "record": "",
           "rank": 0,
           "winner": false
@@ -284,7 +140,7 @@
           "name": "Montana State Bobcats",
           "abbr": "MTST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/147.png",
-          "score": "19",
+          "score": "61",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -294,12 +150,12 @@
         "id": "401923478",
         "date": "2026-11-02T18:00Z",
         "state": "in",
-        "detail": "9:10 - 2nd",
+        "detail": "2:14 - 3rd",
         "away": {
           "name": "Hampton Lady Pirates",
           "abbr": "HAMP",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2261.png",
-          "score": "16",
+          "score": "37",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -308,7 +164,7 @@
           "name": "Houston Cougars",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "20",
+          "score": "57",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -318,12 +174,12 @@
         "id": "401921434",
         "date": "2026-11-02T18:00Z",
         "state": "in",
-        "detail": "End of 1st",
+        "detail": "2:56 - 3rd",
         "away": {
           "name": "San José State Spartans",
           "abbr": "SJSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
-          "score": "14",
+          "score": "28",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -332,7 +188,7 @@
           "name": "Nebraska Cornhuskers",
           "abbr": "NEB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
-          "score": "23",
+          "score": "57",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -342,12 +198,12 @@
         "id": "401917678",
         "date": "2026-11-02T18:00Z",
         "state": "in",
-        "detail": "End of 1st",
+        "detail": "10:00 - 4th",
         "away": {
           "name": "Seattle U Redhawks",
           "abbr": "SEA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2547.png",
-          "score": "15",
+          "score": "50",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -356,10 +212,130 @@
           "name": "New Mexico Lobos",
           "abbr": "UNM",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
-          "score": "20",
+          "score": "55",
           "record": "0-0",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401913054",
+        "date": "2026-11-02T18:30Z",
+        "state": "in",
+        "detail": "3:12 - 2nd",
+        "away": {
+          "name": "Arizona Wildcats",
+          "abbr": "ARIZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+          "score": "35",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Stanford Cardinal",
+          "abbr": "STAN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
+          "score": "26",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401926957",
+        "date": "2026-11-02T19:00Z",
+        "state": "in",
+        "detail": "End of 1st",
+        "away": {
+          "name": "Saint Martin's Saints",
+          "abbr": "STMA",
+          "logo": "https://a.espncdn.com/guid/764b3a05-0924-547d-5cb8-61ec770baa0f/logos/default.png",
+          "score": "11",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Idaho Vandals",
+          "abbr": "IDHO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/70.png",
+          "score": "17",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401921305",
+        "date": "2026-11-02T19:00Z",
+        "state": "in",
+        "detail": "1:50 - 1st",
+        "away": {
+          "name": "Lafayette Leopards",
+          "abbr": "LAF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/322.png",
+          "score": "8",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "St. John's Red Storm",
+          "abbr": "SJU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2599.png",
+          "score": "18",
+          "record": "0-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401916067",
+        "date": "2026-11-02T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Lipscomb Bisons",
+          "abbr": "LIP",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/288.png",
+          "score": "53",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Vanderbilt Commodores",
+          "abbr": "VAN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png",
+          "score": "112",
+          "record": "1-0",
+          "rank": 8,
+          "winner": true
+        }
+      },
+      {
+        "id": "401923434",
+        "date": "2026-11-02T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Alcorn State Lady Braves",
+          "abbr": "ALCN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2016.png",
+          "score": "38",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Ole Miss Rebels",
+          "abbr": "MISS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
+          "score": "80",
+          "record": "1-0",
+          "rank": 19,
+          "winner": true
         }
       },
       {
@@ -603,99 +579,123 @@
         }
       },
       {
-        "id": "401913054",
-        "date": "2026-11-02T18:30Z",
-        "state": "pre",
-        "detail": "11/2 - 1:30 PM EST",
+        "id": "401929798",
+        "date": "2026-11-02T16:30Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Stanford Cardinal",
-          "abbr": "STAN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
-          "score": "0",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Arizona Wildcats",
-          "abbr": "ARIZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "0",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401927836",
-        "date": "2026-11-02T19:00Z",
-        "state": "pre",
-        "detail": "11/2 - 2:00 PM EST",
-        "away": {
-          "name": "UC San Diego Tritons",
-          "abbr": "UCSD",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/28.png",
-          "score": "0",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Washington Huskies",
-          "abbr": "WASH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
-          "score": "0",
-          "record": "0-0",
-          "rank": 16,
-          "winner": false
-        }
-      },
-      {
-        "id": "401926957",
-        "date": "2026-11-02T19:00Z",
-        "state": "pre",
-        "detail": "11/2 - 2:00 PM EST",
-        "away": {
-          "name": "Saint Martin's Saints",
-          "abbr": "STMA",
-          "logo": "https://a.espncdn.com/guid/764b3a05-0924-547d-5cb8-61ec770baa0f/logos/default.png",
-          "score": "0",
+          "name": "Oklahoma Christian Eagles",
+          "abbr": "OKCU",
+          "logo": "",
+          "score": "40",
           "record": "",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Idaho Vandals",
-          "abbr": "IDHO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/70.png",
-          "score": "0",
-          "record": "0-0",
+          "name": "East Texas A&M Lions",
+          "abbr": "ETAM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2837.png",
+          "score": "81",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
-        "id": "401921305",
-        "date": "2026-11-02T19:00Z",
-        "state": "pre",
-        "detail": "11/2 - 2:00 PM EST",
+        "id": "401927514",
+        "date": "2026-11-02T17:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Lafayette Leopards",
-          "abbr": "LAF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/322.png",
-          "score": "0",
-          "record": "0-0",
+          "name": "Mississippi Christian Choctaws",
+          "abbr": "MSC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2401.png",
+          "score": "59",
+          "record": "",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "St. John's Red Storm",
-          "abbr": "SJU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2599.png",
-          "score": "0",
-          "record": "0-0",
+          "name": "Southern Miss Lady Eagles",
+          "abbr": "USM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2572.png",
+          "score": "85",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401920165",
+        "date": "2026-11-02T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Texas A&M-Kingsville Javelinas",
+          "abbr": "TAMK",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2658.png",
+          "score": "53",
+          "record": "",
           "rank": 0,
           "winner": false
+        },
+        "home": {
+          "name": "McNeese Cowgirls",
+          "abbr": "MCN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2377.png",
+          "score": "65",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401918815",
+        "date": "2026-11-02T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Baker Wildcats",
+          "abbr": "BAK",
+          "logo": "",
+          "score": "40",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Kansas City Roos",
+          "abbr": "KC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/140.png",
+          "score": "120",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401911503",
+        "date": "2026-11-02T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Radford Highlanders",
+          "abbr": "RAD",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2515.png",
+          "score": "47",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Clemson Tigers",
+          "abbr": "CLEM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/228.png",
+          "score": "68",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -5316,7 +5316,7 @@
           "abbr": "ETAM",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2837.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
@@ -5469,7 +5469,7 @@
           "abbr": "RAD",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2515.png",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
@@ -5493,7 +5493,7 @@
           "abbr": "VAN",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 8,
           "winner": false
         }
