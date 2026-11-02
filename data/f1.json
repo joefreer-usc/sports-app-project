@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T16:40:17Z",
+  "updated": "2026-11-02T20:11:35Z",
   "data": {
     "season": "2026",
     "drivers": [
@@ -110,7 +110,7 @@
         "dateOfBirth": "2001-04-06",
         "profileUrl": "http://en.wikipedia.org/wiki/Oscar_Piastri",
         "team": "McLaren",
-        "points": 150,
+        "points": 144,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png.transform/6col/image.png",
         "teamColor": "F47600"
@@ -126,7 +126,7 @@
         "dateOfBirth": "2004-09-28",
         "profileUrl": "https://en.wikipedia.org/wiki/Isack_Hadjar",
         "team": "Red Bull",
-        "points": 105,
+        "points": 107,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/I/ISAHAD01_Isack_Hadjar/isahad01.png.transform/6col/image.png",
         "teamColor": "4781D7"
@@ -142,7 +142,7 @@
         "dateOfBirth": "2002-02-11",
         "profileUrl": "http://en.wikipedia.org/wiki/Liam_Lawson",
         "team": "RB F1 Team",
-        "points": 79,
+        "points": 83,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LIALAW01_Liam_Lawson/lialaw01.png.transform/6col/image.png",
         "teamColor": "6C98FF"
@@ -158,7 +158,7 @@
         "dateOfBirth": "1996-02-07",
         "profileUrl": "http://en.wikipedia.org/wiki/Pierre_Gasly",
         "team": "Alpine F1 Team",
-        "points": 43,
+        "points": 42,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/P/PIEGAS01_Pierre_Gasly/piegas01.png.transform/6col/image.png",
         "teamColor": "00A1E8"
@@ -190,7 +190,7 @@
         "dateOfBirth": "2003-05-27",
         "profileUrl": "http://en.wikipedia.org/wiki/Franco_Colapinto",
         "team": "Alpine F1 Team",
-        "points": 31,
+        "points": 27,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/F/FRACOL01_Franco_Colapinto/fracol01.png.transform/6col/image.png",
         "teamColor": "00A1E8"
@@ -213,6 +213,22 @@
       },
       {
         "position": 14,
+        "driverId": "bortoleto",
+        "name": "Gabriel Bortoleto",
+        "code": "BOR",
+        "number": "5",
+        "nationality": "Brazilian",
+        "flagCode": "br",
+        "dateOfBirth": "2004-10-14",
+        "profileUrl": "https://en.wikipedia.org/wiki/Gabriel_Bortoleto",
+        "team": "Audi",
+        "points": 14,
+        "wins": 0,
+        "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/6col/image.png",
+        "teamColor": "F50537"
+      },
+      {
+        "position": 15,
         "driverId": "hulkenberg",
         "name": "Nico Hülkenberg",
         "code": "HUL",
@@ -225,22 +241,6 @@
         "points": 13,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/N/NICHUL01_Nico_Hulkenberg/nichul01.png.transform/6col/image.png",
-        "teamColor": "F50537"
-      },
-      {
-        "position": 15,
-        "driverId": "bortoleto",
-        "name": "Gabriel Bortoleto",
-        "code": "BOR",
-        "number": "5",
-        "nationality": "Brazilian",
-        "flagCode": "br",
-        "dateOfBirth": "2004-10-14",
-        "profileUrl": "https://en.wikipedia.org/wiki/Gabriel_Bortoleto",
-        "team": "Audi",
-        "points": 10,
-        "wins": 0,
-        "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/6col/image.png",
         "teamColor": "F50537"
       },
       {
@@ -325,6 +325,22 @@
       },
       {
         "position": 21,
+        "driverId": "ryo_hirakawa",
+        "name": "Ryo Hirakawa",
+        "code": "HIR",
+        "number": "50",
+        "nationality": "Japanese",
+        "flagCode": "jp",
+        "dateOfBirth": "1994-03-07",
+        "profileUrl": "https://en.wikipedia.org/wiki/Ryo_Hirakawa",
+        "team": "Haas F1 Team",
+        "points": 1,
+        "wins": 0,
+        "headshot": "",
+        "teamColor": "9C9FA2"
+      },
+      {
+        "position": 22,
         "driverId": "stroll",
         "name": "Lance Stroll",
         "code": "STR",
@@ -340,7 +356,7 @@
         "teamColor": "229971"
       },
       {
-        "position": 22,
+        "position": 23,
         "driverId": "bottas",
         "name": "Valtteri Bottas",
         "code": "BOT",
@@ -354,22 +370,6 @@
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/V/VALBOT01_Valtteri_Bottas/valbot01.png.transform/6col/image.png",
         "teamColor": "909090"
-      },
-      {
-        "position": 23,
-        "driverId": "ryo_hirakawa",
-        "name": "Ryo Hirakawa",
-        "code": "HIR",
-        "number": "50",
-        "nationality": "Japanese",
-        "flagCode": "jp",
-        "dateOfBirth": "1994-03-07",
-        "profileUrl": "https://en.wikipedia.org/wiki/Ryo_Hirakawa",
-        "team": "Haas F1 Team",
-        "points": 0,
-        "wins": 0,
-        "headshot": "",
-        "teamColor": "9C9FA2"
       },
       {
         "position": 24,
@@ -404,37 +404,37 @@
       {
         "position": 3,
         "name": "Red Bull",
-        "points": 380,
+        "points": 382,
         "wins": 3
       },
       {
         "position": 4,
         "name": "McLaren",
-        "points": 371,
+        "points": 365,
         "wins": 2
       },
       {
         "position": 5,
         "name": "RB F1 Team",
-        "points": 104,
+        "points": 108,
         "wins": 0
       },
       {
         "position": 6,
         "name": "Alpine F1 Team",
-        "points": 74,
+        "points": 69,
         "wins": 0
       },
       {
         "position": 7,
         "name": "Haas F1 Team",
-        "points": 30,
+        "points": 31,
         "wins": 0
       },
       {
         "position": 8,
         "name": "Audi",
-        "points": 23,
+        "points": 27,
         "wins": 0
       },
       {
@@ -1330,76 +1330,46 @@
         },
         {
           "position": 7,
-          "driverId": "piastri",
-          "name": "Oscar Piastri",
-          "nationality": "Australian",
-          "flagCode": "au",
-          "team": "McLaren",
-          "points": 6,
-          "result": "+19.475"
-        },
-        {
-          "position": 8,
-          "driverId": "colapinto",
-          "name": "Franco Colapinto",
-          "nationality": "Argentine",
-          "flagCode": "ar",
-          "team": "Alpine F1 Team",
-          "points": 4,
-          "result": "+20.204"
-        },
-        {
-          "position": 9,
           "driverId": "lawson",
           "name": "Liam Lawson",
           "nationality": "New Zealander",
           "flagCode": "nz",
           "team": "RB F1 Team",
-          "points": 2,
+          "points": 6,
           "result": "+20.899"
         },
         {
-          "position": 10,
-          "driverId": "gasly",
-          "name": "Pierre Gasly",
-          "nationality": "French",
-          "flagCode": "fr",
-          "team": "Alpine F1 Team",
-          "points": 1,
-          "result": "+21.483"
-        },
-        {
-          "position": 11,
+          "position": 8,
           "driverId": "bortoleto",
           "name": "Gabriel Bortoleto",
           "nationality": "Brazilian",
           "flagCode": "br",
           "team": "Audi",
-          "points": 0,
+          "points": 4,
           "result": "+22.041"
         },
         {
-          "position": 12,
+          "position": 9,
           "driverId": "hadjar",
           "name": "Isack Hadjar",
           "nationality": "French",
           "flagCode": "fr",
           "team": "Red Bull",
-          "points": 0,
+          "points": 2,
           "result": "+22.503"
         },
         {
-          "position": 13,
+          "position": 10,
           "driverId": "ryo_hirakawa",
           "name": "Ryo Hirakawa",
           "nationality": "Japanese",
           "flagCode": "jp",
           "team": "Haas F1 Team",
-          "points": 0,
+          "points": 1,
           "result": "+25.373"
         },
         {
-          "position": 14,
+          "position": 11,
           "driverId": "albon",
           "name": "Alexander Albon",
           "nationality": "Thai",
@@ -1409,7 +1379,7 @@
           "result": "+27.562"
         },
         {
-          "position": 15,
+          "position": 12,
           "driverId": "sainz",
           "name": "Carlos Sainz",
           "nationality": "Spanish",
@@ -1419,7 +1389,17 @@
           "result": "+28.638"
         },
         {
-          "position": 16,
+          "position": 13,
+          "driverId": "piastri",
+          "name": "Oscar Piastri",
+          "nationality": "Australian",
+          "flagCode": "au",
+          "team": "McLaren",
+          "points": 0,
+          "result": "+29.475"
+        },
+        {
+          "position": 14,
           "driverId": "hulkenberg",
           "name": "Nico Hülkenberg",
           "nationality": "German",
@@ -1429,7 +1409,17 @@
           "result": "+29.977"
         },
         {
-          "position": 17,
+          "position": 15,
+          "driverId": "colapinto",
+          "name": "Franco Colapinto",
+          "nationality": "Argentine",
+          "flagCode": "ar",
+          "team": "Alpine F1 Team",
+          "points": 0,
+          "result": "+30.204"
+        },
+        {
+          "position": 16,
           "driverId": "perez",
           "name": "Sergio Pérez",
           "nationality": "Mexican",
@@ -1437,6 +1427,16 @@
           "team": "Cadillac F1 Team",
           "points": 0,
           "result": "+30.695"
+        },
+        {
+          "position": 17,
+          "driverId": "gasly",
+          "name": "Pierre Gasly",
+          "nationality": "French",
+          "flagCode": "fr",
+          "team": "Alpine F1 Team",
+          "points": 0,
+          "result": "+51.483"
         },
         {
           "position": 18,
@@ -3212,11 +3212,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 11,
+          "position": 8,
           "grid": 13,
           "team": "Audi",
           "result": "+22.041",
-          "points": 0
+          "points": 4
         }
       ],
       "gasly": [
@@ -3404,11 +3404,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 10,
+          "position": 17,
           "grid": 9,
           "team": "Alpine F1 Team",
-          "result": "+21.483",
-          "points": 1
+          "result": "+51.483",
+          "points": 0
         }
       ],
       "ocon": [
@@ -3778,7 +3778,7 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 14,
+          "position": 11,
           "grid": 16,
           "team": "Williams",
           "result": "+27.562",
@@ -3970,11 +3970,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 9,
+          "position": 7,
           "grid": 22,
           "team": "RB F1 Team",
           "result": "+20.899",
-          "points": 2
+          "points": 6
         }
       ],
       "colapinto": [
@@ -4162,11 +4162,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 8,
+          "position": 15,
           "grid": 11,
           "team": "Alpine F1 Team",
-          "result": "+20.204",
-          "points": 4
+          "result": "+30.204",
+          "points": 0
         }
       ],
       "sainz": [
@@ -4354,7 +4354,7 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 15,
+          "position": 12,
           "grid": 15,
           "team": "Williams",
           "result": "+28.638",
@@ -4546,7 +4546,7 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 17,
+          "position": 16,
           "grid": 20,
           "team": "Cadillac F1 Team",
           "result": "+30.695",
@@ -5284,11 +5284,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 12,
+          "position": 9,
           "grid": 7,
           "team": "Red Bull",
           "result": "+22.503",
-          "points": 0
+          "points": 2
         }
       ],
       "piastri": [
@@ -5476,11 +5476,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 7,
+          "position": 13,
           "grid": 12,
           "team": "McLaren",
-          "result": "+19.475",
-          "points": 6
+          "result": "+29.475",
+          "points": 0
         }
       ],
       "hulkenberg": [
@@ -5668,7 +5668,7 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 16,
+          "position": 14,
           "grid": 10,
           "team": "Audi",
           "result": "+29.977",
@@ -5712,11 +5712,11 @@
           "round": 19,
           "race": "Mexico City Grand Prix",
           "date": "2026-11-01",
-          "position": 13,
+          "position": 10,
           "grid": 18,
           "team": "Haas F1 Team",
           "result": "+25.373",
-          "points": 0
+          "points": 1
         }
       ]
     }
