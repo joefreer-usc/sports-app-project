@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-03T07:22:48Z",
+  "updated": "2026-11-03T08:29:46Z",
   "data": {
     "games": [
-      {
-        "id": "401917506",
-        "date": "2026-11-03T04:59Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Seattle U Redhawks",
-          "abbr": "SEA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2547.png",
-          "score": "73",
-          "record": "0-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Hawai'i Rainbow Warriors",
-          "abbr": "HAW",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
-          "score": "74",
-          "record": "1-0",
-          "rank": 0,
-          "winner": true
-        }
-      },
       {
         "id": "401906769",
         "date": "2026-11-02T23:00Z",
@@ -4365,6 +4341,30 @@
           "abbr": "CP",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/13.png",
           "score": "78",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401917506",
+        "date": "2026-11-03T04:59Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Seattle U Redhawks",
+          "abbr": "SEA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2547.png",
+          "score": "73",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Hawai'i Rainbow Warriors",
+          "abbr": "HAW",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
+          "score": "74",
           "record": "1-0",
           "rank": 0,
           "winner": true
