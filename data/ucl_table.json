@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T19:42:48Z",
+  "updated": "2026-11-03T22:01:33Z",
   "data": {
     "season": "2026-27 UEFA Champions League",
     "groups": [
@@ -24,16 +24,42 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "3",
-            "won": "3",
+            "played": "4",
+            "won": "4",
             "drawn": "0",
             "lost": "0",
-            "gd": "+9",
-            "pts": "9",
+            "gd": "+15",
+            "pts": "12",
             "note": "Qualifies for round of 16"
           },
           {
             "rank": 2,
+            "id": "83",
+            "name": "Barcelona",
+            "abbr": "BAR",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "4",
+            "won": "3",
+            "drawn": "0",
+            "lost": "1",
+            "gd": "+8",
+            "pts": "9",
+            "note": "Qualifies for round of 16"
+          },
+          {
+            "rank": 3,
             "id": "362",
             "name": "Aston Villa",
             "abbr": "AVL",
@@ -50,16 +76,16 @@
                 "lastUpdated": "2025-03-21T13:31Z"
               }
             ],
-            "played": "3",
+            "played": "4",
             "won": "3",
             "drawn": "0",
-            "lost": "0",
-            "gd": "+9",
+            "lost": "1",
+            "gd": "+6",
             "pts": "9",
             "note": "Qualifies for round of 16"
           },
           {
-            "rank": 3,
+            "rank": 4,
             "id": "364",
             "name": "Liverpool",
             "abbr": "LIV",
@@ -85,7 +111,7 @@
             "note": "Qualifies for round of 16"
           },
           {
-            "rank": 4,
+            "rank": 5,
             "id": "86",
             "name": "Real Madrid",
             "abbr": "RMA",
@@ -111,7 +137,7 @@
             "note": "Qualifies for round of 16"
           },
           {
-            "rank": 5,
+            "rank": 6,
             "id": "2250",
             "name": "Sporting CP",
             "abbr": "SCP",
@@ -137,7 +163,7 @@
             "note": "Qualifies for round of 16"
           },
           {
-            "rank": 6,
+            "rank": 7,
             "id": "244",
             "name": "Real Betis",
             "abbr": "BET",
@@ -163,7 +189,33 @@
             "note": "Qualifies for round of 16"
           },
           {
-            "rank": 7,
+            "rank": 8,
+            "id": "132",
+            "name": "Bayern Munich",
+            "abbr": "MUN",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2022-07-27T14:42Z"
+              }
+            ],
+            "played": "4",
+            "won": "2",
+            "drawn": "2",
+            "lost": "0",
+            "gd": "+7",
+            "pts": "8",
+            "note": "Qualifies for round of 16"
+          },
+          {
+            "rank": 9,
             "id": "359",
             "name": "Arsenal",
             "abbr": "ARS",
@@ -186,10 +238,10 @@
             "lost": "0",
             "gd": "+4",
             "pts": "7",
-            "note": "Qualifies for round of 16"
+            "note": "Knockout phase playoffs - seeded"
           },
           {
-            "rank": 8,
+            "rank": 10,
             "id": "134",
             "name": "VfB Stuttgart",
             "abbr": "VFB",
@@ -212,36 +264,10 @@
             "lost": "1",
             "gd": "+3",
             "pts": "7",
-            "note": "Qualifies for round of 16"
-          },
-          {
-            "rank": 9,
-            "id": "83",
-            "name": "Barcelona",
-            "abbr": "BAR",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "3",
-            "won": "2",
-            "drawn": "0",
-            "lost": "1",
-            "gd": "+5",
-            "pts": "6",
             "note": "Knockout phase playoffs - seeded"
           },
           {
-            "rank": 10,
+            "rank": 11,
             "id": "2572",
             "name": "Como",
             "abbr": "COMO",
@@ -267,7 +293,7 @@
             "note": "Knockout phase playoffs - seeded"
           },
           {
-            "rank": 11,
+            "rank": 12,
             "id": "382",
             "name": "Manchester City",
             "abbr": "MNC",
@@ -293,7 +319,7 @@
             "note": "Knockout phase playoffs - seeded"
           },
           {
-            "rank": 12,
+            "rank": 13,
             "id": "570",
             "name": "Club Brugge",
             "abbr": "BRU",
@@ -319,7 +345,59 @@
             "note": "Knockout phase playoffs - seeded"
           },
           {
-            "rank": 13,
+            "rank": 14,
+            "id": "110",
+            "name": "Internazionale",
+            "abbr": "INT",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2024-01-04T17:49Z"
+              }
+            ],
+            "played": "4",
+            "won": "2",
+            "drawn": "0",
+            "lost": "2",
+            "gd": "+2",
+            "pts": "6",
+            "note": "Knockout phase playoffs - seeded"
+          },
+          {
+            "rank": 15,
+            "id": "4411",
+            "name": "LASK Linz",
+            "abbr": "LAS",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/4411.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "4",
+            "won": "2",
+            "drawn": "0",
+            "lost": "2",
+            "gd": "+1",
+            "pts": "6",
+            "note": "Knockout phase playoffs - seeded"
+          },
+          {
+            "rank": 16,
             "id": "124",
             "name": "Borussia Dortmund",
             "abbr": "DOR",
@@ -345,7 +423,33 @@
             "note": "Knockout phase playoffs - seeded"
           },
           {
-            "rank": 14,
+            "rank": 17,
+            "id": "360",
+            "name": "Manchester United",
+            "abbr": "MAN",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "4",
+            "won": "2",
+            "drawn": "0",
+            "lost": "2",
+            "gd": "0",
+            "pts": "6",
+            "note": "Knockout phase playoffs - unseeded"
+          },
+          {
+            "rank": 18,
             "id": "432",
             "name": "Galatasaray",
             "abbr": "GAL",
@@ -368,36 +472,10 @@
             "lost": "2",
             "gd": "-1",
             "pts": "6",
-            "note": "Knockout phase playoffs - seeded"
+            "note": "Knockout phase playoffs - unseeded"
           },
           {
-            "rank": 15,
-            "id": "132",
-            "name": "Bayern Munich",
-            "abbr": "MUN",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2022-07-27T14:42Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "2",
-            "lost": "0",
-            "gd": "+5",
-            "pts": "5",
-            "note": "Knockout phase playoffs - seeded"
-          },
-          {
-            "rank": 16,
+            "rank": 19,
             "id": "104",
             "name": "AS Roma",
             "abbr": "ROMA",
@@ -414,42 +492,16 @@
                 "lastUpdated": "2024-01-04T17:49Z"
               }
             ],
-            "played": "3",
+            "played": "4",
             "won": "1",
             "drawn": "1",
-            "lost": "1",
-            "gd": "+3",
-            "pts": "4",
-            "note": "Knockout phase playoffs - seeded"
-          },
-          {
-            "rank": 17,
-            "id": "1068",
-            "name": "Atlético Madrid",
-            "abbr": "ATM",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2025-09-19T20:43Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "1",
-            "lost": "1",
-            "gd": "+1",
+            "lost": "2",
+            "gd": "+2",
             "pts": "4",
             "note": "Knockout phase playoffs - unseeded"
           },
           {
-            "rank": 18,
+            "rank": 20,
             "id": "493",
             "name": "Shakhtar Donetsk",
             "abbr": "SHK",
@@ -475,7 +527,7 @@
             "note": "Knockout phase playoffs - unseeded"
           },
           {
-            "rank": 19,
+            "rank": 21,
             "id": "148",
             "name": "PSV Eindhoven",
             "abbr": "PSV",
@@ -501,65 +553,13 @@
             "note": "Knockout phase playoffs - unseeded"
           },
           {
-            "rank": 20,
-            "id": "102",
-            "name": "Villarreal",
-            "abbr": "VIL",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2021-08-02T20:09Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "0",
-            "lost": "2",
-            "gd": "0",
-            "pts": "3",
-            "note": "Knockout phase playoffs - unseeded"
-          },
-          {
-            "rank": 21,
-            "id": "110",
-            "name": "Internazionale",
-            "abbr": "INT",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2024-01-04T17:49Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "0",
-            "lost": "2",
-            "gd": "-1",
-            "pts": "3",
-            "note": "Knockout phase playoffs - unseeded"
-          },
-          {
             "rank": 22,
-            "id": "360",
-            "name": "Manchester United",
-            "abbr": "MAN",
+            "id": "1068",
+            "name": "Atlético Madrid",
+            "abbr": "ATM",
             "logo": [
               {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
                 "width": 500,
                 "height": 500,
                 "alt": "",
@@ -567,19 +567,45 @@
                   "full",
                   "default"
                 ],
-                "lastUpdated": "2019-05-08T16:07Z"
+                "lastUpdated": "2025-09-19T20:43Z"
               }
             ],
-            "played": "3",
+            "played": "4",
             "won": "1",
-            "drawn": "0",
+            "drawn": "1",
             "lost": "2",
             "gd": "-1",
-            "pts": "3",
+            "pts": "4",
             "note": "Knockout phase playoffs - unseeded"
           },
           {
             "rank": 23,
+            "id": "2980",
+            "name": "Bodo/Glimt",
+            "abbr": "BODO",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-09-14T15:25Z"
+              }
+            ],
+            "played": "4",
+            "won": "1",
+            "drawn": "1",
+            "lost": "2",
+            "gd": "-5",
+            "pts": "4",
+            "note": "Knockout phase playoffs - unseeded"
+          },
+          {
+            "rank": 24,
             "id": "114",
             "name": "Napoli",
             "abbr": "NAP",
@@ -601,32 +627,6 @@
             "drawn": "0",
             "lost": "2",
             "gd": "-2",
-            "pts": "3",
-            "note": "Knockout phase playoffs - unseeded"
-          },
-          {
-            "rank": 24,
-            "id": "4411",
-            "name": "LASK Linz",
-            "abbr": "LAS",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/4411.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "0",
-            "lost": "2",
-            "gd": "-3",
             "pts": "3",
             "note": "Knockout phase playoffs - unseeded"
           },
@@ -658,32 +658,6 @@
           },
           {
             "rank": 26,
-            "id": "142",
-            "name": "Feyenoord Rotterdam",
-            "abbr": "FEY",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/142.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "0",
-            "lost": "2",
-            "gd": "-4",
-            "pts": "3",
-            "note": "Eliminated"
-          },
-          {
-            "rank": 27,
             "id": "175",
             "name": "Lens",
             "abbr": "RCL",
@@ -709,33 +683,7 @@
             "note": "Eliminated"
           },
           {
-            "rank": 28,
-            "id": "2980",
-            "name": "Bodo/Glimt",
-            "abbr": "BODO",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2021-09-14T15:25Z"
-              }
-            ],
-            "played": "3",
-            "won": "1",
-            "drawn": "0",
-            "lost": "2",
-            "gd": "-5",
-            "pts": "3",
-            "note": "Eliminated"
-          },
-          {
-            "rank": 29,
+            "rank": 27,
             "id": "887",
             "name": "AEK Athens",
             "abbr": "AEK",
@@ -761,7 +709,7 @@
             "note": "Eliminated"
           },
           {
-            "rank": 30,
+            "rank": 28,
             "id": "11420",
             "name": "RB Leipzig",
             "abbr": "RBL",
@@ -783,6 +731,58 @@
             "drawn": "0",
             "lost": "2",
             "gd": "-5",
+            "pts": "3",
+            "note": "Eliminated"
+          },
+          {
+            "rank": 29,
+            "id": "102",
+            "name": "Villarreal",
+            "abbr": "VIL",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-08-02T20:09Z"
+              }
+            ],
+            "played": "4",
+            "won": "1",
+            "drawn": "0",
+            "lost": "3",
+            "gd": "-6",
+            "pts": "3",
+            "note": "Eliminated"
+          },
+          {
+            "rank": 30,
+            "id": "142",
+            "name": "Feyenoord Rotterdam",
+            "abbr": "FEY",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/142.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "4",
+            "won": "1",
+            "drawn": "0",
+            "lost": "3",
+            "gd": "-7",
             "pts": "3",
             "note": "Eliminated"
           },
@@ -866,6 +866,32 @@
           },
           {
             "rank": 34,
+            "id": "166",
+            "name": "Lille",
+            "abbr": "LILL",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-08-30T14:53Z"
+              }
+            ],
+            "played": "4",
+            "won": "0",
+            "drawn": "1",
+            "lost": "3",
+            "gd": "-6",
+            "pts": "1",
+            "note": "Eliminated"
+          },
+          {
+            "rank": 35,
             "id": "437",
             "name": "FC Porto",
             "abbr": "FCP",
@@ -891,32 +917,6 @@
             "note": "Eliminated"
           },
           {
-            "rank": 35,
-            "id": "166",
-            "name": "Lille",
-            "abbr": "LILL",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2021-08-30T14:53Z"
-              }
-            ],
-            "played": "3",
-            "won": "0",
-            "drawn": "0",
-            "lost": "3",
-            "gd": "-6",
-            "pts": "0",
-            "note": "Eliminated"
-          },
-          {
             "rank": 36,
             "id": "521",
             "name": "Slovan Bratislava",
@@ -934,11 +934,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "3",
+            "played": "4",
             "won": "0",
             "drawn": "0",
-            "lost": "3",
-            "gd": "-12",
+            "lost": "4",
+            "gd": "-16",
             "pts": "0",
             "note": "Eliminated"
           }
