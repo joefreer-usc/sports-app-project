@@ -1,55 +1,7 @@
 {
-  "updated": "2026-11-03T05:18:00Z",
+  "updated": "2026-11-03T06:12:43Z",
   "data": {
     "games": [
-      {
-        "id": "401903553",
-        "date": "2026-11-03T03:00Z",
-        "state": "in",
-        "detail": "5:47 - 4th",
-        "away": {
-          "name": "Washington State Cougars",
-          "abbr": "WSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/265.png",
-          "score": "52",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "California Golden Bears",
-          "abbr": "CAL",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png",
-          "score": "69",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401917683",
-        "date": "2026-11-03T03:30Z",
-        "state": "in",
-        "detail": "9:21 - 4th",
-        "away": {
-          "name": "Willamette Bearcats",
-          "abbr": "WLMT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2930.png",
-          "score": "25",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Portland Pilots",
-          "abbr": "PORT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
-          "score": "86",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401918849",
         "date": "2026-11-02T17:00Z",
@@ -3915,6 +3867,54 @@
         }
       },
       {
+        "id": "401903553",
+        "date": "2026-11-03T03:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Washington State Cougars",
+          "abbr": "WSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/265.png",
+          "score": "58",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "California Golden Bears",
+          "abbr": "CAL",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png",
+          "score": "80",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401917683",
+        "date": "2026-11-03T03:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Willamette Bearcats",
+          "abbr": "WLMT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2930.png",
+          "score": "29",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Portland Pilots",
+          "abbr": "PORT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
+          "score": "107",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
         "id": "401927045",
         "date": "2026-11-03T00:00Z",
         "state": "post",
@@ -7764,7 +7764,7 @@
           "abbr": "PORT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
@@ -7797,7 +7797,7 @@
           "abbr": "CAL",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         }
