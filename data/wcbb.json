@@ -1,127 +1,7 @@
 {
-  "updated": "2026-11-04T03:23:18Z",
+  "updated": "2026-11-04T04:20:43Z",
   "data": {
     "games": [
-      {
-        "id": "401929240",
-        "date": "2026-11-04T02:00Z",
-        "state": "in",
-        "detail": "4:03 - 3rd",
-        "away": {
-          "name": "Occidental Tigers",
-          "abbr": "OXY",
-          "logo": "",
-          "score": "27",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UC Riverside Highlanders",
-          "abbr": "UCR",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/27.png",
-          "score": "48",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401928371",
-        "date": "2026-11-04T02:00Z",
-        "state": "in",
-        "detail": "2:07 - 3rd",
-        "away": {
-          "name": "UC Santa Cruz Banana Slugs",
-          "abbr": "UCSC",
-          "logo": "",
-          "score": "22",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UC Santa Barbara Gauchos",
-          "abbr": "UCSB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2540.png",
-          "score": "70",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401926986",
-        "date": "2026-11-04T02:00Z",
-        "state": "in",
-        "detail": "8:04 - 4th",
-        "away": {
-          "name": "Montana Western Bulldogs",
-          "abbr": "UMW",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2701.png",
-          "score": "39",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Montana Lady Griz",
-          "abbr": "MONT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/149.png",
-          "score": "70",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401921546",
-        "date": "2026-11-04T02:00Z",
-        "state": "in",
-        "detail": "8:53 - 4th",
-        "away": {
-          "name": "La Sierra Golden Eagles",
-          "abbr": "LSIU",
-          "logo": "",
-          "score": "27",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Cal State Northridge Matadors",
-          "abbr": "CSUN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2463.png",
-          "score": "79",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401916149",
-        "date": "2026-11-04T02:00Z",
-        "state": "in",
-        "detail": "4:24 - 3rd",
-        "away": {
-          "name": "Idaho State Bengals",
-          "abbr": "IDST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/304.png",
-          "score": "31",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "BYU Cougars",
-          "abbr": "BYU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
-          "score": "36",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401915906",
         "date": "2026-11-04T00:00Z",
@@ -981,6 +861,126 @@
           "abbr": "LUC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2350.png",
           "score": "73",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401929240",
+        "date": "2026-11-04T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Occidental Tigers",
+          "abbr": "OXY",
+          "logo": "",
+          "score": "40",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UC Riverside Highlanders",
+          "abbr": "UCR",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/27.png",
+          "score": "83",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401928371",
+        "date": "2026-11-04T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "UC Santa Cruz Banana Slugs",
+          "abbr": "UCSC",
+          "logo": "",
+          "score": "26",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UC Santa Barbara Gauchos",
+          "abbr": "UCSB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2540.png",
+          "score": "101",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401926986",
+        "date": "2026-11-04T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Montana Western Bulldogs",
+          "abbr": "UMW",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2701.png",
+          "score": "45",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Montana Lady Griz",
+          "abbr": "MONT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/149.png",
+          "score": "91",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401921546",
+        "date": "2026-11-04T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "La Sierra Golden Eagles",
+          "abbr": "LSIU",
+          "logo": "",
+          "score": "40",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Cal State Northridge Matadors",
+          "abbr": "CSUN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2463.png",
+          "score": "92",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401916149",
+        "date": "2026-11-04T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Idaho State Bengals",
+          "abbr": "IDST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/304.png",
+          "score": "50",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "BYU Cougars",
+          "abbr": "BYU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
+          "score": "67",
           "record": "1-0",
           "rank": 0,
           "winner": true
@@ -3612,7 +3612,7 @@
           "abbr": "UCSB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2540.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
@@ -3837,7 +3837,7 @@
           "abbr": "BYU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         }
@@ -4869,7 +4869,7 @@
           "abbr": "IDST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/304.png",
           "score": "0",
-          "record": "0-0",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
@@ -4932,7 +4932,7 @@
           "abbr": "UCR",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/27.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
