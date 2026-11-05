@@ -1,41 +1,17 @@
 {
-  "updated": "2026-11-05T03:27:06Z",
+  "updated": "2026-11-05T04:25:56Z",
   "data": {
     "games": [
       {
-        "id": "401921577",
-        "date": "2026-11-05T02:00Z",
-        "state": "in",
-        "detail": "9:00 - 4th",
-        "away": {
-          "name": "California Baptist Lancers",
-          "abbr": "CBU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2856.png",
-          "score": "65",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Oregon State Beavers",
-          "abbr": "ORST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
-          "score": "61",
-          "record": "0-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401928280",
         "date": "2026-11-05T02:30Z",
-        "state": "in",
-        "detail": "Halftime",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "UC Merced Bobcats",
           "abbr": "UCME",
           "logo": "",
-          "score": "17",
+          "score": "32",
           "record": "",
           "rank": 0,
           "winner": false
@@ -44,22 +20,22 @@
           "name": "Fresno State Bulldogs",
           "abbr": "FRES",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
-          "score": "56",
-          "record": "0-0",
+          "score": "94",
+          "record": "1-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401921520",
         "date": "2026-11-05T03:00Z",
         "state": "in",
-        "detail": "9:07 - 2nd",
+        "detail": "End of 3rd",
         "away": {
           "name": "Hope International Royals",
           "abbr": "HIU",
           "logo": "",
-          "score": "20",
+          "score": "44",
           "record": "",
           "rank": 0,
           "winner": false
@@ -68,7 +44,7 @@
           "name": "Cal State Fullerton Titans",
           "abbr": "CSUF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2239.png",
-          "score": "31",
+          "score": "63",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -78,12 +54,12 @@
         "id": "401915978",
         "date": "2026-11-05T03:00Z",
         "state": "in",
-        "detail": "9:53 - 2nd",
+        "detail": "End of 3rd",
         "away": {
           "name": "Saint Mary's Gaels",
           "abbr": "SMC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2608.png",
-          "score": "12",
+          "score": "45",
           "record": "0-0",
           "rank": 0,
           "winner": false
@@ -92,7 +68,7 @@
           "name": "Stanford Cardinal",
           "abbr": "STAN",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
-          "score": "25",
+          "score": "65",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -864,6 +840,30 @@
           "record": "1-0",
           "rank": 0,
           "winner": true
+        }
+      },
+      {
+        "id": "401921577",
+        "date": "2026-11-05T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "California Baptist Lancers",
+          "abbr": "CBU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2856.png",
+          "score": "79",
+          "record": "1-0",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Oregon State Beavers",
+          "abbr": "ORST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
+          "score": "77",
+          "record": "0-1",
+          "rank": 0,
+          "winner": false
         }
       },
       {
@@ -3756,7 +3756,7 @@
           "abbr": "CBU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2856.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
@@ -4692,7 +4692,7 @@
           "abbr": "FRES",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
           "score": "0",
-          "record": "0-0",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         },
