@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T22:14:26Z",
+  "updated": "2026-11-06T21:58:08Z",
   "data": {
     "season": "2026-27 English Premier League",
     "groups": [
@@ -112,6 +112,32 @@
           },
           {
             "rank": 5,
+            "id": "368",
+            "name": "Everton",
+            "abbr": "EVE",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2024-01-04T17:49Z"
+              }
+            ],
+            "played": "10",
+            "won": "4",
+            "drawn": "4",
+            "lost": "2",
+            "gd": "+2",
+            "pts": "16",
+            "note": "Europa League"
+          },
+          {
+            "rank": 6,
             "id": "364",
             "name": "Liverpool",
             "abbr": "LIV",
@@ -134,10 +160,10 @@
             "lost": "2",
             "gd": "+2",
             "pts": "15",
-            "note": "Europa League"
+            "note": ""
           },
           {
-            "rank": 6,
+            "rank": 7,
             "id": "337",
             "name": "Brentford",
             "abbr": "BRE",
@@ -160,32 +186,6 @@
             "lost": "1",
             "gd": "+7",
             "pts": "14",
-            "note": ""
-          },
-          {
-            "rank": 7,
-            "id": "368",
-            "name": "Everton",
-            "abbr": "EVE",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2024-01-04T17:49Z"
-              }
-            ],
-            "played": "9",
-            "won": "3",
-            "drawn": "4",
-            "lost": "2",
-            "gd": "0",
-            "pts": "13",
             "note": ""
           },
           {
@@ -414,11 +414,11 @@
                 "lastUpdated": "2018-06-05T12:14Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "3",
             "drawn": "0",
-            "lost": "6",
-            "gd": "-7",
+            "lost": "7",
+            "gd": "-9",
             "pts": "9",
             "note": ""
           },
