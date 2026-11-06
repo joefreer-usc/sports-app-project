@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T22:59:09Z",
+  "updated": "2026-11-06T23:32:04Z",
   "data": {
     "games": [
       {
@@ -1566,12 +1566,12 @@
         "id": "401920423",
         "date": "2026-11-06T22:00Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "12:42 - 2nd",
         "away": {
           "name": "Northeastern Huskies",
           "abbr": "NE",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/111.png",
-          "score": "31",
+          "score": "46",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -1580,33 +1580,9 @@
           "name": "Virginia Cavaliers",
           "abbr": "UVA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png",
-          "score": "38",
+          "score": "61",
           "record": "1-0",
           "rank": 9,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909552",
-        "date": "2026-11-06T21:00Z",
-        "state": "in",
-        "detail": "1:40 - 2nd",
-        "away": {
-          "name": "Massachusetts Minutemen",
-          "abbr": "MASS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/113.png",
-          "score": "55",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Boston College Eagles",
-          "abbr": "BC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/103.png",
-          "score": "67",
-          "record": "1-0",
-          "rank": 0,
           "winner": false
         }
       },
@@ -1614,12 +1590,12 @@
         "id": "401922248",
         "date": "2026-11-06T22:00Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "13:07 - 2nd",
         "away": {
           "name": "West Florida Argonauts",
           "abbr": "UWF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2697.png",
-          "score": "29",
+          "score": "45",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -1628,7 +1604,7 @@
           "name": "Florida International Panthers",
           "abbr": "FIU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2229.png",
-          "score": "43",
+          "score": "55",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -1638,12 +1614,12 @@
         "id": "401909751",
         "date": "2026-11-06T22:00Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "14:35 - 2nd",
         "away": {
           "name": "Arkansas-Pine Bluff Golden Lions",
           "abbr": "UAPB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2029.png",
-          "score": "13",
+          "score": "19",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -1652,7 +1628,7 @@
           "name": "Baylor Bears",
           "abbr": "BAY",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/239.png",
-          "score": "58",
+          "score": "68",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -1661,13 +1637,13 @@
       {
         "id": "401920717",
         "date": "2026-11-06T23:00Z",
-        "state": "pre",
-        "detail": "11/6 - 6:00 PM EST",
+        "state": "in",
+        "detail": "8:52 - 1st",
         "away": {
           "name": "Eastern Washington Eagles",
           "abbr": "EWU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/331.png",
-          "score": "0",
+          "score": "24",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -1676,10 +1652,34 @@
           "name": "Oregon Ducks",
           "abbr": "ORE",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png",
-          "score": "0",
+          "score": "26",
           "record": "1-0",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401909552",
+        "date": "2026-11-06T21:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Massachusetts Minutemen",
+          "abbr": "MASS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/113.png",
+          "score": "55",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Boston College Eagles",
+          "abbr": "BC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/103.png",
+          "score": "71",
+          "record": "2-0",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -1733,8 +1733,8 @@
       {
         "id": "401916314",
         "date": "2026-11-06T23:30Z",
-        "state": "pre",
-        "detail": "11/6 - 6:30 PM EST",
+        "state": "in",
+        "detail": "19:42 - 1st",
         "away": {
           "name": "Youngstown State Penguins",
           "abbr": "YSU",
@@ -1748,7 +1748,7 @@
           "name": "Ohio State Buckeyes",
           "abbr": "OSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
-          "score": "0",
+          "score": "2",
           "record": "0-1",
           "rank": 0,
           "winner": false
