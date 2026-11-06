@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T22:17:44Z",
+  "updated": "2026-11-06T22:59:10Z",
   "data": {
     "games": [
       {
@@ -2070,12 +2070,12 @@
         "id": "401920403",
         "date": "2026-11-06T21:00Z",
         "state": "in",
-        "detail": "1:08 - 3rd",
+        "detail": "0:00 - 4th",
         "away": {
           "name": "UC Davis Aggies",
           "abbr": "UCD",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/302.png",
-          "score": "46",
+          "score": "72",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -2084,32 +2084,32 @@
           "name": "Eastern Washington Eagles",
           "abbr": "EWU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/331.png",
-          "score": "50",
+          "score": "75",
           "record": "0-1",
           "rank": 0,
           "winner": false
         }
       },
       {
-        "id": "401917687",
-        "date": "2026-11-06T21:00Z",
+        "id": "401929113",
+        "date": "2026-11-06T22:00Z",
         "state": "in",
-        "detail": "2:58 - 3rd",
+        "detail": "Halftime",
         "away": {
-          "name": "Loyola Marymount Lions",
-          "abbr": "LMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2351.png",
-          "score": "45",
-          "record": "1-0",
+          "name": "Ohio Christian Trailblazers",
+          "abbr": "OHCU",
+          "logo": "",
+          "score": "10",
+          "record": "",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Utah State Aggies",
-          "abbr": "USU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
-          "score": "31",
-          "record": "1-0",
+          "name": "Wright State Raiders",
+          "abbr": "WRST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2750.png",
+          "score": "57",
+          "record": "0-1",
           "rank": 0,
           "winner": false
         }
@@ -2331,25 +2331,25 @@
         }
       },
       {
-        "id": "401929113",
-        "date": "2026-11-06T22:00Z",
-        "state": "in",
-        "detail": "5:15 - 1st",
+        "id": "401917687",
+        "date": "2026-11-06T21:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Ohio Christian Trailblazers",
-          "abbr": "OHCU",
-          "logo": "",
-          "score": "3",
-          "record": "",
+          "name": "Loyola Marymount Lions",
+          "abbr": "LMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2351.png",
+          "score": "70",
+          "record": "2-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
-          "name": "Wright State Raiders",
-          "abbr": "WRST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2750.png",
-          "score": "16",
-          "record": "0-1",
+          "name": "Utah State Aggies",
+          "abbr": "USU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
+          "score": "45",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }
@@ -5892,7 +5892,7 @@
           "abbr": "USU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
           "score": "0",
-          "record": "1-0",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
