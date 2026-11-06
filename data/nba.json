@@ -1,343 +1,7 @@
 {
-  "updated": "2026-11-05T06:27:19Z",
+  "updated": "2026-11-06T00:34:09Z",
   "data": {
     "games": [
-      {
-        "id": "401909922",
-        "date": "2026-11-05T00:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Philadelphia 76ers",
-          "abbr": "PHI",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
-          "score": "112",
-          "record": "8-1",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Detroit Pistons",
-          "abbr": "DET",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
-          "score": "106",
-          "record": "6-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909923",
-        "date": "2026-11-05T00:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Atlanta Hawks",
-          "abbr": "ATL",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png",
-          "score": "120",
-          "record": "5-4",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Washington Wizards",
-          "abbr": "WSH",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png",
-          "score": "105",
-          "record": "4-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909924",
-        "date": "2026-11-05T00:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Milwaukee Bucks",
-          "abbr": "MIL",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png",
-          "score": "102",
-          "record": "1-7",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Boston Celtics",
-          "abbr": "BOS",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png",
-          "score": "109",
-          "record": "6-2",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909925",
-        "date": "2026-11-05T00:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Charlotte Hornets",
-          "abbr": "CHA",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png",
-          "score": "104",
-          "record": "3-6",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Brooklyn Nets",
-          "abbr": "BKN",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png",
-          "score": "114",
-          "record": "2-6",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909926",
-        "date": "2026-11-05T00:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Chicago Bulls",
-          "abbr": "CHI",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png",
-          "score": "105",
-          "record": "1-7",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "New York Knicks",
-          "abbr": "NY",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png",
-          "score": "135",
-          "record": "4-4",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909927",
-        "date": "2026-11-05T01:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Indiana Pacers",
-          "abbr": "IND",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png",
-          "score": "107",
-          "record": "3-6",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Memphis Grizzlies",
-          "abbr": "MEM",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png",
-          "score": "103",
-          "record": "6-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909928",
-        "date": "2026-11-05T01:00Z",
-        "state": "post",
-        "detail": "Final/OT",
-        "away": {
-          "name": "Utah Jazz",
-          "abbr": "UTAH",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png",
-          "score": "113",
-          "record": "1-7",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "New Orleans Pelicans",
-          "abbr": "NO",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png",
-          "score": "120",
-          "record": "4-4",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909929",
-        "date": "2026-11-05T01:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Cleveland Cavaliers",
-          "abbr": "CLE",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png",
-          "score": "116",
-          "record": "4-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Oklahoma City Thunder",
-          "abbr": "OKC",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png",
-          "score": "124",
-          "record": "6-2",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909930",
-        "date": "2026-11-05T01:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Minnesota Timberwolves",
-          "abbr": "MIN",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
-          "score": "117",
-          "record": "6-3",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Houston Rockets",
-          "abbr": "HOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png",
-          "score": "107",
-          "record": "7-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909931",
-        "date": "2026-11-05T02:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Toronto Raptors",
-          "abbr": "TOR",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png",
-          "score": "109",
-          "record": "4-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Denver Nuggets",
-          "abbr": "DEN",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/den.png",
-          "score": "128",
-          "record": "4-3",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909932",
-        "date": "2026-11-05T02:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Portland Trail Blazers",
-          "abbr": "POR",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png",
-          "score": "132",
-          "record": "6-1",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Phoenix Suns",
-          "abbr": "PHX",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png",
-          "score": "119",
-          "record": "1-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909933",
-        "date": "2026-11-05T02:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Dallas Mavericks",
-          "abbr": "DAL",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png",
-          "score": "111",
-          "record": "4-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "San Antonio Spurs",
-          "abbr": "SA",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png",
-          "score": "112",
-          "record": "6-2",
-          "rank": 0,
-          "winner": true
-        }
-      },
-      {
-        "id": "401909934",
-        "date": "2026-11-05T03:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Los Angeles Lakers",
-          "abbr": "LAL",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
-          "score": "116",
-          "record": "7-2",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Sacramento Kings",
-          "abbr": "SAC",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
-          "score": "103",
-          "record": "1-7",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909935",
-        "date": "2026-11-05T03:30Z",
-        "state": "post",
-        "detail": "Final/OT",
-        "away": {
-          "name": "Miami Heat",
-          "abbr": "MIA",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png",
-          "score": "117",
-          "record": "3-5",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "LA Clippers",
-          "abbr": "LAC",
-          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
-          "score": "116",
-          "record": "1-7",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401909936",
         "date": "2026-11-06T02:00Z",
@@ -766,6 +430,174 @@
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png",
           "score": "0",
           "record": "6-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909945",
+        "date": "2026-11-08T20:30Z",
+        "state": "pre",
+        "detail": "11/8 - 3:30 PM EST",
+        "away": {
+          "name": "Philadelphia 76ers",
+          "abbr": "PHI",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
+          "score": "0",
+          "record": "8-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Chicago Bulls",
+          "abbr": "CHI",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png",
+          "score": "0",
+          "record": "1-7",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909946",
+        "date": "2026-11-08T23:00Z",
+        "state": "pre",
+        "detail": "11/8 - 6:00 PM EST",
+        "away": {
+          "name": "Los Angeles Lakers",
+          "abbr": "LAL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
+          "score": "0",
+          "record": "7-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Detroit Pistons",
+          "abbr": "DET",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
+          "score": "0",
+          "record": "6-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909947",
+        "date": "2026-11-09T00:00Z",
+        "state": "pre",
+        "detail": "11/8 - 7:00 PM EST",
+        "away": {
+          "name": "Utah Jazz",
+          "abbr": "UTAH",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png",
+          "score": "0",
+          "record": "1-7",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Minnesota Timberwolves",
+          "abbr": "MIN",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
+          "score": "0",
+          "record": "6-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909948",
+        "date": "2026-11-09T00:30Z",
+        "state": "pre",
+        "detail": "11/8 - 7:30 PM EST",
+        "away": {
+          "name": "Brooklyn Nets",
+          "abbr": "BKN",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png",
+          "score": "0",
+          "record": "2-6",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Dallas Mavericks",
+          "abbr": "DAL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png",
+          "score": "0",
+          "record": "4-4",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909949",
+        "date": "2026-11-09T01:00Z",
+        "state": "pre",
+        "detail": "11/8 - 8:00 PM EST",
+        "away": {
+          "name": "Boston Celtics",
+          "abbr": "BOS",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png",
+          "score": "0",
+          "record": "6-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Milwaukee Bucks",
+          "abbr": "MIL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png",
+          "score": "0",
+          "record": "1-7",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909950",
+        "date": "2026-11-09T02:00Z",
+        "state": "pre",
+        "detail": "11/8 - 9:00 PM EST",
+        "away": {
+          "name": "New Orleans Pelicans",
+          "abbr": "NO",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png",
+          "score": "0",
+          "record": "4-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "LA Clippers",
+          "abbr": "LAC",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
+          "score": "0",
+          "record": "1-7",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909951",
+        "date": "2026-11-09T02:00Z",
+        "state": "pre",
+        "detail": "11/8 - 9:00 PM EST",
+        "away": {
+          "name": "Miami Heat",
+          "abbr": "MIA",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png",
+          "score": "0",
+          "record": "3-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Sacramento Kings",
+          "abbr": "SAC",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
+          "score": "0",
+          "record": "1-7",
           "rank": 0,
           "winner": false
         }
