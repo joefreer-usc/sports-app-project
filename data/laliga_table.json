@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T19:55:05Z",
+  "updated": "2026-11-07T22:14:50Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -34,6 +34,32 @@
           },
           {
             "rank": 2,
+            "id": "86",
+            "name": "Real Madrid",
+            "abbr": "RMA",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "12",
+            "won": "10",
+            "drawn": "0",
+            "lost": "2",
+            "gd": "+21",
+            "pts": "30",
+            "note": "Champions League"
+          },
+          {
+            "rank": 3,
             "id": "1068",
             "name": "Atlético Madrid",
             "abbr": "ATM",
@@ -56,32 +82,6 @@
             "lost": "1",
             "gd": "+14",
             "pts": "28",
-            "note": "Champions League"
-          },
-          {
-            "rank": 3,
-            "id": "86",
-            "name": "Real Madrid",
-            "abbr": "RMA",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "11",
-            "won": "9",
-            "drawn": "0",
-            "lost": "2",
-            "gd": "+18",
-            "pts": "27",
             "note": "Champions League"
           },
           {
@@ -492,11 +492,11 @@
                 "lastUpdated": "2024-01-04T17:49Z"
               }
             ],
-            "played": "11",
+            "played": "12",
             "won": "2",
             "drawn": "3",
-            "lost": "6",
-            "gd": "-9",
+            "lost": "7",
+            "gd": "-12",
             "pts": "9",
             "note": "Relegation"
           },
