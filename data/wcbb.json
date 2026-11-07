@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T22:14:48Z",
+  "updated": "2026-11-07T22:49:47Z",
   "data": {
     "games": [
       {
@@ -1083,39 +1083,15 @@
         }
       },
       {
-        "id": "401925801",
-        "date": "2026-11-07T20:00Z",
-        "state": "in",
-        "detail": "0:08 - 4th",
-        "away": {
-          "name": "Incarnate Word Cardinals",
-          "abbr": "UIW",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2916.png",
-          "score": "68",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UTEP Miners",
-          "abbr": "UTEP",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2638.png",
-          "score": "74",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401927095",
         "date": "2026-11-07T21:00Z",
         "state": "in",
-        "detail": "6:44 - 3rd",
+        "detail": "0:35 - 4th",
         "away": {
           "name": "Southern Wesleyan Warriors",
           "abbr": "SWES",
           "logo": "",
-          "score": "23",
+          "score": "32",
           "record": "",
           "rank": 0,
           "winner": false
@@ -1124,7 +1100,7 @@
           "name": "South Carolina Upstate Spartans",
           "abbr": "UPST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2908.png",
-          "score": "38",
+          "score": "68",
           "record": "1-1",
           "rank": 0,
           "winner": false
@@ -1134,12 +1110,12 @@
         "id": "401916151",
         "date": "2026-11-07T21:00Z",
         "state": "in",
-        "detail": "4:29 - 3rd",
+        "detail": "0:43 - 4th",
         "away": {
           "name": "Montana Lady Griz",
           "abbr": "MONT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/149.png",
-          "score": "36",
+          "score": "53",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -1148,7 +1124,7 @@
           "name": "BYU Cougars",
           "abbr": "BYU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
-          "score": "56",
+          "score": "95",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -1158,12 +1134,12 @@
         "id": "401921521",
         "date": "2026-11-07T22:00Z",
         "state": "in",
-        "detail": "5:14 - 1st",
+        "detail": "Halftime",
         "away": {
           "name": "Westcliff Warriors",
           "abbr": "WCLF",
           "logo": "",
-          "score": "5",
+          "score": "26",
           "record": "",
           "rank": 0,
           "winner": false
@@ -1172,7 +1148,7 @@
           "name": "Cal State Fullerton Titans",
           "abbr": "CSUF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2239.png",
-          "score": "5",
+          "score": "36",
           "record": "1-1",
           "rank": 0,
           "winner": false
@@ -1182,12 +1158,12 @@
         "id": "401919691",
         "date": "2026-11-07T22:00Z",
         "state": "in",
-        "detail": "4:38 - 1st",
+        "detail": "0:21 - 2nd",
         "away": {
           "name": "Augustana (IL) Vikings",
           "abbr": "AUGC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2042.png",
-          "score": "10",
+          "score": "28",
           "record": "",
           "rank": 0,
           "winner": false
@@ -1196,8 +1172,32 @@
           "name": "Illinois State Redbirds",
           "abbr": "ILST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2287.png",
-          "score": "13",
+          "score": "49",
           "record": "2-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401912505",
+        "date": "2026-11-07T22:00Z",
+        "state": "in",
+        "detail": "8:52 - 2nd",
+        "away": {
+          "name": "Liberty Flames",
+          "abbr": "LIB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png",
+          "score": "15",
+          "record": "1-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "East Carolina Pirates",
+          "abbr": "ECU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
+          "score": "14",
+          "record": "1-0",
           "rank": 0,
           "winner": false
         }
@@ -1827,6 +1827,30 @@
         }
       },
       {
+        "id": "401925801",
+        "date": "2026-11-07T20:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Incarnate Word Cardinals",
+          "abbr": "UIW",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2916.png",
+          "score": "68",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UTEP Miners",
+          "abbr": "UTEP",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2638.png",
+          "score": "74",
+          "record": "2-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
         "id": "401923736",
         "date": "2026-11-07T20:00Z",
         "state": "post",
@@ -1971,39 +1995,15 @@
         }
       },
       {
-        "id": "401912505",
-        "date": "2026-11-07T22:00Z",
-        "state": "pre",
-        "detail": "11/7 - 5:00 PM EST",
-        "away": {
-          "name": "Liberty Flames",
-          "abbr": "LIB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png",
-          "score": "0",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "East Carolina Pirates",
-          "abbr": "ECU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
-          "score": "0",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401919875",
         "date": "2026-11-07T22:30Z",
-        "state": "pre",
-        "detail": "11/7 - 5:30 PM EST",
+        "state": "in",
+        "detail": "4:04 - 1st",
         "away": {
           "name": "Texas State Bobcats",
           "abbr": "TXST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
-          "score": "0",
+          "score": "25",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -2012,7 +2012,7 @@
           "name": "Chicago State Cougars",
           "abbr": "CHST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2130.png",
-          "score": "0",
+          "score": "13",
           "record": "1-1",
           "rank": 0,
           "winner": false
