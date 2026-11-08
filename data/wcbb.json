@@ -1,55 +1,7 @@
 {
-  "updated": "2026-11-08T03:24:57Z",
+  "updated": "2026-11-08T04:20:01Z",
   "data": {
     "games": [
-      {
-        "id": "401920496",
-        "date": "2026-11-08T02:00Z",
-        "state": "in",
-        "detail": "9:34 - 4th",
-        "away": {
-          "name": "Missouri State Lady Bears",
-          "abbr": "MOST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
-          "score": "54",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Wyoming Cowgirls",
-          "abbr": "WYO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
-          "score": "33",
-          "record": "0-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401920265",
-        "date": "2026-11-08T02:00Z",
-        "state": "in",
-        "detail": "1:51 - 3rd",
-        "away": {
-          "name": "Sacramento State Hornets",
-          "abbr": "SAC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
-          "score": "58",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Nevada Wolf Pack",
-          "abbr": "NEV",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
-          "score": "41",
-          "record": "0-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401918841",
         "date": "2026-11-08T01:00Z",
@@ -1128,6 +1080,54 @@
           "record": "1-1",
           "rank": 0,
           "winner": true
+        }
+      },
+      {
+        "id": "401920496",
+        "date": "2026-11-08T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Missouri State Lady Bears",
+          "abbr": "MOST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
+          "score": "72",
+          "record": "2-0",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Wyoming Cowgirls",
+          "abbr": "WYO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
+          "score": "37",
+          "record": "0-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401920265",
+        "date": "2026-11-08T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Sacramento State Hornets",
+          "abbr": "SAC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
+          "score": "70",
+          "record": "2-0",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Nevada Wolf Pack",
+          "abbr": "NEV",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
+          "score": "60",
+          "record": "0-2",
+          "rank": 0,
+          "winner": false
         }
       },
       {
@@ -3693,7 +3693,7 @@
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         }
@@ -3972,7 +3972,7 @@
           "abbr": "MOST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         },
@@ -4773,7 +4773,7 @@
           "abbr": "WYO",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         }
@@ -4845,7 +4845,7 @@
           "abbr": "NEV",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
           "score": "0",
-          "record": "0-1",
+          "record": "0-2",
           "rank": 0,
           "winner": false
         }
