@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T15:59:46Z",
+  "updated": "2026-11-08T16:35:34Z",
   "data": {
     "season": "2026-27 English Premier League",
     "groups": [
@@ -128,11 +128,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "5",
             "drawn": "1",
-            "lost": "3",
-            "gd": "+4",
+            "lost": "4",
+            "gd": "+3",
             "pts": "16",
             "note": "Europa League"
           },
@@ -450,6 +450,32 @@
           },
           {
             "rank": 18,
+            "id": "366",
+            "name": "Sunderland",
+            "abbr": "SUN",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "10",
+            "won": "2",
+            "drawn": "2",
+            "lost": "6",
+            "gd": "-9",
+            "pts": "8",
+            "note": "Relegation"
+          },
+          {
+            "rank": 19,
             "id": "360",
             "name": "Manchester United",
             "abbr": "MAN",
@@ -475,7 +501,7 @@
             "note": "Relegation"
           },
           {
-            "rank": 19,
+            "rank": 20,
             "id": "384",
             "name": "Crystal Palace",
             "abbr": "CRY",
@@ -498,32 +524,6 @@
             "lost": "7",
             "gd": "-14",
             "pts": "7",
-            "note": "Relegation"
-          },
-          {
-            "rank": 20,
-            "id": "366",
-            "name": "Sunderland",
-            "abbr": "SUN",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "9",
-            "won": "1",
-            "drawn": "2",
-            "lost": "6",
-            "gd": "-10",
-            "pts": "5",
             "note": "Relegation"
           }
         ]
