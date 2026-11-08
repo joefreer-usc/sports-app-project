@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T22:43:02Z",
+  "updated": "2026-11-08T23:16:53Z",
   "data": {
     "games": [
       {
@@ -173,23 +173,23 @@
       {
         "id": "401909945",
         "date": "2026-11-08T20:30Z",
-        "state": "in",
-        "detail": "51.3 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Philadelphia 76ers",
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
-          "score": "124",
-          "record": "8-2",
+          "score": "127",
+          "record": "9-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Chicago Bulls",
           "abbr": "CHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png",
-          "score": "120",
-          "record": "1-7",
+          "score": "121",
+          "record": "1-8",
           "rank": 0,
           "winner": false
         }
@@ -197,13 +197,13 @@
       {
         "id": "401909946",
         "date": "2026-11-08T23:00Z",
-        "state": "pre",
-        "detail": "11/8 - 6:00 PM EST",
+        "state": "in",
+        "detail": "9:58 - 1st",
         "away": {
           "name": "Los Angeles Lakers",
           "abbr": "LAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
-          "score": "0",
+          "score": "6",
           "record": "8-2",
           "rank": 0,
           "winner": false
@@ -212,7 +212,7 @@
           "name": "Detroit Pistons",
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
-          "score": "0",
+          "score": "4",
           "record": "6-2",
           "rank": 0,
           "winner": false
@@ -573,7 +573,7 @@
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
           "score": "0",
-          "record": "8-2",
+          "record": "9-2",
           "rank": 0,
           "winner": false
         }
