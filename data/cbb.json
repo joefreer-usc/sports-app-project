@@ -1,42 +1,18 @@
 {
-  "updated": "2026-11-08T04:20:01Z",
+  "updated": "2026-11-08T05:12:56Z",
   "data": {
     "games": [
       {
-        "id": "401920371",
-        "date": "2026-11-08T03:00Z",
-        "state": "in",
-        "detail": "11:04 - 2nd",
-        "away": {
-          "name": "Fresno State Bulldogs",
-          "abbr": "FRES",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
-          "score": "47",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UC San Diego Tritons",
-          "abbr": "UCSD",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/28.png",
-          "score": "55",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401917519",
         "date": "2026-11-08T03:00Z",
-        "state": "in",
-        "detail": "15:27 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Sacramento State Hornets",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
-          "score": "45",
-          "record": "1-0",
+          "score": "77",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
@@ -44,23 +20,23 @@
           "name": "Santa Clara Broncos",
           "abbr": "SCU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2541.png",
-          "score": "55",
-          "record": "2-0",
+          "score": "83",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401917517",
         "date": "2026-11-08T03:00Z",
-        "state": "in",
-        "detail": "15:49 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Portland State Vikings",
           "abbr": "PRST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2502.png",
-          "score": "33",
-          "record": "1-0",
+          "score": "60",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
@@ -68,34 +44,10 @@
           "name": "Seattle U Redhawks",
           "abbr": "SEA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2547.png",
-          "score": "33",
-          "record": "0-1",
+          "score": "79",
+          "record": "1-1",
           "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401911470",
-        "date": "2026-11-08T03:00Z",
-        "state": "in",
-        "detail": "13:44 - 2nd",
-        "away": {
-          "name": "San José State Spartans",
-          "abbr": "SJSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
-          "score": "40",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UC Irvine Anteaters",
-          "abbr": "UCI",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png",
-          "score": "60",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -1464,6 +1416,54 @@
           "record": "0-2",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401920371",
+        "date": "2026-11-08T03:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Fresno State Bulldogs",
+          "abbr": "FRES",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
+          "score": "65",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UC San Diego Tritons",
+          "abbr": "UCSD",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/28.png",
+          "score": "81",
+          "record": "2-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401911470",
+        "date": "2026-11-08T03:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "San José State Spartans",
+          "abbr": "SJSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
+          "score": "79",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UC Irvine Anteaters",
+          "abbr": "UCI",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png",
+          "score": "91",
+          "record": "2-0",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -4965,7 +4965,7 @@
           "abbr": "FRES",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
           "score": "0",
-          "record": "1-0",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }

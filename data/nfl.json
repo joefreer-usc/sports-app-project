@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-06T04:31:09Z",
+  "updated": "2026-11-08T05:12:55Z",
   "data": {
     "games": [
-      {
-        "id": "401873037",
-        "date": "2026-11-06T01:15Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Jacksonville Jaguars",
-          "abbr": "JAX",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png",
-          "score": "33",
-          "record": "6-2",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Baltimore Ravens",
-          "abbr": "BAL",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
-          "score": "10",
-          "record": "4-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401873038",
         "date": "2026-11-08T14:30Z",
@@ -334,6 +310,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png",
           "score": "0",
           "record": "6-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401873037",
+        "date": "2026-11-06T01:15Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Jacksonville Jaguars",
+          "abbr": "JAX",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png",
+          "score": "33",
+          "record": "6-2",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Baltimore Ravens",
+          "abbr": "BAL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
+          "score": "10",
+          "record": "4-5",
           "rank": 0,
           "winner": false
         }
