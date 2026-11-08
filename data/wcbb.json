@@ -1,41 +1,17 @@
 {
-  "updated": "2026-11-08T02:32:18Z",
+  "updated": "2026-11-08T03:24:57Z",
   "data": {
     "games": [
-      {
-        "id": "401918841",
-        "date": "2026-11-08T01:00Z",
-        "state": "in",
-        "detail": "1:16 - 3rd",
-        "away": {
-          "name": "Northern Colorado Bears",
-          "abbr": "UNCO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2458.png",
-          "score": "16",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Texas Longhorns",
-          "abbr": "TEX",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
-          "score": "68",
-          "record": "1-0",
-          "rank": 6,
-          "winner": false
-        }
-      },
       {
         "id": "401920496",
         "date": "2026-11-08T02:00Z",
         "state": "in",
-        "detail": "6:52 - 2nd",
+        "detail": "9:34 - 4th",
         "away": {
           "name": "Missouri State Lady Bears",
           "abbr": "MOST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
-          "score": "21",
+          "score": "54",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -44,7 +20,7 @@
           "name": "Wyoming Cowgirls",
           "abbr": "WYO",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
-          "score": "17",
+          "score": "33",
           "record": "0-1",
           "rank": 0,
           "winner": false
@@ -54,12 +30,12 @@
         "id": "401920265",
         "date": "2026-11-08T02:00Z",
         "state": "in",
-        "detail": "7:55 - 2nd",
+        "detail": "1:51 - 3rd",
         "away": {
           "name": "Sacramento State Hornets",
           "abbr": "SAC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/16.png",
-          "score": "25",
+          "score": "58",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -68,10 +44,34 @@
           "name": "Nevada Wolf Pack",
           "abbr": "NEV",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
-          "score": "18",
+          "score": "41",
           "record": "0-1",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401918841",
+        "date": "2026-11-08T01:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Northern Colorado Bears",
+          "abbr": "UNCO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2458.png",
+          "score": "29",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Texas Longhorns",
+          "abbr": "TEX",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
+          "score": "91",
+          "record": "2-0",
+          "rank": 6,
+          "winner": true
         }
       },
       {
@@ -3525,7 +3525,7 @@
           "abbr": "UNCO",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2458.png",
           "score": "0",
-          "record": "1-0",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }
