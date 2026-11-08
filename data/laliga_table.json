@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T17:14:19Z",
+  "updated": "2026-11-08T19:49:53Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -190,6 +190,32 @@
           },
           {
             "rank": 8,
+            "id": "102",
+            "name": "Villarreal",
+            "abbr": "VIL",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-08-02T20:09Z"
+              }
+            ],
+            "played": "12",
+            "won": "4",
+            "drawn": "3",
+            "lost": "5",
+            "gd": "+2",
+            "pts": "15",
+            "note": ""
+          },
+          {
+            "rank": 9,
             "id": "90",
             "name": "Deportivo",
             "abbr": "DEP",
@@ -215,7 +241,7 @@
             "note": ""
           },
           {
-            "rank": 9,
+            "rank": 10,
             "id": "87",
             "name": "Racing Santander",
             "abbr": "RAC",
@@ -238,10 +264,36 @@
             "lost": "6",
             "gd": "-13",
             "pts": "14",
+            "note": "Europa League"
+          },
+          {
+            "rank": 11,
+            "id": "85",
+            "name": "Celta Vigo",
+            "abbr": "CEL",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2024-01-04T17:49Z"
+              }
+            ],
+            "played": "12",
+            "won": "2",
+            "drawn": "7",
+            "lost": "3",
+            "gd": "0",
+            "pts": "13",
             "note": ""
           },
           {
-            "rank": 10,
+            "rank": 12,
             "id": "96",
             "name": "Alavés",
             "abbr": "ALA",
@@ -264,58 +316,6 @@
             "lost": "5",
             "gd": "-2",
             "pts": "13",
-            "note": "Europa League"
-          },
-          {
-            "rank": 11,
-            "id": "102",
-            "name": "Villarreal",
-            "abbr": "VIL",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2021-08-02T20:09Z"
-              }
-            ],
-            "played": "11",
-            "won": "3",
-            "drawn": "3",
-            "lost": "5",
-            "gd": "0",
-            "pts": "12",
-            "note": ""
-          },
-          {
-            "rank": 12,
-            "id": "85",
-            "name": "Celta Vigo",
-            "abbr": "CEL",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2024-01-04T17:49Z"
-              }
-            ],
-            "played": "11",
-            "won": "2",
-            "drawn": "6",
-            "lost": "3",
-            "gd": "0",
-            "pts": "12",
             "note": ""
           },
           {
@@ -388,11 +388,11 @@
                 "lastUpdated": "2026-10-12T17:04Z"
               }
             ],
-            "played": "11",
+            "played": "12",
             "won": "3",
             "drawn": "3",
-            "lost": "5",
-            "gd": "-8",
+            "lost": "6",
+            "gd": "-10",
             "pts": "12",
             "note": ""
           },
@@ -440,12 +440,12 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "11",
+            "played": "12",
             "won": "2",
-            "drawn": "4",
+            "drawn": "5",
             "lost": "5",
             "gd": "-5",
-            "pts": "10",
+            "pts": "11",
             "note": ""
           },
           {
