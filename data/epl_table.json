@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T19:55:04Z",
+  "updated": "2026-11-08T15:59:46Z",
   "data": {
     "season": "2026-27 English Premier League",
     "groups": [
@@ -34,6 +34,32 @@
           },
           {
             "rank": 2,
+            "id": "331",
+            "name": "Brighton & Hove Albion",
+            "abbr": "BHA",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2024-01-04T17:49Z"
+              }
+            ],
+            "played": "10",
+            "won": "7",
+            "drawn": "1",
+            "lost": "2",
+            "gd": "+19",
+            "pts": "22",
+            "note": "Champions League"
+          },
+          {
+            "rank": 3,
             "id": "382",
             "name": "Manchester City",
             "abbr": "MNC",
@@ -59,13 +85,13 @@
             "note": "Champions League"
           },
           {
-            "rank": 3,
-            "id": "331",
-            "name": "Brighton & Hove Albion",
-            "abbr": "BHA",
+            "rank": 4,
+            "id": "364",
+            "name": "Liverpool",
+            "abbr": "LIV",
             "logo": [
               {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
                 "width": 500,
                 "height": 500,
                 "alt": "",
@@ -73,19 +99,19 @@
                   "full",
                   "default"
                 ],
-                "lastUpdated": "2024-01-04T17:49Z"
+                "lastUpdated": "2026-02-18T19:33Z"
               }
             ],
-            "played": "9",
-            "won": "6",
-            "drawn": "1",
+            "played": "10",
+            "won": "5",
+            "drawn": "3",
             "lost": "2",
-            "gd": "+17",
-            "pts": "19",
+            "gd": "+4",
+            "pts": "18",
             "note": "Champions League"
           },
           {
-            "rank": 4,
+            "rank": 5,
             "id": "363",
             "name": "Chelsea",
             "abbr": "CHE",
@@ -108,10 +134,10 @@
             "lost": "3",
             "gd": "+4",
             "pts": "16",
-            "note": "Champions League"
+            "note": "Europa League"
           },
           {
-            "rank": 5,
+            "rank": 6,
             "id": "368",
             "name": "Everton",
             "abbr": "EVE",
@@ -134,16 +160,16 @@
             "lost": "2",
             "gd": "+2",
             "pts": "16",
-            "note": "Europa League"
+            "note": ""
           },
           {
-            "rank": 6,
-            "id": "364",
-            "name": "Liverpool",
-            "abbr": "LIV",
+            "rank": 7,
+            "id": "349",
+            "name": "AFC Bournemouth",
+            "abbr": "BOU",
             "logo": [
               {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
                 "width": 500,
                 "height": 500,
                 "alt": "",
@@ -151,19 +177,19 @@
                   "full",
                   "default"
                 ],
-                "lastUpdated": "2026-02-18T19:33Z"
+                "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "4",
             "drawn": "3",
-            "lost": "2",
+            "lost": "3",
             "gd": "+2",
             "pts": "15",
             "note": ""
           },
           {
-            "rank": 7,
+            "rank": 8,
             "id": "337",
             "name": "Brentford",
             "abbr": "BRE",
@@ -180,16 +206,16 @@
                 "lastUpdated": "2020-07-16T16:13Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "3",
             "drawn": "5",
-            "lost": "1",
-            "gd": "+7",
+            "lost": "2",
+            "gd": "+5",
             "pts": "14",
             "note": ""
           },
           {
-            "rank": 8,
+            "rank": 9,
             "id": "357",
             "name": "Leeds United",
             "abbr": "LEE",
@@ -212,32 +238,6 @@
             "lost": "2",
             "gd": "+2",
             "pts": "14",
-            "note": ""
-          },
-          {
-            "rank": 9,
-            "id": "349",
-            "name": "AFC Bournemouth",
-            "abbr": "BOU",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "9",
-            "won": "3",
-            "drawn": "3",
-            "lost": "3",
-            "gd": "+1",
-            "pts": "12",
             "note": ""
           },
           {
@@ -362,11 +362,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "3",
             "drawn": "2",
-            "lost": "4",
-            "gd": "-4",
+            "lost": "5",
+            "gd": "-5",
             "pts": "11",
             "note": ""
           },
@@ -492,11 +492,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "9",
+            "played": "10",
             "won": "2",
             "drawn": "1",
-            "lost": "6",
-            "gd": "-12",
+            "lost": "7",
+            "gd": "-14",
             "pts": "7",
             "note": "Relegation"
           },
