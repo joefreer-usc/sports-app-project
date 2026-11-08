@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T23:16:57Z",
+  "updated": "2026-11-08T23:51:21Z",
   "data": {
     "event": {
       "id": "401850979",
@@ -7,8 +7,8 @@
       "start": "2026-11-05T05:00Z",
       "end": "2026-11-08T05:00Z",
       "state": "in",
-      "detail": "Round 4 - In Progress",
-      "round": 4,
+      "detail": "Playoff - In Progress",
+      "round": 5,
       "season": 2026,
       "cutLine": "-7",
       "cutOfficial": true
@@ -16,23 +16,43 @@
     "players": [
       {
         "id": "5211425",
-        "pos": "1",
+        "pos": "T1",
         "name": "Blades Brown",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5211425.png",
-        "status": "F",
+        "status": "In Progress",
         "toPar": "-23",
-        "thru": "F",
+        "thru": "In Progress",
         "rounds": [
           "-6",
           "-4",
           "-4",
-          "-9"
+          "-9",
+          "-1",
+          ""
+        ]
+      },
+      {
+        "id": "5077389",
+        "pos": "T1",
+        "name": "Ben James",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5077389.png",
+        "status": "In Progress",
+        "toPar": "-23",
+        "thru": "In Progress",
+        "rounds": [
+          "-7",
+          "-8",
+          "-6",
+          "-2",
+          "-1",
+          ""
         ]
       },
       {
         "id": "8974",
-        "pos": "2",
+        "pos": "3",
         "name": "Michael Kim",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8974.png",
@@ -48,7 +68,7 @@
       },
       {
         "id": "5075548",
-        "pos": "T3",
+        "pos": "4",
         "name": "Kensei Hirata",
         "country": "Japan",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5075548.png",
@@ -60,22 +80,6 @@
           "-3",
           "-5",
           "-6"
-        ]
-      },
-      {
-        "id": "5077389",
-        "pos": "T3",
-        "name": "Ben James",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5077389.png",
-        "status": "In Progress",
-        "toPar": "-21",
-        "thru": "Thru 17",
-        "rounds": [
-          "-7",
-          "-8",
-          "-6",
-          "E"
         ]
       },
       {
@@ -127,24 +131,8 @@
         ]
       },
       {
-        "id": "5076021",
-        "pos": "T6",
-        "name": "Ryan Gerard",
-        "country": "USA",
-        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5076021.png",
-        "status": "In Progress",
-        "toPar": "-19",
-        "thru": "Thru 17",
-        "rounds": [
-          "-6",
-          "-4",
-          "-7",
-          "-2"
-        ]
-      },
-      {
         "id": "9506",
-        "pos": "T9",
+        "pos": "T8",
         "name": "Jordan Smith",
         "country": "England",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/9506.png",
@@ -160,7 +148,7 @@
       },
       {
         "id": "6001",
-        "pos": "T9",
+        "pos": "T8",
         "name": "Séamus Power",
         "country": "Ireland",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/6001.png",
@@ -176,7 +164,7 @@
       },
       {
         "id": "8906",
-        "pos": "T9",
+        "pos": "T8",
         "name": "Keith Mitchell",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/8906.png",
@@ -188,6 +176,22 @@
           "-6",
           "-5",
           "-3"
+        ]
+      },
+      {
+        "id": "5076021",
+        "pos": "T8",
+        "name": "Ryan Gerard",
+        "country": "USA",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5076021.png",
+        "status": "F",
+        "toPar": "-18",
+        "thru": "F",
+        "rounds": [
+          "-6",
+          "-4",
+          "-7",
+          "-1"
         ]
       },
       {

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T23:16:39Z",
+  "updated": "2026-11-08T23:51:13Z",
   "data": {
     "season": "2026",
     "drivers": [
@@ -78,7 +78,7 @@
         "dateOfBirth": "1997-10-16",
         "profileUrl": "http://en.wikipedia.org/wiki/Charles_Leclerc",
         "team": "Ferrari",
-        "points": 251,
+        "points": 249,
         "wins": 1,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/6col/image.png",
         "teamColor": "ED1131"
@@ -142,7 +142,7 @@
         "dateOfBirth": "2002-02-11",
         "profileUrl": "http://en.wikipedia.org/wiki/Liam_Lawson",
         "team": "RB F1 Team",
-        "points": 87,
+        "points": 89,
         "wins": 0,
         "headshot": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LIALAW01_Liam_Lawson/lialaw01.png.transform/6col/image.png",
         "teamColor": "6C98FF"
@@ -1332,7 +1332,7 @@
           "flagCode": "it",
           "team": "Mercedes",
           "points": 10,
-          "result": "+36.017"
+          "result": "+41.017"
         },
         {
           "position": 6,
@@ -1346,23 +1346,23 @@
         },
         {
           "position": 7,
-          "driverId": "leclerc",
-          "name": "Charles Leclerc",
-          "nationality": "Monegasque",
-          "flagCode": "mc",
-          "team": "Ferrari",
-          "points": 6,
-          "result": "+1:13.586"
-        },
-        {
-          "position": 8,
           "driverId": "lawson",
           "name": "Liam Lawson",
           "nationality": "New Zealander",
           "flagCode": "nz",
           "team": "RB F1 Team",
-          "points": 4,
+          "points": 6,
           "result": "+1:15.402"
+        },
+        {
+          "position": 8,
+          "driverId": "leclerc",
+          "name": "Charles Leclerc",
+          "nationality": "Monegasque",
+          "flagCode": "mc",
+          "team": "Ferrari",
+          "points": 4,
+          "result": "+1:18.586"
         },
         {
           "position": 9,
@@ -1452,7 +1452,7 @@
           "flagCode": "gb",
           "team": "Haas F1 Team",
           "points": 0,
-          "result": "+1:26.711"
+          "result": "+1:31.711"
         },
         {
           "position": 18,
