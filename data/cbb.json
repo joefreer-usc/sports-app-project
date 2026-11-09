@@ -1,17 +1,17 @@
 {
-  "updated": "2026-11-09T02:35:57Z",
+  "updated": "2026-11-09T03:27:21Z",
   "data": {
     "games": [
       {
         "id": "401918053",
         "date": "2026-11-09T01:30Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "4:06 - 2nd",
         "away": {
           "name": "California Golden Bears",
           "abbr": "CAL",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png",
-          "score": "32",
+          "score": "62",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -20,55 +20,55 @@
           "name": "Houston Cougars",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "43",
+          "score": "80",
           "record": "1-0",
           "rank": 10,
           "winner": false
         }
       },
       {
-        "id": "401930195",
-        "date": "2026-11-09T00:30Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Portland Pilots",
-          "abbr": "PORT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
-          "score": "130",
-          "record": "2-1",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "Bethesda Flames",
-          "abbr": "BTHS",
-          "logo": "",
-          "score": "56",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401909707",
         "date": "2026-11-09T01:00Z",
-        "state": "in",
-        "detail": "13:48 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Pittsburgh Panthers",
           "abbr": "PITT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/221.png",
-          "score": "53",
-          "record": "2-0",
+          "score": "82",
+          "record": "3-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Penn State Nittany Lions",
           "abbr": "PSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
-          "score": "50",
+          "score": "76",
+          "record": "2-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401929002",
+        "date": "2026-11-09T03:00Z",
+        "state": "in",
+        "detail": "12:23 - 1st",
+        "away": {
+          "name": "UT Arlington Mavericks",
+          "abbr": "UTA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/250.png",
+          "score": "3",
+          "record": "2-0",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Hawai'i Rainbow Warriors",
+          "abbr": "HAW",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
+          "score": "13",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -819,6 +819,30 @@
         }
       },
       {
+        "id": "401930195",
+        "date": "2026-11-09T00:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Portland Pilots",
+          "abbr": "PORT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
+          "score": "130",
+          "record": "2-1",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Bethesda Flames",
+          "abbr": "BTHS",
+          "logo": "",
+          "score": "56",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401919029",
         "date": "2026-11-09T04:00Z",
         "state": "pre",
@@ -839,30 +863,6 @@
           "score": "0",
           "record": "1-0",
           "rank": 21,
-          "winner": false
-        }
-      },
-      {
-        "id": "401929002",
-        "date": "2026-11-09T04:00Z",
-        "state": "pre",
-        "detail": "11/8 - 11:00 PM EST",
-        "away": {
-          "name": "UT Arlington Mavericks",
-          "abbr": "UTA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/250.png",
-          "score": "0",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Hawai'i Rainbow Warriors",
-          "abbr": "HAW",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
-          "score": "0",
-          "record": "2-0",
-          "rank": 0,
           "winner": false
         }
       },
