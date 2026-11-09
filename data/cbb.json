@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-09T05:35:03Z",
+  "updated": "2026-11-09T06:37:20Z",
   "data": {
     "games": [
-      {
-        "id": "401919029",
-        "date": "2026-11-09T04:00Z",
-        "state": "in",
-        "detail": "14:28 - 2nd",
-        "away": {
-          "name": "Wichita State Shockers",
-          "abbr": "WICH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2724.png",
-          "score": "55",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "USC Trojans",
-          "abbr": "USC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
-          "score": "55",
-          "record": "1-0",
-          "rank": 21,
-          "winner": false
-        }
-      },
       {
         "id": "401920424",
         "date": "2026-11-08T18:00Z",
@@ -95,6 +71,30 @@
           "score": "104",
           "record": "2-0",
           "rank": 13,
+          "winner": true
+        }
+      },
+      {
+        "id": "401919029",
+        "date": "2026-11-09T04:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Wichita State Shockers",
+          "abbr": "WICH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2724.png",
+          "score": "86",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "USC Trojans",
+          "abbr": "USC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
+          "score": "93",
+          "record": "2-0",
+          "rank": 21,
           "winner": true
         }
       },
@@ -1947,6 +1947,30 @@
         }
       },
       {
+        "id": "401929357",
+        "date": "2026-11-10T02:30Z",
+        "state": "pre",
+        "detail": "11/9 - 9:30 PM EST",
+        "away": {
+          "name": "UT Arlington Mavericks",
+          "abbr": "UTA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/250.png",
+          "score": "0",
+          "record": "2-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Bethesda Flames",
+          "abbr": "BTHS",
+          "logo": "",
+          "score": "0",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401920718",
         "date": "2026-11-10T02:30Z",
         "state": "pre",
@@ -2014,30 +2038,6 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
           "score": "0",
           "record": "2-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401929357",
-        "date": "2026-11-10T03:30Z",
-        "state": "pre",
-        "detail": "11/9 - 10:30 PM EST",
-        "away": {
-          "name": "UT Arlington Mavericks",
-          "abbr": "UTA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/250.png",
-          "score": "0",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Bethesda Flames",
-          "abbr": "BTHS",
-          "logo": "",
-          "score": "0",
-          "record": "",
           "rank": 0,
           "winner": false
         }
@@ -4773,7 +4773,7 @@
           "abbr": "WICH",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2724.png",
           "score": "0",
-          "record": "1-0",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }
@@ -5316,7 +5316,7 @@
           "abbr": "USC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
           "score": "0",
-          "record": "1-0",
+          "record": "2-0",
           "rank": 21,
           "winner": false
         },
