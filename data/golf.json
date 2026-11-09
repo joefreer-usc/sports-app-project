@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-08T23:51:21Z",
+  "updated": "2026-11-09T00:24:27Z",
   "data": {
     "event": {
       "id": "401850979",
       "name": "World Wide Technology Championship",
       "start": "2026-11-05T05:00Z",
       "end": "2026-11-08T05:00Z",
-      "state": "in",
-      "detail": "Playoff - In Progress",
+      "state": "post",
+      "detail": "Final",
       "round": 5,
       "season": 2026,
       "cutLine": "-7",
@@ -16,31 +16,31 @@
     "players": [
       {
         "id": "5211425",
-        "pos": "T1",
+        "pos": "1",
         "name": "Blades Brown",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5211425.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-23",
-        "thru": "In Progress",
+        "thru": "F",
         "rounds": [
           "-6",
           "-4",
           "-4",
           "-9",
-          "-1",
+          "-2",
           ""
         ]
       },
       {
         "id": "5077389",
-        "pos": "T1",
+        "pos": "2",
         "name": "Ben James",
         "country": "USA",
         "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5077389.png",
-        "status": "In Progress",
+        "status": "F",
         "toPar": "-23",
-        "thru": "In Progress",
+        "thru": "F",
         "rounds": [
           "-7",
           "-8",
