@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T17:41:56Z",
+  "updated": "2026-11-09T19:30:24Z",
   "data": {
     "games": [
       {
@@ -869,13 +869,13 @@
       {
         "id": "401925630",
         "date": "2026-11-09T16:00Z",
-        "state": "in",
-        "detail": "15:57 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Cheyney (PA) Wolves",
           "abbr": "CHEY",
           "logo": "",
-          "score": "29",
+          "score": "53",
           "record": "",
           "rank": 0,
           "winner": false
@@ -884,10 +884,10 @@
           "name": "Coppin State Eagles",
           "abbr": "COPP",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2154.png",
-          "score": "57",
-          "record": "0-2",
+          "score": "90",
+          "record": "1-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -1126,7 +1126,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2633.png",
           "score": "0",
           "record": "1-0",
-          "rank": 8,
+          "rank": 11,
           "winner": false
         }
       },
@@ -1150,7 +1150,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png",
           "score": "0",
           "record": "1-1",
-          "rank": 14,
+          "rank": 17,
           "winner": false
         }
       },
@@ -1606,7 +1606,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/333.png",
           "score": "0",
           "record": "2-0",
-          "rank": 20,
+          "rank": 18,
           "winner": false
         }
       },
@@ -2149,7 +2149,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png",
           "score": "0",
           "record": "2-0",
-          "rank": 6,
+          "rank": 5,
           "winner": false
         },
         "home": {
@@ -2854,7 +2854,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png",
           "score": "0",
           "record": "2-0",
-          "rank": 24,
+          "rank": 22,
           "winner": false
         }
       },
@@ -2998,31 +2998,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
           "score": "0",
           "record": "2-0",
-          "rank": 19,
-          "winner": false
-        }
-      },
-      {
-        "id": "401909773",
-        "date": "2026-11-11T01:00Z",
-        "state": "pre",
-        "detail": "11/10 - 8:00 PM EST",
-        "away": {
-          "name": "Southern Jaguars",
-          "abbr": "SOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
-          "score": "0",
-          "record": "0-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Iowa State Cyclones",
-          "abbr": "ISU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/66.png",
-          "score": "0",
-          "record": "1-1",
-          "rank": 18,
+          "rank": 16,
           "winner": false
         }
       },
@@ -3339,6 +3315,30 @@
         }
       },
       {
+        "id": "401909773",
+        "date": "2026-11-11T01:00Z",
+        "state": "pre",
+        "detail": "11/10 - 8:00 PM EST",
+        "away": {
+          "name": "Southern Jaguars",
+          "abbr": "SOU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
+          "score": "0",
+          "record": "0-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Iowa State Cyclones",
+          "abbr": "ISU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/66.png",
+          "score": "0",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401909752",
         "date": "2026-11-11T01:00Z",
         "state": "pre",
@@ -3411,30 +3411,6 @@
         }
       },
       {
-        "id": "401909740",
-        "date": "2026-11-11T02:00Z",
-        "state": "pre",
-        "detail": "11/10 - 9:00 PM EST",
-        "away": {
-          "name": "Northern Arizona Lumberjacks",
-          "abbr": "NAU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2464.png",
-          "score": "0",
-          "record": "0-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Arizona Wildcats",
-          "abbr": "ARIZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "0",
-          "record": "1-1",
-          "rank": 5,
-          "winner": false
-        }
-      },
-      {
         "id": "401920425",
         "date": "2026-11-11T02:00Z",
         "state": "pre",
@@ -3454,7 +3430,31 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png",
           "score": "0",
           "record": "3-0",
-          "rank": 9,
+          "rank": 6,
+          "winner": false
+        }
+      },
+      {
+        "id": "401909740",
+        "date": "2026-11-11T02:00Z",
+        "state": "pre",
+        "detail": "11/10 - 9:00 PM EST",
+        "away": {
+          "name": "Northern Arizona Lumberjacks",
+          "abbr": "NAU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2464.png",
+          "score": "0",
+          "record": "0-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Arizona Wildcats",
+          "abbr": "ARIZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+          "score": "0",
+          "record": "1-1",
+          "rank": 12,
           "winner": false
         }
       },
@@ -3478,7 +3478,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
           "score": "0",
           "record": "2-0",
-          "rank": 25,
+          "rank": 23,
           "winner": false
         }
       },
@@ -3685,7 +3685,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png",
           "score": "0",
           "record": "2-0",
-          "rank": 17,
+          "rank": 15,
           "winner": false
         },
         "home": {
@@ -3694,7 +3694,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/96.png",
           "score": "0",
           "record": "2-0",
-          "rank": 23,
+          "rank": 24,
           "winner": false
         }
       },
@@ -4198,7 +4198,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/130.png",
           "score": "0",
           "record": "1-1",
-          "rank": 16,
+          "rank": 20,
           "winner": false
         }
       },
@@ -4822,7 +4822,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
           "score": "0",
           "record": "2-0",
-          "rank": 10,
+          "rank": 8,
           "winner": false
         }
       },
@@ -4846,7 +4846,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/8.png",
           "score": "0",
           "record": "1-1",
-          "rank": 12,
+          "rank": 19,
           "winner": false
         }
       },
@@ -5038,31 +5038,7 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
           "score": "0",
           "record": "2-0",
-          "rank": 22,
-          "winner": false
-        }
-      },
-      {
-        "id": "401928814",
-        "date": "2026-11-12T02:00Z",
-        "state": "pre",
-        "detail": "11/11 - 9:00 PM EST",
-        "away": {
-          "name": "Oakland Golden Grizzlies",
-          "abbr": "OAK",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2473.png",
-          "score": "0",
-          "record": "0-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Boise State Broncos",
-          "abbr": "BOIS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/68.png",
-          "score": "0",
-          "record": "2-0",
-          "rank": 0,
+          "rank": 9,
           "winner": false
         }
       },
@@ -5084,6 +5060,30 @@
           "name": "Nebraska Cornhuskers",
           "abbr": "NEB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
+          "score": "0",
+          "record": "2-0",
+          "rank": 25,
+          "winner": false
+        }
+      },
+      {
+        "id": "401928814",
+        "date": "2026-11-12T02:00Z",
+        "state": "pre",
+        "detail": "11/11 - 9:00 PM EST",
+        "away": {
+          "name": "Oakland Golden Grizzlies",
+          "abbr": "OAK",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2473.png",
+          "score": "0",
+          "record": "0-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Boise State Broncos",
+          "abbr": "BOIS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/68.png",
           "score": "0",
           "record": "2-0",
           "rank": 0,
