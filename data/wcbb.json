@@ -1,7 +1,55 @@
 {
-  "updated": "2026-11-09T00:24:24Z",
+  "updated": "2026-11-09T01:41:13Z",
   "data": {
     "games": [
+      {
+        "id": "401927106",
+        "date": "2026-11-09T01:00Z",
+        "state": "in",
+        "detail": "4:37 - 2nd",
+        "away": {
+          "name": "Utah State Aggies",
+          "abbr": "USU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
+          "score": "15",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "USC Trojans",
+          "abbr": "USC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
+          "score": "42",
+          "record": "1-0",
+          "rank": 3,
+          "winner": false
+        }
+      },
+      {
+        "id": "401915962",
+        "date": "2026-11-09T00:00Z",
+        "state": "in",
+        "detail": "4:21 - 4th",
+        "away": {
+          "name": "East Texas A&M Lions",
+          "abbr": "ETAM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2837.png",
+          "score": "61",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "SMU Mustangs",
+          "abbr": "SMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
+          "score": "64",
+          "record": "2-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
       {
         "id": "401906089",
         "date": "2026-11-08T22:30Z",
@@ -24,54 +72,6 @@
           "record": "2-0",
           "rank": 1,
           "winner": true
-        }
-      },
-      {
-        "id": "401916017",
-        "date": "2026-11-08T23:00Z",
-        "state": "in",
-        "detail": "1:14 - 3rd",
-        "away": {
-          "name": "James Madison Dukes",
-          "abbr": "JMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png",
-          "score": "27",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Virginia Tech Hokies",
-          "abbr": "VT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/259.png",
-          "score": "42",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401915962",
-        "date": "2026-11-09T00:00Z",
-        "state": "in",
-        "detail": "1:00 - 1st",
-        "away": {
-          "name": "East Texas A&M Lions",
-          "abbr": "ETAM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2837.png",
-          "score": "14",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "SMU Mustangs",
-          "abbr": "SMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
-          "score": "21",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
         }
       },
       {
@@ -1611,27 +1611,27 @@
         }
       },
       {
-        "id": "401927106",
-        "date": "2026-11-09T01:00Z",
-        "state": "pre",
-        "detail": "11/8 - 8:00 PM EST",
+        "id": "401916017",
+        "date": "2026-11-08T23:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Utah State Aggies",
-          "abbr": "USU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
-          "score": "0",
-          "record": "1-1",
+          "name": "James Madison Dukes",
+          "abbr": "JMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png",
+          "score": "43",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "USC Trojans",
-          "abbr": "USC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
-          "score": "0",
-          "record": "1-0",
-          "rank": 3,
-          "winner": false
+          "name": "Virginia Tech Hokies",
+          "abbr": "VT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/259.png",
+          "score": "59",
+          "record": "3-0",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -4245,7 +4245,7 @@
           "abbr": "JMU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png",
           "score": "0",
-          "record": "1-1",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T00:24:22Z",
+  "updated": "2026-11-09T01:41:12Z",
   "data": {
     "games": [
       {
@@ -29,23 +29,23 @@
       {
         "id": "401909946",
         "date": "2026-11-08T23:00Z",
-        "state": "in",
-        "detail": "Halftime",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Los Angeles Lakers",
           "abbr": "LAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
-          "score": "61",
-          "record": "8-2",
+          "score": "121",
+          "record": "9-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "Detroit Pistons",
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
-          "score": "48",
-          "record": "6-2",
+          "score": "116",
+          "record": "6-3",
           "rank": 0,
           "winner": false
         }
@@ -54,12 +54,12 @@
         "id": "401909947",
         "date": "2026-11-09T00:00Z",
         "state": "in",
-        "detail": "4:55 - 1st",
+        "detail": "5:33 - 3rd",
         "away": {
           "name": "Utah Jazz",
           "abbr": "UTAH",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png",
-          "score": "17",
+          "score": "63",
           "record": "1-8",
           "rank": 0,
           "winner": false
@@ -68,7 +68,7 @@
           "name": "Minnesota Timberwolves",
           "abbr": "MIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
-          "score": "12",
+          "score": "70",
           "record": "7-3",
           "rank": 0,
           "winner": false
@@ -77,13 +77,13 @@
       {
         "id": "401909948",
         "date": "2026-11-09T00:30Z",
-        "state": "pre",
-        "detail": "11/8 - 7:30 PM EST",
+        "state": "in",
+        "detail": "2:40 - 2nd",
         "away": {
           "name": "Brooklyn Nets",
           "abbr": "BKN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png",
-          "score": "0",
+          "score": "40",
           "record": "2-7",
           "rank": 0,
           "winner": false
@@ -92,7 +92,7 @@
           "name": "Dallas Mavericks",
           "abbr": "DAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png",
-          "score": "0",
+          "score": "61",
           "record": "5-4",
           "rank": 0,
           "winner": false
@@ -101,13 +101,13 @@
       {
         "id": "401909949",
         "date": "2026-11-09T01:00Z",
-        "state": "pre",
-        "detail": "11/8 - 8:00 PM EST",
+        "state": "in",
+        "detail": "11:38 - 2nd",
         "away": {
           "name": "Boston Celtics",
           "abbr": "BOS",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png",
-          "score": "0",
+          "score": "25",
           "record": "7-2",
           "rank": 0,
           "winner": false
@@ -116,7 +116,7 @@
           "name": "Milwaukee Bucks",
           "abbr": "MIL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png",
-          "score": "0",
+          "score": "27",
           "record": "1-8",
           "rank": 0,
           "winner": false
@@ -180,7 +180,7 @@
           "abbr": "LAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
           "score": "0",
-          "record": "8-2",
+          "record": "9-2",
           "rank": 0,
           "winner": false
         },
@@ -237,7 +237,7 @@
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
           "score": "0",
-          "record": "6-2",
+          "record": "6-3",
           "rank": 0,
           "winner": false
         }
@@ -636,7 +636,7 @@
           "abbr": "LAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
           "score": "0",
-          "record": "8-2",
+          "record": "9-2",
           "rank": 0,
           "winner": false
         },
