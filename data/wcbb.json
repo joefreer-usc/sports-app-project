@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T19:33:13Z",
+  "updated": "2026-11-10T20:22:31Z",
   "data": {
     "games": [
       {
@@ -963,6 +963,30 @@
         }
       },
       {
+        "id": "401917696",
+        "date": "2026-11-10T20:00Z",
+        "state": "in",
+        "detail": "End of 1st",
+        "away": {
+          "name": "La Sierra Golden Eagles",
+          "abbr": "LSIU",
+          "logo": "",
+          "score": "6",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Loyola Marymount Lions",
+          "abbr": "LMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2351.png",
+          "score": "27",
+          "record": "2-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401929161",
         "date": "2026-11-10T16:00Z",
         "state": "post",
@@ -1100,7 +1124,7 @@
           "name": "Nicholls Colonels",
           "abbr": "NICH",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2447.png",
-          "score": "84",
+          "score": "83",
           "record": "2-2",
           "rank": 0,
           "winner": true
@@ -1248,30 +1272,6 @@
           "record": "4-0",
           "rank": 0,
           "winner": true
-        }
-      },
-      {
-        "id": "401917696",
-        "date": "2026-11-10T20:00Z",
-        "state": "pre",
-        "detail": "11/10 - 3:00 PM EST",
-        "away": {
-          "name": "La Sierra Golden Eagles",
-          "abbr": "LSIU",
-          "logo": "",
-          "score": "0",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Loyola Marymount Lions",
-          "abbr": "LMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2351.png",
-          "score": "0",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
         }
       },
       {
