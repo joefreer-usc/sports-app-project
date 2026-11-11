@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T22:38:38Z",
+  "updated": "2026-11-11T23:29:18Z",
   "data": {
     "games": [
       {
@@ -1661,14 +1661,14 @@
       {
         "id": "401918978",
         "date": "2026-11-11T21:00Z",
-        "state": "in",
-        "detail": "13:18 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "North Carolina A&T Aggies",
           "abbr": "NCAT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png",
-          "score": "36",
-          "record": "1-1",
+          "score": "67",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         },
@@ -1676,22 +1676,22 @@
           "name": "East Carolina Pirates",
           "abbr": "ECU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
-          "score": "49",
-          "record": "1-1",
+          "score": "72",
+          "record": "2-1",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401925717",
         "date": "2026-11-11T22:00Z",
         "state": "in",
-        "detail": "3:55 - 1st",
+        "detail": "10:19 - 2nd",
         "away": {
           "name": "Bethune-Cookman Wildcats",
           "abbr": "BCU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2065.png",
-          "score": "27",
+          "score": "60",
           "record": "0-3",
           "rank": 0,
           "winner": false
@@ -1700,8 +1700,128 @@
           "name": "San Diego State Aztecs",
           "abbr": "SDSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png",
-          "score": "30",
+          "score": "60",
           "record": "2-0",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401921181",
+        "date": "2026-11-11T22:58Z",
+        "state": "in",
+        "detail": "5:54 - 1st",
+        "away": {
+          "name": "Pennsylvania Quakers",
+          "abbr": "PENN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/219.png",
+          "score": "24",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Navy Midshipmen",
+          "abbr": "NAVY",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2426.png",
+          "score": "28",
+          "record": "2-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401926211",
+        "date": "2026-11-11T23:00Z",
+        "state": "in",
+        "detail": "7:22 - 1st",
+        "away": {
+          "name": "Voorhees Tigers",
+          "abbr": "VRHS",
+          "logo": "",
+          "score": "14",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Wofford Terriers",
+          "abbr": "WOF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png",
+          "score": "32",
+          "record": "1-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401926206",
+        "date": "2026-11-11T23:00Z",
+        "state": "in",
+        "detail": "7:15 - 1st",
+        "away": {
+          "name": "Virginia Lynchburg Dragons",
+          "abbr": "VUL",
+          "logo": "",
+          "score": "19",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Western Carolina Catamounts",
+          "abbr": "WCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2717.png",
+          "score": "39",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401926202",
+        "date": "2026-11-11T23:00Z",
+        "state": "in",
+        "detail": "10:03 - 1st",
+        "away": {
+          "name": "North Carolina Central Eagles",
+          "abbr": "NCCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2428.png",
+          "score": "9",
+          "record": "0-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "VMI Keydets",
+          "abbr": "VMI",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2678.png",
+          "score": "21",
+          "record": "1-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401923311",
+        "date": "2026-11-11T23:00Z",
+        "state": "in",
+        "detail": "6:31 - 1st",
+        "away": {
+          "name": "Thomas College Terriers",
+          "abbr": "THMC",
+          "logo": "",
+          "score": "23",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "New Hampshire Wildcats",
+          "abbr": "UNH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/160.png",
+          "score": "40",
+          "record": "2-1",
           "rank": 0,
           "winner": false
         }
@@ -1848,126 +1968,6 @@
           "record": "3-1",
           "rank": 0,
           "winner": true
-        }
-      },
-      {
-        "id": "401921181",
-        "date": "2026-11-11T22:58Z",
-        "state": "pre",
-        "detail": "11/11 - 5:58 PM EST",
-        "away": {
-          "name": "Pennsylvania Quakers",
-          "abbr": "PENN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/219.png",
-          "score": "0",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Navy Midshipmen",
-          "abbr": "NAVY",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2426.png",
-          "score": "0",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401926211",
-        "date": "2026-11-11T23:00Z",
-        "state": "pre",
-        "detail": "11/11 - 6:00 PM EST",
-        "away": {
-          "name": "Voorhees Tigers",
-          "abbr": "VRHS",
-          "logo": "",
-          "score": "0",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Wofford Terriers",
-          "abbr": "WOF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png",
-          "score": "0",
-          "record": "1-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401926206",
-        "date": "2026-11-11T23:00Z",
-        "state": "pre",
-        "detail": "11/11 - 6:00 PM EST",
-        "away": {
-          "name": "Virginia Lynchburg Dragons",
-          "abbr": "VUL",
-          "logo": "",
-          "score": "0",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Western Carolina Catamounts",
-          "abbr": "WCU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2717.png",
-          "score": "0",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401926202",
-        "date": "2026-11-11T23:00Z",
-        "state": "pre",
-        "detail": "11/11 - 6:00 PM EST",
-        "away": {
-          "name": "North Carolina Central Eagles",
-          "abbr": "NCCU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2428.png",
-          "score": "0",
-          "record": "0-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "VMI Keydets",
-          "abbr": "VMI",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2678.png",
-          "score": "0",
-          "record": "1-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401923311",
-        "date": "2026-11-11T23:00Z",
-        "state": "pre",
-        "detail": "11/11 - 6:00 PM EST",
-        "away": {
-          "name": "Thomas College Terriers",
-          "abbr": "THMC",
-          "logo": "",
-          "score": "0",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "New Hampshire Wildcats",
-          "abbr": "UNH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/160.png",
-          "score": "0",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
         }
       },
       {
