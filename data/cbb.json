@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T19:16:25Z",
+  "updated": "2026-11-11T20:13:25Z",
   "data": {
     "games": [
       {
@@ -1661,23 +1661,47 @@
       {
         "id": "401920234",
         "date": "2026-11-11T18:00Z",
-        "state": "in",
-        "detail": "16:08 - 2nd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Dartmouth Big Green",
           "abbr": "DART",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/159.png",
-          "score": "55",
-          "record": "2-1",
+          "score": "85",
+          "record": "3-1",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
           "name": "UAlbany Great Danes",
           "abbr": "UALB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/399.png",
-          "score": "43",
-          "record": "2-1",
+          "score": "76",
+          "record": "2-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401911519",
+        "date": "2026-11-11T19:00Z",
+        "state": "in",
+        "detail": "Halftime",
+        "away": {
+          "name": "Incarnate Word Cardinals",
+          "abbr": "UIW",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2916.png",
+          "score": "33",
+          "record": "0-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UC Davis Aggies",
+          "abbr": "UCD",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/302.png",
+          "score": "49",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         }
@@ -1731,35 +1755,20 @@
         }
       },
       {
-        "id": "401911519",
-        "date": "2026-11-11T19:00Z",
-        "state": "pre",
-        "detail": "11/11 - 2:00 PM EST",
+        "id": "401918992",
+        "date": "2026-11-11T20:00Z",
+        "state": "in",
+        "detail": "17:13 - 1st",
         "away": {
-          "name": "Incarnate Word Cardinals",
-          "abbr": "UIW",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2916.png",
-          "score": "0",
-          "record": "0-3",
+          "name": "South Florida Bulls",
+          "abbr": "USF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
+          "score": "6",
+          "record": "1-1",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "UC Davis Aggies",
-          "abbr": "UCD",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/302.png",
-          "score": "0",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401918992",
-        "date": "2026-11-11T20:00Z",
-        "state": "pre",
-        "detail": "11/11 - 3:00 PM EST",
-        "away": {
           "name": "Saint Joseph's Hawks",
           "abbr": "JOES",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2603.png",
@@ -1767,27 +1776,18 @@
           "record": "2-0",
           "rank": 0,
           "winner": false
-        },
-        "home": {
-          "name": "South Florida Bulls",
-          "abbr": "USF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
-          "score": "0",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
         }
       },
       {
         "id": "401911230",
         "date": "2026-11-11T20:00Z",
-        "state": "pre",
-        "detail": "11/11 - 3:00 PM EST",
+        "state": "in",
+        "detail": "15:47 - 1st",
         "away": {
           "name": "Loyola Chicago Ramblers",
           "abbr": "LUC",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2350.png",
-          "score": "0",
+          "score": "7",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -1796,7 +1796,7 @@
           "name": "Air Force Falcons",
           "abbr": "AF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png",
-          "score": "0",
+          "score": "11",
           "record": "2-1",
           "rank": 0,
           "winner": false
