@@ -1,7 +1,31 @@
 {
-  "updated": "2026-11-11T03:09:43Z",
+  "updated": "2026-11-11T03:59:16Z",
   "data": {
     "games": [
+      {
+        "id": "401866460",
+        "date": "2026-11-11T01:00Z",
+        "state": "in",
+        "detail": "14:54 - 4th",
+        "away": {
+          "name": "Ohio Bobcats",
+          "abbr": "OHIO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/195.png",
+          "score": "17",
+          "record": "7-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Miami (OH) RedHawks",
+          "abbr": "M-OH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/193.png",
+          "score": "14",
+          "record": "5-4",
+          "rank": 0,
+          "winner": false
+        }
+      },
       {
         "id": "401866458",
         "date": "2026-11-11T00:00Z",
@@ -29,14 +53,14 @@
       {
         "id": "401866459",
         "date": "2026-11-11T00:00Z",
-        "state": "in",
-        "detail": "5:55 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Kent State Golden Flashes",
           "abbr": "KENT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2309.png",
-          "score": "21",
-          "record": "3-6",
+          "score": "28",
+          "record": "3-7",
           "rank": 0,
           "winner": false
         },
@@ -44,34 +68,10 @@
           "name": "Bowling Green Falcons",
           "abbr": "BGSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/189.png",
-          "score": "27",
-          "record": "2-7",
+          "score": "33",
+          "record": "3-7",
           "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401866460",
-        "date": "2026-11-11T01:00Z",
-        "state": "in",
-        "detail": "Halftime",
-        "away": {
-          "name": "Ohio Bobcats",
-          "abbr": "OHIO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/195.png",
-          "score": "17",
-          "record": "7-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Miami (OH) RedHawks",
-          "abbr": "M-OH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/193.png",
-          "score": "7",
-          "record": "5-4",
-          "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
