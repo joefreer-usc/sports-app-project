@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T21:46:02Z",
+  "updated": "2026-11-11T22:38:38Z",
   "data": {
     "games": [
       {
@@ -1659,63 +1659,15 @@
         }
       },
       {
-        "id": "401918992",
-        "date": "2026-11-11T20:00Z",
-        "state": "in",
-        "detail": "11:16 - 2nd",
-        "away": {
-          "name": "South Florida Bulls",
-          "abbr": "USF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
-          "score": "50",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Saint Joseph's Hawks",
-          "abbr": "JOES",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2603.png",
-          "score": "64",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401911230",
-        "date": "2026-11-11T20:00Z",
-        "state": "in",
-        "detail": "9:37 - 2nd",
-        "away": {
-          "name": "Loyola Chicago Ramblers",
-          "abbr": "LUC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2350.png",
-          "score": "65",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Air Force Falcons",
-          "abbr": "AF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png",
-          "score": "80",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401918978",
         "date": "2026-11-11T21:00Z",
         "state": "in",
-        "detail": "4:12 - 1st",
+        "detail": "13:18 - 2nd",
         "away": {
           "name": "North Carolina A&T Aggies",
           "abbr": "NCAT",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png",
-          "score": "25",
+          "score": "36",
           "record": "1-1",
           "rank": 0,
           "winner": false
@@ -1724,8 +1676,32 @@
           "name": "East Carolina Pirates",
           "abbr": "ECU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
-          "score": "27",
+          "score": "49",
           "record": "1-1",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401925717",
+        "date": "2026-11-11T22:00Z",
+        "state": "in",
+        "detail": "3:55 - 1st",
+        "away": {
+          "name": "Bethune-Cookman Wildcats",
+          "abbr": "BCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2065.png",
+          "score": "27",
+          "record": "0-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "San Diego State Aztecs",
+          "abbr": "SDSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png",
+          "score": "30",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         }
@@ -1827,34 +1803,58 @@
         }
       },
       {
-        "id": "401925717",
-        "date": "2026-11-11T22:00Z",
-        "state": "pre",
-        "detail": "11/11 - 5:00 PM EST",
+        "id": "401918992",
+        "date": "2026-11-11T20:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Bethune-Cookman Wildcats",
-          "abbr": "BCU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2065.png",
-          "score": "0",
-          "record": "0-3",
+          "name": "South Florida Bulls",
+          "abbr": "USF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
+          "score": "80",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "San Diego State Aztecs",
-          "abbr": "SDSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png",
-          "score": "0",
-          "record": "2-0",
+          "name": "Saint Joseph's Hawks",
+          "abbr": "JOES",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2603.png",
+          "score": "83",
+          "record": "3-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401911230",
+        "date": "2026-11-11T20:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Loyola Chicago Ramblers",
+          "abbr": "LUC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2350.png",
+          "score": "93",
+          "record": "2-1",
           "rank": 0,
           "winner": false
+        },
+        "home": {
+          "name": "Air Force Falcons",
+          "abbr": "AF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png",
+          "score": "107",
+          "record": "3-1",
+          "rank": 0,
+          "winner": true
         }
       },
       {
         "id": "401921181",
-        "date": "2026-11-11T22:30Z",
+        "date": "2026-11-11T22:58Z",
         "state": "pre",
-        "detail": "11/11 - 5:30 PM EST",
+        "detail": "11/11 - 5:58 PM EST",
         "away": {
           "name": "Pennsylvania Quakers",
           "abbr": "PENN",
