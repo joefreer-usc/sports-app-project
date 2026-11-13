@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T21:21:51Z",
+  "updated": "2026-11-13T22:06:50Z",
   "data": {
     "games": [
       {
@@ -699,30 +699,6 @@
         }
       },
       {
-        "id": "401921167",
-        "date": "2026-11-13T20:00Z",
-        "state": "in",
-        "detail": "10:01 - 2nd",
-        "away": {
-          "name": "West Florida Argonauts",
-          "abbr": "UWF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2697.png",
-          "score": "50",
-          "record": "2-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Cleveland State Vikings",
-          "abbr": "CLE",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/325.png",
-          "score": "47",
-          "record": "1-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401928807",
         "date": "2026-11-13T17:00Z",
         "state": "post",
@@ -747,15 +723,39 @@
         }
       },
       {
+        "id": "401921167",
+        "date": "2026-11-13T20:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "West Florida Argonauts",
+          "abbr": "UWF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2697.png",
+          "score": "67",
+          "record": "2-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Cleveland State Vikings",
+          "abbr": "CLE",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/325.png",
+          "score": "69",
+          "record": "2-2",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
         "id": "401921721",
         "date": "2026-11-13T22:00Z",
-        "state": "pre",
-        "detail": "11/13 - 5:00 PM EST",
+        "state": "in",
+        "detail": "17:42 - 1st",
         "away": {
           "name": "North Alabama Lions",
           "abbr": "UNA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2453.png",
-          "score": "0",
+          "score": "5",
           "record": "2-1",
           "rank": 0,
           "winner": false
@@ -764,7 +764,7 @@
           "name": "Miami Hurricanes",
           "abbr": "MIA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png",
-          "score": "0",
+          "score": "3",
           "record": "2-1",
           "rank": 17,
           "winner": false
@@ -773,8 +773,8 @@
       {
         "id": "401909696",
         "date": "2026-11-13T22:00Z",
-        "state": "pre",
-        "detail": "11/13 - 5:00 PM EST",
+        "state": "in",
+        "detail": "17:24 - 1st",
         "away": {
           "name": "Texas A&M-Corpus Christi Islanders",
           "abbr": "AMCC",
@@ -788,7 +788,7 @@
           "name": "Florida State Seminoles",
           "abbr": "FSU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png",
-          "score": "0",
+          "score": "10",
           "record": "2-1",
           "rank": 0,
           "winner": false
@@ -4452,7 +4452,7 @@
           "abbr": "CLE",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/325.png",
           "score": "0",
-          "record": "1-2",
+          "record": "2-2",
           "rank": 0,
           "winner": false
         },
