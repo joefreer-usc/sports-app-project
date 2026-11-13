@@ -1,41 +1,41 @@
 {
-  "updated": "2026-11-13T03:24:12Z",
+  "updated": "2026-11-13T04:24:03Z",
   "data": {
     "games": [
       {
-        "id": "401919981",
-        "date": "2026-11-13T01:30Z",
-        "state": "post",
-        "detail": "Final",
+        "id": "401913056",
+        "date": "2026-11-13T03:30Z",
+        "state": "in",
+        "detail": "Halftime",
         "away": {
-          "name": "Northern Iowa Panthers",
-          "abbr": "UNI",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2460.png",
-          "score": "40",
-          "record": "1-2",
+          "name": "Arizona Wildcats",
+          "abbr": "ARIZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+          "score": "24",
+          "record": "2-0",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Iowa Hawkeyes",
-          "abbr": "IOWA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png",
-          "score": "78",
-          "record": "3-1",
+          "name": "UCLA Bruins",
+          "abbr": "UCLA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
+          "score": "37",
+          "record": "2-0",
           "rank": 10,
-          "winner": true
+          "winner": false
         }
       },
       {
         "id": "401921495",
         "date": "2026-11-13T03:00Z",
         "state": "in",
-        "detail": "End of 1st",
+        "detail": "3:59 - 3rd",
         "away": {
           "name": "Cal State Bakersfield Roadrunners",
           "abbr": "CSUB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png",
-          "score": "8",
+          "score": "34",
           "record": "1-0",
           "rank": 0,
           "winner": false
@@ -44,7 +44,7 @@
           "name": "Washington Huskies",
           "abbr": "WASH",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
-          "score": "35",
+          "score": "63",
           "record": "2-0",
           "rank": 16,
           "winner": false
@@ -168,6 +168,30 @@
           "record": "1-2",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401919981",
+        "date": "2026-11-13T01:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Northern Iowa Panthers",
+          "abbr": "UNI",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2460.png",
+          "score": "40",
+          "record": "1-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Iowa Hawkeyes",
+          "abbr": "IOWA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png",
+          "score": "78",
+          "record": "3-1",
+          "rank": 10,
+          "winner": true
         }
       },
       {
@@ -1176,30 +1200,6 @@
           "record": "4-0",
           "rank": 0,
           "winner": true
-        }
-      },
-      {
-        "id": "401913056",
-        "date": "2026-11-13T03:30Z",
-        "state": "pre",
-        "detail": "11/12 - 10:30 PM EST",
-        "away": {
-          "name": "Arizona Wildcats",
-          "abbr": "ARIZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "0",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UCLA Bruins",
-          "abbr": "UCLA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
-          "score": "0",
-          "record": "2-0",
-          "rank": 10,
-          "winner": false
         }
       },
       {
