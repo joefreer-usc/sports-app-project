@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T19:37:14Z",
+  "updated": "2026-11-13T20:31:03Z",
   "data": {
     "games": [
       {
@@ -699,6 +699,30 @@
         }
       },
       {
+        "id": "401921167",
+        "date": "2026-11-13T20:00Z",
+        "state": "in",
+        "detail": "7:30 - 1st",
+        "away": {
+          "name": "West Florida Argonauts",
+          "abbr": "UWF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2697.png",
+          "score": "22",
+          "record": "2-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Cleveland State Vikings",
+          "abbr": "CLE",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/325.png",
+          "score": "21",
+          "record": "1-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401928807",
         "date": "2026-11-13T17:00Z",
         "state": "post",
@@ -720,30 +744,6 @@
           "record": "3-2",
           "rank": 0,
           "winner": true
-        }
-      },
-      {
-        "id": "401921167",
-        "date": "2026-11-13T20:00Z",
-        "state": "pre",
-        "detail": "11/13 - 3:00 PM EST",
-        "away": {
-          "name": "West Florida Argonauts",
-          "abbr": "UWF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2697.png",
-          "score": "0",
-          "record": "2-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Cleveland State Vikings",
-          "abbr": "CLE",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/325.png",
-          "score": "0",
-          "record": "1-2",
-          "rank": 0,
-          "winner": false
         }
       },
       {
@@ -4707,30 +4707,6 @@
         }
       },
       {
-        "id": "401926733",
-        "date": "2026-11-15T22:30Z",
-        "state": "pre",
-        "detail": "11/15 - 5:30 PM EST",
-        "away": {
-          "name": "Ecclesia Royals",
-          "abbr": "ECCL",
-          "logo": "",
-          "score": "0",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UT Martin Skyhawks",
-          "abbr": "UTM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2630.png",
-          "score": "0",
-          "record": "1-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401911017",
         "date": "2026-11-15T22:30Z",
         "state": "pre",
@@ -4748,6 +4724,30 @@
           "name": "Buffalo Bulls",
           "abbr": "BUF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2084.png",
+          "score": "0",
+          "record": "1-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401926733",
+        "date": "2026-11-15T22:30Z",
+        "state": "pre",
+        "detail": "11/15 - 6:00 PM EST",
+        "away": {
+          "name": "Ecclesia Royals",
+          "abbr": "ECCL",
+          "logo": "",
+          "score": "0",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UT Martin Skyhawks",
+          "abbr": "UTM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2630.png",
           "score": "0",
           "record": "1-2",
           "rank": 0,
