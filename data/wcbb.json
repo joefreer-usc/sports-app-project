@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-13T05:25:39Z",
+  "updated": "2026-11-13T06:25:11Z",
   "data": {
     "games": [
-      {
-        "id": "401913056",
-        "date": "2026-11-13T03:30Z",
-        "state": "in",
-        "detail": "2:24 - 4th",
-        "away": {
-          "name": "Arizona Wildcats",
-          "abbr": "ARIZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "44",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UCLA Bruins",
-          "abbr": "UCLA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
-          "score": "71",
-          "record": "2-0",
-          "rank": 10,
-          "winner": false
-        }
-      },
       {
         "id": "401915886",
         "date": "2026-11-13T00:00Z",
@@ -166,6 +142,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png",
           "score": "78",
           "record": "3-1",
+          "rank": 10,
+          "winner": true
+        }
+      },
+      {
+        "id": "401913056",
+        "date": "2026-11-13T03:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Arizona Wildcats",
+          "abbr": "ARIZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+          "score": "44",
+          "record": "2-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UCLA Bruins",
+          "abbr": "UCLA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
+          "score": "76",
+          "record": "3-0",
           "rank": 10,
           "winner": true
         }
@@ -5109,7 +5109,7 @@
           "abbr": "UCLA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
           "score": "0",
-          "record": "2-0",
+          "record": "3-0",
           "rank": 10,
           "winner": false
         }
@@ -5229,7 +5229,7 @@
           "abbr": "ARIZ",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
           "score": "0",
-          "record": "2-0",
+          "record": "2-1",
           "rank": 0,
           "winner": false
         }
