@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T18:40:25Z",
+  "updated": "2026-11-13T19:37:14Z",
   "data": {
     "games": [
       {
@@ -1203,87 +1203,15 @@
         }
       },
       {
-        "id": "401927947",
-        "date": "2026-11-13T17:00Z",
-        "state": "in",
-        "detail": "6:57 - 4th",
-        "away": {
-          "name": "Stephens STEPHENS",
-          "abbr": "STPH",
-          "logo": "",
-          "score": "31",
-          "record": "",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Lindenwood Lions",
-          "abbr": "LIN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2815.png",
-          "score": "79",
-          "record": "1-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401919663",
-        "date": "2026-11-13T17:00Z",
-        "state": "in",
-        "detail": "8:12 - 4th",
-        "away": {
-          "name": "Troy Trojans",
-          "abbr": "TROY",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2653.png",
-          "score": "39",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Belmont Bruins",
-          "abbr": "BEL",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2057.png",
-          "score": "61",
-          "record": "0-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401920440",
-        "date": "2026-11-13T17:30Z",
-        "state": "in",
-        "detail": "9:09 - 3rd",
-        "away": {
-          "name": "Texas A&M-Corpus Christi Islanders",
-          "abbr": "AMCC",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/357.png",
-          "score": "21",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Texas State Bobcats",
-          "abbr": "TXST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
-          "score": "29",
-          "record": "2-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401918584",
         "date": "2026-11-13T18:00Z",
         "state": "in",
-        "detail": "4:31 - 2nd",
+        "detail": "9:05 - 4th",
         "away": {
           "name": "Bethune-Cookman Wildcats",
           "abbr": "BCU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2065.png",
-          "score": "17",
+          "score": "42",
           "record": "2-2",
           "rank": 0,
           "winner": false
@@ -1292,7 +1220,7 @@
           "name": "Utah State Aggies",
           "abbr": "USU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/328.png",
-          "score": "28",
+          "score": "57",
           "record": "1-3",
           "rank": 0,
           "winner": false
@@ -1414,6 +1342,78 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
           "score": "93",
           "record": "1-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401927947",
+        "date": "2026-11-13T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Stephens STEPHENS",
+          "abbr": "STPH",
+          "logo": "",
+          "score": "47",
+          "record": "",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Lindenwood Lions",
+          "abbr": "LIN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2815.png",
+          "score": "96",
+          "record": "2-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401919663",
+        "date": "2026-11-13T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Troy Trojans",
+          "abbr": "TROY",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2653.png",
+          "score": "46",
+          "record": "2-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Belmont Bruins",
+          "abbr": "BEL",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2057.png",
+          "score": "72",
+          "record": "1-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401920440",
+        "date": "2026-11-13T17:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Texas A&M-Corpus Christi Islanders",
+          "abbr": "AMCC",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/357.png",
+          "score": "47",
+          "record": "1-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Texas State Bobcats",
+          "abbr": "TXST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
+          "score": "63",
+          "record": "3-0",
           "rank": 0,
           "winner": true
         }
@@ -4524,7 +4524,7 @@
           "abbr": "LIN",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2815.png",
           "score": "0",
-          "record": "1-3",
+          "record": "2-3",
           "rank": 0,
           "winner": false
         },
