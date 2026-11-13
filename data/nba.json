@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-13T01:51:44Z",
+  "updated": "2026-11-13T02:31:40Z",
   "data": {
     "games": [
       {
         "id": "401909976",
         "date": "2026-11-13T00:00Z",
-        "state": "in",
-        "detail": "1:18 - 3rd",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Toronto Raptors",
           "abbr": "TOR",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png",
-          "score": "85",
-          "record": "5-6",
+          "score": "112",
+          "record": "5-7",
           "rank": 0,
           "winner": false
         },
@@ -20,22 +20,22 @@
           "name": "Philadelphia 76ers",
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
-          "score": "89",
-          "record": "9-3",
+          "score": "123",
+          "record": "10-3",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
         "id": "401909977",
         "date": "2026-11-13T00:00Z",
         "state": "in",
-        "detail": "1.4 - 3rd",
+        "detail": "25.7 - 4th",
         "away": {
           "name": "Detroit Pistons",
           "abbr": "DET",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png",
-          "score": "94",
+          "score": "118",
           "record": "7-3",
           "rank": 0,
           "winner": false
@@ -44,7 +44,7 @@
           "name": "Washington Wizards",
           "abbr": "WSH",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png",
-          "score": "88",
+          "score": "118",
           "record": "4-8",
           "rank": 0,
           "winner": false
@@ -54,12 +54,12 @@
         "id": "401909978",
         "date": "2026-11-13T01:00Z",
         "state": "in",
-        "detail": "6:46 - 2nd",
+        "detail": "6:41 - 3rd",
         "away": {
           "name": "Dallas Mavericks",
           "abbr": "DAL",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png",
-          "score": "42",
+          "score": "59",
           "record": "7-4",
           "rank": 0,
           "winner": false
@@ -68,7 +68,7 @@
           "name": "Minnesota Timberwolves",
           "abbr": "MIN",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png",
-          "score": "43",
+          "score": "88",
           "record": "8-3",
           "rank": 0,
           "winner": false
@@ -77,13 +77,13 @@
       {
         "id": "401909979",
         "date": "2026-11-13T02:00Z",
-        "state": "pre",
-        "detail": "11/12 - 9:00 PM EST",
+        "state": "in",
+        "detail": "2:21 - 1st",
         "away": {
           "name": "Charlotte Hornets",
           "abbr": "CHA",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png",
-          "score": "0",
+          "score": "18",
           "record": "4-7",
           "rank": 0,
           "winner": false
@@ -92,7 +92,7 @@
           "name": "Phoenix Suns",
           "abbr": "PHX",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png",
-          "score": "0",
+          "score": "25",
           "record": "4-6",
           "rank": 0,
           "winner": false
@@ -453,7 +453,7 @@
           "abbr": "PHI",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png",
           "score": "0",
-          "record": "9-3",
+          "record": "10-3",
           "rank": 0,
           "winner": false
         }
@@ -573,7 +573,7 @@
           "abbr": "TOR",
           "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png",
           "score": "0",
-          "record": "5-6",
+          "record": "5-7",
           "rank": 0,
           "winner": false
         }
