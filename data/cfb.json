@@ -1,41 +1,17 @@
 {
-  "updated": "2026-11-13T04:24:01Z",
+  "updated": "2026-11-13T05:25:38Z",
   "data": {
     "games": [
-      {
-        "id": "401862824",
-        "date": "2026-11-13T01:00Z",
-        "state": "in",
-        "detail": "6:49 - 4th",
-        "away": {
-          "name": "Memphis Tigers",
-          "abbr": "MEM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
-          "score": "45",
-          "record": "7-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "South Florida Bulls",
-          "abbr": "USF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
-          "score": "41",
-          "record": "6-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401869969",
         "date": "2026-11-13T02:00Z",
         "state": "in",
-        "detail": "9:48 - 3rd",
+        "detail": "5:52 - 4th",
         "away": {
           "name": "Louisiana Ragin' Cajuns",
           "abbr": "UL",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/309.png",
-          "score": "21",
+          "score": "35",
           "record": "6-3",
           "rank": 0,
           "winner": false
@@ -44,8 +20,80 @@
           "name": "UL Monroe Warhawks",
           "abbr": "ULM",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png",
-          "score": "14",
+          "score": "21",
           "record": "2-7",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401858293",
+        "date": "2026-11-14T00:00Z",
+        "state": "pre",
+        "detail": "11/13 - 7:00 PM EST",
+        "away": {
+          "name": "Florida State Seminoles",
+          "abbr": "FSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png",
+          "score": "0",
+          "record": "4-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Pittsburgh Panthers",
+          "abbr": "PITT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/221.png",
+          "score": "0",
+          "record": "6-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401858526",
+        "date": "2026-11-14T02:00Z",
+        "state": "pre",
+        "detail": "11/13 - 9:00 PM EST",
+        "away": {
+          "name": "Illinois Fighting Illini",
+          "abbr": "ILL",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/356.png",
+          "score": "0",
+          "record": "6-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UCLA Bruins",
+          "abbr": "UCLA",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
+          "score": "0",
+          "record": "9-0",
+          "rank": 4,
+          "winner": false
+        }
+      },
+      {
+        "id": "401856860",
+        "date": "2026-11-14T03:15Z",
+        "state": "pre",
+        "detail": "11/13 - 10:15 PM EST",
+        "away": {
+          "name": "Houston Cougars",
+          "abbr": "HOU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
+          "score": "0",
+          "record": "7-2",
+          "rank": 14,
+          "winner": false
+        },
+        "home": {
+          "name": "Colorado Buffaloes",
+          "abbr": "COLO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/38.png",
+          "score": "0",
+          "record": "3-6",
           "rank": 0,
           "winner": false
         }
@@ -195,73 +243,25 @@
         }
       },
       {
-        "id": "401858293",
-        "date": "2026-11-14T00:00Z",
-        "state": "pre",
-        "detail": "11/13 - 7:00 PM EST",
+        "id": "401862824",
+        "date": "2026-11-13T01:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Florida State Seminoles",
-          "abbr": "FSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png",
-          "score": "0",
-          "record": "4-5",
+          "name": "Memphis Tigers",
+          "abbr": "MEM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
+          "score": "52",
+          "record": "8-2",
           "rank": 0,
-          "winner": false
+          "winner": true
         },
         "home": {
-          "name": "Pittsburgh Panthers",
-          "abbr": "PITT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/221.png",
-          "score": "0",
-          "record": "6-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401858526",
-        "date": "2026-11-14T02:00Z",
-        "state": "pre",
-        "detail": "11/13 - 9:00 PM EST",
-        "away": {
-          "name": "Illinois Fighting Illini",
-          "abbr": "ILL",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/356.png",
-          "score": "0",
-          "record": "6-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UCLA Bruins",
-          "abbr": "UCLA",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
-          "score": "0",
-          "record": "9-0",
-          "rank": 4,
-          "winner": false
-        }
-      },
-      {
-        "id": "401856860",
-        "date": "2026-11-14T03:15Z",
-        "state": "pre",
-        "detail": "11/13 - 10:15 PM EST",
-        "away": {
-          "name": "Houston Cougars",
-          "abbr": "HOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "0",
-          "record": "7-2",
-          "rank": 14,
-          "winner": false
-        },
-        "home": {
-          "name": "Colorado Buffaloes",
-          "abbr": "COLO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/38.png",
-          "score": "0",
-          "record": "3-6",
+          "name": "South Florida Bulls",
+          "abbr": "USF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
+          "score": "41",
+          "record": "6-4",
           "rank": 0,
           "winner": false
         }

@@ -1,17 +1,17 @@
 {
-  "updated": "2026-11-13T04:24:03Z",
+  "updated": "2026-11-13T05:25:39Z",
   "data": {
     "games": [
       {
         "id": "401913056",
         "date": "2026-11-13T03:30Z",
         "state": "in",
-        "detail": "Halftime",
+        "detail": "2:24 - 4th",
         "away": {
           "name": "Arizona Wildcats",
           "abbr": "ARIZ",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "24",
+          "score": "44",
           "record": "2-0",
           "rank": 0,
           "winner": false
@@ -20,33 +20,9 @@
           "name": "UCLA Bruins",
           "abbr": "UCLA",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
-          "score": "37",
+          "score": "71",
           "record": "2-0",
           "rank": 10,
-          "winner": false
-        }
-      },
-      {
-        "id": "401921495",
-        "date": "2026-11-13T03:00Z",
-        "state": "in",
-        "detail": "3:59 - 3rd",
-        "away": {
-          "name": "Cal State Bakersfield Roadrunners",
-          "abbr": "CSUB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png",
-          "score": "34",
-          "record": "1-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Washington Huskies",
-          "abbr": "WASH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
-          "score": "63",
-          "record": "2-0",
-          "rank": 16,
           "winner": false
         }
       },
@@ -215,6 +191,30 @@
           "score": "106",
           "record": "5-0",
           "rank": 15,
+          "winner": true
+        }
+      },
+      {
+        "id": "401921495",
+        "date": "2026-11-13T03:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Cal State Bakersfield Roadrunners",
+          "abbr": "CSUB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png",
+          "score": "51",
+          "record": "1-1",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Washington Huskies",
+          "abbr": "WASH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
+          "score": "85",
+          "record": "3-0",
+          "rank": 16,
           "winner": true
         }
       },
