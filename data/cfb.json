@@ -1,103 +1,7 @@
 {
-  "updated": "2026-11-15T06:32:27Z",
+  "updated": "2026-11-15T07:42:09Z",
   "data": {
     "games": [
-      {
-        "id": "401864540",
-        "date": "2026-11-15T03:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Wyoming Cowboys",
-          "abbr": "WYO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
-          "score": "27",
-          "record": "7-3",
-          "rank": 0,
-          "winner": true
-        },
-        "home": {
-          "name": "UTEP Miners",
-          "abbr": "UTEP",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2638.png",
-          "score": "15",
-          "record": "1-9",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401856864",
-        "date": "2026-11-15T03:30Z",
-        "state": "in",
-        "detail": "13:55 - 4th",
-        "away": {
-          "name": "Utah Utes",
-          "abbr": "UTAH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
-          "score": "27",
-          "record": "9-0",
-          "rank": 2,
-          "winner": false
-        },
-        "home": {
-          "name": "Arizona Wildcats",
-          "abbr": "ARIZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "28",
-          "record": "7-2",
-          "rank": 23,
-          "winner": false
-        }
-      },
-      {
-        "id": "401860917",
-        "date": "2026-11-15T03:45Z",
-        "state": "in",
-        "detail": "11:51 - 4th",
-        "away": {
-          "name": "Colorado State Rams",
-          "abbr": "CSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/36.png",
-          "score": "7",
-          "record": "3-6",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Washington State Cougars",
-          "abbr": "WSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/265.png",
-          "score": "66",
-          "record": "1-8",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401864537",
-        "date": "2026-11-15T04:00Z",
-        "state": "in",
-        "detail": "2:11 - 3rd",
-        "away": {
-          "name": "North Dakota State Bison",
-          "abbr": "NDSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2449.png",
-          "score": "7",
-          "record": "7-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Hawai'i Rainbow Warriors",
-          "abbr": "HAW",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
-          "score": "13",
-          "record": "3-6",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401856887",
         "date": "2026-11-15T18:00Z",
@@ -408,6 +312,30 @@
           "record": "9-1",
           "rank": 1,
           "winner": true
+        }
+      },
+      {
+        "id": "401856864",
+        "date": "2026-11-15T03:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Utah Utes",
+          "abbr": "UTAH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
+          "score": "40",
+          "record": "10-0",
+          "rank": 2,
+          "winner": true
+        },
+        "home": {
+          "name": "Arizona Wildcats",
+          "abbr": "ARIZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+          "score": "39",
+          "record": "7-3",
+          "rank": 23,
+          "winner": false
         }
       },
       {
@@ -1608,6 +1536,78 @@
           "record": "5-5",
           "rank": 0,
           "winner": true
+        }
+      },
+      {
+        "id": "401864540",
+        "date": "2026-11-15T03:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Wyoming Cowboys",
+          "abbr": "WYO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2751.png",
+          "score": "27",
+          "record": "7-3",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "UTEP Miners",
+          "abbr": "UTEP",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2638.png",
+          "score": "15",
+          "record": "1-9",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401860917",
+        "date": "2026-11-15T03:45Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Colorado State Rams",
+          "abbr": "CSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/36.png",
+          "score": "7",
+          "record": "3-7",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Washington State Cougars",
+          "abbr": "WSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/265.png",
+          "score": "73",
+          "record": "2-8",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401864537",
+        "date": "2026-11-15T04:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "North Dakota State Bison",
+          "abbr": "NDSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2449.png",
+          "score": "21",
+          "record": "8-2",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Hawai'i Rainbow Warriors",
+          "abbr": "HAW",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
+          "score": "13",
+          "record": "3-7",
+          "rank": 0,
+          "winner": false
         }
       }
     ]
