@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-16T03:46:27Z",
+  "updated": "2026-11-16T05:11:47Z",
   "data": {
     "games": [
-      {
-        "id": "401913057",
-        "date": "2026-11-16T02:00Z",
-        "state": "in",
-        "detail": "4:52 - 4th",
-        "away": {
-          "name": "Oregon State Beavers",
-          "abbr": "ORST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
-          "score": "59",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Arizona Wildcats",
-          "abbr": "ARIZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
-          "score": "65",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401918850",
         "date": "2026-11-15T18:00Z",
@@ -1704,6 +1680,30 @@
           "record": "1-3",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401913057",
+        "date": "2026-11-16T02:00Z",
+        "state": "post",
+        "detail": "Final/OT",
+        "away": {
+          "name": "Oregon State Beavers",
+          "abbr": "ORST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
+          "score": "80",
+          "record": "2-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Arizona Wildcats",
+          "abbr": "ARIZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+          "score": "84",
+          "record": "3-1",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -3732,7 +3732,7 @@
           "abbr": "ORST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
           "score": "0",
-          "record": "2-1",
+          "record": "2-2",
           "rank": 0,
           "winner": false
         },
