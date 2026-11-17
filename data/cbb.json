@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T18:29:27Z",
+  "updated": "2026-11-17T19:35:37Z",
   "data": {
     "games": [
       {
@@ -795,40 +795,40 @@
         }
       },
       {
-        "id": "401928360",
-        "date": "2026-11-17T17:00Z",
+        "id": "401920511",
+        "date": "2026-11-17T19:00Z",
         "state": "in",
-        "detail": "9:03 - 2nd",
+        "detail": "7:52 - 1st",
         "away": {
-          "name": "Louisiana Christian Wildcats",
-          "abbr": "LCHR",
-          "logo": "",
-          "score": "46",
-          "record": "",
+          "name": "Rutgers Scarlet Knights",
+          "abbr": "RUTG",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png",
+          "score": "15",
+          "record": "3-0",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Southern Jaguars",
-          "abbr": "SOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
-          "score": "83",
-          "record": "0-5",
-          "rank": 0,
+          "name": "Houston Cougars",
+          "abbr": "HOU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
+          "score": "25",
+          "record": "3-0",
+          "rank": 8,
           "winner": false
         }
       },
       {
         "id": "401927381",
         "date": "2026-11-17T17:00Z",
-        "state": "in",
-        "detail": "Halftime",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Hofstra Pride",
           "abbr": "HOF",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2275.png",
-          "score": "33",
-          "record": "2-2",
+          "score": "66",
+          "record": "2-3",
           "rank": 0,
           "winner": false
         },
@@ -836,10 +836,10 @@
           "name": "Murray State Racers",
           "abbr": "MUR",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/93.png",
-          "score": "43",
-          "record": "4-0",
+          "score": "82",
+          "record": "5-0",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -867,27 +867,27 @@
         }
       },
       {
-        "id": "401920511",
-        "date": "2026-11-17T19:00Z",
-        "state": "pre",
-        "detail": "11/17 - 2:00 PM EST",
+        "id": "401928360",
+        "date": "2026-11-17T17:00Z",
+        "state": "post",
+        "detail": "Final",
         "away": {
-          "name": "Rutgers Scarlet Knights",
-          "abbr": "RUTG",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png",
-          "score": "0",
-          "record": "3-0",
+          "name": "Louisiana Christian Wildcats",
+          "abbr": "LCHR",
+          "logo": "",
+          "score": "58",
+          "record": "",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "Houston Cougars",
-          "abbr": "HOU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "0",
-          "record": "3-0",
-          "rank": 8,
-          "winner": false
+          "name": "Southern Jaguars",
+          "abbr": "SOU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
+          "score": "100",
+          "record": "1-5",
+          "rank": 0,
+          "winner": true
         }
       },
       {
@@ -4197,7 +4197,7 @@
           "abbr": "MUR",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/93.png",
           "score": "0",
-          "record": "4-0",
+          "record": "5-0",
           "rank": 0,
           "winner": false
         }
