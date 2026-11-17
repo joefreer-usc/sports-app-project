@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-17T03:44:10Z",
+  "updated": "2026-11-17T04:41:32Z",
   "data": {
     "games": [
-      {
-        "id": "401918934",
-        "date": "2026-11-17T02:00Z",
-        "state": "in",
-        "detail": "3:45 - 4th",
-        "away": {
-          "name": "Houston Christian Huskies",
-          "abbr": "HCU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2277.png",
-          "score": "44",
-          "record": "1-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Utah Utes",
-          "abbr": "UTAH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
-          "score": "88",
-          "record": "4-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401927069",
         "date": "2026-11-17T01:00Z",
@@ -771,10 +747,34 @@
         }
       },
       {
+        "id": "401918934",
+        "date": "2026-11-17T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Houston Christian Huskies",
+          "abbr": "HCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2277.png",
+          "score": "49",
+          "record": "1-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Utah Utes",
+          "abbr": "UTAH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
+          "score": "98",
+          "record": "5-0",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
         "id": "401921615",
         "date": "2026-11-17T02:00Z",
         "state": "post",
-        "detail": "Postponed",
+        "detail": "Canceled",
         "away": {
           "name": "UC Irvine Anteaters",
           "abbr": "UCI",
