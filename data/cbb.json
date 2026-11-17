@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T19:35:37Z",
+  "updated": "2026-11-17T20:28:09Z",
   "data": {
     "games": [
       {
@@ -798,12 +798,12 @@
         "id": "401920511",
         "date": "2026-11-17T19:00Z",
         "state": "in",
-        "detail": "7:52 - 1st",
+        "detail": "15:18 - 2nd",
         "away": {
           "name": "Rutgers Scarlet Knights",
           "abbr": "RUTG",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png",
-          "score": "15",
+          "score": "38",
           "record": "3-0",
           "rank": 0,
           "winner": false
@@ -812,34 +812,10 @@
           "name": "Houston Cougars",
           "abbr": "HOU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
-          "score": "25",
+          "score": "55",
           "record": "3-0",
           "rank": 8,
           "winner": false
-        }
-      },
-      {
-        "id": "401927381",
-        "date": "2026-11-17T17:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Hofstra Pride",
-          "abbr": "HOF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2275.png",
-          "score": "66",
-          "record": "2-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Murray State Racers",
-          "abbr": "MUR",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/93.png",
-          "score": "82",
-          "record": "5-0",
-          "rank": 0,
-          "winner": true
         }
       },
       {
@@ -886,6 +862,30 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
           "score": "100",
           "record": "1-5",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401927381",
+        "date": "2026-11-17T17:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Hofstra Pride",
+          "abbr": "HOF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2275.png",
+          "score": "66",
+          "record": "2-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Murray State Racers",
+          "abbr": "MUR",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/93.png",
+          "score": "82",
+          "record": "5-0",
           "rank": 0,
           "winner": true
         }
