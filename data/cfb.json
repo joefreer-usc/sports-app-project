@@ -1,18 +1,42 @@
 {
-  "updated": "2026-11-18T03:02:06Z",
+  "updated": "2026-11-18T03:43:34Z",
   "data": {
     "games": [
       {
+        "id": "401866465",
+        "date": "2026-11-17T23:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Eastern Michigan Eagles",
+          "abbr": "EMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2199.png",
+          "score": "27",
+          "record": "4-7",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Western Michigan Broncos",
+          "abbr": "WMU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png",
+          "score": "34",
+          "record": "8-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
         "id": "401866464",
         "date": "2026-11-18T00:00Z",
-        "state": "in",
-        "detail": "2:23 - 4th",
+        "state": "post",
+        "detail": "Final",
         "away": {
           "name": "Ball State Cardinals",
           "abbr": "BALL",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2050.png",
           "score": "28",
-          "record": "3-7",
+          "record": "3-8",
           "rank": 0,
           "winner": false
         },
@@ -20,10 +44,10 @@
           "name": "Ohio Bobcats",
           "abbr": "OHIO",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/195.png",
-          "score": "28",
-          "record": "7-3",
+          "score": "35",
+          "record": "8-3",
           "rank": 0,
-          "winner": false
+          "winner": true
         }
       },
       {
@@ -48,30 +72,6 @@
           "record": "3-8",
           "rank": 0,
           "winner": false
-        }
-      },
-      {
-        "id": "401866465",
-        "date": "2026-11-17T23:00Z",
-        "state": "post",
-        "detail": "Final",
-        "away": {
-          "name": "Eastern Michigan Eagles",
-          "abbr": "EMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2199.png",
-          "score": "27",
-          "record": "4-7",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Western Michigan Broncos",
-          "abbr": "WMU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2711.png",
-          "score": "34",
-          "record": "8-3",
-          "rank": 0,
-          "winner": true
         }
       },
       {
@@ -339,30 +339,6 @@
         }
       },
       {
-        "id": "401856749",
-        "date": "2026-11-21T17:00Z",
-        "state": "pre",
-        "detail": "11/21 - 12:00 PM EST",
-        "away": {
-          "name": "Wofford Terriers",
-          "abbr": "WOF",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png",
-          "score": "0",
-          "record": "5-6",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Ole Miss Rebels",
-          "abbr": "MISS",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
-          "score": "0",
-          "record": "6-4",
-          "rank": 25,
-          "winner": false
-        }
-      },
-      {
         "id": "401858531",
         "date": "2026-11-21T17:00Z",
         "state": "pre",
@@ -407,6 +383,30 @@
           "score": "0",
           "record": "6-4",
           "rank": 24,
+          "winner": false
+        }
+      },
+      {
+        "id": "401856749",
+        "date": "2026-11-21T17:00Z",
+        "state": "pre",
+        "detail": "11/21 - 12:00 PM EST",
+        "away": {
+          "name": "Wofford Terriers",
+          "abbr": "WOF",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png",
+          "score": "0",
+          "record": "5-6",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Ole Miss Rebels",
+          "abbr": "MISS",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
+          "score": "0",
+          "record": "6-4",
+          "rank": 25,
           "winner": false
         }
       },
@@ -963,30 +963,6 @@
         }
       },
       {
-        "id": "401856754",
-        "date": "2026-11-21T20:30Z",
-        "state": "pre",
-        "detail": "11/21 - 3:30 PM EST",
-        "away": {
-          "name": "LSU Tigers",
-          "abbr": "LSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png",
-          "score": "0",
-          "record": "6-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Tennessee Volunteers",
-          "abbr": "TENN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2633.png",
-          "score": "0",
-          "record": "8-2",
-          "rank": 9,
-          "winner": false
-        }
-      },
-      {
         "id": "401858535",
         "date": "2026-11-21T20:30Z",
         "state": "pre",
@@ -1007,6 +983,30 @@
           "score": "0",
           "record": "6-4",
           "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401856754",
+        "date": "2026-11-21T20:30Z",
+        "state": "pre",
+        "detail": "11/21 - 3:30 PM EST",
+        "away": {
+          "name": "LSU Tigers",
+          "abbr": "LSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png",
+          "score": "0",
+          "record": "6-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Tennessee Volunteers",
+          "abbr": "TENN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2633.png",
+          "score": "0",
+          "record": "8-2",
+          "rank": 9,
           "winner": false
         }
       },
