@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-18T06:44:07Z",
+  "updated": "2026-11-18T07:58:48Z",
   "data": {
     "games": [
-      {
-        "id": "401920512",
-        "date": "2026-11-18T04:59Z",
-        "state": "in",
-        "detail": "15:21 - 2nd",
-        "away": {
-          "name": "West Virginia Mountaineers",
-          "abbr": "WVU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
-          "score": "47",
-          "record": "3-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Auburn Tigers",
-          "abbr": "AUB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png",
-          "score": "34",
-          "record": "2-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401906773",
         "date": "2026-11-17T21:51Z",
@@ -1635,6 +1611,30 @@
         }
       },
       {
+        "id": "401920512",
+        "date": "2026-11-18T04:59Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "West Virginia Mountaineers",
+          "abbr": "WVU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
+          "score": "76",
+          "record": "4-0",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Auburn Tigers",
+          "abbr": "AUB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png",
+          "score": "70",
+          "record": "2-2",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401909753",
         "date": "2026-11-18T17:00Z",
         "state": "pre",
@@ -2489,11 +2489,11 @@
           "winner": false
         },
         "home": {
-          "name": "TBD",
-          "abbr": "TBD",
-          "logo": "",
+          "name": "West Virginia Mountaineers",
+          "abbr": "WVU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
           "score": "0",
-          "record": "",
+          "record": "4-0",
           "rank": 0,
           "winner": false
         }
@@ -3281,11 +3281,11 @@
           "winner": false
         },
         "home": {
-          "name": "TBD",
-          "abbr": "TBD",
-          "logo": "",
+          "name": "Auburn Tigers",
+          "abbr": "AUB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png",
           "score": "0",
-          "record": "",
+          "record": "2-2",
           "rank": 0,
           "winner": false
         }
