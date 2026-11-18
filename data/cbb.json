@@ -1,41 +1,17 @@
 {
-  "updated": "2026-11-18T05:49:19Z",
+  "updated": "2026-11-18T06:44:07Z",
   "data": {
     "games": [
-      {
-        "id": "401925879",
-        "date": "2026-11-18T04:00Z",
-        "state": "in",
-        "detail": "3:50 - 2nd",
-        "away": {
-          "name": "Montana State Bobcats",
-          "abbr": "MTST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/147.png",
-          "score": "55",
-          "record": "2-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Gonzaga Bulldogs",
-          "abbr": "GONZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png",
-          "score": "68",
-          "record": "2-1",
-          "rank": 22,
-          "winner": false
-        }
-      },
       {
         "id": "401920512",
         "date": "2026-11-18T04:59Z",
         "state": "in",
-        "detail": "10:12 - 1st",
+        "detail": "15:21 - 2nd",
         "away": {
           "name": "West Virginia Mountaineers",
           "abbr": "WVU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
-          "score": "13",
+          "score": "47",
           "record": "3-0",
           "rank": 0,
           "winner": false
@@ -44,7 +20,7 @@
           "name": "Auburn Tigers",
           "abbr": "AUB",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png",
-          "score": "14",
+          "score": "34",
           "record": "2-1",
           "rank": 0,
           "winner": false
@@ -287,6 +263,30 @@
           "score": "81",
           "record": "5-0",
           "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401925879",
+        "date": "2026-11-18T04:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Montana State Bobcats",
+          "abbr": "MTST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/147.png",
+          "score": "62",
+          "record": "2-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Gonzaga Bulldogs",
+          "abbr": "GONZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png",
+          "score": "74",
+          "record": "3-1",
+          "rank": 22,
           "winner": true
         }
       },
@@ -3564,7 +3564,7 @@
           "abbr": "MTST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/147.png",
           "score": "0",
-          "record": "2-2",
+          "record": "2-3",
           "rank": 0,
           "winner": false
         },
