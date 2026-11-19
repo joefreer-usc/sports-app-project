@@ -1,127 +1,7 @@
 {
-  "updated": "2026-11-19T03:41:04Z",
+  "updated": "2026-11-19T04:43:47Z",
   "data": {
     "games": [
-      {
-        "id": "401926987",
-        "date": "2026-11-19T02:00Z",
-        "state": "in",
-        "detail": "6:11 - 4th",
-        "away": {
-          "name": "Montana Lady Griz",
-          "abbr": "MONT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/149.png",
-          "score": "50",
-          "record": "1-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Gonzaga Bulldogs",
-          "abbr": "GONZ",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png",
-          "score": "71",
-          "record": "2-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401921616",
-        "date": "2026-11-19T02:00Z",
-        "state": "in",
-        "detail": "8:46 - 4th",
-        "away": {
-          "name": "Idaho State Bengals",
-          "abbr": "IDST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/304.png",
-          "score": "31",
-          "record": "4-1",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "UC Irvine Anteaters",
-          "abbr": "UCI",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png",
-          "score": "52",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401920276",
-        "date": "2026-11-19T02:00Z",
-        "state": "in",
-        "detail": "9:41 - 4th",
-        "away": {
-          "name": "Colorado Buffaloes",
-          "abbr": "COLO",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/38.png",
-          "score": "51",
-          "record": "4-0",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "New Mexico Lobos",
-          "abbr": "UNM",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
-          "score": "40",
-          "record": "1-3",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401917709",
-        "date": "2026-11-19T02:00Z",
-        "state": "in",
-        "detail": "8:10 - 4th",
-        "away": {
-          "name": "Portland State Vikings",
-          "abbr": "PRST",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2502.png",
-          "score": "39",
-          "record": "0-5",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Portland Pilots",
-          "abbr": "PORT",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
-          "score": "68",
-          "record": "2-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401921496",
-        "date": "2026-11-19T02:30Z",
-        "state": "in",
-        "detail": "6:55 - 3rd",
-        "away": {
-          "name": "Utah Tech Trailblazers",
-          "abbr": "UTU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png",
-          "score": "27",
-          "record": "2-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Cal State Bakersfield Roadrunners",
-          "abbr": "CSUB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png",
-          "score": "23",
-          "record": "1-1",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401916196",
         "date": "2026-11-19T00:00Z",
@@ -1606,6 +1486,126 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png",
           "score": "55",
           "record": "2-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401926987",
+        "date": "2026-11-19T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Montana Lady Griz",
+          "abbr": "MONT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/149.png",
+          "score": "61",
+          "record": "1-4",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Gonzaga Bulldogs",
+          "abbr": "GONZ",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png",
+          "score": "84",
+          "record": "3-3",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401921616",
+        "date": "2026-11-19T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Idaho State Bengals",
+          "abbr": "IDST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/304.png",
+          "score": "51",
+          "record": "4-2",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "UC Irvine Anteaters",
+          "abbr": "UCI",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png",
+          "score": "66",
+          "record": "2-1",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401920276",
+        "date": "2026-11-19T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Colorado Buffaloes",
+          "abbr": "COLO",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/38.png",
+          "score": "75",
+          "record": "5-0",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "New Mexico Lobos",
+          "abbr": "UNM",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
+          "score": "58",
+          "record": "1-4",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
+        "id": "401917709",
+        "date": "2026-11-19T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Portland State Vikings",
+          "abbr": "PRST",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2502.png",
+          "score": "54",
+          "record": "0-6",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Portland Pilots",
+          "abbr": "PORT",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
+          "score": "83",
+          "record": "3-2",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401921496",
+        "date": "2026-11-19T02:30Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Utah Tech Trailblazers",
+          "abbr": "UTU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png",
+          "score": "55",
+          "record": "3-2",
+          "rank": 0,
+          "winner": true
+        },
+        "home": {
+          "name": "Cal State Bakersfield Roadrunners",
+          "abbr": "CSUB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png",
+          "score": "51",
+          "record": "1-2",
           "rank": 0,
           "winner": false
         }
@@ -3636,7 +3636,7 @@
           "abbr": "UTU",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png",
           "score": "0",
-          "record": "2-2",
+          "record": "3-2",
           "rank": 0,
           "winner": false
         },
@@ -3732,7 +3732,7 @@
           "abbr": "IDST",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/304.png",
           "score": "0",
-          "record": "4-1",
+          "record": "4-2",
           "rank": 0,
           "winner": false
         },
@@ -4701,7 +4701,7 @@
           "abbr": "UNM",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
           "score": "0",
-          "record": "1-3",
+          "record": "1-4",
           "rank": 0,
           "winner": false
         }
@@ -4884,7 +4884,7 @@
           "abbr": "GONZ",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png",
           "score": "0",
-          "record": "2-3",
+          "record": "3-3",
           "rank": 0,
           "winner": false
         },
@@ -4980,7 +4980,7 @@
           "abbr": "UCI",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png",
           "score": "0",
-          "record": "1-1",
+          "record": "2-1",
           "rank": 0,
           "winner": false
         },
