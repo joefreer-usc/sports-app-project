@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T15:40:33Z",
+  "updated": "2026-11-21T21:10:27Z",
   "data": {
     "season": "2026-27 English Premier League",
     "groups": [
@@ -24,12 +24,12 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "10",
+            "played": "11",
             "won": "9",
-            "drawn": "0",
+            "drawn": "1",
             "lost": "1",
             "gd": "+10",
-            "pts": "27",
+            "pts": "28",
             "note": "Champions League"
           },
           {
@@ -86,6 +86,32 @@
           },
           {
             "rank": 4,
+            "id": "349",
+            "name": "AFC Bournemouth",
+            "abbr": "BOU",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "11",
+            "won": "5",
+            "drawn": "3",
+            "lost": "3",
+            "gd": "+4",
+            "pts": "18",
+            "note": "Champions League"
+          },
+          {
+            "rank": 5,
             "id": "364",
             "name": "Liverpool",
             "abbr": "LIV",
@@ -108,16 +134,16 @@
             "lost": "2",
             "gd": "+4",
             "pts": "18",
-            "note": "Champions League"
+            "note": "Europa League"
           },
           {
-            "rank": 5,
-            "id": "363",
-            "name": "Chelsea",
-            "abbr": "CHE",
+            "rank": 6,
+            "id": "357",
+            "name": "Leeds United",
+            "abbr": "LEE",
             "logo": [
               {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
                 "width": 500,
                 "height": 500,
                 "alt": "",
@@ -128,16 +154,16 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "10",
-            "won": "5",
-            "drawn": "1",
-            "lost": "4",
-            "gd": "+3",
-            "pts": "16",
-            "note": "Europa League"
+            "played": "11",
+            "won": "4",
+            "drawn": "5",
+            "lost": "2",
+            "gd": "+5",
+            "pts": "17",
+            "note": ""
           },
           {
-            "rank": 6,
+            "rank": 7,
             "id": "368",
             "name": "Everton",
             "abbr": "EVE",
@@ -163,13 +189,13 @@
             "note": ""
           },
           {
-            "rank": 7,
-            "id": "349",
-            "name": "AFC Bournemouth",
-            "abbr": "BOU",
+            "rank": 8,
+            "id": "363",
+            "name": "Chelsea",
+            "abbr": "CHE",
             "logo": [
               {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
                 "width": 500,
                 "height": 500,
                 "alt": "",
@@ -180,16 +206,42 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "10",
+            "played": "11",
+            "won": "5",
+            "drawn": "1",
+            "lost": "5",
+            "gd": "0",
+            "pts": "16",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "id": "367",
+            "name": "Tottenham Hotspur",
+            "abbr": "TOT",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2024-01-04T17:49Z"
+              }
+            ],
+            "played": "11",
             "won": "4",
             "drawn": "3",
-            "lost": "3",
-            "gd": "+2",
+            "lost": "4",
+            "gd": "+1",
             "pts": "15",
             "note": ""
           },
           {
-            "rank": 8,
+            "rank": 10,
             "id": "337",
             "name": "Brentford",
             "abbr": "BRE",
@@ -215,33 +267,7 @@
             "note": ""
           },
           {
-            "rank": 9,
-            "id": "357",
-            "name": "Leeds United",
-            "abbr": "LEE",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "10",
-            "won": "3",
-            "drawn": "5",
-            "lost": "2",
-            "gd": "+2",
-            "pts": "14",
-            "note": ""
-          },
-          {
-            "rank": 10,
+            "rank": 11,
             "id": "362",
             "name": "Aston Villa",
             "abbr": "AVL",
@@ -258,38 +284,12 @@
                 "lastUpdated": "2025-03-21T13:31Z"
               }
             ],
-            "played": "10",
+            "played": "11",
             "won": "3",
-            "drawn": "4",
+            "drawn": "5",
             "lost": "3",
             "gd": "-3",
-            "pts": "13",
-            "note": ""
-          },
-          {
-            "rank": 11,
-            "id": "367",
-            "name": "Tottenham Hotspur",
-            "abbr": "TOT",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2024-01-04T17:49Z"
-              }
-            ],
-            "played": "10",
-            "won": "3",
-            "drawn": "3",
-            "lost": "4",
-            "gd": "-1",
-            "pts": "12",
+            "pts": "14",
             "note": ""
           },
           {
@@ -310,16 +310,42 @@
                 "lastUpdated": "2024-01-04T17:49Z"
               }
             ],
-            "played": "10",
+            "played": "11",
             "won": "3",
-            "drawn": "3",
+            "drawn": "4",
             "lost": "4",
             "gd": "-3",
-            "pts": "12",
+            "pts": "13",
             "note": ""
           },
           {
             "rank": 13,
+            "id": "388",
+            "name": "Coventry City",
+            "abbr": "COV",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2018-06-05T12:14Z"
+              }
+            ],
+            "played": "11",
+            "won": "4",
+            "drawn": "0",
+            "lost": "7",
+            "gd": "-8",
+            "pts": "12",
+            "note": ""
+          },
+          {
+            "rank": 14,
             "id": "306",
             "name": "Hull City",
             "abbr": "HUL",
@@ -345,7 +371,7 @@
             "note": ""
           },
           {
-            "rank": 14,
+            "rank": 15,
             "id": "370",
             "name": "Fulham",
             "abbr": "FUL",
@@ -371,7 +397,7 @@
             "note": ""
           },
           {
-            "rank": 15,
+            "rank": 16,
             "id": "373",
             "name": "Ipswich Town",
             "abbr": "IPS",
@@ -388,16 +414,16 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "10",
+            "played": "11",
             "won": "3",
             "drawn": "2",
-            "lost": "5",
-            "gd": "-5",
+            "lost": "6",
+            "gd": "-7",
             "pts": "11",
             "note": ""
           },
           {
-            "rank": 16,
+            "rank": 17,
             "id": "393",
             "name": "Nottingham Forest",
             "abbr": "NFO",
@@ -414,22 +440,22 @@
                 "lastUpdated": "2024-01-04T17:49Z"
               }
             ],
-            "played": "10",
+            "played": "11",
             "won": "2",
             "drawn": "3",
-            "lost": "5",
-            "gd": "-4",
+            "lost": "6",
+            "gd": "-6",
             "pts": "9",
             "note": ""
           },
           {
-            "rank": 17,
-            "id": "388",
-            "name": "Coventry City",
-            "abbr": "COV",
+            "rank": 18,
+            "id": "366",
+            "name": "Sunderland",
+            "abbr": "SUN",
             "logo": [
               {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
                 "width": 500,
                 "height": 500,
                 "alt": "",
@@ -437,19 +463,19 @@
                   "full",
                   "default"
                 ],
-                "lastUpdated": "2018-06-05T12:14Z"
+                "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "10",
-            "won": "3",
-            "drawn": "0",
-            "lost": "7",
+            "played": "11",
+            "won": "2",
+            "drawn": "3",
+            "lost": "6",
             "gd": "-9",
             "pts": "9",
-            "note": ""
+            "note": "Relegation"
           },
           {
-            "rank": 18,
+            "rank": 19,
             "id": "360",
             "name": "Manchester United",
             "abbr": "MAN",
@@ -475,32 +501,6 @@
             "note": "Relegation"
           },
           {
-            "rank": 19,
-            "id": "366",
-            "name": "Sunderland",
-            "abbr": "SUN",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "10",
-            "won": "2",
-            "drawn": "2",
-            "lost": "6",
-            "gd": "-9",
-            "pts": "8",
-            "note": "Relegation"
-          },
-          {
             "rank": 20,
             "id": "384",
             "name": "Crystal Palace",
@@ -518,11 +518,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "10",
+            "played": "11",
             "won": "2",
             "drawn": "1",
-            "lost": "7",
-            "gd": "-14",
+            "lost": "8",
+            "gd": "-15",
             "pts": "7",
             "note": "Relegation"
           }
