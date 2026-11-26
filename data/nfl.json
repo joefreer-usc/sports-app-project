@@ -1,31 +1,7 @@
 {
-  "updated": "2026-11-26T02:46:02Z",
+  "updated": "2026-11-26T11:33:36Z",
   "data": {
     "games": [
-      {
-        "id": "401873079",
-        "date": "2026-11-26T01:00Z",
-        "state": "in",
-        "detail": "Halftime",
-        "away": {
-          "name": "Green Bay Packers",
-          "abbr": "GB",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png",
-          "score": "13",
-          "record": "6-4",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Los Angeles Rams",
-          "abbr": "LAR",
-          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
-          "score": "13",
-          "record": "6-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401873081",
         "date": "2026-11-26T18:00Z",
@@ -96,6 +72,30 @@
           "record": "9-1",
           "rank": 0,
           "winner": false
+        }
+      },
+      {
+        "id": "401873079",
+        "date": "2026-11-26T01:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Green Bay Packers",
+          "abbr": "GB",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png",
+          "score": "13",
+          "record": "6-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Los Angeles Rams",
+          "abbr": "LAR",
+          "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
+          "score": "26",
+          "record": "7-4",
+          "rank": 0,
+          "winner": true
         }
       },
       {
