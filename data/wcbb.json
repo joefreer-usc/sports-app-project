@@ -1,55 +1,7 @@
 {
-  "updated": "2026-11-27T03:09:53Z",
+  "updated": "2026-11-27T12:08:24Z",
   "data": {
     "games": [
-      {
-        "id": "401913021",
-        "date": "2026-11-27T01:00Z",
-        "state": "in",
-        "detail": "0:00 - 4th",
-        "away": {
-          "name": "Xavier Musketeers",
-          "abbr": "XAV",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2752.png",
-          "score": "80",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Santa Clara Broncos",
-          "abbr": "SCU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2541.png",
-          "score": "89",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401903571",
-        "date": "2026-11-27T02:00Z",
-        "state": "in",
-        "detail": "6:51 - 3rd",
-        "away": {
-          "name": "Cincinnati Bearcats",
-          "abbr": "CIN",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
-          "score": "24",
-          "record": "4-2",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Miami (OH) RedHawks",
-          "abbr": "M-OH",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/193.png",
-          "score": "34",
-          "record": "6-0",
-          "rank": 0,
-          "winner": false
-        }
-      },
       {
         "id": "401923185",
         "date": "2026-11-26T16:30Z",
@@ -430,6 +382,54 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
           "score": "66",
           "record": "7-1",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401913021",
+        "date": "2026-11-27T01:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Xavier Musketeers",
+          "abbr": "XAV",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2752.png",
+          "score": "80",
+          "record": "4-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Santa Clara Broncos",
+          "abbr": "SCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2541.png",
+          "score": "89",
+          "record": "5-2",
+          "rank": 0,
+          "winner": true
+        }
+      },
+      {
+        "id": "401903571",
+        "date": "2026-11-27T02:00Z",
+        "state": "post",
+        "detail": "Final",
+        "away": {
+          "name": "Cincinnati Bearcats",
+          "abbr": "CIN",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
+          "score": "56",
+          "record": "4-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Miami (OH) RedHawks",
+          "abbr": "M-OH",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/193.png",
+          "score": "70",
+          "record": "7-0",
           "rank": 0,
           "winner": true
         }
@@ -1102,30 +1102,6 @@
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2226.png",
           "score": "0",
           "record": "2-4",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
-        "id": "401930135",
-        "date": "2026-11-27T19:30Z",
-        "state": "pre",
-        "detail": "11/27 - 2:30 PM EST",
-        "away": {
-          "name": "Gardner-Webb Runnin' Bulldogs",
-          "abbr": "GWEB",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2241.png",
-          "score": "0",
-          "record": "1-5",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "East Carolina Pirates",
-          "abbr": "ECU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
-          "score": "0",
-          "record": "2-3",
           "rank": 0,
           "winner": false
         }
@@ -1851,6 +1827,30 @@
         }
       },
       {
+        "id": "401930135",
+        "date": "2026-11-27T22:30Z",
+        "state": "pre",
+        "detail": "11/27 - 5:30 PM EST",
+        "away": {
+          "name": "Gardner-Webb Runnin' Bulldogs",
+          "abbr": "GWEB",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2241.png",
+          "score": "0",
+          "record": "1-5",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "East Carolina Pirates",
+          "abbr": "ECU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
+          "score": "0",
+          "record": "2-3",
+          "rank": 0,
+          "winner": false
+        }
+      },
+      {
         "id": "401920255",
         "date": "2026-11-27T22:30Z",
         "state": "pre",
@@ -2052,7 +2052,7 @@
           "abbr": "M-OH",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/193.png",
           "score": "0",
-          "record": "6-0",
+          "record": "7-0",
           "rank": 0,
           "winner": false
         },
@@ -2235,30 +2235,6 @@
         }
       },
       {
-        "id": "401920270",
-        "date": "2026-11-28T01:00Z",
-        "state": "pre",
-        "detail": "11/27 - 8:00 PM EST",
-        "away": {
-          "name": "New Mexico State Aggies",
-          "abbr": "NMSU",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/166.png",
-          "score": "0",
-          "record": "3-3",
-          "rank": 0,
-          "winner": false
-        },
-        "home": {
-          "name": "Nevada Wolf Pack",
-          "abbr": "NEV",
-          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
-          "score": "0",
-          "record": "1-5",
-          "rank": 0,
-          "winner": false
-        }
-      },
-      {
         "id": "401913030",
         "date": "2026-11-28T01:00Z",
         "state": "pre",
@@ -2292,7 +2268,7 @@
           "abbr": "CIN",
           "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
           "score": "0",
-          "record": "4-2",
+          "record": "4-3",
           "rank": 0,
           "winner": false
         },
@@ -2303,6 +2279,30 @@
           "score": "0",
           "record": "7-0",
           "rank": 17,
+          "winner": false
+        }
+      },
+      {
+        "id": "401920270",
+        "date": "2026-11-28T02:00Z",
+        "state": "pre",
+        "detail": "11/27 - 9:00 PM EST",
+        "away": {
+          "name": "New Mexico State Aggies",
+          "abbr": "NMSU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/166.png",
+          "score": "0",
+          "record": "3-3",
+          "rank": 0,
+          "winner": false
+        },
+        "home": {
+          "name": "Nevada Wolf Pack",
+          "abbr": "NEV",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
+          "score": "0",
+          "record": "1-5",
+          "rank": 0,
           "winner": false
         }
       },
@@ -2648,11 +2648,11 @@
         "state": "pre",
         "detail": "11/28 - 12:30 PM EST",
         "away": {
-          "name": "TBD",
-          "abbr": "TBD",
-          "logo": "",
+          "name": "Xavier Musketeers",
+          "abbr": "XAV",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2752.png",
           "score": "0",
-          "record": "",
+          "record": "4-3",
           "rank": 0,
           "winner": false
         },
@@ -3392,20 +3392,20 @@
         "state": "pre",
         "detail": "11/28 - 3:00 PM EST",
         "away": {
-          "name": "TBD",
-          "abbr": "TBD",
-          "logo": "",
+          "name": "Texas Tech Lady Raiders",
+          "abbr": "TTU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
           "score": "0",
-          "record": "",
+          "record": "7-1",
           "rank": 0,
           "winner": false
         },
         "home": {
-          "name": "TBD",
-          "abbr": "TBD",
-          "logo": "",
+          "name": "Santa Clara Broncos",
+          "abbr": "SCU",
+          "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2541.png",
           "score": "0",
-          "record": "",
+          "record": "5-2",
           "rank": 0,
           "winner": false
         }
