@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T22:14:26Z",
+  "updated": "2026-11-28T03:18:11Z",
   "data": {
     "season": "2026-27 Spanish LALIGA",
     "groups": [
@@ -138,6 +138,32 @@
           },
           {
             "rank": 6,
+            "id": "87",
+            "name": "Racing Santander",
+            "abbr": "RAC",
+            "logo": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ],
+            "played": "14",
+            "won": "6",
+            "drawn": "2",
+            "lost": "6",
+            "gd": "-10",
+            "pts": "20",
+            "note": "Europa League"
+          },
+          {
+            "rank": 7,
             "id": "243",
             "name": "Sevilla",
             "abbr": "SEV",
@@ -160,32 +186,6 @@
             "lost": "4",
             "gd": "-2",
             "pts": "19",
-            "note": "Europa League"
-          },
-          {
-            "rank": 7,
-            "id": "87",
-            "name": "Racing Santander",
-            "abbr": "RAC",
-            "logo": [
-              {
-                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
-                "width": 500,
-                "height": 500,
-                "alt": "",
-                "rel": [
-                  "full",
-                  "default"
-                ],
-                "lastUpdated": "2019-05-08T16:07Z"
-              }
-            ],
-            "played": "13",
-            "won": "5",
-            "drawn": "2",
-            "lost": "6",
-            "gd": "-12",
-            "pts": "17",
             "note": "Conference League qualifying"
           },
           {
@@ -388,11 +388,11 @@
                 "lastUpdated": "2019-05-08T16:07Z"
               }
             ],
-            "played": "13",
+            "played": "14",
             "won": "2",
             "drawn": "6",
-            "lost": "5",
-            "gd": "-5",
+            "lost": "6",
+            "gd": "-7",
             "pts": "12",
             "note": ""
           },
